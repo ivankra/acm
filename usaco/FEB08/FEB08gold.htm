@@ -1,0 +1,373 @@
+<html><head>
+
+<meta http-equiv="Pragma" content="no-cache">
+<script language="javascript">
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</script><title>USACO Problems</title></head><body onload="endtime = initcount(10800); updateclock('Contest', 'Person', endtime);" background="ioiupload_files/bg9gold.jpg">
+
+<font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+<table><tbody><tr>
+<td><img src="ioiupload_files/cowhead2.gif">
+</td>
+<td valign="top">
+<table cellpadding="0" cellspacing="0">
+    <tbody><tr><td>Contest: FEB08 <b>GOLD</b> Division</td></tr>
+    <tr><td><div id="Person">Contest: 02h59m58s</div></td></tr>
+    <tr><td></td></tr>
+    
+</tbody></table>
+</td></tr>
+</tbody></table>
+<font color="red"><b>
+</b></font>
+
+
+</font><pre>**********************************************************************
+                           GOLD PROBLEMS
+**********************************************************************
+                  Three problems numbered 1 through 3
+**********************************************************************
+
+Problem 1: Making the Grade [Brian Dean, 2008]
+
+A straight dirt road connects two fields on FJ's farm, but it changes
+elevation more than FJ would like. His cows do not mind climbing
+up or down a single slope, but they are not fond of an alternating
+succession of hills and valleys. FJ would like to add and remove
+dirt from the road so that it becomes one monotonic slope (either
+sloping up or down).
+
+You are given N integers A_1, . . . , A_N (1 &lt;= N &lt;= 2,000) describing
+the elevation (0 &lt;= A_i &lt;= 1,000,000,000) at each of N equally-spaced
+positions along the road, starting at the first field and ending
+at the other. FJ would like to adjust these elevations to a new
+sequence B_1, . . . , B_N that is either nonincreasing or nondecreasing.
+Since it costs the same amount of money to add or remove dirt at
+any position along the road, the total cost of modifying the road
+is
+
+         |A_1 - B_1| + |A_2 - B_2| + ... + |A_N - B_N|
+
+Please compute the minimum cost of grading his road so it becomes
+a continuous slope. FJ happily informs you that signed 32-bit
+integers can certainly be used to compute the answer.
+
+PROBLEM NAME: grading
+
+INPUT FORMAT:
+
+* Line 1: A single integer: N
+
+* Lines 2..N+1: Line i+1 contains a single integer elevation: A_i
+
+SAMPLE INPUT (file grading.in):
+
+7
+1
+3
+2
+4
+5
+3
+9
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer that is the minimum cost for FJ to grade
+        his dirt road so it becomes nonincreasing or nondecreasing in
+        elevation.
+
+SAMPLE OUTPUT (file grading.out):
+
+3
+
+OUTPUT DETAILS:
+
+By changing the first 3 to 2 and the second 3 to 5 for a total cost of
+|2-3|+|5-3| = 3 we get the nondecreasing sequence 1,2,2,4,5,5,9.
+
+**********************************************************************
+
+Problem 2: Cow Game [Shravas Rao, 2007]
+
+The cows have just discovered a new game to play with Farmer John.
+
+Each of the N (2 &lt;= N &lt;= 50,000) cows is standing on a lattice point
+of a grid; Cow 1 is standing at the point (0,0). The cows then tell
+John the distance in the X-coordinate (0 &lt;= X_i &lt;= 1,000,000) and
+Y-coordinate (0 &lt;= Y_i &lt;= 1,000,000) from Cow 1 to Cow 2.
+
+For example, if the distance from Cow 1 to Cow 2 was given as (3,
+2), then Cow 2 could be at the points (3, 2), (-3, 2), (3, -2), or
+(-3, -2), since Cow 1 is at the point (0, 0). This continues
+successively from cow to cow until the cows report the distance
+from Cow N-1 to Cow N.
+
+Farmer John wants your help to minimize the smallest possible sum
+of the two numbers in the distance from Cow N to Cow 1.
+
+This is an output-only problem. For each case, it is possible for
+Cow N to be on the same spot with Cow 1. Should you produce an
+answer where the total distance from Cow 1 to Cow N is x, you will
+receive a integer version of (1000-x)/1000 of the points for that
+test case. Each test case begins with CASE (1 &lt;= CASE &lt;= 25), the
+test case ID number.
+
+Input data are in a <a href="http://ace.delos.com/cgame.zip">zip file</a>.
+
+PROBLEM NAME: cgame
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: CASE and N
+
+* Lines 2..N: Line i+1 contains two space-separated integers that give
+        the distance from Cow i to Cow i+1: X_i and Y_i
+
+SAMPLE INPUT (file cgame.in):
+
+1 5
+2 6
+3 1
+1 4
+4 3
+
+INPUT DETAILS:
+
+There are 5 cows. The distance from Cow 1 to Cow 2 is (2, 6), the
+distance from Cow 2 to Cow 3 is (3, 1), the distance from Cow 3 to
+Cow 4 is (1, 4) and the distance from Cow 4 to Cow 5 is (4, 3).
+
+OUTPUT FORMAT:
+
+* Line 1: A line like this where ID is the case number: #FILE cgame ID
+
+* Lines 2..N+1: The locations of each of the cows to minimize this
+        sum. Line i+1 should contain the x and y coordinates of cow i
+        in that order.
+
+SAMPLE OUTPUT (file cgame.out):
+
+#FILE cgame 1
+0 0
+2 -6
+5 -7
+4 -3
+0 0
+
+OUTPUT DETAILS:
+
+This case receives full points since it gives a valid assignment
+and the locations of cows 1 and N overlap.
+
+**********************************************************************
+
+Problem 3: Hotel [Zhou Yuan, 2007]
+
+The cows are journeying north to Thunder Bay in Canada to gain
+cultural enrichment and enjoy a vacation on the sunny shores of
+Lake Superior. Bessie, ever the competent travel agent, has named
+the Bullmoose Hotel on famed Cumberland Street as their vacation
+residence. This immense hotel has N (1 &lt;= N &lt;= 50,000) rooms all
+located on the same side of an extremely long hallway (all the
+better to see the lake, of course).
+
+The cows and other visitors arrive in groups of size D_i (1 &lt;= D_i
+&lt;= N) and approach the front desk to check in. Each group i requests
+a set of D_i contiguous rooms from Canmuu, the moose staffing the
+counter.  He assigns them some set of consecutive room numbers
+r..r+D_i-1 if they are available or, if no contiguous set of rooms
+is available, politely suggests alternate lodging. Canmuu always
+chooses the value of r to be the smallest possible.
+
+Visitors also depart the hotel from groups of contiguous rooms.
+Checkout i has the parameters X_i and D_i which specify the vacating
+of rooms X_i..X_i+D_i-1 (1 &lt;= X_i &lt;= N-D_i+1). Some (or all) of
+those rooms might be empty before the checkout.
+
+Your job is to assist Canmuu by processing M (1 &lt;= M &lt; 50,000)
+checkin/checkout requests. The hotel is initially unoccupied.
+
+PROBLEM NAME: hotel
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: N and M
+
+* Lines 2..M+1: Line i+1 contains request expressed as one of two
+        possible formats: (a) Two space separated integers
+        representing a check-in request: 1 and D_i (b) Three
+        space-separated integers representing a check-out: 2, X_i, and
+        D_i
+
+SAMPLE INPUT (file hotel.in):
+
+10 6
+1 3
+1 3
+1 3
+1 3
+2 5 5
+1 6
+
+OUTPUT FORMAT:
+
+* Lines 1.....: For each check-in request, output a single line with a
+        single integer r, the first room in the contiguous sequence of
+        rooms to be occupied. If the request cannot be satisfied,
+        output 0.
+
+SAMPLE OUTPUT (file hotel.out):
+
+1
+4
+7
+0
+5
+
+**********************************************************************
+
+</pre><hr>
+<form action="/ioiupload" enctype="multipart/form-data" method="post">
+<input name="a" value="YJ15Xzk2dXO" type="hidden">
+
+<table>
+<tbody><tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+  <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+  <table bgcolor="#bfffbf" cellpadding="5" width="100%">
+  <tbody><tr><td><b>Submit a program or file for grading:&nbsp;<b><input name="filename" type="file">
+  &nbsp;&nbsp;
+  <input value="Submit" name="submit" type="submit"></b></b></td></tr>
+  </tbody></table>
+
+</font></td><td width="1"></td></tr>
+<tr height="1"><td></td></tr>
+</tbody></table>
+
+
+</td></tr>
+
+<tr><td><hr></td></tr>
+
+<tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+   <table bgcolor="#bfffbf" cellpadding="5" width="100%">
+   <tbody><tr><td colspan="2">
+   <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+   <b>To run your program with your own test data, enter the program<br>
+   file name and input file name then click 'Test':</b></font></td></tr>
+
+  <tr><td>
+
+   <table>
+   <tbody><tr><td>
+     <table>
+     <tbody><tr><td>
+     <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+     <b>Program&nbsp;File:&nbsp;</b></font></td>
+         <td><input name="testprogramname" type="file"></td></tr>
+     <tr><td align="right">
+         <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+         <b>Input&nbsp;File:&nbsp;</b></font></td>
+         <td><input name="testfilename" type="file"></td></tr>
+     </tbody></table>
+   </td>
+   <td>&nbsp;&nbsp;</td>
+   <td><input value="Test" name="submit" type="submit"></td>
+   </tr>
+   </tbody></table>
+
+   </td></tr></tbody></table>
+
+</td><td width="1"></td></tr>
+<tr height="1"><td></td></tr>
+</tbody></table>
+
+</td></tr>
+<tr><td><hr></td></tr>
+
+<tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+<table bgcolor="#bfffbf" cellpadding="5" width="100%">
+<tbody><tr><td>
+<font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+<b>Backup a file:&nbsp;</b><input name="backupfilename" type="file">
+&nbsp;&nbsp;&nbsp;<input value="Backup" name="submit" type="submit">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input value="See Backups" name="submit" type="submit">
+</font></td></tr></tbody></table>
+
+</td><td width="1"></td></tr>
+<tr height="1"><td></td><td></td></tr>
+</tbody></table>
+
+</td></tr>
+
+<tr><td><hr></td></tr>
+
+</tbody></table>
+Nothing is currently saved for grading.
+<hr>
+<center>
+<a href="http://ace.delos.com/ioiedit?a=YJ15Xzk2dXO">Edit your database record</a>&nbsp;|&nbsp;
+
+<a href="http://ace.delos.com/ioiupload?a=YJ15Xzk2dXO&amp;logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?init=1&amp;a=YJ15Xzk2dXO">Main contest index</a>
+</center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<a href="http://ace.delos.com/ioiupload?a=YJ15Xzk2dXO&amp;showsubmit">See submitted solutions</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=YJ15Xzk2dXO&amp;suggestionbox">Send message
+to operations staff</a><br>
+Director is currently online (AIM: RobAtDelos)<br>
+This page was generated at 15:39:54 GMT.
+</center>
+
+</form></body></html>

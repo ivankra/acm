@@ -1,0 +1,411 @@
+<html><head>
+
+<meta http-equiv="Pragma" content="no-cache">
+<script language="javascript">
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</script><title>USACO Problems</title></head><body onload="" background="NOV07silver_files/bg9gold.jpg">
+
+<font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+<table><tbody><tr>
+<td><img src="NOV07silver_files/cowhead2.gif">
+</td>
+<td valign="top">
+<table cellpadding="0" cellspacing="0">
+    <tbody><tr><td>Contest: NOV07 <b>GOLD</b> Division</td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    
+</tbody></table>
+</td></tr>
+</tbody></table>
+<font color="red"><b>
+</b></font>
+
+<br><font size="6"><b>ANALYSIS MODE</b></font><br>
+Submit solutions for your own enjoyment.
+
+</font><pre></pre>
+<pre>**********************************************************************
+                           SILVER PROBLEMS
+**********************************************************************
+                  Three problems numbered 6 through 8
+**********************************************************************
+
+Problem 6: Cow Hurdles [Neal Wu, 2007]
+
+Farmer John wants the cows to prepare for the county jumping
+competition, so Bessie and the gang are practicing jumping over
+hurdles. They are getting tired, though, so they want to be able
+to use as little energy as possible to jump over the hurdles.
+
+Obviously, it is not very difficult for a cow to jump over several
+very short hurdles, but one tall hurdle can be very stressful. Thus,
+the cows are only concerned about the height of the tallest hurdle
+they have to jump over.
+
+The cows' practice room has N (1 &lt;= N &lt;= 300) stations, conveniently
+labeled 1..N. A set of M (1 &lt;= M &lt;= 25,000) one-way paths connects
+pairs of stations; the paths are also conveniently labeled 1..M.
+Path i travels from station S_i to station E_i and contains exactly
+one hurdle of height H_i (1 &lt;= H_i &lt;= 1,000,000). Cows must jump
+hurdles in any path they traverse.
+
+The cows have T (1 &lt;= T &lt;= 40,000) tasks to complete. Task i comprises
+two distinct numbers, A_i and B_i (1 &lt;= A_i &lt;= N; 1 &lt;= B_i &lt;= N),
+which connote that a cow has to travel from station A_i to station
+B_i (by traversing over one or more paths over some route). The
+cows want to take a path the minimizes the height of the tallest
+hurdle they jump over when traveling from A_i to B_i. Your job is to
+write a program that determines the path whose tallest hurdle is
+smallest and report that height.
+
+PROBLEM NAME: hurdles
+
+INPUT FORMAT:
+
+* Line 1: Three space-separated integers: N, M, and T
+
+* Lines 2..M+1: Line i+1 contains three space-separated integers: S_i,
+        E_i, and H_i
+
+* Lines M+2..M+T+1: Line i+M+1 contains two space-separated integers
+        that describe task i: A_i and B_i
+
+SAMPLE INPUT (file hurdles.in):
+
+5 6 3
+1 2 12
+3 2 8
+1 3 5
+2 5 3
+3 4 4
+2 4 8
+3 4
+1 2
+5 1
+
+
+OUTPUT FORMAT:
+
+* Lines 1..T: Line i contains the result for task i and tells the
+        smallest possible maximum height necessary to travel between
+        the stations. Output -1 if it is impossible to travel between
+        the two stations.
+
+SAMPLE OUTPUT (file hurdles.out):
+
+4
+8
+-1
+
+OUTPUT DETAILS:
+
+Query #1: The best way is to simply travel on the path from station 3 to
+station 4.
+Query #2: There is a path from station 1 to station 2, but a better way
+would be to travel from station 1 to station 3 and then to station 2.
+Query #3: There are no paths that start at station 5, so it is clear that
+there is no way to reach station 1 from station 5.
+
+**********************************************************************
+
+Problem 7: Milking Time [Jeffrey Wang, 2007]
+
+Bessie is such a hard-working cow. In fact, she is so focused on
+maximizing her productivity that she decides to schedule her next
+N (1 &lt;= N &lt;= 1,000,000) hours (conveniently labeled 0..N-1) so that
+she produces as much milk as possible.
+
+Farmer John has a list of M (1 &lt;= M &lt;= 1,000) possibly overlapping
+intervals in which he is available for milking. Each interval i has
+a starting hour (0 &lt;= starting_hour_i &lt; N), an ending hour
+(starting_hour_i &lt; ending_hour_i &lt;= N), and a corresponding efficiency
+(1 &lt;= efficiency_i &lt;= 1,000,000) which indicates how many gallons
+of milk that he can get out of Bessie in that interval. Farmer John
+starts and stops milking at the beginning of the starting hour and
+ending hour, respectively. When being milked, Bessie must be milked
+through an entire interval.
+
+Even Bessie has her limitations, though. After being milked during
+any interval, she must rest R (1 &lt;= R &lt;= N) hours before she can
+start milking again. Given Farmer Johns list of intervals, determine
+the maximum amount of milk that Bessie can produce in the N hours.
+
+PROBLEM NAME: milkprod
+
+INPUT FORMAT:
+
+* Line 1: Three space-separated integers: N, M, and R
+
+* Lines 2..M+1: Line i+1 describes FJ's ith milking interval with
+        three space-separated integers: starting_hour_i,
+        ending_hour_i, and efficiency_i
+
+SAMPLE INPUT (file milkprod.in):
+
+12 4 2
+1 2 8
+10 12 19
+3 6 24
+7 10 31
+
+INPUT DETAILS:
+
+Bessie wants to schedule the next 12 hours; Farmer John has four
+intervals in which he can milk her; Bessie must rest 2 hours after
+every milking. The first interval lasts from hour 1 to hour 2, the
+second from hour 10 to hour 12, the third from hour 3 to hour 6,
+and the fourth from hour 7 to hour 10. Farmer John can get 8, 19,
+24, and 31 gallons of milk, respectively, from Bessie in those
+intervals.
+
+OUTPUT FORMAT:
+
+* Line 1: The maximum number of gallons of milk that Bessie can
+        product in the N hours
+
+SAMPLE OUTPUT (file milkprod.out):
+
+43
+
+OUTPUT DETAILS:
+
+If Bessie uses the first interval, she cannot use the third because
+she needs 2 hours of rest. If she uses the second, she cannot use
+the fourth.  Lastly, if she uses the third, she cannot use the
+fourth. The best situation is choosing the second and third intervals,
+producing 43 gallons of milk.
+
+**********************************************************************
+
+Problem 8: Best Cow Line [Christos Tzamos, 2007]
+
+FJ is about to take his N (1 &lt;= N &lt;= 2,000) cows to the annual
+"Farmer of the Year" competition. In this contest every farmer
+arranges his cows in a line and herds them past the judges.
+
+The contest organizers adopted a new registration scheme this year:
+simply register the initial letter of every cow in the order they
+will appear (i.e., If FJ takes Bessie, Sylvia, and Dora in that
+order he just registers BSD). After the registration phase ends,
+every group is judged in increasing lexicographic order according
+to the string of the initials of the cows' names.
+
+FJ is very busy this year and has to hurry back to his farm, so he
+wants to be judged as early as possible. He decides to rearrange
+his cows, who have already lined up, before registering them.
+
+FJ marks a location for a new line of the competing cows. He then
+proceeds to marshal the cows from the old line to the new one by
+repeatedly sending either the first or last cow in the (remainder
+of the) original line to the end of the new line. When he's finished,
+FJ takes his cows for registration in this new order.
+
+Given the initial order of his cows, determine the least lexicographic
+string of initials he can make this way.
+
+PROBLEM NAME: bcl
+
+INPUT FORMAT:
+
+* Line 1: A single integer: N
+
+* Lines 2..N+1: Line i+1 contains a single initial ('A'..'Z') of the
+        cow in the ith position in the original line
+
+SAMPLE INPUT (file bcl.in):
+
+6
+A
+C
+D
+B
+C
+B
+
+INPUT DETAILS:
+
+FJ has 6 cows in this order: ACDBCB
+
+OUTPUT FORMAT:
+
+The least lexicographic string he can make. Every line (except perhaps
+the last one) contains the initials of 80 cows ('A'..'Z') in the new
+line.
+
+SAMPLE OUTPUT (file bcl.out):
+
+ABCBCD
+
+OUTPUT DETAILS:
+
+  Step   Original     New
+   #1     ACDBCB
+   #2      CDBCB     A
+   #3      CDBC      AB
+   #4      CDB       ABC
+   #5      CD        ABCB
+   #6       D        ABCBC
+   #7                ABCBCD
+
+**********************************************************************
+
+</pre><hr>
+<form action="/ioiupload" enctype="multipart/form-data" method="post">
+<input name="a" value="0P3NIG3IZU5" type="hidden">
+
+<table>
+<tbody><tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+  <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+  <table bgcolor="#bfffbf" cellpadding="5" width="100%">
+  <tbody><tr><td><b>Submit a program  for grading:&nbsp;<b><input name="filename" type="file">
+  &nbsp;&nbsp;
+  <input value="Submit" name="submit" type="submit"></b></b></td></tr>
+  </tbody></table>
+
+</font></td><td width="1"></td></tr>
+<tr height="1"><td></td></tr>
+</tbody></table>
+
+
+</td></tr>
+
+<tr><td><hr></td></tr>
+
+<tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+   <table bgcolor="#bfffbf" cellpadding="5" width="100%">
+   <tbody><tr><td colspan="2">
+   <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+   <b>To run your program with your own test data, enter the program<br>
+   file name and input file name then click 'Test':</b></font></td></tr>
+
+  <tr><td>
+
+   <table>
+   <tbody><tr><td>
+     <table>
+     <tbody><tr><td>
+     <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+     <b>Program&nbsp;File:&nbsp;</b></font></td>
+         <td><input name="testprogramname" type="file"></td></tr>
+     <tr><td align="right">
+         <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+         <b>Input&nbsp;File:&nbsp;</b></font></td>
+         <td><input name="testfilename" type="file"></td></tr>
+     </tbody></table>
+   </td>
+   <td>&nbsp;&nbsp;</td>
+   <td><input value="Test" name="submit" type="submit"></td>
+   </tr>
+   </tbody></table>
+
+   </td></tr></tbody></table>
+
+</td><td width="1"></td></tr>
+<tr height="1"><td></td></tr>
+</tbody></table>
+
+</td></tr>
+<tr><td><hr></td></tr>
+
+<tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+<table bgcolor="#bfffbf" cellpadding="5" width="100%">
+<tbody><tr><td>
+<font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+<b>Backup a file:&nbsp;</b><input name="backupfilename" type="file">
+&nbsp;&nbsp;&nbsp;<input value="Backup" name="submit" type="submit">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input value="See Backups" name="submit" type="submit">
+</font></td></tr></tbody></table>
+
+</td><td width="1"></td></tr>
+<tr height="1"><td></td><td></td></tr>
+</tbody></table>
+
+</td></tr>
+
+<tr><td><hr></td></tr>
+
+</tbody></table>
+<font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans"> The following solution files are saved for grading:<br>
+<table cellspacing="2">
+<tbody><tr><th>Name</th><th>Size</th><th>When</th><th>Age</th></tr>
+<tr><td><a href="http://ace.delos.com/ioiupload?a=0P3NIG3IZU5&amp;seesaved=relays.c">relays.c</a></td>
+<td align="right">1614</td>
+<td align="right">13h57:18</td>
+<td align="right">67h41:14</td></tr>
+<tr><td><a href="http://ace.delos.com/ioiupload?a=0P3NIG3IZU5&amp;seesaved=tanning.c">tanning.c</a></td>
+<td align="right">1000</td>
+<td align="right">14h21:12</td>
+<td align="right">67h17:20</td></tr>
+<tr><td><a href="http://ace.delos.com/ioiupload?a=0P3NIG3IZU5&amp;seesaved=telewire.c">telewire.c</a></td>
+<td align="right">1727</td>
+<td align="right">15h05:05</td>
+<td align="right">66h33:27</td></tr>
+</tbody></table>
+</font><hr>
+<center>
+<font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans"><a href="http://ace.delos.com/ioiedit?a=0P3NIG3IZU5">Edit your database record</a>&nbsp;|&nbsp;
+
+<a href="http://ace.delos.com/ioiupload?a=0P3NIG3IZU5&amp;logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?init=1&amp;a=0P3NIG3IZU5">Main contest index</a>
+</font></center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans"><a href="http://ace.delos.com/ioiupload?a=0P3NIG3IZU5&amp;showsubmit">See submitted solutions</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=0P3NIG3IZU5&amp;suggestionbox">Send message
+to operations staff</a><br>
+Director is currently online (AIM: RobAtDelos)<br>
+This page was generated at 16:38:32 GMT.
+</font></center>
+
+</form></body></html>

@@ -1,0 +1,69 @@
+
+Problem Statement
+    
+A floating point representation of a number in base b is written as M * bE, where M is called the mantissa and E is the exponent. Depending on the allowed values for M and E, a number may have multiple possible representations. In this problem, we will work with base 2, and we will limit M and E to be unsigned integers, each with a fixed number of bits. You must determine the number of possible representations a given number has in such a system.
+For example, a 4-bit mantissa has a range of 0 to 15, inclusive, and a 2-bit exponent has a range of 0 to 3, inclusive. Using this system, the number 24 can be represented as: 12*21, 6*22, and 3*23. Note that every time the mantissa is doubled or halved, the exponent is decremented or incremented by 1, respectively. Given an int number, and the sizes in bits of the mantissa and exponent, return the number of floating point representations that are possible for that number.
+Definition
+    
+Class:
+FloatingPoint
+Method:
+representations
+Parameters:
+int, int, int
+Returns:
+int
+Method signature:
+int representations(int number, int mantissa, int exponent)
+(be sure your method is public)
+    
+
+Constraints
+-
+number will be between 1 and 1000000000 (109), inclusive.
+-
+mantissa will be between 1 and 20, inclusive.
+-
+exponent will be between 1 and 20, inclusive.
+Examples
+0)
+
+    
+24
+4
+2
+Returns: 3
+Example from the problem statement.
+1)
+
+    
+1
+3
+3
+Returns: 1
+The number 1 can be represented in only one way (regardless of the mantissa and exponent sizes).
+2)
+
+    
+8
+3
+3
+Returns: 3
+To represent the number 8 we can choose (ordered by exponent) from: 8*20, 4*21, 2*22, 1*23. The exponent has the range for larger numbers, but the smallest mantissa is used in the last case in this list.
+3)
+
+    
+16
+5
+2
+Returns: 4
+To represent the number 16 we can choose (ordered by exponent) from: 16*20, 8*21, 4*22, and 2*23. Here the next possibility (1*24) would require an exponent that cannot be represented with 3 bits.
+4)
+
+    
+17408
+10
+10
+Returns: 6
+Note that 17408 = 17*210. Thus the number 17 (or 1001 in binary notation) can be shifted to fit in 6 positions within the 10 mantissa bits (using leading or trailing zeros): from 17*210 to 544*25. Any exponent less than 5 would overflow the mantissa.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

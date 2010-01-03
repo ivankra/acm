@@ -1,0 +1,295 @@
+a:srsl
+b:aaaalaallaalaallaalaallaalaaaa
+aalaallaalaaaalblblblb
+
+a:srsl
+b:laaaalaallaalaallaalaallaalaaaa
+aalaallaalaaaabbbb
+
+a:srsl
+q:aaaaaalaaaa
+w:laallaalaallaalaallaalaaaalaaaa
+qwww
+
+53
+a:srsl
+w:laallaalaallaalaallaalaaaalaaaa
+z:wwwwssssrz
+aallz
+
+54
+a:srsl
+w:laallaalaallaalaallaalaaaalaaaa
+z:wwwwssssrz
+laallz
+
+42
+a:srsl
+b:laallaa
+c:laaaa
+w:bbbcc
+z:wwwwssssrz
+laallz
+
+a:srsl
+d(X):XX
+w:laallaa laallaa laallaa d(laaaa)
+z:d(d(w))d(ss)rz
+laallz
+
+b:laallaa
+c:laaaa
+w:bbbcc
+z:wwwwssssrz
+laallz
+
+40
+a:srsl
+p(X,N):Xp(X,N-1)
+p(aallp(p(laallaa,3)p(laaaa,2),4)aal,4)
+
+39
+a:srsl
+b:laallaa
+c:laaaa
+w:bbbcc
+z:aallwwwwaalz
+z
+
+37
+a:srsl
+t:laall
+b:taa
+c:laaaa
+w:bbbcc
+z:twwwwaaz
+z
+
+a:srsl
+aaaaaal
+  aaaal
+    aal
+      l
+    aal
+    aal
+      l
+    aal
+    aal
+      l
+    aal
+  aaaal
+
+a:srsl
+t(X):XXX
+c:t(aallaal)
+d:t(aaaalcaaaal)
+e:t(aaaaaaldaaaaaal)
+e
+
+
+
+aaaaaal
+  aaaal
+    aal
+      l
+    aal
+    aal
+      l
+    aal
+    aal
+      l
+    aal
+  aaaal
+
+
+a:srsl
+t(X):XXX
+c:t(aallaal)
+d:t(aaaalcaaaal)
+e:t(aaaaaaldaaaaaal)
+e
+
+
+a:srsl
+t(X):XXX
+c:t(t(t(aallaal)))
+d:t(t(t(aaaalcaaaal)))
+t(t(t(aaaaaaldaaaaaal)))
+
+[38?]
+a:srsl
+t(X):XXX
+p(X,Y):t(t(t(XYX)))
+p(aaaaaal,p(aaaal,p(aal,l)))
+
+
+a:srsl
+p(X,N):Xp(X,N-1)
+z(N):p(p(aa,N)lz(N-1)p(aa,N),7)
+z(4)
+
+c:t(aallaal)
+d:t(aaaalcaaaal)
+e:t(aaaaaaldaaaaaal)
+e
+
+c:t(aallaal)
+d:
+e:t(aaaaaalt(aaaalt(aallaal)aaaal)aaaaaal)
+e
+
+a:srsl
+t(X):XXX
+n(N,X):X
+z(N,X,C):n(1-N,X)z(N-1,aaX,t(XCX))
+z(3,,,)
+
+
+a:srsl
+v(X):XXXXXXX
+c:v(aallaal)
+d:v(aaaalcaaaal)
+v(aaaaaaldaaaaaal)
+
+52
+a:srsl
+v(X):XXXXXXX
+c:v(aallaal)
+d:v(aaaalcaaaal)
+v(aaaaaaldaaaaaal)
+
+a:srsl
+v(X):XXXXXXX
+c:v(aallaal)
+d:v(aaaalcaaaal)
+v(aaaaaaldaaaaaal)
+
+a:srsl
+v(X):XXXXXXX
+c:v(aallaal)
+d:v(aaaalcaaaal)
+v(aaaaaaldaaaaaal)
+
+[36?]
+a:srsl
+p(X,N):Xp(X,N-1)
+z(N,X,C):p(C,2-N)z(N-1,aaX,p(XCX),7)
+z(4,l,l)
+
+35
+p(X,N):Xp(X,N-1)
+z(N,X,C):p(C,2-N)z(N-1,p(srsl,2)X,p(XCX,7))
+z(5,l,l)
+
+
+p(X,N):Xp(X,N-1)
+
+
+a:srsl
+t:laall
+b:taa
+c:laaaa
+w:bbbcc
+z:twwwwaaz
+z
+
+
+a:srsl
+b:laallaa
+q:bbbbaaaalaaaall
+aaqqqq
+
+a:srsl
+b:laallaalr
+q:bbbbaaaalaaaall
+b
+
+d(X):XX
+a:d(srsl)
+q:d(d(d(lal)r))d(aal)l
+d(d(ad(d(q))ld(ss)))
+
+
+33
+d(X):XX
+a:d(srsl)
+q:d(d(d(lal)r))d(aal)l
+ad(d(d(d(q))ld(ss)))
+
+31
+d(X):XX
+a:d(srsl)
+ad(d(d(d(d(d(d(lal)r))d(aal)l))ld(ss)))
+
+alallalrlallalrlallalrlallalraalaalllallalrlallalrlallalrlallalraalaalllallalrlallalrlallalrlallalraalaalllallalrlallalrlallalrlallalraalaalllsssslallalrlallalrlallalrlallalraalaalllallalrlallalrlallalrlallalraalaalllallalrlallalrlallalrlallalraalaalllallalrlallalrlallalrlallalraalaalllsssslallalrlallalrlallalrlallalraalaalllallalrlallalrlallalrlallalraalaalllallalrlallalrlallalrlallalraalaalllallalrlallalrlallalrlallalraalaalllsssslallalrlallalrlallalrlallalraalaalllallalrlallalrlallalrlallalraalaalllallalrlallalrlallalrlallalraalaalllallalrlallalrlallalrlallalraalaalllssss
+
+d(X):XX
+a:d(srsl)
+ad(d(d(d(d(d(d(lal)r))d(aal)l))ld(ss)))
+
+lalla
+
+31
+d(X):XX
+a:d(srsl)
+ad(d(d(d(d(d(lalla))d(aal)l))ld(ss)))
+
+aalaall
+
+lalall
+
+d(X):XX
+a:d(srsl)
+t:lal
+ad(d(d(d(d(d(tla))d(aal)l))atar))
+
+
+d(X):XX
+a:d(srsl)
+b:d(d(allal))
+ad(d(baalaall))
+
+33
+d(X):XX
+a:d(srsl)
+b:d(d(allal))
+ad(d(d(d(bd(aal)l))ld(ss)))
+
+40
+d(X):XX
+a:srsl
+b:srssssrsr
+c:bbbbd(aaaaaal)l
+d(d(ccccl))
+
+d(X):XX
+a:d(srsl)
+d(d(d(d(d(d(srssssrsr))d(aaal)l))l))
+
+32
+d(X):XX
+a:d(srsl)
+d(d(d(d(d(d(srssssrsr))d(aaal)l))l))
+
+srs ss srs r
+srssssrsrs
+ rssssrsrs
+ rssssrsrs
+ rssssrsr
+
+31
+d(X):XX
+a:d(srsl)
+d(d(d(d( d(d(srd(ss)rsr)) d(aaal)l))l))
+
+
+
+a:d(srsl)
+d(d(d(d(d(d(d(ar)r))d(aaal)l))l))
+
+s rsslrssrsr
+
+27
+d(X):XX
+a:d(srsl)
+d(d(d(d(d(d(d(ar)r))d(aaal)l))l))

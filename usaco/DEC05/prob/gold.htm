@@ -1,0 +1,331 @@
+<html><head>
+
+<script language="javascript">
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d ";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h ";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m ";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</script><title>USACO Problems</title></head><body onload=" " bgcolor="#eeffee">
+<center>
+<table><tbody><tr>
+<td>
+<!--<center><img src='/usaco/cow1.jpg' width='742' height='118'></center>-->
+<center><img src="gold_files/cow1.jpg" height="88" width="550"></center>
+</td>
+<td valign="top">
+<table>
+    <tbody><tr><td valign="top"><b>SILVER</b> Division<br></td></tr>
+    <tr><td>Contest is over</td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+</tbody></table>
+</td><td></td></tr>
+</tbody></table>
+</center>
+
+<br><font size="6"><b>ANALYSIS MODE</b></font><br>
+Submit solutions for your own enjoyment.
+
+<pre></pre>
+<pre>**********************************************************************
+                           GOLD PROBLEMS
+**********************************************************************
+                  Three problems numbered 1 through 3
+**********************************************************************
+
+Problem 1: Cow Patterns [Brian Dean, 2005]
+
+A particular subgroup of K (1 &lt;= K &lt;= 25,000) of Farmer John's cows
+likes to make trouble. When placed in a line, these troublemakers
+stand together in a particular order. In order to locate these
+troublemakers, FJ has lined up his N (1 &lt;= N &lt;= 100,000) cows. The
+cows will file past FJ into the barn, staying in order. FJ needs
+your help to locate suspicious blocks of K cows within this line
+that might potentially be the troublemaking cows.
+
+FJ distinguishes his cows by the number of spots 1..S on each cow's
+coat (1 &lt;= S &lt;= 25). While not a perfect method, it serves his
+purposes. FJ does not remember the exact number of spots on each
+cow in the subgroup of troublemakers. He can, however, remember
+which cows in the group have the same number of spots, and which
+of any pair of cows has more spots (if the spot counts differ). He
+describes such a pattern with a sequence of K ranks in the range
+1..S.  For example, consider this sequence:
+
+      1 4 4 3 2 1
+
+In this example, FJ is seeking a consecutive sequence of 6 cows
+from among his N cows in a line. Cows #1 and #6 in this sequence
+have the same number of spots (although this number is not necessarily
+1) and they have the smallest number of spots of cows #1..#6 (since
+they are labeled as '1').  Cow #5 has the second-smallest number
+of spots, different from all the other cows #1..#6.  Cows #2 and
+#3 have the same number of spots, and this number is the largest
+of all cows #1..#6.
+
+If the true count of spots for some sequence of cows is:
+
+ 5 6 2 10 10 7 3 2 9
+
+then only the subsequence 2 10 10 7 3 2 matches FJ's pattern above.
+
+Please help FJ locate all the length-K subsequences in his line of
+cows that match his specified pattern.
+
+PROBLEM NAME: cpattern
+
+INPUT FORMAT:
+
+* Line 1: Three space-separated integers: N, K, and S
+
+* Lines 2..N+1: Line i+1 describes the number of spots on cow i.
+
+* Lines N+2..N+K+1: Line i+N+1 describes pattern-rank slot i.
+
+SAMPLE INPUT (file cpattern.in):
+
+9 6 10
+5
+6
+2
+10
+10
+7
+3
+2
+9
+1
+4
+4
+3
+2
+1
+
+INPUT DETAILS:
+
+The sample input corresponds to the example given in the problem statement.
+
+OUTPUT FORMAT:
+
+* Line 1: The number of indices, B, at which the pattern matches
+
+* Lines 2..B+1: An index (in the range 1..N) of the starting location
+        where the pattern matches.
+
+SAMPLE OUTPUT (file cpattern.out):
+
+1
+3
+
+OUTPUT DETAILS:
+
+There is only one match, at position 3 within FJ's sequence of N cows.
+
+**********************************************************************
+
+Problem 2: Barn Expansion [Brian Dean, 2005]
+
+Farmer John has N (1 &lt;= N &lt;= 25,000) rectangular barns on his farm, all
+with sides parallel to the X and Y axes and integer corner coordinates in
+the range 0..1,000,000. These barns do not overlap although they may
+share corners and/or sides with other barns.
+
+Since he has extra cows to milk this year, FJ would like to expand some of
+his barns.  A barn has room to expand if it does not share a corner or a
+wall with any other barn.  That is, FJ can expand a barn if all four of its
+walls can be pushed outward by at least some amount without bumping into
+another barn.  If two barns meet at a corner, neither barn can expand.
+
+Please determine how many barns have room to expand.
+
+PROBLEM NAME: expand
+
+INPUT FORMAT:
+
+* Line 1: A single integer, N
+
+* Lines 2..N+1: Four space-separated integers A, B, C, and D,
+        describing one barn. The lower-left corner of the barn is at
+        (A,B) and the upper right corner is at (C,D).
+
+SAMPLE INPUT (file expand.in):
+
+5
+0 2 2 7
+3 5 5 8
+4 2 6 4
+6 1 8 6
+0 0 8 1
+
+INPUT DETAILS:
+
+There are 5 barns.  The first barn has its lower-left corner at (0,2) and
+its upper-right corner at (2,7), and so on.
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer that is the number of barns that can be
+        expanded.
+
+SAMPLE OUTPUT (file expand.out):
+
+2
+
+OUTPUT DETAILS:
+
+Only two barns can be expanded --- the first two listed in the input.
+All other barns are each in contact with at least one other barn.
+
+**********************************************************************
+
+Problem 3: Layout [Brian Dean, 2004]
+
+Like everyone else, cows like to stand close to their friends when
+queuing for feed.  FJ has N (2 &lt;= N &lt;= 1,000) cows numbered 1..N
+standing along a straight line waiting for feed. The cows are
+standing in the same order as they are numbered, and since they can
+be rather pushy, it is possible that two or more cows can line up
+at exactly the same location (that is, if we think of each cow as 
+being located at some coordinate on a number line, then it is 
+possible for two or more cows to share the same coordinate).
+
+Some cows like each other and want to be within a certain distance
+of each other in line. Some really dislike each other and want to
+be separated by at least a certain distance. A list of ML (1 &lt;= ML
+&lt;= 10,000) constraints describes which cows like each other and the
+maximum distance by which they may be separated; a subsequent list
+of MD constraints (1 &lt;= MD &lt;= 10,000) tells which cows dislike each
+other and the minimum distance by which they must be separated.
+
+Your job is to compute, if possible, the maximum possible distance
+between cow 1 and cow N that satisfies the distance constraints.
+
+PROBLEM NAME: layout
+
+INPUT FORMAT:
+
+* Line 1: Three space-separated integers: N, ML, and MD.
+
+* Lines 2..ML+1: Each line contains three space-separated positive
+        integers: A, B, and D, with 1 &lt;= A &lt; B &lt;= N. Cows A and B must
+        be at most D (1 &lt;= D &lt;= 1,000,000) apart.
+
+* Lines ML+2..ML+MD+1: Each line contains three space-separated
+        positive integers: A, B, and D, with 1 &lt;= A &lt; B &lt;= N. Cows A
+        and B must be at least D (1 &lt;= D &lt;= 1,000,000) apart.
+
+SAMPLE INPUT (file layout.in):
+
+4 2 1
+1 3 10
+2 4 20
+2 3 3
+
+INPUT DETAILS:
+
+There are 4 cows.  Cows #1 and #3 must be no more than 10 units
+apart, cows #2 and #4 must be no more than 20 units apart, and cows
+#2 and #3 dislike each other and must be no fewer than 3 units apart.
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer. If no line-up is possible, output -1.  If
+        cows 1 and N can be arbitrarily far apart, output -2. 
+        Otherwise output the greatest possible distance between cows 1
+        and N.
+
+SAMPLE OUTPUT (file layout.out):
+
+27
+
+OUTPUT DETAILS:
+
+The best layout, in terms of coordinates on a number line, is to put cow #1
+at 0, cow #2 at 7, cow #3 at 10, and cow #4 at 27.
+
+**********************************************************************
+
+</pre><hr>
+<form action="/ioiupload" enctype="multipart/form-data" method="post">
+<input name="a" value="9k0iLEwDLgR" type="hidden">
+
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td height="1"></td><td>
+
+</td></tr><tr><td width="1"></td><td>
+
+<table bgcolor="#bfffbf" cellpadding="5">
+<tbody><tr><td>Use this form to submit a program for grading:</td>
+<td rowspan="3"><input value="Submit" name="submit" type="submit"></td>
+</tr><tr><td width="60%"><b>Program File:</b><input name="filename" type="file"></td>
+    </tr>
+</tbody></table>
+</td><td width="1"></td>
+
+</tr><tr height="1"><td></td><td></td></tr>
+</tbody></table>
+<hr>
+The following solution files are saved for grading:<br>
+<table cellspacing="2">
+<tbody><tr><th>Name</th><th>Size</th><th>When</th><th>Age</th></tr>
+<tr><td><a href="http://ace.delos.com/ioiupload?a=9k0iLEwDLgR&amp;seesaved=clean.c">clean.c</a></td>
+<td align="right">1588</td>
+<td align="right">14h36:48</td>
+<td align="right">95h06:31</td></tr>
+<tr><td><a href="http://ace.delos.com/ioiupload?a=9k0iLEwDLgR&amp;seesaved=ni.c">ni.c</a></td>
+<td align="right">1961</td>
+<td align="right">12h22:40</td>
+<td align="right">97h20:39</td></tr>
+<tr><td><a href="http://ace.delos.com/ioiupload?a=9k0iLEwDLgR&amp;seesaved=scales.c">scales.c</a></td>
+<td align="right">926</td>
+<td align="right">13h07:06</td>
+<td align="right">96h36:13</td></tr>
+</tbody></table>
+<hr>
+<center>
+<a href="http://ace.delos.com/ioiedit?a=9k0iLEwDLgR">Edit your database record</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=9k0iLEwDLgR&amp;logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?init=1&amp;a=9k0iLEwDLgR">Main contest index</a>
+</center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<a href="http://ace.delos.com/ioiupload?a=9k0iLEwDLgR&amp;showsubmit">See submitted solutions</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=9k0iLEwDLgR&amp;suggestionbox">Send message
+to contest director</a><br>
+Director is currently online (AIM: RobAtDelos)<br>
+This page was generated at 20:43:19 GMT.
+</center>
+</form></body></html>

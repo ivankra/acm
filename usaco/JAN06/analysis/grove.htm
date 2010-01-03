@@ -1,0 +1,149 @@
+<html><head><title>JAN06 grove analysis</title></head><body bgcolor="#ffffff">
+<center><img src="grove_files/cow1.jpg" height="118" width="742"></center>
+<h2>January 2006 Problem 'grove' Analysis</h2>
+<h4>by Bruce Merry</h4>
+
+<p>This is a shortest-path problem with a twist. The trick is to
+modify the search space to force a circumnavigation of the island.
+One way to simplify the problem is to draw a line between the island
+and the border of the pasture, and require that path cross this
+line and only in one direction. Such a line can be found quite
+easily by taking the corner of the grove that is top-most then
+right-most, and joining it to the right border (note that the line
+passes between the rows of the grid). Now instead of walking in a
+space of (X, Y) coordinates, you can walk in a space of (X, Y, C)
+coordinates, were C is 0 if the line has not yet been crossed and
+1 if it has. It is also necessary to disallow any steps that cross
+the line in the wrong direction.
+
+</p><pre>#include &lt;fstream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+#include &lt;utility&gt;
+#include &lt;queue&gt;
+#include &lt;cassert&gt;
+
+using namespace std;
+
+#define MAXR 50
+#define MAXC 50
+
+static int R, C;
+static int Sr = -1, Sc = -1;
+static int Ir = -1, Ic = -1;
+static char grid[MAXR][MAXC + 1];
+static int label[MAXR][MAXC];
+static int Z;
+
+static const int dr[8] = {-1, 0, 1, 0, -1, -1, 1, 1};
+static const int dc[8] = {0, -1, 0, 1, -1, 1, -1, 1};
+
+static void label_dfs(int r, int c, int l, bool diag) {
+    int m = diag ? 8 : 4;
+    label[r][c] = l;
+    for (int d = 0; d &lt; m; d++) {
+        int r2 = r + dr[d];
+        int c2 = c + dc[d];
+        if (r2 &gt;= 0 &amp;&amp; r2 &lt; R &amp;&amp; c2 &gt;= 0 &amp;&amp; c2 &lt; C
+            &amp;&amp; grid[r2][c2] == grid[r][c] &amp;&amp; label[r2][c2] != label[r][c])
+            label_dfs(r2, c2, l, diag);
+    }
+}
+
+static void validate() {
+
+    memset(label, 0, sizeof(label));
+    label_dfs(Sr, Sc, 1, true);
+    label_dfs(Ir, Ic, 2, false);
+
+    for (int i = 0; i &lt; R; i++)
+        for (int j = 0; j &lt; C; j++)
+        {
+            if (i == 0 || i == R - 1 || j == 0 || j == C - 1)
+                assert(label[i][j] == 1);
+            if (grid[i][j] == 'X') assert(label[i][j] == 2);
+        }
+}
+
+struct point {
+    int r, c;
+    int wind;
+
+    point() {}
+    point(int r, int c, int w) : r(r), c(c), wind(w) {}
+};
+
+static void solve() {
+    queue&lt;point&gt; q;
+    int prio[R][C][2];
+    point parent[R][C][2];
+
+    for (int i = 0; i &lt; R; i++)
+        for (int j = 0; j &lt; C; j++)
+            prio[i][j][0] = prio[i][j][1] = INT_MAX;
+
+    prio[Sr][Sc][0] = 0;
+    q.push(point(Sr, Sc, 0));
+    while (!q.empty()) {
+        point cur = q.front();
+        int p = prio[cur.r][cur.c][cur.wind];
+        q.pop();
+        for (int d = 0; d &lt; 8; d++) {
+            point nxt(cur.r + dr[d], cur.c + dc[d], cur.wind);
+            if (nxt.r &lt; 0 || nxt.r &gt;= R || nxt.c &lt; 0 || nxt.c &gt;= C) continue;
+            if (grid[nxt.r][nxt.c] == 'X') continue;
+            if (cur.r == Ir - 1 &amp;&amp; nxt.r == Ir &amp;&amp; nxt.c &lt; Ic) continue;
+            if (cur.r == Ir &amp;&amp; nxt.r == Ir - 1 &amp;&amp; cur.c &lt; Ic) {
+                nxt.wind++;
+                if (nxt.wind &gt; 1) continue;
+            }
+            if (p + 1 &lt; prio[nxt.r][nxt.c][nxt.wind]) {
+                prio[nxt.r][nxt.c][nxt.wind] = p + 1;
+                q.push(nxt);
+                parent[nxt.r][nxt.c][nxt.wind] = cur;
+            }
+        }
+    }
+
+    Z = prio[Sr][Sc][1];
+    assert(Z != INT_MAX);
+    point cur(Sr, Sc, 1);
+    while (cur.r != Sr || cur.c != Sc || cur.wind != 0) {
+        cur = parent[cur.r][cur.c][cur.wind];
+        grid[cur.r][cur.c] = '+';
+    }
+    grid[Sr][Sc] = '*';
+}
+
+int main()
+{
+    ifstream in("grove.in");
+
+    in &gt;&gt; R &gt;&gt; C;
+    for (int i = 0; i &lt; R; i++) {
+        in &gt;&gt; grid[i];
+        assert(strlen(grid[i]) == (size_t) C);
+        for (int j = 0; j &lt; C; j++) {
+            if (grid[i][j] == '*') {
+                assert(Sr == -1);
+                Sr = i;
+                Sc = j;
+                grid[i][j] = '.';
+            }
+            assert(grid[i][j] == '.' || grid[i][j] == 'X');
+            if (grid[i][j] == 'X' &amp;&amp; Ir == -1) {
+                Ir = i;
+                Ic = j;
+            }
+        }
+    }
+
+    validate();
+    solve();
+
+    ofstream out("grove.out");
+    out &lt;&lt; Z &lt;&lt; "\n";
+    return 0;
+}
+</pre>
+</body></html>

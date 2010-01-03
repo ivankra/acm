@@ -1,0 +1,54 @@
+
+Problem Statement
+ÿÿÿÿ
+When a program uses fractions, the denominators tend to get very large. We want to be able to approximate a fraction by another fraction that has a reasonably small denominator.
+We will represent a fraction (both the input argument and the return value) with a string in the form <numerator>/<denominator> where <numerator> and <denominator> are integers with no leading zero ('0') or plus ('+'), and <denominator> is positive. The <numerator> may be "0" but not "-0". The string contains no spaces.
+Create a class NearFrac that contains a method near that is given a String frac and an int maxDenom. It returns a String that represents the fraction whose absolute difference from frac is the smallest among all fractions with a denominator less than or equal to maxDenom.
+If there is more than one fraction that is nearest, return the one that has the smallest denominator. If there is still more than one, return the one with the smallest numerator (where a more negative value is considered smaller than a less negative value or a positive value).
+Definition
+ÿÿÿÿ
+Class:
+NearFrac
+Method:
+near
+Parameters:
+String, int
+Returns:
+String
+Method signature:
+String near(String frac, int maxDenom)
+(be sure your method is public)
+ÿÿÿÿ
+
+Constraints
+-
+frac will be formatted to represent a fraction as described above.
+-
+The numerator of frac will be between -1,000,000 and 1,000,000, inclusive.
+-
+The denominator of frac will be between 1 and 1,000,000, inclusive.
+-
+maxDenom will be between 1 and 1,000, inclusive.
+Examples
+0)
+
+ÿÿÿÿ
+"31416/10000"
+10
+Returns: "22/7"
+This is a familiar approximation to pi.
+1)
+
+ÿÿÿÿ
+"-3142/1000"
+1000
+Returns: "-1571/500"
+Here maxDenom is large enough that we can get a perfect approximation to the given fraction.
+2)
+
+ÿÿÿÿ
+"-7/2"
+1
+Returns: "-4/1"
+-3/1 and -4/1 are equally close to 7/2. Since they have the same denominator the return should be the one with the smaller numerator.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

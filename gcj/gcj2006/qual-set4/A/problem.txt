@@ -1,0 +1,95 @@
+
+Problem Statement
+ÿÿÿÿ
+You are given a grid of characters, where each element describes a row. A solid square is a contiguous n x n section of characters, all of which have the same value. Return the number of solid squares in grid that aren't contained in larger solid squares.
+Definition
+ÿÿÿÿ
+Class:
+SquareCounting
+Method:
+howMany
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int howMany(vector <string> grid)
+(be sure your method is public)
+ÿÿÿÿ
+
+Constraints
+-
+grid will contain between 1 and 10 elements, inclusive.
+-
+Each element of grid will contain between 1 and 10 characters, inclusive.
+-
+Each element grid will contain the same number of characters.
+-
+Each character in grid will be an uppercase letter ('A'-'Z').
+Examples
+0)
+
+ÿÿÿÿ
+{"AB",
+ "CD"}
+Returns: 4
+Here we have 4 separate 1 x 1 squares.
+1)
+
+ÿÿÿÿ
+{"AAB",
+ "AAB",
+ "BBB"}
+Returns: 6
+Here we have a 2 x 2 square of 'A's and 5 squares of 'B's (each 1 x 1). Thus we return 6.
+2)
+
+ÿÿÿÿ
+{"AA",
+ "AA",
+ "AA"}
+Returns: 2
+The two possible 2 x 2 squares are counted.
+3)
+
+ÿÿÿÿ
+{"AAA",
+ "AAA",
+ "AAA"}
+Returns: 1
+Only the large 3x3 square is countable.
+4)
+
+ÿÿÿÿ
+{
+"AAAAAAAAAA",
+"AAAAAAAAAA",
+"AAAAAAAAAA",
+"AAAAAAAAAA",
+"AAAAAAAAAA",
+"AAAAAAAAAA",
+"AAAAAAAAAA",
+"AAAAAAAAAA",
+"AAAAAAAAAA",
+"AAAAAAAAAA"
+}
+Returns: 1
+
+5)
+
+ÿÿÿÿ
+{
+"AAAAAABBB",
+"AAAAAABBB",
+"AAAAAABBB",
+"AAAAAABBB",
+"AAAAAABBB",
+"BBBAAAAAA",
+"BBBAAAAAA",
+"BBBAAAAAA",
+"BBBAAAAAA",
+"BBBAAAAAA"
+}
+Returns: 12
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,15 @@
+There's really a much simpler solution than that described in misof's reference. Here's my method:
+
+First, I'm looking for points with rational coordinates and rational distances between any two of them, of the form:
+(x_i, y_i) = (cos t_i, sin t_i), for i=1..13  (i.e. all points are lying on the unit circle.)
+
+The distance between the i-th and j-th points is given by (after trig simplifications):
+2 sin(t_i/2) cos(t_j/2) - 2 cos(t_i/2) sin(t_j/2).
+Now, if I demand that all sin(t_i/2), cos(t_i/2) are rationals, then all distances and coordinates will become rational, too.
+
+Let sin(t_i/2)=p_i/q_i (for p_i,q_i \in Z.) Then cos(t_i/2)=sqrt(q_i^2 - p_i^2)/q_i.
+For cos(t_i/2) to be rational, q_i^2 - p_i^2 must be a square.
+The integers p_i, q_i can be found by checking first few pythagorean triples.
+The coordinates then can be easily computed by trig formulas.
+
+To get integer coordinates and distances, I multiply each x_i, y_i by the lcm of denominators of all x_i, y_i, and then shift all points such that all coordinates become non-negative.

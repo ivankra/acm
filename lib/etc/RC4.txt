@@ -1,0 +1,21 @@
+http://en.wikipedia.org/wiki/RC4
+
+// The key-scheduling algorithm (KSA)
+for i from 0 to 255
+    S[i] := i
+endfor
+j := 0
+for i from 0 to 255
+    j := (j + S[i] + key[i mod keylength]) mod 256
+    swap(S[i],S[j])
+endfor
+
+// Generation
+i := 0
+j := 0
+while GeneratingOutput:
+    i := (i + 1) mod 256
+    j := (j + S[i]) mod 256
+    swap(S[i],S[j])
+    output S[(S[i] + S[j]) mod 256]
+endwhile

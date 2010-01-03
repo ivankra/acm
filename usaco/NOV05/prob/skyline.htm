@@ -1,0 +1,95 @@
+<html><head> <title>NOV05 skyline analysis</title></head>
+<body bgcolor="#ffffff">
+<center><img src="skyline_files/cow1.jpg" height="118" width="742"></center>
+<h2>November 2005 Problem 'skyline' Analysis</h2>
+<center>by Bruce Merry</center>
+<p>
+Consider just the bottom of the skyline. In the sample test case,
+this looks like this:
+</p><pre>XXXXXXXXXX....XXXXXXXXXXXX
+</pre>
+<p>
+That immediately implies that there are at least two buildings.
+Consider just the stack on the left: the shortest building that
+appears amongst these columns can certainly be widened to encompass
+the whole set of columns, without affecting the skyline. Similarly,
+the shortest building of the rightmost set of columns can be widened
+to cover that whole set of columns. So not only are two buildings
+necessary to account for the bottom row, they are also sufficient.
+</p><p>
+Now consider the next row up:
+</p><pre>.XXX.XX.......XXXXXXX.....
+</pre>
+Three buildings are necessary and sufficient, but can some of those
+be the same as the two buildings used for the first layer? In this
+case no, because those two buildings cannot be more than one unit
+high to stretch across the gap.
+<p>
+However, when we get to the third row
+</p><pre>.....XX.........XXX.......
+</pre>
+there are two buildings needed, but the left of the two buildings
+can be shared with the second row - because the range of columns
+is identical.
+<p>
+This conceptual approach would probably be quite easy to implement
+given a grid of .'s and X's, but unfortunately the data is in a
+less convenient form. Trying to construct such a grid from the data
+is futile, as the grid will not fit in memory for the larger test
+cases.  Instead, we work left to right rather than bottom to top.
+</p><p>
+Consider a vertical scan line sweeping from left to right across the
+city. We maintain a list (actually a stack) of the tops of buildings we
+have encountered and that the scan line could still be intersecting
+(even if obscured by a taller building). When the scan line moves on to
+a taller building, we add the top to the stack. When the scan line
+drops to a shorter building, we will have seen the end of one or more
+tops. Each of these tops indicates the need for a building, so we
+increment the answer counter and pop the stack until the top-of-stack
+is no taller than the current height at the scan-line. We can then once
+again push the current top onto the stack, BUT only if the top-of-stack
+is not the same height as the top-of-stack (which can happen if a wide
+short building is interrupted by a tall thin building in the middle).
+</p><p>
+Here is Bruce's solution:
+</p><pre>#include &lt;cstdio&gt;
+#include &lt;algorithm&gt;
+#include &lt;cassert&gt;
+
+using namespace std;
+
+#define MAXN 1000000
+#define MAXW 1000000
+#define MAXY 500000
+
+static int stk[MAXY + 2];
+
+int main() {
+    FILE *in = fopen("skyline.in", "r");
+    int ans = 0;
+    int N, W;
+    int ss = 0;
+
+    fscanf(in, "%d %d", &amp;W, &amp;N);
+    assert(1 &lt;= N &amp;&amp; N &lt;= MAXN);
+    assert(1 &lt;= W &amp;&amp; W &lt;= MAXW);
+    stk[ss++] = 0;
+    for (int i = 0; i &lt;= N; i++) {
+        int x, y;
+        if (i &lt; N) fscanf(in, "%d %d", &amp;x, &amp;y);
+        else y = 0;
+        while (y &lt; stk[ss - 1])
+        {
+            ans++;
+            ss--;
+        }
+        if (y &gt; stk[ss - 1]) stk[ss++] = y;
+    }
+
+    fclose(in);
+    FILE *out = fopen("skyline.out", "w");
+    fprintf(out, "%d\n", ans);
+    fclose(out);
+    return 0;
+}
+</pre></body></html>

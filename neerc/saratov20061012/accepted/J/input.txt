@@ -1,0 +1,17 @@
+
+
+
+5
+5 1 almost protected
+3 1 almost protected
+2 3 protected
+4 3 almost protected
+
+
+7
+2 1 almost protected
+3 2 almost protected
+4 2 almost protected
+5 3 almost protected
+6 3 almost protected
+7 4 protected

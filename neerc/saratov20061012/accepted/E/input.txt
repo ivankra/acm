@@ -1,0 +1,5 @@
+4
+"This    is  sample -mample "
+"No solution-"
+"This is ---- possible   test- -"
+"--a"

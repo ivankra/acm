@@ -1,0 +1,63 @@
+
+Problem Statement
+ÿÿÿÿ
+There are three stacks of crates - two of them outside of the warehouse, and one inside the warehouse. We have a crane that can move one crate at a time, and we would like to move all of the crates to the stack inside the warehouse. A heavier crate can never be stacked on top of a lighter crate, and all three initial stacks obey that rule.
+Create a class CraneWork that contains a method moves that is given vector <int>s stack1, stack2, and warehouse containing the initial three stacks, and returns the minimum number of moves required to move all the crates into the warehouse stack. The elements of stack1, stack2, and warehouse represent the weights of the crates and are given from top to bottom (and thus in non-decreasing order of weight).
+Definition
+ÿÿÿÿ
+Class:
+CraneWork
+Method:
+moves
+Parameters:
+vector <int>, vector <int>, vector <int>
+Returns:
+int
+Method signature:
+int moves(vector <int> stack1, vector <int> stack2, vector <int> warehouse)
+(be sure your method is public)
+ÿÿÿÿ
+
+Constraints
+-
+stack1, stack2, and warehouse will each contain between 0 and 20 elements, inclusive.
+-
+The total number of elements in the three stacks will be between 1 and 20, inclusive.
+-
+Each element in the three stacks will be between 1 and 200, inclusive.
+-
+stack1, stack2, and warehouse will each be in non-decreasing order.
+Examples
+0)
+
+ÿÿÿÿ
+{3,50}
+{}
+{1,2,50,50,50}
+Returns: 12
+Move 3 to stack2, 1 to stack1, 2 to stack2, 1 to stack2, 50 to warehouse, 1 to warehouse, 2 to stack1, 1 to stack1, 3 to warehouse, 1 to stack2, 2 to warehouse, 1 to warehouse.
+1)
+
+ÿÿÿÿ
+{50}
+{50}
+{10,20,30}
+Returns: 17
+Start by moving 50 from stack2 to stack1. It then takes 7 moves to transfer the 10,20,30 to stack 2, 2 moves to transfer the 2 50's to the warehouse, and 7 more to transfer the 10,20,30 to the warehouse.
+2)
+
+ÿÿÿÿ
+{}
+{}
+{2,5,6,7}
+Returns: 0
+All the crates are already in the warehouse.
+3)
+
+ÿÿÿÿ
+{1,2,3}
+{}
+{}
+Returns: 7
+Move 1 from stack1 to warehouse, 2 from stack1 to stack2, 1 from warehouse to stack2, 3 from stack1 to warehouse, 1 from stack2 to stack1, 2 from stack2 to warehouse, 1 from stack1 to warehouse.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

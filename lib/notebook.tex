@@ -1,0 +1,1311 @@
+% ACM ICPC World Finals 2008
+% Team: Stavropol SU
+% Reference material for team notebook
+%
+% Last revision: April 3, 2008
+
+% Preamble {{{
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[cm]{fullpage}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{comment, fancyvrb, fancyhdr}
+\usepackage{color}
+\usepackage{cmap}
+
+\let\le=\leqslant
+\let\ge=\geqslant
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3mm}
+
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead{}
+\fancyhead[R]{\small\textsf{\textbf{\thepage}}{}}
+\fancyfoot{}
+
+\newcommand{\Section}[1]{
+  \section*{#1}
+  \addcontentsline{toc}{subsection}{#1}
+  \vspace{-3mm}
+}
+
+\newcommand{\Topic}[1]{\textbf{#1}}
+
+% }}}
+
+\begin{document}
+
+% Title, table of contents {{{
+\begin{center}
+{\Large \bf \textsf{
+	Stavropol SU \\
+	Team Reference Material
+}}
+\end{center}
+
+\begin{center}
+February 10, 2009
+\end{center}
+
+\setlength{\parskip}{0mm}
+\tableofcontents
+\setlength{\parskip}{3mm}
+% }}}
+
+% vimrc {{{
+\Section{vimrc}
+\begin{Verbatim}[fontsize=\small]
+set nocp ts=4 sw=4 noet ai cin bs=2 cb=unnamed
+set ruler nowrap autoread showcmd showmode fdm=marker nobackup noerrorbells
+syn on
+set guifont=Monospace\ 12
+\end{Verbatim}
+% }}}
+
+% Java template {{{
+\Section{Java template}
+\begin{Verbatim}[fontsize=\small, tabsize=4]
+class Main implements Runnable {
+	Scanner in;
+	PrintWriter out;
+	void solve() throws Exception {}
+
+	public void run() {
+		try {
+			in = new Scanner(new BufferedReader(new FileReader("input.txt")));
+			out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
+			solve(); out.close();
+		} catch (Exception e) {
+			out.close(); e.printStackTrace(); System.exit(1);
+		}
+	}
+
+	public static void main(String[] args) throws Exception {
+		new Thread(new Main()).start();
+	}
+}
+\end{Verbatim}
+% }}}
+
+\newpage
+
+% Combinatorics {{{
+\Section{Combinatorics}
+
+\Topic{Sums}
+
+\begin{tabular}{l l l}
+$\sum_{k=0}^n k = n(n+1)/2$          &
+$\sum_{k=a}^b k = (a+b)(b-a+1)/2$    \\
+$\sum_{k=0}^n k^2 = n(n+1)(2n+1)/6$  &
+$\sum_{k=0}^n k^3 = n^2(n+1)^2/4$    \\
+$\sum_{k=0}^n k^4 = (6n^5 + 15n^4 + 10n^3 - n)/30$ &
+$\sum_{k=0}^n k^5 = (2n^6 + 6n^5 + 5n^4 - n^2)/12$  \\
+$\sum_{k=0}^n x^k = (x^{n+1} - 1)/(x - 1)$ &
+$\sum_{k=0}^n kx^k = (x - (n+1)x^{n+1} + nx^{n+2})/(x-1)^2$ \\
+$1 + x + x^2 + \dots = 1 / (1 - x)$
+\end{tabular}
+
+\Topic{Binomial coefficients}
+
+\begin{tabular}{ll}
+  \begin{tabular}{r|rrrrrrrrrrrrr}
+  & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ & $10$ & $11$ & $12$ \\
+  \hline
+  $0$ & $1$\\
+  $1$ & $1$ & $1$\\
+  $2$ & $1$ & $2$ & $1$\\
+  $3$ & $1$ & $3$ & $3$ & $1$\\
+  $4$ & $1$ & $4$ & $6$ & $4$ & $1$\\
+  $5$ & $1$ & $5$ & $10$ & $10$ & $5$ & $1$\\
+  $6$ & $1$ & $6$ & $15$ & $20$ & $15$ & $6$ & $1$\\
+  $7$ & $1$ & $7$ & $21$ & $35$ & $35$ & $21$ & $7$ & $1$\\
+  $8$ & $1$ & $8$ & $28$ & $56$ & $70$ & $56$ & $28$ & $8$ & $1$\\
+  $9$ & $1$ & $9$ & $36$ & $84$ & $126$ & $126$ & $84$ & $36$ & $9$ & $1$\\
+  $10$ & $1$ & $10$ & $45$ & $120$ & $210$ & $252$ & $210$ & $120$ & $45$ & $10$ & $1$\\
+  $11$ & $1$ & $11$ & $55$ & $165$ & $330$ & $462$ & $462$ & $330$ & $165$ & $55$ & $11$ & $1$\\
+  $12$ & $1$ & $12$ & $66$ & $220$ & $495$ & $792$ & $924$ & $792$ & $495$ & $220$ & $66$ & $12$ & $1$ \\
+  \hline
+  & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ & $10$ & $11$ & $12$
+  \end{tabular}
+&
+
+\begin{tabular}{l}
+${n \choose k} = \frac{n!}{(n-k)!k!}$                 \\ \\
+${n \choose k} = {n-1 \choose k} + {n-1 \choose k-1}$ \\ \\
+${n+1 \choose k} = \frac{n+1}{n-k+1} {n \choose k}$   \\ \\
+${n \choose k+1} = \frac{n-k}{k+1} {n \choose k}$     \\ \\
+${n \choose k} = \frac{n}{n-k} {n-1 \choose k}$       \\ \\
+${n \choose k} = \frac{n-k+1}{k} {n \choose k-1}$     \\ \\
+
+$12! \approx 2^{28.8}$ \\
+$20! \approx 2^{61.1}$
+
+%$(x+a)^{-n} = \sum_{k=0}^{\infty} {-n \choose k} x^k a^{-n-k}$ \\
+%$(x+y)^z = \sum_{k=0}^{\infty} {z \choose k} x^k y^{z-k}$,\\
+%with ${z \choose k} = \frac{z\dots(z-k+1)}{k!}$.
+
+\end{tabular}
+\end{tabular}
+
+Number of ways to pick a multiset of size $k$ from $n$ elements: ${n+k-1 \choose k}$ \\
+Number of $n$-tuples of non-negative integers with sum $s$:
+${{s+n-1} \choose {n-1}}$, at most $s$: ${{s + n} \choose {n}}$ \\
+Number of $n$-tuples of positive integers with sum $s$:
+${{s-1} \choose {n-1}}$ \\
+Number of lattice paths from $(0,0)$ to $(a,b)$, restricted to east and north
+steps: ${a+b \choose a}$
+
+\Topic{Multinomial theorem}.
+$(a_1+\dots+a_k)^n = \sum {n \choose n_1,\dots,n_k}\ 
+a_1^{n_1} \dots a_k^{n_k}$,
+where $n_i \ge 0$ and $\sum n_i=n$. \\
+${n \choose n_1,\dots,n_k} = M(n_1,\dots,n_k) = \frac{n!}{n_1! \dots n_k!}$.
+$M(a,\dots,b,c,\dots) = M(a+\dots+b,c,\dots) M(a,\dots,b)$
+
+\Topic{Catalan numbers}.
+$C_n = \frac{1}{n+1} {2n \choose n}$.
+\quad $C_0=1$, $C_n=\sum_{i=0}^{n-1} C_i C_{n-1-i}$.
+\quad $C_{n+1} = C_n \frac{4n+2}{n+2}$. \\
+$C_0, C_1, \ldots = 1, 1, 2, 5, 14, 42, 132, 429, 1430, 4862, 16796,
+	58786, 208012, 742900, \ldots$ \\
+%\quad GF: $\frac{1-\sqrt{1-4x}}{2x}=\sum_{n=0}^{\infty} C_n x^n$. \\
+$C_n$ is the number of:
+properly nested sequences of $n$ pairs of parentheses;
+rooted ordered binary trees with $n+1$ leaves;
+triangulations of a convex $(n+2)$-gon.
+
+\Topic{Derangements}.
+Number of permutations of $n=0,1,2,\dots$ elements without fixed points is
+$1, 0, 1, 2, 9, 44, 265, 1854, 14833, \dots$
+Recurrence: $D_n = (n-1)(D_{n-1} + D_{n-2}) = n D_{n-1} + (-1)^n$.
+Corollary: number of permutations with exactly $k$ fixed points is ${n \choose k} D_{n-k}$.
+
+\Topic{Stirling numbers of $1^{st}$ kind}.
+$s_{n,k}$ is $(-1)^{n-k}$ times the number of permutations of $n$ elements with
+exactly $k$ permutation cycles.
+$|s_{n,k}| = |s_{n-1,k-1}| + (n-1) |s_{n-1,k}|$. \quad
+$\sum_{k=0}^n s_{n,k}\,x^k = x^{\underline n}$
+
+% Number of permutations of $n$ elements with exactly $k$ cycles,
+% all of length $\ge r$: \\
+% $d_r(n,k) = (n-1) d_r(n-1,k) + (n-1)^{\underline {r-1}}\ d_r(n-r,k-1),
+% \quad d_r(n,k)=0 $ for $ n\le kr-1, \quad d_r(n,1)=(n-1)!$.
+
+\Topic{Stirling numbers of $2^{nd}$ kind}.
+$S_{n,k}$ is the number of ways to partition a set of $n$ elements into
+exactly $k$ non-empty subsets. 
+$S_{n,k} = S_{n-1,k-1} + k S_{n-1,k}$.
+$S_{n,1} = S_{n,n} = 1$.
+$x^n = \sum_{k=0}^n S_{n,k}\,x^{\underline k}$
+
+\Topic{Bell numbers}.
+$B_n$ is the number of partitions of $n$ elements. 
+$B_0, \ldots = 1,1,2,5,15,52,203,\ldots$ \\
+$B_{n+1} = \sum_{k=0}^n {n \choose k} B_k = \sum_{k=1}^n S_{n,k}$.
+Bell triangle: $B_r=a_{r,1}=a_{r-1,r-1}$, $a_{r,c}=a_{r-1,c-1}+a_{r,c-1}$.
+%Bell triangle: 1, 1 2, 2 3 5, 5 7 10 15, 15 20 27 37 52, (last) ... (left + left above).
+
+\Topic{Bernoulli numbers}.
+%GF: $\frac{x}{e^x - 1} = \sum_{n=0}^{\infty} B_n \frac{x^n}{n!}$. \quad
+$\sum_{k=0}^{m-1} k^n =
+\frac{1}{n+1} \sum_{k=0}^n {n+1 \choose k} B_k m^{n+1-k}$. \\
+$\sum_{j=0}^m {m+1 \choose j} B_j = 0$.
+\quad $B_0=1$, $B_1=-\frac{1}{2}$. $B_n=0$, for all odd $n \ne 1$.
+
+%\Topic{Pentagonal theorem}.
+%$\prod_{k=1}^{\infty} (1-x^k) = \sum_{n=-\infty}^{\infty} (-1)^n x^{n(3n+1)/2}$.
+%$\sum_{n=0}^{\infty}p(n) x^n = \prod_{k=1}^{\infty} \left(\frac{1}{1-x^k}\right) = (\sum x^i)(\sum x^{2i})(\sum x^{3i}) \dots$ \\
+%$p(0) = 1$, $p(n) - p(n-1) - p(n-2) + p(n-5) + p(n-7) - \dots = 0$ ($+,+,-,-$ goes on; same for $s(n)$, but $s(0)\to n$.)
+
+\Topic{Eulerian numbers}.
+$E(n,k)$ is the number of permutations with exactly
+$k$ descents ($i: \pi_i < \pi_{i+1}$) /
+ascents ($\pi_i > \pi_{i+1}$) /
+excedances ($\pi_i > i$) /
+$k+1$ weak excedances ($\pi_i \ge i$). \\
+Formula: $E(n,k)=(k+1)E(n-1,k)+(n-k)E(n-1,k-1)$. \quad
+$x^n = \sum_{k=0}^{n-1} E(n,k) {x+k \choose n}$.
+
+\Topic{Burnside's lemma}.
+The number of orbits under group $G$'s action on set $X$:\\
+$|X/G| = \frac{1}{|G|} \sum_{g \in G} |X_g|$,
+where $X_g=\{ x \in X: g(x)=x \}$. (``Average number of fixed points.'') \\
+Let $w(x)$ be weight of $x$'s orbit. Sum of all orbits' weights:
+$\sum_{o \in X/G} w(o) = \frac{1}{|G|} \sum_{g \in G} \sum_{x \in X_g} w(x)$.
+
+%\Topic{Number of $k$-ary necklaces}.
+%$\frac{1}{n}\sum_{d|n} \phi(\frac{n}{d}) k^d$. \\
+%\Topic{Number of Lyndon words} (aperiodic necklaces).
+%$\frac{1}{n}\sum_{d|n} \mu(\frac{n}{d}) k^d$.
+
+%De Bruijn sequences over alphabet of size $k$, containing all $n$-substrings.
+%Length: $n^k$. Number: ${k!}^{k^{n-1}} / k^n$.
+
+% }}}
+
+% Number Theory {{{
+\Section{Number Theory}
+
+\Topic{Linear diophantine equation}. $ax+by=c$.
+Let $d=\gcd(a,b)$. A solution exists iff $d|c$.
+If $(x_0,y_0)$ is any solution, then all solutions are given by
+$(x,y) = (x_0 + \frac{b}{d}t, y_0 - \frac{a}{d}t)$, $t \in {\mathbb Z}$.
+To find some solution $(x_0, y_0)$, use extended GCD to solve
+$ax_0 + by_0 = d = \gcd(a, b)$, and multiply its solutions by $\frac{c}{d}$.
+
+Linear diophantine equation in $n$ variables:
+$a_1 x_1 + \dots + a_n x_n = c$ has solutions iff $\gcd(a_1, \dots, a_n) | c$.
+To find some solution, let $b=\gcd(a_2, \dots, a_n)$,
+solve $a_1 x_1 + by = c$, and iterate with $a_2 x_2 + \dots = y$.
+
+\Topic{Extended GCD}
+\vspace{-5mm}
+\begin{verbatim}
+// Finds g = gcd(a,b) and x, y such that ax+by=g. Bounds: |x|<=b+1, |y|<=a+1.
+void gcdext(int &g, int &x, int &y, int a, int b)
+{ if (b == 0) { g = a; x = 1; y = 0; }
+  else        { gcdext(g, y, x, b, a % b); y = y - (a / b) * x; } }
+\end{verbatim}
+\vspace{-3mm}
+
+Multiplicative inverse of $a$ modulo $m$:
+$x$ in $ax + my = 1$, or $a^{\phi(m)-1} \pmod{m}$.
+
+\Topic{Chinese Remainder Theorem}.
+System $x \equiv a_i \pmod{m_i}$ for $i=1,\dots,n$, with
+pairwise relatively-prime $m_i$ has a unique solution modulo $M = m_1 m_2 \dots m_n$:
+$x = a_1 b_1 \frac{M}{m_1} + \dots + a_n b_n \frac{M}{m_n} \pmod{M}$,
+where $b_i$ is modular inverse of $\frac{M}{m_i}$ modulo $m_i$.
+
+%\Topic{Generalized CRT}.
+System $x \equiv a \pmod{m}$, $x \equiv b \pmod{n}$ has solutions
+iff $a \equiv b \pmod{g}$, where $g=\gcd(m,n)$.
+The solution is unique modulo $L=\frac{mn}{g}$, and equals:
+$x \equiv a + T(b-a) m/g \equiv b + S(a-b) n/g \pmod{L}$,
+where $S$ and $T$ are integer solutions of $mT + nS = \gcd(m,n)$.
+
+\Topic{Prime-counting function}. $\pi(n) = |\{p \le n : p \hbox{ is prime}\}|$.
+$n/\ln(n) < \pi(n) < 1.3 n/\ln(n)$. 
+$\pi(1000) = 168$, $\pi(10^6) = 78498$, $\pi(10^9) = 50\ 847\ 534$.
+\quad $n$-th prime $\approx n \ln n$.
+
+\Topic{Miller-Rabin's primality test}.
+Given $n = 2^r s + 1$ with odd $s$, and a random integer $1 < a < n$. \\
+If $a^s \equiv 1 {\pmod n}$ or $a^{2^j s} \equiv -1 {\pmod n}$ for some
+$0 \le j \le r-1$, then $n$ is a probable prime.
+With bases 2, 7 and 61, the test indentifies all composites below $2^{32}$.
+Probability of failure for a random $a$ is at most 1/4.
+
+\Topic{Pollard-$\rho$}.
+Choose random $x_1$, and let $x_{i+1} = x_i^2 - 1 \pmod{n}$.
+Test $\gcd(n, x_{2^k+i} - x_{2^k})$ as possible $n$'s factors for $k=0,1,\ldots$
+Expected time to find a factor: $O(\sqrt{m})$, where $m$ is smallest
+prime power in $n$'s factorization.
+That's $O(n^{1/4})$ if you check $n = p^k$ as a special case before factorization.
+
+\Topic{Fermat primes}.  A Fermat prime is a prime of form $2^{2^n}+1$.
+The only known Fermat primes are 3, 5, 17, 257, 65537.
+A number of form $2^n+1$ is prime only if it is a Fermat prime.
+
+%\Topic{Mersenne primes}.  A Mersenne prime is a prime of form $2^n-1$.
+%Known Mersenne primes correspond to (necessarily prime) indexes
+%2, 3, 5, 7, 13, 17, 19, 31, 61, 89, 107, 127, 521, 607, 1279,
+%2203, 2281, 3217, 4253, 4423, 9689, 9941, 11213, 19937,
+%21701, 23209, 44497, 86243, 110503, 132049, 216091,
+%756839, 859433, 1257787, 1398269, 2976221, 3021377,
+%6972593, 13466917.
+
+\Topic{Perfect numbers}.  $n>1$ is called perfect if it equals
+sum of its proper divisors and $1$.  Even $n$ is perfect iff $n = 2^{p-1} (2^p - 1)$
+and $2^p - 1$ is prime (Mersenne's). No odd perfect numbers are yet found.
+
+\Topic{Carmichael numbers}.
+A positive composite $n$ is a Carmichael number
+($a^{n-1} \equiv 1 \pmod{n}$ for all $a$: $\gcd(a,n)=1$),
+iff $n$ is square-free, and for all prime divisors $p$ of $n$, $p-1$ divides $n-1$.
+
+\Topic{Number/sum of divisors}.
+$\tau(p_1^{a_1} \dots p_k^{a_k}) = \prod_{j=1}^k (a_j+1)$. \quad
+$\sigma(p_1^{a_1} \dots p_k^{a_k}) = \prod_{j=1}^k \frac{p_j^{a_j+1}-1}{p_j-1}$.
+
+\Topic{Euler's phi function}.
+$\phi(n)=|\{m \in {\mathbb N}, m \le n, \gcd(m, n) = 1 \}|$. \\
+$\phi(mn) = \frac{\phi(m) \phi(n) \gcd(m,n)}{\phi(\gcd(m,n))}$. \quad
+$\phi(p^a) = p^{a-1} (p-1)$. \quad
+$\sum_{d|n} \phi(d) = \sum_{d|n} \phi(\frac{n}{d}) = n$.
+
+%\Topic{Fermat's theorem}.  $a^p \equiv a \pmod{p}$ if $p$ is prime. \\
+%For any polynomial $f(x)$ with integer coefficients and prime $p$,
+%$f(x)^{p^n} \equiv f(x^{p^n}) \pmod{p}$
+\Topic{Euler's theorem}. $a^{\phi(n)} \equiv 1\pmod{n}$, if $\gcd(a,n)=1$. \\
+\Topic{Wilson's theorem}. $p$ is prime iff $(p - 1)! \equiv -1 \pmod p$.
+
+\Topic{Mobius function}.
+$\mu(1) = 1$. $\mu(n) = 0$, if $n$ is not squarefree.
+$\mu(n) = (-1)^s$, if $n$ is the product of $s$ distinct primes.
+Let $f$, $F$ be functions on positive integers.
+If for all $n \in N$, $F(n)=\sum_{d|n} f(d)$, then $f(n) = \sum_{d|n} \mu(d) F(\frac{n}{d})$,
+and vice versa. \quad
+$\phi(n) = \sum_{d|n} \mu(d) \frac{n}{d}$.
+\quad $\sum_{d|n} \mu(d) = 1$. \\
+If $f$ is multiplicative, then $\sum_{d|n} \mu(d) f(d) = \prod_{p|n}(1-f(p))$,
+$\sum_{d|n} \mu(d)^2 f(d) = \prod_{p|n} (1+f(p))$.
+
+\Topic{Legendre symbol}. If $p$ is an odd prime, $a \in {\mathbb Z}$, then
+$\left(\frac{a}{p}\right)$ equals $0$, if $p | a$; $1$ if $a$ is a quadratic
+residue modulo $p$; and $-1$ otherwise. 
+Euler's criterion:
+$\left(\frac{a}{p}\right)=a^{\left(\frac{p-1}{2}\right)} \pmod p$. \\
+%$\left(\frac{a}{p}\right) \left(\frac{b}{p}\right) = \left(\frac{ab}{p}\right)$
+%Law of Quadratic Reciprocity: for any distinct odd primes $p$ and $q$,
+%$\left(\frac{p}{q}\right) \left(\frac{q}{p}\right) = (-1)^{\frac{p-1}{2} \cdot \frac{q-1}{2}}$
+\Topic{Jacobi symbol}.  %Generalization of Legendre's symbol to any odd modulus. \\
+If $n=p_1^{a_1} \cdots p_k^{a_k}$ is odd, then
+$\left(\frac{a}{n}\right) = \prod_{i=1}^k \left(\frac{a}{p_i}\right)^{k_i}$.
+
+%\Topic{Kronecker symbol}.
+%Let $a$ be a positive integer, which is not a perfect square and
+%$a \equiv 0$ or $1 {\pmod 4}$. \\
+%$\left(\frac{a}{2}\right) = \{ 1$, if $a \equiv 1 {\pmod 8}$;
+%$-1$, if $a \equiv 5 {\pmod 8} \}$. \\
+%$\left(\frac{a}{n}\right) = \prod_{j=1}^k p_j^{k_j}$,
+%if gcd$(a,n) \ne 1$ and $n=\prod p_i^{k_i}$.
+%$\left(\frac{a}{n}\right)$ equals Jacobi symbol otherwise.
+
+\Topic{Primitive roots}.  If the order of $g$ modulo $m$ (min $n>0$:
+$g^n \equiv 1 \pmod{m}$) is $\phi(m)$, then $g$ is called a primitive root.
+If $Z_m$ has a primitive root, then it has $\phi(\phi(m))$ distinct primitive
+roots. $Z_m$ has a primitive root iff $m$ is one of $2$, $4$,
+$p^k$, $2p^k$, where $p$ is an odd prime.
+If $Z_m$ has a primitive root $g$, then for all $a$ coprime to $m$,
+there exists unique integer $i=\text{ind}_g(a)$ modulo $\phi(m)$,
+such that $g^i \equiv a \pmod{m}$.
+$\text{ind}_g(a)$ has logarithm-like properties:
+$\text{ind}(1) = 0$, $\text{ind}(ab) = \text{ind}(a) + \text{ind}(b)$.
+
+If $p$ is prime and $a$ is not divisible by $p$, then congruence
+$x^n \equiv a \pmod{p}$ has $\gcd(n, p-1)$ solutions if 
+$a^{(p-1)/\gcd(n,p-1)} \equiv 1 \pmod{p}$, and no solutions otherwise.
+(Proof sketch: let $g$ be a primitive root, and
+$g^i \equiv a \pmod{p}$, $g^u \equiv x \pmod{p}$.
+$x^n \equiv a \pmod{p}$ iff $g^{nu} \equiv g^i \pmod{p}$ iff $nu \equiv i \pmod{p}$.)
+
+\Topic{Discrete logarithm problem}.  Find $x$ from $a^x \equiv b \pmod{m}$.
+Can be solved in $O(\sqrt{m})$ time and space with a meet-in-the-middle trick.
+Let $n = \lceil \sqrt{m} \rceil$, and $x = ny - z$.
+Equation becomes $a^{ny} \equiv b a^z \pmod{m}$.  Precompute all values that
+the RHS can take for $z = 0, 1, \dots, n-1$, and brute force $y$ on the LHS,
+each time checking whether there's a corresponding value for RHS.
+
+\Topic{Pythagorean triples}.  Integer solutions of $x^2 + y^2 = z^2$
+All relatively prime triples are given by:
+$x=2mn, y=m^2-n^2, z=m^2+n^2$ where $m>n, \gcd(m,n)=1$ and $m \not\equiv n \pmod{2}$.
+All other triples are multiples of these.
+Equation $x^2 + y^2 = 2z^2$ is equivalent to $(\frac{x+y}{2})^2 + (\frac{x-y}{2})^2 = z^2$.
+
+\Topic{Postage stamps/McNuggets problem}.  Let $a$, $b$ be relatively-prime integers.
+There are exactly $\frac{1}{2}(a-1)(b-1)$ numbers \emph{not} of form $ax+by$ ($x,y \ge 0$),
+and the largest is $(a-1)(b-1)-1 = ab - a - b$.
+
+\Topic{Fermat's two-squares theorem}.  Odd prime $p$ can be represented
+as a sum of two squares iff $p \equiv 1 {\pmod 4}$.
+A product of two sums of two squares is a sum of two squares.
+Thus, $n$ is a sum of two squares iff every prime of
+form $p=4k+3$ occurs an even number of times in $n$'s factorization.
+
+\Topic{RSA}. Let $p$ and $q$ be random distinct large primes, $n = pq$.
+Choose a small odd integer $e$, relatively prime to $\phi(n) = (p-1)(q-1)$,
+and let $d = e^{-1} \pmod{\phi(n)}$. Pairs $(e,n)$ and $(d,n)$ are
+the public and secret keys, respectively.
+Encryption is done by raising a message $M \in Z_n$ to the power $e$ or $d$,
+modulo $n$.
+
+% }}}
+
+% String Algorithms {{{
+
+\newpage
+\Section{String Algorithms}
+
+\begin{Verbatim}[fontsize=\small]
+char *kmp(char *text, char *pat) {            vector<int> zfunction(char *s) {
+  int i,k,n=strlen(pat), *phi=...               int N = strlen(s), a=0, b=0;
+  phi[0] = phi[1] = k = 0;                      vector<int> z(N, N);
+  for (i = 1; i < n; i++) {                     for (int i = 1; i < N; i++) {
+    while (k > 0 && pat[k] != pat[i])             int k = i<b ? min(b-i, z[i-a]) : 0;
+      k = phi[k];                                 while (i+k < N && s[i+k]==s[k]) ++k;
+    phi[i+1] = pat[k]==pat[i] ? ++k : 0;          z[i] = k;
+  }                                               if (i+k > b) { a=i; b=i+k; }
+  for (i=k=0; text[i] && k < n; i++) {          }
+    while (k > 0 && pat[k] != text[i])          return z;
+      k = phi[k];                             }
+    if (pat[k] == text[i]) ++k;                
+  }                                           Definition:
+  return k == n ? text+i-n : NULL;            z[i] = max {k: s[i..i+k-1]=s[0..k-1]}
+}
+\end{Verbatim}
+\vspace{-3mm}
+
+\Topic{Suffix array}. $O(n \log^2 n)$ time, 16 bytes/char overhead.
+\vspace{-3mm}
+\begin{Verbatim}[fontsize=\small]
+// Input: text, N
+// Output: sa[] is a sorted list of offsets to all non-empty suffixes,
+// lcp[i] = length of longest common prefix of text+sa[i] and text+sa[i+1]
+char text[MAX]; long long key[MAX]; int N, sa[MAX], rank[MAX], *lcp=(int*)key;
+struct Cmp { bool operator()(int i, int j) const { return key[i]<key[j]; } };
+
+void build() {
+    for (int i = 0; i < N; i++) { sa[i] = i; key[i] = text[i]; }
+    sort(sa, sa+N, Cmp());
+    for (int K = 1; ; K *= 2) {
+        for (int i = 0; i < N; i++)
+            rank[sa[i]] = i>0 && key[sa[i-1]]==key[sa[i]] ? rank[sa[i-1]] : i;
+        if (K >= N) break;
+        for (int i = 0; i < N; i++)
+            key[i] = rank[i] * (N+1LL) + (i+K < N ? rank[i+K]+1 : 0);
+        sort(sa, sa+N, Cmp());
+    }
+    for (int i = 0, k = 0; i < N; i++) {
+        if (k > 0) k--;
+        if (rank[i] == N-1) { lcp[N-1] = -1; k = 0; continue; }
+        int j = sa[rank[i]+1];
+        while (text[i+k] == text[j+k]) k++;
+        lcp[rank[i]] = k;
+    }
+}
+\end{Verbatim}
+
+\vspace{-3mm}
+
+\Topic{Burrows-Wheeler inverse transform}.  
+Let $B[1..n]$ be the input (last column of sorted matrix of string's rotations.)
+Get the first column, $A[1..n]$, by sorting $B$.
+For each $k$-th occurence of a character $c$ at index $i$ in $A$,
+let $next[i]$ be the index of corresponding $k$-th occurence of $c$ in $B$.
+The $r$-th fow of the matrix is $A[r]$, $A[next[r]]$, $A[next[next[r]]]$, ...
+
+\Topic{Huffman's algorithm}.  Start with a forest, consisting of isolated
+vertices.  Repeatedly merge two trees with the lowest weights.
+
+\begin{comment}
+\Topic{Longest strictly-increasing subsequence in $O(n \log k)$}.
+\parskip 0mm
+\begin{verbatim}
+template<typename T> vector<T> lis(const vector<T> &a) {
+    vector<T> b;
+    vector<size_t> len(a.size());
+
+    size_t i, k = 0;
+    for (i = 0; i < a.size(); i++) {
+        // invariant: b[j] is the smallest number that ends
+        // a strictly-increasing subsequence of length j+1 of a[0..i-1];
+        // len[j] = length of LIS ending at a[j] for all j=0..i-1
+        if (k == 0 || b.back() < a[i]) {
+            b.push_back(a[i]);
+            len[i] = ++k;
+        } else {
+            size_t j = lower_bound(b.begin(), b.end(), a[i]) - b.begin();
+            b[j] = a[i];
+            len[i] = j+1;
+        }
+    }
+
+    const T *last = 0;
+    for (i = a.size(); i-- != 0;)
+        if (len[i]==k && (last==0 || a[i]<*last)) { b[--k]=a[i]; last=&a[i]; }
+    return b;
+}
+\end{verbatim}
+\parskip 3mm
+\end{comment}
+% }}}
+
+% Min-cost max-flow {{{
+
+%\newpage
+\Section{Min-cost max-flow}
+
+\begin{Verbatim}[fontsize=\small,tabsize=4]
+struct MCMF {
+	typedef int ctype;
+	enum { MAXN = 1000, INF = INT_MAX };
+	struct Edge { int x, y; ctype cap, cost; };
+	vector<Edge> E;      vector<int> adj[MAXN];
+	int N, prev[MAXN];   ctype dist[MAXN], phi[MAXN];
+
+	MCMF(int NN) : N(NN) {}
+
+	void add(int x, int y, ctype cap, ctype cost) {  // cost >= 0
+		Edge e1={x,y,cap,cost}, e2={y,x,0,-cost};
+		adj[e1.x].push_back(E.size()); E.push_back(e1);
+		adj[e2.x].push_back(E.size()); E.push_back(e2);
+	}
+
+	void mcmf(int s, int t, ctype &flowVal, ctype &flowCost) {
+		int x;
+		flowVal = flowCost = 0;  memset(phi, 0, sizeof(phi));
+		while (true) {
+			for (x = 0; x < N; x++) prev[x] = -1;
+			for (x = 0; x < N; x++) dist[x] = INF;
+			dist[s] = prev[s] = 0;
+
+			set< pair<ctype, int> > Q;
+			Q.insert(make_pair(dist[s], s));
+			while (!Q.empty()) {
+				x = Q.begin()->second; Q.erase(Q.begin());
+				FOREACH(it, adj[x]) {
+					const Edge &e = E[*it];
+					if (e.cap <= 0) continue;
+					ctype cc = e.cost + phi[x] - phi[e.y];                    // ***
+					if (dist[x] + cc < dist[e.y]) {
+						Q.erase(make_pair(dist[e.y], e.y));
+						dist[e.y] = dist[x] + cc;
+						prev[e.y] = *it;
+						Q.insert(make_pair(dist[e.y], e.y));
+					}
+				}
+			}
+			if (prev[t] == -1) break;
+
+			ctype z = INF;
+			for (x = t; x != s; x = E[prev[x]].x) z = min(z, E[prev[x]].cap);
+			for (x = t; x != s; x = E[prev[x]].x)
+				{ E[prev[x]].cap -= z; E[prev[x]^1].cap += z; }
+			flowVal += z;
+			flowCost += z * (dist[t] - phi[s] + phi[t]);
+			for (x = 0; x < N; x++) if (prev[x] != -1) phi[x] += dist[x];     // ***
+		}
+	}
+};
+\end{Verbatim}
+% }}}
+
+% Graph Theory {{{
+\Section{Graph Theory}
+
+\Topic{Euler's theorem}. For any planar graph, $V - E + F = 1 + C$,
+where $V$ is the number of graph's vertices, $E$ is the number of edges,
+$F$ is the number of faces in graph's planar drawing, and $C$ is the number
+of connected components.  Corollary: $V - E + F = 2$ for a 3D polyhedron.
+
+%\Topic{Schlafli's}. A convex polyhedron in $R^n$, which has $N_0$ vertices, $N_1$ edges,
+%$N_i$ $i$-dimensional faces, satisfies: $N_0-N_1+N_2-\dots=1-(-1)^n$.
+
+\Topic{Vertex covers and independent sets}.
+Let $M$, $C$, $I$ be a max matching, a min vertex cover, and a max independent set.
+Then $|M| \le |C| = N - |I|$, with equality for bipartite graphs.
+Complement of an MVC is always a MIS, and vice versa.
+Given a bipartite graph with partitions $(A, B)$, build a network:
+connect source to $A$, and $B$ to sink with edges of capacities, equal to
+the corresponding nodes' weights, or $1$ in the unweighted case.
+Set capacities of the original graph's edges to the infinity.
+Let $(S,T)$ be a minimum $s$-$t$ cut.
+Then a maximum(-weighted) independent set is $I = (A \cap S) \cup (B \cap T)$,
+and a minimum(-weighted) vertex cover is $C = (A \cap T) \cup (B \cap S)$.
+
+\Topic{Matrix-tree theorem}.
+Let matrix $T = [t_{ij}]$, where $t_{ij}$ is the number of multiedges
+between $i$ and $j$, for $i \ne j$, and $t_{ii} = -\mbox{deg}_i$.
+Number of spanning trees of a graph is equal to the determinant of
+a matrix obtained by deleting any $k$-th row and $k$-th column from $T$.
+%If $G$ is a multigraph and $e$ is an edge of $G$, then the number $\tau(G)$ of
+%spanning trees of $G$ satisfies recurrence $\tau(G) = \tau(G-e) + \tau(G/e)$,
+%when $G-e$ is the multigraph obtained by deleting $e$, and $G/e$ is
+%the contraction of $G$ by $e$ (multiple edges arising from the contraction
+%are preserved.)
+
+\Topic{Euler tours}.
+Euler tour in an undirected graph exists iff the graph is connected and each
+vertex has an even degree.  Euler tour in a directed graph exists iff in-degree
+of each vertex equals its out-degree, and underlying undirected graph is connected.
+%Open Euler path exists if it's possible to make the graph Eulerian by adding a single edge.
+Construction:
+\vspace{-5mm}
+\begin{verbatim}
+    doit(u):
+      for each edge e = (u, v) in E, do: erase e, doit(v)
+      prepend u to the list of vertices in the tour
+\end{verbatim}
+\vspace{-2mm}
+
+\Topic{Stable marriages problem}.
+While there is a free man $m$: let $w$ be the most-preferred woman to whom he
+has not yet proposed, and propose $m$ to $w$. If $w$ is free, or is engaged to someone whom
+she prefers less than $m$, match $m$ with $w$, else deny proposal.
+
+\Topic{Stoer-Wagner's min-cut algorithm}.
+Start from a set $A$ containing an arbitrary vertex.
+While $A \ne V$, add to $A$ the most tightly connected vertex
+($z \notin A$ such that $\sum_{x \in A} w(x, z)$ is maximized.)
+Store cut-of-the-phase (the cut between the last added vertex and rest of
+the graph), and merge the two vertices added last.  Repeat until the graph
+is contracted to a single vertex.  Minimum cut is one of the cuts-of-the-phase.
+
+\Topic{Tarjan's offline LCA algorithm}. (Based on DFS and union-find structure.)
+\vspace{-5mm}
+\begin{verbatim}
+    DFS(x):
+      ancestor[Find(x)] = x
+      for all children y of x:
+         DFS(y); Union(x, y); ancestor[Find(x)] = x
+      seen[x] = true
+      for all queries {x, y}:
+        if seen[y] then output "LCA(x, y) is ancestor[Find(y)]"
+\end{verbatim}
+
+%\Topic{Karp's minimum mean-weight cycle algorithm}.
+%Mean weight of a cycle is defined to be its weight divided by
+%the number of edges in it.
+%Minimum mean weight of a cycle in a (directed) graph equals
+%
+%$$ \mu^* = \min_{v \in V} \max_{0 \le k \le n-1}
+%   \frac{\delta_n(s,v) - \delta_k(s,v)}{n-k} $$
+%
+%where $n=|V|$,
+%$s$ is a dummy source vertex such that every other vertex is reachable from it
+%%% (technically, add a vertex $s$ and edges from it to other vertices of weight $0$)
+%, and $\delta_k(s,v)$ is weight of the shortest path
+%from $s$ to $v$ consisting of \emph{exactly} $k$ edges, or $\infty$ if there's
+%no such path.
+%To find the cycle, compute $\mu^*$ and corresponding $v$ from the
+%above formula, subtract $\mu^*$ from weights of all edges, and
+%find a $0$-weight cycle starting at $v$. (Obtained graph does not contain
+%negative cycles.)  Can be implemented to run in $O(VE)$ time.
+%Alternative algorithm is binary search on cycle's mean weight value.
+
+%\Topic{Directed MST}.  Problem: given a weighted directed graph, find
+%a minimum cost directed tree such that each vertex in the tree is reachable
+%from a specified vertex (root).  In other words, for each vertex other
+%than the root choose one edge pointing at it, such that no cycles are formed,
+%and total cost is minimal.
+%
+%Chu-Liu/Edmonds algorithm: initially for each vertex except root choose
+%an entering edge of minimum cost.  If no cycles were formed, this set of edges
+%forms a min-cost DMST.  Otherwise for each cycle: decrease weights
+%of each edge entering a vertex in this cycle by cost of the selected edge for
+%this vertex, contract the cycle, discard self loops, and then choose new minimum
+%cost entering edge.  Repeat until there are no cycles.
+
+%\Topic{LCA} and related algorithms in O(n log n) space and O(log n) query time:
+%for each node precompute its depth, and for all $0 \le k \le \log_2 n$
+%compute $2^k$-th ancestor.
+
+\Topic{Strongly-connected components}. Kosaraju's algorithm. \\
+1. Let $G^T$ be a transpose $G$ (graph with reversed edges.) \\
+1. Call DFS($G^T$) to compute finishing times $f[u]$ for each vertex $u$. \\
+3. For each vertex $u$, in the order of decreasing $f[u]$, perform DFS($G$, $u$). \\
+4. Each tree in the 3rd step's DFS forest is a separate SCC.
+
+\Topic{2-SAT}. Build an implication graph with 2 vertices for each
+variable -- for the variable and its inverse; for each clause $x \lor y$
+add edges $({\overline x}, y)$ and $({\overline y}, x)$.
+The formula is satisfiable iff $x$ and ${\overline x}$ are in distinct SCCs,
+for all $x$. To find a satisfiable assignment, consider the graph's SCCs
+in topological order from sinks to sources (i.e. Kosaraju's last step), assigning `true' to
+all variables of the current SCC (if it hasn't been previously
+assigned `false'), and `false' to all inverses.
+
+\begin{comment}
+\Topic{Bridges and biconnected components}.
+\vspace{-3mm}
+\begin{verbatim}
+int N, counter, seen[MAXN], low[MAXN];  vector<int> stk;
+
+void dfs(int x, int parent) {
+    int kids = 0, art = 0;
+
+    low[x] = seen[x] = ++counter;
+    stk.push_back(x);
+
+    for each node y adjacent to x do {
+        if (y == parent) continue;
+        if (seen[y] == 0) {
+            dfs(y, x);
+            low[x] = min(low[x], low[y]);
+            art |= (low[y] >= seen[x]);
+            kids++;
+            if (low[y] == seen[y]) output "Edge (x, y) is a bridge";
+        } else {
+            low[x] = min(low[x], seen[y]);
+        }
+    }
+
+    if ((parent == -1 && kids >= 2) || (parent != -1 && art))
+        output "Vertex x is an articulation point";
+
+    if (low[x] == seen[x]) {
+        pop all vertices up to x from stack 'stk', and output them
+        as a single biconnected component.
+    }
+}
+...
+memset(seen, 0, sizeof(seen)); counter = 0; stk.clear(); dfs(..., -1);
+\end{verbatim}
+\end{comment}
+
+\Topic{Randomized algorithm for non-bipartite matching}.
+Let $G$ be a simple undirected graph with even $|V(G)|$.
+Build a matrix $A$, which for each edge $(u,v) \in E(G)$ has
+$A_{i,j}=x_{i,j}$, $A_{j,i}=-x_{i,j}$, and is zero elsewhere.
+Tutte's theorem: $G$ has a perfect matching iff $\det G$ (a multivariate
+polynomial) is identically zero.
+Testing the latter can be done by computing the determinant for
+a few random values of $x_{i,j}$'s over some field.
+(e.g. $Z_p$ for a sufficiently large prime $p$)
+
+\Topic{Prufer code of a tree}.
+Label vertices with integers $1$ to $n$.
+Repeatedly remove the leaf with the smallest label, and output its only
+neighbor's label, until only one edge remains. The sequence has
+length $n-2$.  Two isomorphic trees have the same sequence, and every sequence
+of integers from $1$ and $n$ corresponds to a tree.
+Corollary: the number of labelled trees with $n$ vertices is $n^{n-2}$.  % Cayley's theorem
+
+%Random walk algorithm: start with a random assignment, and while
+%the formula is not satisfied, flip some variable in an unsatisfied clause.
+%Expected number of flips before success is less than $n^2$ for 2-SAT.
+%Schoning's improvement: restart the algorithm after every $3n$ flips --
+%expected number of flips for $k$-SAT ($k \ge 3$) is $O((2(k-1)/k)^n)$.
+
+\Topic{Erdos-Gallai theorem}.
+A sequence of integers $\{ d_1, d_2, \dots, d_n \}$,
+with $n-1 \ge d_1 \ge d_2 \ge \dots \ge d_n \ge 0$ is a degree sequence
+of some undirected simple graph iff $\sum d_i$ is even and
+$d_1 + \dots + d_k \le k(k-1) + \sum_{i=k+1}^n \min(k, d_{i})$
+for all $k=1,2,\dots,n-1$.
+
+% }}}
+
+% Games {{{
+
+\Section{Games}
+
+\Topic{Grundy numbers}.
+For a two-player, normal-play (last to move wins) game on a graph $(V,E)$:
+$G(x) = \mbox{mex}(\{ G(y) : (x, y) \in E \})$,
+where $\mbox{mex}(S) = \min \{ n \ge 0: n \not\in S \}$.
+$x$ is losing iff $G(x) = 0$.
+
+\Topic{Sums of games}.
+
+\vspace{-4mm}
+\begin{itemize}
+  \item
+    \emph{Player chooses a game and makes a move in it}.
+    Grundy number of a position is xor of grundy numbers of positions in summed games.
+  \item
+    \emph{Player chooses a non-empty subset of games (possibly, all) and makes moves in all of them}.
+    A position is losing iff each game is in a losing position.
+  \item
+    \emph{Player chooses a proper subset of games (not empty and not all),
+        and makes moves in all chosen ones.}
+    A position is losing iff grundy numbers of all games are equal.
+  \item
+    \emph{Player must move in all games, and loses if can't move in some game}.
+    A position is losing if any of the games is in a losing position.
+\end{itemize}
+% http://www.topcoder.com/tc?module=Static&d1=tutorials&d2=algorithmGames
+
+\vspace{-3mm}
+
+\Topic{Mis\`{e}re Nim}.
+A position with pile sizes $a_1, a_2, \dots, a_n \ge 1$,
+not all equal to $1$, is losing iff $a_1 \oplus a_2 \oplus \dots \oplus a_n = 0$
+(like in normal nim.)
+A position with $n$ piles of size $1$ is losing iff $n$ is \emph{odd}.
+
+% }}}
+
+% Geometry {{{
+
+\Section{Geometry}
+
+\Topic{Pick's theorem}.
+$I = A - B/2 + 1$, where $A$ is the area of a lattice polygon,
+$I$ is number of lattice points inside it, and
+$B$ is number of lattice points on the boundary.
+Number of lattice points minus one on a line segment from $(0, 0)$
+and $(x, y)$ is $\gcd(x, y)$.
+% so, sum of gcd(|\delta x|, |\delta y|) over all sides gives you clean B.
+
+$a \cdot b = a_x b_x + a_y b_y = |a| \cdot |b| \cdot \cos(\theta)$ \\
+$a \times b = a_x b_y - a_y b_x = |a| \cdot |b| \cdot \sin(\theta)$ \\
+3D: $a \times b = (a_y b_z - a_z b_y,\ a_z b_x - a_x b_z,\ a_x b_y - a_y b_x)$
+%     \begin{array}{c c c}
+%        i & j & k \\
+%        a_x & a_y & a_z \\
+%        b_x & b_y & b_z
+%     \end{array}
+
+\Topic{Line} $ax+by=c$ through $A(x_1, y_1)$ and $B(x_2, y_2)$:
+$a=y_1 - y_2$, $b = x_2 - x_1$, $c=ax_1+by_1$. \\
+Half-plane to the left of the directed segment $AB$: $ax + by \ge c$. \\
+Normal vector: $(a, b)$. Direction vector: $(b, -a)$.
+Perpendicular line: $-bx + ay = d$. \\
+Point of intersection of $a_1 x + b_1 y = c_1$ and $a_2 x + b_2 y = c_2$ is
+$\frac{1}{a_1 b_2 - a_2 b_1} (c_1 b_2 - c_2 b_1, a_1 c_2 - a_2 c_1)$. \\
+Distance from line $ax+by+c=0$ to point $(x_0, y_0)$ is
+$|a x_0 + b y_0 + c| / \sqrt{a^2 + b^2}$. \\ % (Generalizes to point-plane, etc)
+Distance from line $AB$ to $P$ (for any dimension): $\frac{|(A-P) \times (B-P)|}{|A-B|}$. \\
+Point-line segment distance:
+\vspace{-6mm}
+\begin{Verbatim}[fontsize=\small]
+   if (dot(B-A, P-A) < 0) return dist(A,P);
+   if (dot(A-B, P-B) < 0) return dist(B,P);
+   return fabs(cross(P,A,B) / dist(A,B));    
+\end{Verbatim}
+\vspace{-3mm}
+
+\Topic{Projection} of point $C$ onto line $AB$ is
+$\frac{AB \cdot AC}{AB \cdot AB} AB$. \\
+Projection of $(x_0, y_0)$ onto line $ax+by=c$ is
+$(x_0, y_0) + \frac{1}{a^2 + b^2}(ad, bd)$, where $d = c - ax_0 - by_0$. \\
+Projection of the origin is $\frac{1}{a^2 + b^2}(ac, bc)$.
+
+\Topic{Segment-segment intersection}.
+Two line segments intersect if one of them contains an endpoint of the other segment,
+or each segment straddles the line, containing the other segment
+($AB$ straddles line $l$ if $A$ and $B$ are on the opposite sides of $l$.)
+
+\Topic{Circle-circle and circle-line intersection}.
+\vspace{-5mm}
+\begin{Verbatim}[fontsize=\small, tabsize=4]
+   a = x2 - x1;   b = y2 - y1;   c = [(r1^2 - x1^2 - y1^2) - (r2^2 - x2^2 - y2^2)] / 2;
+   d = sqrt(a^2 + b^2);
+   if not |r1 - r2| <= d <= |r1 + r2|, return "no solution"
+   if d == 0, circles are concentric, a special case
+   // Now intersecting circle (x1,y1,r1) with line ax+by=c
+   Normalize line: a /= d; b /= d; c /= d;     // d=sqrt(a^2+b^2)
+   e = c - a*x1 - b*y1;
+   h = sqrt(r1^2 - e^2);                       // check if r1<e for circle-line test
+   return (x1, y1) + (a*e, b*e) +/- h*(-b, a);
+\end{Verbatim}
+\vspace{-3mm}
+
+\Topic{Circle from 3 points (circumcircle)}.  Intersect two perpendicular bisectors.
+Line perpendicular to $ax+by=c$ has the form $-bx+ay=d$.
+Find $d$ by substituting midpoint's coordinates.
+
+\Topic{Angular bisector} of angle $ABC$ is line $BD$, where $D = \frac{BA}{|BA|} + \frac{BC}{|BC|}$. \\
+Center of incircle of triangle $ABC$ is at the intersection of angular
+bisectors, and is $\frac{a}{a+b+c} A + \frac{b}{a+b+c} B + \frac{c}{a+b+c} C$,
+where $a$, $b$, $c$ are lengths of sides, opposite to vertices $A$, $B$, $C$.
+Radius $= \frac{2S}{a+b+c}$.
+
+%
+% TODO: tangents between two circles
+%
+
+\Topic{Counter-clockwise rotation around the origin}.
+$(x, y) \mapsto (x \cos \phi - y \sin \phi, x \sin \phi + y \cos \phi)$. \\
+90-degrees counter-clockwise rotation: $(x, y) \mapsto (-y, x)$.
+Clockwise: $(x, y) \mapsto (y, -x)$.
+
+\Topic{3D rotation} by ccw angle $\phi$ around axis $\mathbf{n}$:
+$\mathbf{r}' =
+   \mathbf{r} \cos\phi +
+   \mathbf{n} (\mathbf{n} \cdot \mathbf{r}) (1 - \cos\phi) +
+   (\mathbf{n} \times \mathbf{r}) \sin\phi$
+% http://mathworld.wolfram.com/RotationFormula.html
+% note: order of n and r in the last term is changed,
+% as we're rotating vector r, and not the coordinate system here
+
+\Topic{Plane equation from 3 points}.
+$N \cdot (x, y, z) = N \cdot A$,
+where $N$ is normal: $N = (B - A) \times (C - A)$.
+
+\Topic{3D figures} \\
+\begin{tabular}{ll}
+  Sphere & Volume $V=\frac{4}{3} \pi r^3$, surface area $S=4 \pi r^2$ \\
+         &
+            $x = \rho \sin \theta \cos \phi$,
+            $y = \rho \sin \theta \sin \phi$,
+            $z = \rho \cos \theta$,
+            $\phi \in [-\pi, \pi]$,
+            $\theta \in [0, \pi]$ \\
+  Spherical section &
+    Volume $V = \pi h^2 (r - h/3)$,
+	surface area $S = 2 \pi r h$ \\
+  Pyramid &
+    Volume $V=\frac{1}{3} h S_{base}$ \\
+  Cone &
+    Volume $V=\frac{1}{3} \pi r^2 h$,
+    lateral surface area $S = \pi r \sqrt{r^2+h^2}$
+\end{tabular}
+
+\Topic{Area of a simple polygon}.
+$\frac{1}{2}\sum_{i=0}^{n-1} (x_i y_{i+1} - x_{i+1} y_i)$,
+where $x_n=x_0, y_n=y_0$. \\
+Area is negative if the boundary is oriented clockwise.
+
+\Topic{Winding number}. Shoot a ray from given point in an arbitrary direction.
+For each intersection of ray with polygon's side, add $+1$ if the side crosses
+it counterclockwise, and $-1$ if clockwise.
+
+\Topic{Convex Hull}
+\vspace{-5mm}
+\begin{Verbatim}[fontsize=\small]
+   bool operator <(Point a, Point b) { return a.x < b.x || (a.x == b.x && a.y < b.y); }
+
+   // Returns convex hull in counter-clockwise order.
+   // Note: the last point in the returned list is the same as the first one.
+   vector<Point> ConvexHull(vector<Point> P) {
+       int n = P.size(), k = 0;  vector<Point> H(2*n);
+       sort(P.begin(), P.end());
+       for (int i = 0; i < n; i++)
+         { while (k >= 2 && cross(H[k-2], H[k-1], P[i]) <= 0) k--;  H[k++] = P[i]; }
+       for (int i = n-2, t = k+1; i >= 0; i--)
+         { while (k >= t && cross(H[k-2], H[k-1], P[i]) <= 0) k--;  H[k++] = P[i]; }
+       H.resize(k);
+       return H;
+   }
+\end{Verbatim}
+\vspace{-3mm}
+
+% Trig {{{
+\Topic{Trigonometric identities} \\
+\begin{tabular}{l l}
+$\sin(\alpha + \beta) = \sin\alpha \cos\beta + \cos\alpha \sin\beta$ &
+$\cos(\alpha + \beta) = \cos\alpha \cos\beta - \sin\alpha \sin\beta$ \\
+$\sin(\alpha - \beta) = \sin\alpha \cos\beta - \cos\alpha \sin\beta$ &
+$\cos(\alpha - \beta) = \cos\alpha \cos\beta + \sin\alpha \sin\beta$ \\
+$\tan(\alpha + \beta) = \frac{\tan \alpha + \tan \beta}{1 - \tan \alpha \tan \beta}$ &
+$\sin 2\alpha = 2 \sin\alpha \cos\alpha$, $\cos 2\alpha = \cos^2 \alpha - \sin^2 \alpha$ \\
+$\cos^2 \alpha = \frac{1}{2}(1 + \cos 2\alpha)$ &
+$\sin^2 \alpha = \frac{1}{2}(1 - \cos 2\alpha)$ \\
+$\sin\alpha + \sin\beta = 2 \sin \frac{\alpha+\beta}{2} \cos\frac{\alpha-\beta}{2}$ &
+$\cos\alpha + \cos\beta = 2 \cos \frac{\alpha+\beta}{2} \cos\frac{\alpha-\beta}{2}$ \\
+$\sin\alpha - \sin\beta = 2 \sin \frac{\alpha-\beta}{2} \cos\frac{\alpha+\beta}{2}$ &
+$\cos\alpha - \cos\beta = -2 \sin \frac{\alpha+\beta}{2} \sin\frac{\alpha-\beta}{2}$ \\
+$\tan\alpha + \tan\beta = \frac{\sin(\alpha + \beta)}{\cos\alpha \cos\beta}$ &
+$\cot\alpha + \cot\beta = \frac{\sin(\alpha + \beta)}{\sin\alpha \sin\beta}$ \\
+$\sin\alpha \sin\beta =	\frac{1}{2}[\cos(\alpha - \beta) - \cos(\alpha + \beta)]$ &
+$\cos\alpha \cos\beta =	\frac{1}{2}[\cos(\alpha - \beta) + \cos(\alpha + \beta)]$ \\
+$\sin\alpha \cos\beta = \frac{1}{2}[\sin(\alpha + \beta) + \sin(\alpha - beta)]$ &
+$\sin' x = \cos x$, $\cos' x = -\sin x$ \\
+%$\tan^{-1} x + \tan^{-1} y = \tan^{-1} \frac{x + y}{1 - xy}$, $xy<1$ &
+%$\tan^{-1} x + \tan^{-1} y = \tan^{-1} \frac{x + y}{1 - xy} + \pi \text{ sign } x$, $xy>1$ \\
+Law of sines: $\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = 2R_{out}$. &
+Inscribed/outscribed circles: $R_{out} =  \frac{abc}{4S}$, $R_{in} = \frac{2S}{a+b+c}$ \\
+Law of cosines: $c^2 = a^2 + b^2 - 2ab \cos C$. &
+Heron: $\sqrt{s(s-a)(s-b)(s-c)}$, $s=\frac{a+b+c}{2}$. \\
+Law of tangents: $\frac{a+b}{a-b} = \frac{\tan[\frac12(A+B)]}{\tan[\frac12(A-B)]}$ &
+$\Delta$'s area, given side and adjacent angles: $\frac{c^2}{2(\cot\alpha + \cot\beta)}$
+
+%\multicolumn{2}{l}{
+%  Brahmagupta's: $S_{ABCD} = \sqrt{(s-a)(s-b)(s-c)(s-d)-abcd\cos^2\theta}$
+%  ($\theta$ is half the sum of any two opposing angles)
+%} \\
+%\multicolumn{2}{l}{
+%  Bretschneider's: $S_{ABCD} = \sqrt{(s-a)(s-b)(s-c)(s-d)-\frac{1}{4}(ac+bd+pq)(ac+bd-pq)}$,
+%  $p$, $q$ -- diagonals.
+%} \\
+\end{tabular}
+% }}}
+
+% }}}    
+
+% Math {{{
+\Section{Math}
+
+\Topic{Stirling's approximation}
+$z! = \Gamma(z+1) = \sqrt{2 \pi}\ z^{z+1/2}\ e^{-z}
+(1 + \frac{1}{12z} + \frac{1}{288 z^2} - \frac{139}{51840 z^3} + \dots)$
+%$\ln \Gamma(z) = \frac{1}{2} \ln(2 \pi) + (z - \frac{1}{2}) \ln z - z + \sum_{n=1}^{\infty} \frac{B_{2n}}{2n(2n-1)} z^{-(2n-1)}$.
+%$\sum = \frac{1}{12 z} - \frac{1}{360 z^3} + \frac{1}{1260 z^5} - \dots$
+
+\Topic{Simpson's rule}.
+$\int_a^{b=a+2h} f(x) dx = \frac{b-a}{6}(f(a) + 4f(a+h) + f(b)) + O(h^5 f^{(4)}(\xi))$. \\
+\Topic{Boole's}.
+$\int_a^{b=a+4h} f(x) dx =
+ \frac{b-a}{90}(7f(a) + 32f(a+h) + 12f(a+2h) + 32f(a+3h) + 7f(b))
+ + O(h^7 f^{(6)}(\xi))$.
+%Exact for up to quintic polynomials.
+
+\Topic{Newton's method}.
+$x_{n+1} = x_n - J^{-1}(x_n) \cdot F(x_n)$,
+where $J(x)$ is Jacobian matrix $J_{ij} = \frac{\partial f_i}{\partial x_j}$.
+
+\Topic{Runge-Kutta, 4-th order}.
+Solves initial-value problem $y'(x) = f(x, y)$, $y(x_0) = y_0$.\\
+%$y$ and $f$ can be vectors (a system of ODEs). \\
+\begin{tabular}{ll}
+$k_1 = f(x_n, y_n)$ &
+$k_4 = f(x_n + h, y_n + k_3 h)$ \\
+$k_2 = f(x_n + h/2, y_n + k_1 h/2)$ & 
+$y_{n+1} = y_n + (k_1 + 2k_2 + 2k_3 + k_4)h/6 + O(h^5)$ \\
+$k_3 = f(x_n + h/2, y_n + k_2 h/2)$ &
+$x_{n+1} = x_n + h$
+\end{tabular}
+
+\Topic{Taylor series}.
+$f(x) = f(a) + \frac{x-a}{1!} f'(a) + \frac{(x-a)^2}{2!} f^{(2)}(a) + \dots + \frac{(x-a)^n}{n!} f^{(n)}(a) + \dots$. \\
+$\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \dots$ \\
+$\ln x = 2(a+\frac{a^3}{3}+\frac{a^5}{5}+\dots)$, where $a=\frac{x-1}{x+1}$. $\ln x^2 = 2 \ln x$. \\
+$\arctan x = x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + \dots$,
+$\arctan x = \arctan c + \arctan \frac{x-c}{1+xc}$ (e.g c=.2) \\
+$\pi = 4 \arctan 1$, $\pi = 6 \arcsin \frac{1}{2}$
+
+\Topic{Cauchy's formula}.
+$f(z_0) = \frac{1}{2 \pi i} \oint_{\gamma} \frac{f(z)}{z - z_0}\,dz$
+
+\Topic{Circle cut area}.
+$\int 2\sqrt{1-x^2}\ dx = x \sqrt{1-x^2} + \arcsin x$
+
+\Topic{Trigonometric substitution}.
+$t = \tan \frac{x}{2}$, $x = 2 \arctan t$, $dx = \frac{2}{1 + t^2}\,dt$,
+$\sin x = \frac{2t}{1 + t^2}$, $\cos x = \frac{1 - t^2}{1 + t^2}$. \\
+\Topic{Parametric curve length}.
+$\int_a^b \sqrt{[x'(t)]^2 + [y'(t)]^2 + [z'(t)]^2} dt$ \\
+\Topic{Directional derivative}.
+$\frac{\partial f}{\partial \vec{a}} = \frac{\vec{a}}{|\vec{a}|} \cdot \nabla f$ \\
+\Topic{Surface normal}.
+$\vec{n}(u, v) = \frac{\partial \vec{r}}{\partial u} \times
+                 \frac{\partial \vec{r}}{\partial v}$ \\
+\Topic{Surface area}.
+$\iint_D |\vec{n}(u,v)|\ du\ dv$.
+For surfaces $z=z(u,v)$, $|\vec{n}(u,v)|^2 = {1 + (z'_x)^2 + (z'_y)^2}$ \\
+\Topic{Green's theorem}.
+$\oint_C P\ dx + Q\ dy =
+\iint_D (\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y})\ dx\ dy$ \\
+\Topic{Stokes' theorem}.
+$\int_D \nabla \times \vec{a} \cdot d\vec{S} =
+ \oint_{\partial D} \vec{a} \cdot d\vec{r}$ \\
+\Topic{Normal distribution}.
+$f(x) = \frac{1}{\sigma \sqrt{2\pi}} \exp -\frac{(x - \mu)^2}{2 \sigma^2}$. \\
+\Topic{Linear DE}.
+$y' + P(x) y = Q(x)$.
+Solution: $y = e^{-A} (\int P e^A dx + C)$, where $A = \int Q(x) dx$. \\
+$a_n y^{(n)} + \dots + a_1 y' + a_0 = 0$.  Guess: $y=e^{rx}$.
+(for multiplicity $m$ roots: $y=x^k e^{rx}$, $k=0,\dots,m-1$) \\
+\Topic{Largange multipliers}.
+Extrema points of $f(x) = f(x_1, \dots, x_n)$ on domain specified by system
+$\phi_1(x) = 0, \dots, \phi_m(x) = 0$ are
+found by solving system:
+$\Phi = f(x) + \lambda_1 \phi_1(x) + \dots + \lambda_m \phi_m(x)$,
+$\frac{\partial \Phi}{\partial x_i} =
+  \frac{\partial \Phi}{\partial \lambda_j} = 0$ ($i$=1..$n$, $j$=1..$m$)
+
+%\Topic{Largange's interpolating formula}.
+%Given $n+1$ points $(x_0, y_0)$, $\dots$, $(x_n, y_n)$, $x_i \ne x_j$ when $i \ne j$,
+%the unique polynomial $P$ of degree at most $n$, such that $P(x_i)=y_i$ for
+%all $i$ is given by:
+%$\displaystyle
+%P(x) = \sum_{i=0}^n
+%  y_i \cdot \frac{ \sum_{j \ne i} (x - x_j) }
+%                 { \sum_{j \ne i} (x_i - x_j) }$
+
+\Topic{Bayes' theorem}. $P(A | B) = \frac{P(B | A) P(A)}{P(B)}$
+% }}}
+
+% Data Structures {{{
+\Section{Data Structures}
+
+\subsection*{Fenwick Tree}
+\vspace{-3mm}
+\begin{Verbatim}[fontsize=\small]
+int a[MAXN];
+
+// value[n] += x
+void add(int n, int x) { for (; n < MAXN; n |= n + 1) a[n] += x; }
+
+// Returns value[0] + value[1] + ... + value[n]
+int sum(int n) { int s=0; while (n>=0) { s+=a[n]; n=(n&(n+1))-1; } return s; }
+\end{Verbatim}
+
+\subsection*{AVL Tree}
+\vspace{-3mm}
+\begin{Verbatim}[fontsize=\small]
+struct Node {
+    Node *l, *r;  int h, size, key;
+    Node(int k) : l(0), r(0), h(1), size(1), key(k) {}
+    void u() { h=1+max(l?l->h:0, r?r->h:0); size=(l?l->size:0)+1+(r?r->size:0); }
+};
+
+Node *rotl(Node *x) { Node *y=x->r; x->r=y->l; y->l=x; x->u(); y->u(); return y; }
+Node *rotr(Node *x) { Node *y=x->l; x->l=y->r; y->r=x; x->u(); y->u(); return y; }
+
+Node *rebalance(Node *x) {
+    x->u();
+    if (x->l->h > 1 + x->r->h) {
+        if (x->l->l->h < x->l->r->h) x->l = rotl(x->l);
+        x = rotr(x);
+    } else if (x->r->h > 1 + x->l->h) {
+        if (x->r->r->h < x->r->l->h) x->r = rotr(x->r);
+        x = rotl(x);
+    }
+    return x;
+}
+
+Node *insert(Node *x, int key) {
+    if (x == NULL) return new Node(key);
+    if (key < x->key) x->l = insert(x->l, key); else x->r = insert(x->r, key);
+    return rebalance(x);
+}
+\end{Verbatim}
+
+\subsection*{Treap}
+\vspace{-3mm}
+\begin{Verbatim}[fontsize=\small]
+struct Node {
+    int key, aux, size;  Node *l, *r;    // BST w.r.t. key;  min-heap w.r.t. aux
+    Node(int k) : key(k), aux(rand()), size(1), l(0), r(0) {}
+};
+
+Node *upd(Node *p) { if(p) p->size=1+(p->l?p->l->size:0)+(p->r?p->r->size:0); return p; }
+
+void split(Node *p, Node *by, Node **L, Node **R) {
+    if (p == NULL) { *L = *R = NULL; }
+    else if (p->key < by->key) { split(p->r, by, &p->r, R); *L = upd(p); }
+    else { split(p->l, by, L, &p->l); *R = upd(p); }
+}
+
+Node *merge(Node *L, Node *R) {
+    Node *p;
+    if (L == NULL || R == NULL) p = (L != NULL ? L : R);
+    else if (L->aux < R->aux) { L->r = merge(L->r, R); p = L; }
+    else { R->l = merge(L, R->l); p = R; }
+    return upd(p);
+}
+
+Node *insert(Node *p, Node *n) {
+    if (p == NULL) return upd(n);
+    if (n->aux <= p->aux) { split(p, n, &n->l, &n->r); return upd(n); }
+    if (n->key < p->key) p->l = insert(p->l, n); else p->r = insert(p->r, n);
+    return upd(p);
+}
+
+Node *erase(Node *p, int key) {
+    if (p == NULL) return NULL;
+    if (key == p->key) { Node *q = merge(p->l, p->r); delete p; return upd(q); }
+    if (key < p->key) p->l = erase(p->l, key); else p->r = erase(p->r, key);
+    return upd(p);
+}
+\end{Verbatim}
+% }}}
+
+% Miscellanious {{{
+\Section{Miscellanious}
+
+\Topic{Bit tricks} \\
+Clearing the lowest 1 bit: \verb$x & (x - 1)$, all trailing 1's: \verb$x & (x + 1)$ \\
+Setting the lowest 0 bit: \verb$x | (x + 1)$ \\
+Enumerating subsets of a bitmask $m$:
+\verb|x=0; do { ...; x=(x+1+~m)&m; } while (x!=0);| \\
+\verb$__builtin_ctz/__builtin_clz$ returns the number of trailing/leading zero bits. \\
+\verb$__builtin_popcount(unsigned x)$ counts 1-bits (slower than table lookups). \\
+For 64-bit unsigned integer type, use the suffix `\verb$ll$', i.e. \verb$__builtin_popcountll$.
+
+%\Topic{Kirchoff's and Ohm's laws}.  Sum of currents entering any node
+%equals sum of currents leaving it. Sum of voltage drops around a closed
+%loop is zero.
+%$U=IR$: voltage drop $U$ between two nodes
+%(the difference of potentials) equals the current $I$ between
+%the nodes times the resistance $R$.
+
+%\Topic{Period a of simple pendulum}.  $T = 2\pi \sqrt{L / g}$, $g \approx 9.81$
+
+%\Topic{$n$-queens}.  Number of solutions for $n=1,2,\dots$:
+%1, 0, 0, 2, 10, 4, 40, 92, 352, 724, 2680, 14200, 73712, 365596,
+%2279184, 14772512, 95815104, 666090624, 4968057848, 39029188884,
+%314666222712, 2691008701644, 24233937684440, 227514171973736,
+%2207893435808352.
+
+%\Topic{N-queens}. Constructing a single solution.  Let $r = n \mod 12$. \\
+%\begin{tabular}{l l}
+%If $r=2$: 2,4,6..., 3,1, 7,9,11..., 5. &
+%If $r=3$ or $r=9$:  4,6,8..., 2, 5,7,9..., 1,3. \\
+%If $r=8$: 2,4,6..., 3,1, 7,5, 11,9, ... &
+%Otherwise: 2,4,6..., 1,3,5...
+%\end{tabular}
+
+\Topic{Warnsdorff's heuristic for knight's tour}.
+At each step choose a square which has the least number of valid moves
+that the knight can make from there.
+
+\Topic{Optimal BST}. $root[i, j-1] \le root[i, j] \le root[i+1, j]$.
+
+% Two-machines flow-shop scheduling
+\Topic{Flow-shop scheduling (Johnson's problem)}.
+Schedule $N$ jobs on $2$ machines to minimize completition time.
+$i$-th job takes $a_i$ and $b_i$ time to execute on 1st and 2nd machine, respectively.
+Each job must be first executed on the first machine, then on second.
+Both machines execute all jobs in the same order.
+Solution: sort jobs by key $a_i < b_i\ ?\ a_i : (\infty - b_i)$,
+i.e. first execute all jobs with $a_i < b_i$ in order of increasing $a_i$,
+then all other jobs in order of decreasing $b_i$.
+
+\Topic{Days of week} \\
+\begin{tabular}{l l l}
+  January 1, 1600: Saturday &
+  January 1, 1900: Monday   &
+  June 13, 2042: Friday     \\
+  January 1, 2008: Tuesday  &
+  April 1, 2008: Tuesday    &
+  April 9, 2008: Wednesday  \\
+  December 31, 1999: Friday & January 1, 3000: Wednesday
+\end{tabular}
+
+%\Topic{Common bugs} \\
+%Division by zero! \\
+%\verb|std::set/map| need a total order comparator.
+%For Dijkstra/Prim the comparator should be like:
+%\verb$return dist[i] != dist[j] ? dist[i] < dist[j] : i < j;$
+
+% }}}
+
+\newpage
+
+\Section{FFT}
+\begin{Verbatim}[fontsize=\small]
+typedef complex<long double> Complex;
+long double PI = 2 * acos(0.0L);
+
+// Decimation-in-time radix-2 FFT.
+//
+// Computes in-place the following transform:
+//   y[i] = A(w^(dir*i)),
+// where
+//   w = exp(2pi/N) is N-th complex principal root of unity,
+//   A(x) = a[0] + a[1] x + ... + a[n-1] x^{n-1},
+//   dir \in {-1, 1} is FFT's direction (+1=forward, -1=inverse).
+//
+// Notes:
+//   * N must be a power of 2,
+//   * scaling by 1/N after inverse FFT is caller's resposibility.
+void FFT(Complex *a, int N, int dir)
+{
+    int lgN;
+    for (lgN = 1; (1 << lgN) < N; lgN++);
+    assert((1 << lgN) == N);
+
+    for (int i = 0; i < N; i++) {
+        int j = 0;
+        for (int k = 0; k < lgN; k++)
+            j |= ((i>>k)&1) << (lgN-1-k);
+        if (i < j) swap(a[i], a[j]);
+    }
+
+    for (int s = 1; s <= lgN; s++) {
+        int h = 1 << (s - 1);
+        Complex t, w, w_m = exp(Complex(0, dir*PI/h));
+        for (int k = 0; k < N; k += h+h) {
+            w = 1;
+            for (int j = 0; j < h; j++) {
+                t = w * a[k+j+h];
+                a[k+j+h] = a[k+j] - t;
+                a[k+j] += t;
+                w *= w_m;
+            }
+        }
+    }
+}
+\end{Verbatim}
+
+\end{document}

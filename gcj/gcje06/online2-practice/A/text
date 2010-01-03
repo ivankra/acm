@@ -1,0 +1,52 @@
+
+Problem Statement
+ÿÿÿÿ
+Given a string of distinct letters, sort them into ascending order by doing a sequence of swaps, where each swap can interchange any two of the letters.
+Create a class SwapSort that contains a method swaps that is given a string letters and that returns a string showing the shortest sequence of swaps which will sort letters. Each swap in the returned sequence should be shown as the two letters being swapped, and adjacent swaps should be separated by a single comma (',').
+If there is more than one minimal swap sequence, return the one that comes first lexicographically (in the ASCII ordering).
+Definition
+ÿÿÿÿ
+Class:
+SwapSort
+Method:
+swaps
+Parameters:
+string
+Returns:
+string
+Method signature:
+string swaps(string letters)
+(be sure your method is public)
+ÿÿÿÿ
+
+Constraints
+-
+letters will contain between 1 and 50 letters 'A'-'Z' or 'a'-'z', inclusive.
+-
+The characters in letters will be distinct.
+Examples
+0)
+
+ÿÿÿÿ
+"ABCED"
+Returns: "DE"
+This can be sorted with a single swap. Of course "ED" would be another way of expressing this swap, but "DE" comes earlier alphabetically.
+1)
+
+ÿÿÿÿ
+"axrA"
+Returns: "Aa,ax"
+We must sort these into "Aarx". After swapping 'A' and 'a', "axrA" has become "Axra" and we can complete the sort by then swapping the 'x' with the 'a'.
+2)
+
+ÿÿÿÿ
+"problematic"
+Returns: "ac,ap,be,bi,br,co,il,pt"
+
+3)
+
+ÿÿÿÿ
+"abcdefABCDEF"
+Returns: "Aa,Bb,Cc,Dd,Ee,Ff"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

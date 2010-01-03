@@ -1,0 +1,86 @@
+
+Problem Statement
+    
+In the game of Musical Chairs, n players walk around a circle of n-1 chairs while music plays on the stereo. When the music stops, everyone hurries to claim a chair. The player who is left standing gets knocked out of the game.
+You are given a vector <string> containing the names of the players, ordered according to their position at the start of the game, such as the following.
+
+  {"Emma Sue", "Billy Bob Thornton", "Joe", "Cassius Clay"}
+You are also given a string describing the arrangement of chairs with an 'h' (lowercase letter H) for each chair and exactly one '.' (period) indicating a gap. For instance, the chairs might be arranged as follows.
+
+  "hh.h"
+The player by the gap is the one who gets knocked out. For example, if the four players above are in their starting order when the music stops, then Joe gets knocked out.
+For each second of music, the players advance one position. From the original order shown above, for example, the players' order changes to the following after one second.
+
+  {"Cassius Clay", "Emma Sue", "Billy Bob Thornton", "Joe"}
+Given an int specifying the number of seconds that the music is played, return the name of the player who gets knocked out.
+Definition
+    
+Class:
+MusicalChairs
+Method:
+knockedOut
+Parameters:
+vector <string>, string, int
+Returns:
+string
+Method signature:
+string knockedOut(vector <string> playerNames, string chairs, int seconds)
+(be sure your method is public)
+    
+
+Constraints
+-
+playerNames will contain between 2 and 50 elements, inclusive.
+-
+Each element of playerNames will be between 1 and 50 characters long.
+-
+playerNames will contain only letters ('A'-'Z' and 'a'-'z') and spaces (' ').
+-
+If playerNames contains n elements, then chairs will be n characters long.
+-
+Exactly one character in chairs will be '.', and all the other characters will be 'h'.
+-
+seconds will be between 0 and 600, inclusive.
+Examples
+0)
+
+    
+{"Emma Sue", "Billy Bob Thornton", "Joe", "Cassius Clay"}
+"hh.h"
+1
+Returns: "Billy Bob Thornton"
+
+1)
+
+    
+{"Emma Sue", "Billy Bob Thornton", "Joe", "Cassius Clay"}
+"hh.h"
+4
+Returns: "Joe"
+
+2)
+
+    
+{"Jack Dempsey", "Joe Louis", "Rocky Marciano",
+ "Cassius Clay", "George Foreman", "Mike Tyson"}
+"h.hhhh"
+500
+Returns: "Mike Tyson"
+
+3)
+
+    
+{"  itchy   ", "SCRATCHY"}
+".h"
+0
+Returns: "  itchy   "
+
+4)
+
+    
+{"Moe", "Larry", "Curly", "Moe"}
+"hh.h"
+2
+Returns: "Moe"
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

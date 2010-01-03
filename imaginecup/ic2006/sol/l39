@@ -1,0 +1,114 @@
+ssssssssslssrssrsslsrssrssrslsslsrsslsslsssrssrssrssrslsrsslsssl
+
+z:ssssssssssslsslsslsssrslsslsslsslsslsssrslsslsslsslsssrssrsslsrssrslsslsslssssssssssssrz
+z
+
+z:ssssssssssslsslsslsssrslsslsslsslsslsssrslsslsslsslsssrssrsslsrssrslsslsslssssssssssssrz
+z
+
+a:    >-+
+        |
+        |>
+
+      +>
+      |
+b: >--+
+
+a:srssl
+b:sslsr
+rssssaaa
+
+
+q(X):XXXX
+m:q(ssl)
+z:sssssssssq(msr)
+ssssssssrssslq(msr)lsssrsq(msr)
+
+q(X):XXXX
+m:q(ssl)
+ssssssssrssslq(msr)lsssrsq(msr)
+
+q(X):XXXX
+m:q(ssl)
+z:sssssssssq(msr)
+ssssssssrssslq(msr)lsssrsq(msr)
+
+
+41
+q(X):XXXX
+m:q(ssl)
+q(q(ss)rssslq(msr)lsssrsq(msr)llq(ss)sl)
+
+37
+q(X):XXXX
+t:q(q(ssl)sr)l
+q(q(ss)rsssltsssrstlq(ss)sl)
+
+q(X):XXXX
+t:q(q(ssl)sr)l
+q(lq(ss)rsssltsssrstlq(ss)s)
+
+36
+q(X):XXXX
+t:q(q(ssl)sr)l
+u:lq(ss)
+q(ursssltsssrstus)
+
+
+q(X):XXXX
+m:q(ssl)
+a:q(msr)
+q(ss)rsassla
+
+q(X):XXXX
+m:q(ssl)
+a:q(msr)
+q(ss)rsq(sslassl)
+
+q(X):XXXX
+q(ss)rsq(sslq(q(ssl)sr)ssl)
+
+
+q(X):XXXX
+q(q(ss)rsq(sslq(q(ssl)sr)ssl)llslq(ss)l)
+
+34
+q(X):XXXX
+q(lq(ss)rsq(sslq(q(ssl)sr)ssl)llslq(ss))
+
+33
+q(X):XXXX
+a:lq(ss)
+q(arsq(sslq(q(ssl)sr)ssl)llsa)
+
+q(arsq(sslsq(q(sls)rs)sl)llsa)
+
+q(arssslsq(q(sls)rs)slsslsq(q(sls)rs)slsslsq(q(sls)rs)slsslsq(q(sls)rs)srsa)
+
+q(X):XXXX
+a:lq(ss)
+arssslsq(q(sls)rs)slsslsq(q(sls)rs)slsslsq(q(sls)rs)slsslsq(q(sls)rs)srsa
+                                                                     slsllssla
+
+arssslsq(q(sls)rs)sls
+    slsq(q(sls)rs)sls
+    slsq(q(sls)rs)sls
+    slsq(q(sls)rs)sls
+    llssla
+
+
+q(X):XXXX
+a:lq(ss)
+q(arssq(slsq(q(sls)rs)sls)llssla)
+
+q(X):XXXX
+a:lq(ss)
+t:ssl
+q(arsq(tq(q(t)sr)t)llsa)
+
+
+31
+q(X):XXXX
+a:lq(ss)
+t:ssl
+q(arsq(tq(q(t)sr)t)llsa)

@@ -1,0 +1,62 @@
+
+Problem Statement
+ÿÿÿÿ
+Given a positive integer k, the binary representation expresses k as a sum of powers of 2. Each digit in the binary representation is allowed to be 0 or 1 (for example, 9 = 10012 = 23 + 20). What if it could be 0, 1 or 2? Given k you will return how many different binary decompositions it has, where the digit values can be 0, 1 or 2. Note, each representation has no leading zeros.
+Definition
+ÿÿÿÿ
+Class:
+BadBinary
+Method:
+howMany
+Parameters:
+int
+Returns:
+long long
+Method signature:
+long long howMany(int k)
+(be sure your method is public)
+ÿÿÿÿ
+
+Constraints
+-
+k will be between 1 and 2^31-1, inclusive.
+-
+The return value will be at most 2^63-1.
+Examples
+0)
+
+ÿÿÿÿ
+1
+Returns: 1
+"1" is the only answer.
+1)
+
+ÿÿÿÿ
+2
+Returns: 2
+Two possibilities are "10" and "2".
+2)
+
+ÿÿÿÿ
+3
+Returns: 1
+"11" is the only answer.
+3)
+
+ÿÿÿÿ
+4
+Returns: 3
+"100", "20" and "12".
+4)
+
+ÿÿÿÿ
+10
+Returns: 5
+"1010", "1002", "210", "202" and "122".
+5)
+
+ÿÿÿÿ
+489225632
+Returns: 67366
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

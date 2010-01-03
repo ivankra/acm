@@ -1,0 +1,93 @@
+
+Problem Statement
+ÿÿÿÿ
+You want to send a group of salespeople from location 0 to location 1, but no two of them can travel through the same location (other than 0 and 1). This removes the possibility of trying to sell a customer the same product twice. Character j of element i (both 0-based) of adj denotes whether locations i and j are connected by a symmetric link ('1' for connected, '0' otherwise). Return the greatest number of salespeople that can be sent. The constraints will guarantee that locations 0 and 1 do not share a link.
+Definition
+ÿÿÿÿ
+Class:
+SalesRouting
+Method:
+howMany
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int howMany(vector <string> adj)
+(be sure your method is public)
+ÿÿÿÿ
+
+Constraints
+-
+adj will contain between 3 and 12 elements, inclusive.
+-
+Each element of adj will contain exactly N characters, where N is the number of elements in adj.
+-
+Each character in adj will be '0' (zero) or '1' (one).
+-
+Character i of element j of adj will be the same as character j of element i.
+-
+Character i of element i of adj will be '0'.
+-
+Character 1 of element 0 of adj will be '0'.
+Examples
+0)
+
+ÿÿÿÿ
+{
+"001",
+"001",
+"110"
+}
+Returns: 1
+We can send a single salesperson from location 0 to location 2, and finally to location 1.
+1)
+
+ÿÿÿÿ
+{
+"0010",
+"0010",
+"1100",
+"0000"
+}
+Returns: 1
+Same as before, but now there is an isolated location 3.
+2)
+
+ÿÿÿÿ
+{
+"001100",
+"000001",
+"100010",
+"100010",
+"001101",
+"010010"
+}
+Returns: 1
+The only location that is directly connected to location 1 is 5, so only 1 salesperson can be sent.
+3)
+
+ÿÿÿÿ
+{
+"001111",
+"001111",
+"110000",
+"110000",
+"110000",
+"110000"
+}
+Returns: 4
+
+4)
+
+ÿÿÿÿ
+{
+"00000",
+"00000",
+"00000",
+"00000",
+"00000"
+}
+Returns: 0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

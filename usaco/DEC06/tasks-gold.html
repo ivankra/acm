@@ -1,0 +1,361 @@
+<html><head>
+
+<meta http-equiv="Pragma" content="no-cache">
+<script language="javascript">
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</script><title>USACO Problems</title></head><body onload="endtime = initcount(10800); updateclock('Your submissions end', 'Person', endtime);" background="gold_files/bg9gold.jpg">
+
+<font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+<table><tbody><tr>
+<td><img src="gold_files/cowhead3.gif">
+</td>
+<td valign="top">
+<table cellpadding="0" cellspacing="0">
+    <tbody><tr><td>Contest: DEC06 <b>GOLD</b> Division</td></tr>
+    <tr><td><div id="Person">Your submissions end: 02h59m24s</div></td></tr>
+    <tr><td></td></tr>
+    
+</tbody></table>
+</td></tr>
+</tbody></table>
+<font color="red"><b>
+</b></font>
+
+
+</font><pre></pre>
+<pre>**********************************************************************
+                           GOLD PROBLEMS
+**********************************************************************
+                  Three problems numbered 1 through 3
+**********************************************************************
+
+Problem 1: Wormholes [J. Kuipers, 2002]
+
+While exploring his many farms, Farmer John has discovered a number
+of amazing wormholes. A wormhole is very peculiar because it is a
+one-way path that delivers you to its destination at a time that
+is BEFORE you entered the wormhole! Each of FJ's farms comprises N
+(1 &lt;= N &lt;= 500) fields conveniently numbered 1..N, M (1 &lt;= M &lt;=
+2500) paths, and W (1 &lt;= W &lt;= 200) wormholes.
+
+As FJ is an avid time-traveling fan, he wants to do the following:
+start at some field, travel through some paths and wormholes, and
+return to the starting field a time before his initial departure.
+Perhaps he will be able to meet himself :) .
+
+To help FJ find out whether this is possible or not, he will supply
+you with complete maps to F (1 &lt;= F &lt;= 5) of his farms.  No paths
+will take longer than 10,000 seconds to travel and no wormhole can
+bring FJ back in time by more than 10,000 seconds.
+
+PROBLEM NAME: wormhole
+
+INPUT FORMAT:
+
+* Line 1: A single integer, F. F farm descriptions follow.
+
+* Line 1 of each farm: Three space-separated integers respectively: N,
+        M, and W
+
+* Lines 2..M+1 of each farm: Three space-separated numbers (S, E, T)
+        that describe, respectively: a bidirectional path between S
+        and E that requires T seconds to traverse. Two fields might be
+        connected by more than one path.
+
+* Lines M+2..M+W+1 of each farm: Three space-separated numbers (S, E,
+        T) that describe, respectively: A one way path from S to E
+        that also moves the traveler back T seconds.
+
+SAMPLE INPUT (file wormhole.in):
+
+2
+3 3 1
+1 2 2
+1 3 4
+2 3 1
+3 1 3
+3 2 1
+1 2 3
+2 3 4
+3 1 8
+
+
+INPUT DETAILS:
+
+Two farm maps. The first has three paths and one wormhole, and the
+second has two paths and one wormhole.
+
+OUTPUT FORMAT:
+
+* Lines 1..F: For each farm, output "YES" if FJ can achieve his goal,
+        otherwise output "NO" (do not include the quotes).
+
+SAMPLE OUTPUT (file wormhole.out):
+
+NO
+YES
+
+OUTPUT DETAILS:
+
+For farm 1, FJ cannot travel back in time.
+For farm 2, FJ could travel back in time by the cycle 1-&gt;2-&gt;3-&gt;1, arriving
+back at his starting location 1 second before he leaves. He could start
+from anywhere on the cycle to accomplish this.
+
+**********************************************************************
+
+Problem 2: The Fewest Coins [Carl Hultquist, 2006]
+
+Farmer John has gone to town to buy some farm supplies. Being a
+very efficient man, he always pays for his goods in such a way that
+the smallest number of coins changes hands, i.e., the number of
+coins he uses to pay plus the number of coins he receives in change
+is minimized. Help him to determine what this minimum number is.
+
+FJ wants to buy T (1 &lt;= T &lt;= 10,000) cents of supplies.  The currency
+system has N (1 &lt;= N &lt;= 100) different coins, with values V1, V2,
+..., VN (1 &lt;= Vi &lt;= 120). Farmer John is carrying C1 coins of value
+V1, C2 coins of value V2, ...., and CN coins of value VN (0 &lt;= Ci
+&lt;= 10,000). The shopkeeper has an unlimited supply of all the coins,
+and always makes change in the most efficient manner (although
+Farmer John must be sure to pay in a way that makes it possible to
+make the correct change).
+
+PROBLEM NAME: fewcoins
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: N and T.
+
+* Line 2: N space-separated integers, respectively V1, V2, ..., VN
+        coins (V1...VN).
+
+* Line 3: N space-separated integers, respectively C1, C2, ..., CN
+
+SAMPLE INPUT (file fewcoins.in):
+
+3 70
+5 25 50
+5 2 1
+
+
+INPUT DETAILS:
+
+Farmer John has 5x5 cent coins, 2x25 cent coins and 1x50 cent coin.
+His bill is 70 cents.
+
+OUTPUT FORMAT:
+
+* Line 1: A line containing a single integer, the minimum number of
+        coins involved in a payment and change-making. If it is
+        impossible for Farmer John to pay and receive exact change,
+        output -1.
+
+SAMPLE OUTPUT (file fewcoins.out):
+
+3
+
+OUTPUT DETAILS:
+
+Farmer John pays 75 cents using a 50 cents and a 25 cents coin, and
+receives a 5 cents coin in change, for a total of 3 coins used in
+the transaction.
+
+**********************************************************************
+
+Problem 3: Milk Patterns [Coaches, 2004]
+
+Farmer John has noticed that the quality of milk given by his cows
+varies from day to day. On further investigation, he discovered
+that although he can't predict the quality of milk from one day to
+the next, there are some regular patterns in the daily milk quality.
+
+To perform a rigorous study, he has invented a complex classification
+scheme by which each milk sample is recorded as an integer between
+0 and 1,000,000 inclusive, and has recorded data from a single cow
+over N (1 &lt;= N &lt;= 20,000) days. He wishes to find the longest
+pattern of samples which repeats identically at least K (2 &lt;= K &lt;= N) times.
+This may include overlapping patterns -- 1 2 3 2 3 2 3 1 repeats 2
+3 2 3 twice, for example.
+
+Help Farmer John by finding the longest repeating subsequence in
+the sequence of samples. It is guaranteed that at least one subsequence
+is repeated at least K times.
+
+PROBLEM NAME: patterns
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: N and K
+
+* Lines 2..N+1: N integers, one per line, the quality of the milk on
+        day i appears on the ith line.
+
+SAMPLE INPUT (file patterns.in):
+
+8 2
+1
+2
+3
+2
+3
+2
+3
+1
+
+
+OUTPUT FORMAT:
+
+* Line 1: One integer, the length of the longest pattern which occurs
+        at least K times
+
+SAMPLE OUTPUT (file patterns.out):
+
+4
+
+**********************************************************************
+
+</pre><hr>
+<form action="/ioiupload" enctype="multipart/form-data" method="post">
+<input name="a" value="WZbjSxMIaCU" type="hidden">
+
+<table>
+<tbody><tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+  <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+  <table bgcolor="#bfffbf" cellpadding="5" width="100%">
+  <tbody><tr><td><b>Submit a program  for grading:&nbsp;<b><input name="filename" type="file">
+  &nbsp;&nbsp;
+  <input value="Submit" name="submit" type="submit"></b></b></td></tr>
+  </tbody></table>
+
+</font></td><td width="1"></td></tr>
+<tr height="1"><td></td></tr>
+</tbody></table>
+
+
+</td></tr>
+
+<tr><td><hr></td></tr>
+
+<tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+   <table bgcolor="#bfffbf" cellpadding="5" width="100%">
+   <tbody><tr><td colspan="2">
+   <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+   <b>To run your program with your own test data, enter the program<br>
+   file name and input file name then click 'Test':</b></font></td></tr>
+
+  <tr><td>
+
+   <table>
+   <tbody><tr><td>
+     <table>
+     <tbody><tr><td>
+     <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+     <b>Program&nbsp;File:&nbsp;</b></font></td>
+         <td><input name="testprogramname" type="file"></td></tr>
+     <tr><td align="right">
+         <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+         <b>Input&nbsp;File:&nbsp;</b></font></td>
+         <td><input name="testfilename" type="file"></td></tr>
+     </tbody></table>
+   </td>
+   <td>&nbsp;&nbsp;</td>
+   <td><input value="Test" name="submit" type="submit"></td>
+   </tr>
+   </tbody></table>
+
+   </td></tr></tbody></table>
+
+</td><td width="1"></td></tr>
+<tr height="1"><td></td></tr>
+</tbody></table>
+
+</td></tr>
+<tr><td><hr></td></tr>
+
+<tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+<table bgcolor="#bfffbf" cellpadding="5" width="100%">
+<tbody><tr><td>
+<font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+<b>Backup a file:&nbsp;</b><input name="backupfilename" type="file">
+&nbsp;&nbsp;&nbsp;<input value="Backup" name="submit" type="submit">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input value="See Backups" name="submit" type="submit">
+</font></td></tr></tbody></table>
+
+</td><td width="1"></td></tr>
+<tr height="1"><td></td><td></td></tr>
+</tbody></table>
+
+</td></tr>
+
+<tr><td><hr></td></tr>
+
+</tbody></table>
+Nothing is currently saved for grading.
+<hr>
+<center>
+<a href="http://ace.delos.com/ioiedit?a=WZbjSxMIaCU">Edit your database record</a>&nbsp;|&nbsp;
+
+<a href="http://ace.delos.com/ioiupload?a=WZbjSxMIaCU&amp;logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?init=1&amp;a=WZbjSxMIaCU">Main contest index</a>
+</center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<a href="http://ace.delos.com/ioiupload?a=WZbjSxMIaCU&amp;showsubmit">See submitted solutions</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=WZbjSxMIaCU&amp;suggestionbox">Send message
+to operations staff</a><br>
+Director is currently online (AIM: RobAtDelos)<br>
+This page was generated at 5:04:48 GMT.
+</center>
+
+</form></body></html>

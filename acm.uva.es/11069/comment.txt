@@ -1,0 +1,13 @@
+Here's my solution.
+
+This problem can be viewed as asking: how many binary strings on length N are there, which do not contain more than 2 consecutive zeroes, adjacent ones, and has no more than one zero at the ends. (The 1's in such string correspond to those vertices of the graph, which can included in a maximal independent set.)
+
+Let a(N) denote the number of such strings, with additional restriction that their last digit is 1.
+First few values of a(N) are: a(1) = a(2) = a(3) = 1 (the corresponding strings are 1, 01 and 101).
+
+Now, how do we compute a(N) when N>3? The N-th digit must 1 (by definition of a(N)), the (N-1)st digit must be 0 (two consecutive 1's are disallowed.)
+Number of strings, where (N-2)nd digit is 1 will be simply a(N-2).
+If the (N-2)nd digit is 0, then (N-3)rd has to be 1, and thus number of these strings is a(N-3).
+Putting all together: a(N) = a(N-2) + a(N-3).
+
+The total number of strings, which is what we're seeking, is a(N-1)+a(N), because the last digit may be 0 or 1, but two zeroes at the end are forbidden.

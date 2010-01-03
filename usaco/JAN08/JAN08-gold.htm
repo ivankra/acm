@@ -1,0 +1,392 @@
+<html><head>
+
+<meta http-equiv="Pragma" content="no-cache">
+<script language="javascript">
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</script><title>USACO Problems</title></head><body onload="endtime = initcount(14400); updateclock('Contest', 'Person', endtime);" background="JAN08-gold_files/bg9gold.jpg">
+
+<font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+<table><tbody><tr>
+<td><img src="JAN08-gold_files/cowhead2.gif">
+</td>
+<td valign="top">
+<table cellpadding="0" cellspacing="0">
+    <tbody><tr><td>Contest: JAN08 <b>GOLD</b> Division</td></tr>
+    <tr><td><div id="Person">Contest: 03h59m47s</div></td></tr>
+    <tr><td></td></tr>
+    
+</tbody></table>
+</td></tr>
+</tbody></table>
+<font color="red"><b>
+</b></font>
+
+
+</font><pre></pre>
+<pre>**********************************************************************
+                           GOLD PROBLEMS
+**********************************************************************
+                  Three problems numbered 1 through 3
+**********************************************************************
+
+Problem 1: Haybale Guessing [Brian Dean, 2003]
+
+The cows, who always have an inferiority complex about their
+intelligence, have a new guessing game to sharpen their brains.
+
+A designated 'Hay Cow' hides behind the barn and creates N (1 &lt;= N
+&lt;= 1,000,000) uniquely-sized stacks (conveniently numbered 1..N)
+of hay bales, each with 1..1,000,000,000 bales of hay.
+
+The other cows then ask the Hay Cow a series of Q (1 &lt;= Q &lt;= 25,000)
+questions about the the stacks, all having the same form:
+
+   What is the smallest number of bales of any stack in the range
+   of stack numbers Ql..Qh (1 &lt;= Ql &lt;= N; Ql &lt;= Qh &lt;= N)?
+
+The Hay Cow answers each of these queries with a single integer A
+whose truthfulness is not guaranteed.
+
+Help the other cows determine if the answers given by the Hay Cow
+are self-consistent or if certain answers contradict others.
+
+PROBLEM NAME: bales
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: N and Q
+
+* Lines 2..Q+1: Each line contains three space-separated integers that
+        represent a single query and its reply: Ql, Qh, and A
+
+SAMPLE INPUT (file bales.in):
+
+20 4
+1 10 7
+5 19 7
+3 12 8
+11 15 12
+
+INPUT DETAILS:
+
+The minimum number of bales in stacks 1..10 is 7, the minimum number
+of bales in stacks 5..19 is 7, the minimum number of bales in stacks
+3..12 is 8, and the minimum number of bales in stacks 11..15 is 12.
+
+OUTPUT FORMAT:
+
+* Line 1: Print the single integer 0 if there are no inconsistencies
+        among the replies (i.e., if there exists a valid realization
+        of the hay stacks that agrees with all Q queries).  Otherwise,
+        print the index from 1..Q of the earliest query whose answer
+        is inconsistent with the answers to the queries before it.
+
+SAMPLE OUTPUT (file bales.out):
+
+3
+
+OUTPUT DETAILS:
+
+Query 3 ("3 12 8") is the first that is inconsistent with those
+before it. From queries 1 and 2 and the fact that all hay stacks
+have a distinct number of bales, we deduce that one of stacks 5..10
+must contain exactly 7 bales.  However, this stack contradicts the
+answer to query 3.
+
+**********************************************************************
+
+Problem 2: Artificial Lake [Matt McCutchen, 2006]
+
+The oppressively hot summer days have raised the cows' clamoring
+to its highest level. Farmer John has finally decided to build an
+artificial lake. For his engineering studies, he is modeling the
+lake as a two-dimensional landscape consisting of a contiguous
+sequence of N soon-to-be-submerged levels (1 &lt;= N &lt;= 100,000)
+conveniently numbered 1..N from left to right.
+
+Each level i is described by two integers, its width W_i (1 &lt;= W_i
+&lt;= 1,000) and height (like a relative elevation) H_i (1 &lt;= H_i &lt;=
+1,000,000). The heights of FJ's levels are unique. An infinitely
+tall barrier encloses the lake's model on the left and right. One
+example lake profile is shown below.
+            
+         *             *  :
+         *             *  :
+         *             *  8
+         *    ***      *  7
+         *    ***      *  6
+         *    ***      *  5
+         *    **********  4 &lt;- height
+         *    **********  3
+         ***************  2
+         ***************  1
+Level    |  1 |2|  3   |
+
+In FJ's model, he starts filling his lake at sunrise by flowing
+water into the bottom of the lowest elevation at a rate of 1 square
+unit of water per minute. The water falls directly downward until
+it hits something, and then it flows and spreads as room-temperature
+water always does.  As in all good models, assume that falling and
+flowing happen instantly. Determine the time at which each elevation's
+becomes submerged by a single unit of water.
+
+     WATER              WATER OVERFLOWS                     
+       |                       |                           
+     * |          *      *     |      *      *            *
+     * V          *      *     V      *      *            *
+     *            *      *    ....    *      *~~~~~~~~~~~~*
+     *    **      *      *~~~~** :    *      *~~~~**~~~~~~*
+     *    **      *      *~~~~** :    *      *~~~~**~~~~~~*
+     *    **      *      *~~~~**~~~~~~*      *~~~~**~~~~~~*
+     *    *********      *~~~~*********      *~~~~*********
+     *~~~~*********      *~~~~*********      *~~~~*********
+     **************      **************      **************
+     **************      **************      **************
+
+     After 4 mins        After 26 mins       After 50 mins
+     Lvl 1 submerged     Lvl 3 submerged     Lvl 2 submerged
+
+Warning: The answer will not always fit in 32 bits.
+
+PROBLEM NAME: alake
+
+INPUT FORMAT:
+
+* Line 1: A single integer: N
+
+* Lines 2..N+1: Line i+1 describes level i with two space-separated
+        integers: W_i and H_i
+
+SAMPLE INPUT (file alake.in):
+
+3
+4 2
+2 7
+6 4
+
+INPUT DETAILS:
+
+Three levels just as in the example above.  Water will fill the
+first level because it is the lowest.
+
+OUTPUT FORMAT:
+
+* Lines 1..N: Line i contains a single integer that is the number of
+        minutes that since sunrise when level #i is covered by water
+        of height 1.
+
+SAMPLE OUTPUT (file alake.out):
+
+4
+50
+26
+
+OUTPUT DETAILS:
+
+As in the illustrations above.
+
+**********************************************************************
+
+Problem 3: Cell Phone Network [Jeffrey Wang, 2007]
+
+Farmer John has decided to give each of his cows a cell phone in
+hopes to encourage their social interaction. This, however, requires
+him to set up cell phone towers on his N (1 &lt;= N &lt;= 10,000) pastures
+(conveniently numbered 1..N) so they can all communicate.
+
+Exactly N-1 pairs of pastures are adjacent, and for any two pastures
+A and B (1 &lt;= A &lt;= N; 1 &lt;= B &lt;= N; A != B) there is a sequence of
+adjacent pastures such that A is the first pasture in the sequence
+and B is the last. Farmer John can only place cell phone towers in
+the pastures, and each tower has enough range to provide service
+to the pasture it is on and all pastures adjacent to the pasture
+with the cell tower.
+
+Help him determine the minimum number of towers he must install to
+provide cell phone service to each pasture.
+
+PROBLEM NAME: tower
+
+INPUT FORMAT:
+
+* Line 1: A single integer: N
+
+* Lines 2..N: Each line specifies a pair of adjacent pastures with two
+        space-separated integers: A and B
+
+SAMPLE INPUT (file tower.in):
+
+5
+1 3
+5 2
+4 3
+3 5
+
+INPUT DETAILS:
+
+Farmer John has 5 pastures: pastures 1 and 3 are adjacent, as are pastures
+5 and 2, pastures 4 and 3, and pastures 3 and 5. Geometrically, the
+farm looks like this (or some similar configuration)
+               4  2
+               |  |
+            1--3--5
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer indicating the minimum number of towers to
+        install
+
+SAMPLE OUTPUT (file tower.out):
+
+2
+
+OUTPUT DETAILS:
+
+The towers can be placed at pastures 2 and 3 or pastures 3 and 5.
+
+**********************************************************************
+
+</pre><hr>
+<form action="/ioiupload" enctype="multipart/form-data" method="post">
+<input name="a" value="Nr3xkPXBRFO" type="hidden">
+
+<table>
+<tbody><tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+  <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+  <table bgcolor="#bfffbf" cellpadding="5" width="100%">
+  <tbody><tr><td><b>Submit a program  for grading:&nbsp;<b><input name="filename" type="file">
+  &nbsp;&nbsp;
+  <input value="Submit" name="submit" type="submit"></b></b></td></tr>
+  </tbody></table>
+
+</font></td><td width="1"></td></tr>
+<tr height="1"><td></td></tr>
+</tbody></table>
+
+
+</td></tr>
+
+<tr><td><hr></td></tr>
+
+<tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+   <table bgcolor="#bfffbf" cellpadding="5" width="100%">
+   <tbody><tr><td colspan="2">
+   <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+   <b>To run your program with your own test data, enter the program<br>
+   file name and input file name then click 'Test':</b></font></td></tr>
+
+  <tr><td>
+
+   <table>
+   <tbody><tr><td>
+     <table>
+     <tbody><tr><td>
+     <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+     <b>Program&nbsp;File:&nbsp;</b></font></td>
+         <td><input name="testprogramname" type="file"></td></tr>
+     <tr><td align="right">
+         <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+         <b>Input&nbsp;File:&nbsp;</b></font></td>
+         <td><input name="testfilename" type="file"></td></tr>
+     </tbody></table>
+   </td>
+   <td>&nbsp;&nbsp;</td>
+   <td><input value="Test" name="submit" type="submit"></td>
+   </tr>
+   </tbody></table>
+
+   </td></tr></tbody></table>
+
+</td><td width="1"></td></tr>
+<tr height="1"><td></td></tr>
+</tbody></table>
+
+</td></tr>
+<tr><td><hr></td></tr>
+
+<tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+<table bgcolor="#bfffbf" cellpadding="5" width="100%">
+<tbody><tr><td>
+<font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+<b>Backup a file:&nbsp;</b><input name="backupfilename" type="file">
+&nbsp;&nbsp;&nbsp;<input value="Backup" name="submit" type="submit">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input value="See Backups" name="submit" type="submit">
+</font></td></tr></tbody></table>
+
+</td><td width="1"></td></tr>
+<tr height="1"><td></td><td></td></tr>
+</tbody></table>
+
+</td></tr>
+
+<tr><td><hr></td></tr>
+
+</tbody></table>
+Nothing is currently saved for grading.
+<hr>
+<center>
+<a href="http://ace.delos.com/ioiedit?a=Nr3xkPXBRFO">Edit your database record</a>&nbsp;|&nbsp;
+
+<a href="http://ace.delos.com/ioiupload?a=Nr3xkPXBRFO&amp;logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?init=1&amp;a=Nr3xkPXBRFO">Main contest index</a>
+</center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<a href="http://ace.delos.com/ioiupload?a=Nr3xkPXBRFO&amp;showsubmit">See submitted solutions</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=Nr3xkPXBRFO&amp;suggestionbox">Send message
+to operations staff</a><br>
+Director is currently online (AIM: RobAtDelos)<br>
+This page was generated at 20:18:29 GMT.
+</center>
+
+</form></body></html>

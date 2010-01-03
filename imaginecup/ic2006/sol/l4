@@ -1,0 +1,67 @@
+50
+a:lssrrss
+b:rssssrrssss
+c:rssssssrrssssss
+d:rssssssss
+abcd
+
+42
+lssrrssrssssrrssssrssssssrrssssssrssssssss
+
+16
+z(X):ssrXXz(Xss)
+lz(rss)
+
+16
+h:ss
+z(X):hrXXz(Xh)
+lz(rh)
+
+l ssrrssr
+  ssssrrssssr
+  ssssssrrssssssr
+  ssssssss
+
+15
+z(X):XrrXrz(Xss)
+lz(ss)
+
+14
+z(X):XrXz(ssX)
+lz(ssr)
+
+11
+z(X):XrXz(ssX)
+z(r)
+
+
+
+
+
+
+lssrrssrssssrrssssrssssssrrssssssrssssssss
+
+l ssrrssrss ssrrssssrssss ssrrssssssrssssssss
+
+l ssr rss     rss
+  ssr rssss   rssss
+  ssr rssssss rssssss
+  ss
+
+l ssrrssr
+  ssssrrssssr
+  ssssssrrssssssr
+  ssssssss
+
+14
+z(X):XrXz(ssX)
+lz(ssr)
+
+
+
+11
+z(X):XrXz(ssX)
+z(r)
+
+
+Level 4 is solvable!  In fact, I've found an 11 byte solution (while the limit is 12)

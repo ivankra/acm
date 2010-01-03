@@ -1,0 +1,81 @@
+
+Problem Statement
+ÿÿÿÿ
+Your department is responsible for building highways in your country. Architects have already projected an ideal highway structure. Every highway is two-way and connects exactly two cities. The structure connects all numCities important cities in a country (either directly, or indirectly by other highways), and no highway is redundant (that is, removing any of them will cause the structure to become disconnected). For every highway they estimated a cost for its construction.
+The department has a restricted budget, and thus it cannot necessarily build all projected highways. Therefore, they decided to build highways which fit into budget, and connect as many cities to the capital city as possible (either directly, or indirectly by other built highways).
+You will be given an int numCities, which is the number of cities in your country. The cities are numbered by integers 0, 1, ..., numCities - 1. The number of the capital city is given as an int capital. The projected highways are described in the vector <string> highways. The description of a highway consists of three integers separated by single spaces:
+city1 city2 cost
+where city1 and city2 are the numbers of the cities the highway connects and cost is its estimated cost. Each element of highways is a comma-delimited list of highway descriptions.
+Return the maximal number of cities that can be connected to the capital city by building highways which fit into the given budget.
+Definition
+ÿÿÿÿ
+Class:
+HighwayBuilding
+Method:
+getMaxCities
+Parameters:
+int, int, vector <string>, int
+Returns:
+int
+Method signature:
+int getMaxCities(int numCities, int capital, vector <string> highways, int budget)
+(be sure your method is public)
+ÿÿÿÿ
+
+Notes
+-
+The budget and the estimated costs of highways are in the same monetary units.
+-
+The projected highway structure forms a tree.
+Constraints
+-
+numCities will be between 2 and 100, inclusive.
+-
+capital will be between 0 and numCities - 1, inclusive.
+-
+highways will contain between 1 and 50 elements, inclusive.
+-
+Each element of highways will contain between 1 and 50 characters, inclusive.
+-
+Each element of highways will be a comma-delimited list of highway descriptions that are each formatted as "city1 city2 cost" (quotes for clarity only).
+-
+Each city1 and city2 are integers between 0 and numCities - 1, inclusive. Within each highway description, city1 is different from city2.
+-
+Each cost is an integer between 0 and 1,000,000,000, inclusive.
+-
+All integers in highways will contain no extra leading zeroes.
+-
+Each element of highways will contain no leading, trailing, or multiple commas or spaces.
+-
+highways will describe a non-redundant structure which connects all cities, as described in the statement.
+-
+budget will be between 0 and 1,000,000,000, inclusive.
+Examples
+0)
+
+ÿÿÿÿ
+5
+1
+{"1 0 3,1 2 4,2 4 1,3 2 1"}
+6
+Returns: 3
+We cannot build all highways, but we can build highways between cities 1-2, 2-3, and 2-4. That connects cities 2, 3, and 4 to city 1 (the capital city).
+1)
+
+ÿÿÿÿ
+5
+0
+{"0 1 10","1 2 15,2 3 5","3 4 100000"}
+200000
+Returns: 4
+We can safely build all projected highways.
+2)
+
+ÿÿÿÿ
+3
+0
+{"0 1 10","1 2 9"}
+9
+Returns: 0
+We can only build a highway between cities 1-2, but that doesn't connect any city to the capital.
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

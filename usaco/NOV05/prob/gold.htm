@@ -1,0 +1,254 @@
+<html><head>
+
+<title>USACO Problems</title></head>
+<body background="gold_files/bg9.jpg" bgcolor="#ffffff"><table><tbody><tr>
+<td>
+
+<center><img src="gold_files/cow1.jpg" height="118" width="742"></center>
+</td>
+<td valign="top"></td>
+</tr>
+</tbody></table>
+<center>This page was generated at 18:43:01 GMT.<br>
+<br><font size="6"><b>ANALYSIS MODE</b></font><br>
+Submit solutions for your own enjoyment.
+</center>
+
+<pre></pre>
+<pre>**********************************************************************
+                           GOLD PROBLEMS
+**********************************************************************
+                  Three problems numbered 1 through 3
+**********************************************************************
+
+Problem 1: Asteroids [Gary Sivek, 2004]
+
+Bessie wants to navigate her spaceship through a dangerous asteroid
+field in the shape of an N x N grid (1 &lt;= N &lt;= 500).  The grid
+contains K asteroids (1 &lt;= K &lt;= 10,000), which are conveniently
+located at the lattice points of the grid.
+
+Fortunately, Bessie has a powerful weapon that can vaporize all the
+asteroids in any given row or column of the grid with a single shot.
+This weapon is quite expensive, so she wishes to use it sparingly.
+Given the location of all the asteroids in the field, find the
+minimum number of shots Bessie needs to fire to eliminate all of
+the asteroids.
+
+PROBLEM NAME: asteroid
+
+INPUT FORMAT:
+
+* Line 1: Two integers N and K, separated by a single space.
+
+* Lines 2..K+1: Each line contains two space-separated integers R and
+        C (1 &lt;= R, C &lt;= N) denoting the row and column coordinates of
+        an asteroid, respectively.
+
+SAMPLE INPUT (file asteroid.in):
+
+3 4
+1 1
+1 3
+2 2
+3 2
+
+INPUT DETAILS:
+
+The following diagram represents the data, where "X" is an
+asteroid and "." is empty space:
+X.X
+.X.
+.X.
+
+OUTPUT FORMAT:
+
+* Line 1: The integer representing the minimum number of times Bessie
+        must shoot.
+
+SAMPLE OUTPUT (file asteroid.out):
+
+2
+
+OUTPUT DETAILS:
+
+Bessie may fire across row 1 to destroy the asteroids at (1,1) and
+(1,3), and then she may fire down column 2 to destroy the asteroids
+at (2,2) and (3,2).
+
+**********************************************************************
+
+Problem 2: Grazing on the Run [Brian Dean, 2005]
+
+A long, linear field has N (1 &lt;= N &lt;= 1,000) clumps of grass at
+unique integer locations on what will be treated as a number line.
+Think of the clumps as points on the number line.
+
+Bessie starts at some specified integer location L on the number
+line (1 &lt;= L &lt;= 1,000,000) and traverses the number line in the two
+possible directions (sometimes reversing her direction) in order
+to reach and eat all the clumps.  She moves at a constant speed
+(one unit of distance in one unit of time), and eats a clump instantly
+when she encounters it.
+
+Clumps that aren't eaten for a while get stale.  We say the
+``staleness'' of a clump is the amount of time that elapses from
+when Bessie starts moving until she eats a clump.  Bessie wants to
+minimize the total staleness of all the clumps she eats.
+
+Find the minimum total staleness that Bessie can achieve while
+eating all the clumps.
+
+PROBLEM NAME: ontherun
+
+INPUT FORMAT:
+
+* Line 1 : Two space-separated integers: N and L.
+
+* Lines 2..N+1: Each line contains a single integer giving the
+        position P of a clump (1 &lt;= P &lt;= 1,000,000).
+
+SAMPLE INPUT (file ontherun.in):
+
+4 10
+1
+9
+11
+19
+
+INPUT DETAILS:
+
+Four clumps: at 1, 9, 11, and 19. Bessie starts at location 10.
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer: the minimum total staleness Bessie can
+        achieve while eating all the clumps.
+
+SAMPLE OUTPUT (file ontherun.out):
+
+44
+
+OUTPUT DETAILS:
+
+Bessie can follow this route:
+
+* start at position 10 at time 0
+* move to position 9, arriving at time 1
+* move to position 11, arriving at time 3
+* move to position 19, arriving at time 11
+* move to position 1, arriving at time 29
+
+giving her a total staleness of 1+3+11+29 = 44.  There are other routes
+with the same total staleness, but no route with a smaller one.
+
+**********************************************************************
+
+Problem 3: Walk the Talk [Hal Burch, 2005]
+
+Farmer John has set up a puzzle for his cows to solve.  At the
+entrance to the barn, he has laid out an H x W (1 &lt;= H &lt;= 30, 1 &lt;=
+W &lt;= 30) grid of letters.  Before a cow can enter the barn, she
+must spell out a valid English word by jumping from square to square,
+creating a sequence of letters.  She can start at any square but
+may only jump to a subsequent square that is located to the right
+and/or above the current square (i.e., neither to the left nor
+lower).  The next square can be any distance from the current one
+since the cows are world-class jumpers!
+
+No two cows may traverse the exact same path, although two cows are
+allowed to spell the same word via different paths.
+
+As an example, consider this grid (presuming 'TO' and 'OX' are
+words):
+
+  T X X O
+  T X Q T
+  X T X Q
+
+Four paths are valid, all spelling 'TO' (one spelling requires a
+'T' from the bottom row and an 'O' from the top row).  'OX' is a
+valid word, but would require jumping to an 'X' square left of the
+'O', which is not allowed.
+
+Given the grid and a list of valid words, compute the number of
+cows that can enter the barn without any cow repeating a path.  The
+file `dict.txt' will be available and will contain the list of valid
+words, one per line. See a copy of it at
+http://ace.delos.com/usaco/dict-twalk.txt .
+
+PROBLEM NAME: twalk
+
+INPUT FORMAT:
+
+* Line 1: Two integers: H and W
+
+* Lines 2..H+1: Each line contains W characters, without spaces,
+        representing a row in the grid.  The first row is the top row.
+         The first character in each row is the left-most character.
+
+SAMPLE INPUT (file twalk.in):
+
+3 4
+TXXO
+TXQT
+XTXQ
+
+OUTPUT FORMAT:
+
+* Line 1: The number of cows that can enter the barn without repeating
+        a path.
+
+SAMPLE OUTPUT (file twalk.out):
+
+4
+
+OUTPUT DETAILS:
+
+4 cows can enter the barn, each one spelling out one of the 'TO's.
+
+**********************************************************************
+
+</pre><hr>
+<form action="/ioiupload" enctype="multipart/form-data" method="post">
+<input name="a" value="TFpzNHpM70Y" type="hidden">
+
+<table bgcolor="#bfffbf" cellpadding="5">
+<tbody><tr><td>Use this form to submit a program for grading:</td>
+<td rowspan="3"><input value="Submit" name="submit" type="submit"></td>
+</tr><tr><td width="60%"><b>Program File:</b><input name="filename" type="file"></td>
+    </tr>
+</tbody></table>
+<hr>
+The following solution files are saved for grading:<br>
+<table cellspacing="2">
+<tbody><tr><th>Name</th><th>Size</th><th>When</th><th>Age</th></tr>
+<tr><td><a href="http://ace.delos.com/ioiupload?a=TFpzNHpM70Y&amp;seesaved=numgrid.c">numgrid.c</a></td>
+<td align="right">1039</td>
+<td align="right">15h18:04</td>
+<td align="right">44h24:57</td></tr>
+<tr><td><a href="http://ace.delos.com/ioiupload?a=TFpzNHpM70Y&amp;seesaved=passwd.c">passwd.c</a></td>
+<td align="right">1273</td>
+<td align="right">14h50:14</td>
+<td align="right">44h52:47</td></tr>
+<tr><td><a href="http://ace.delos.com/ioiupload?a=TFpzNHpM70Y&amp;seesaved=satpix.c">satpix.c</a></td>
+<td align="right">1095</td>
+<td align="right">13h56:38</td>
+<td align="right">45h46:23</td></tr>
+</tbody></table>
+<hr>
+<center>
+<a href="http://ace.delos.com/ioiupload?a=TFpzNHpM70Y&amp;logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+ | 
+<a href="http://ace.delos.com/ioiupload?init=1&amp;a=TFpzNHpM70Y">Main contest index</a>
+</center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<a href="http://ace.delos.com/ioiupload?a=TFpzNHpM70Y&amp;showsubmit">See submitted solutions</a>
+ | 
+<a href="http://ace.delos.com/ioiupload?a=TFpzNHpM70Y&amp;suggestionbox">Send message
+to contest director</a><br>
+Director is currently online (AIM: RobAtDelos)
+</center>
+</form></body></html>

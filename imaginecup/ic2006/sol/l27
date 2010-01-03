@@ -1,0 +1,37 @@
+p(X,N):Xp(X,N-1)
+sssp(srsl,3)rssp(srsl,3)rssp(srsl,8)rp(srsl,8)rssp(srsl,3)rssp(srsl,3)lss
+
+
+a:srsl
+  aaraarsaaaaraaaarsaaraa
+ssaaaaraaaarsaaaaaaaaraaaaaaaarsaaaaraaaa
+
+  aa  raa  rsaaaa    raaaa    rsaa  raa   lss
+ssaaaaraaaarsaaaaaaaaraaaaaaaarsaaaaraaaa lss
+
+a:srsl
+z(A):ssArArsAArAArsArAlz(Aaa)
+z(aa)
+
+32
+a:srsl
+z(A):ArArsAArAArsArAlssz(Aaa)
+z(aa)
+
+a:srsl
+z(A):ArArsAArAArsArAlssz(Aaa)
+z(aa)
+
+a:srsl
+z(A):AAsAlAAlAsAAllssz(aaA)
+z(aar)
+
+a:srsl
+d(X,Y):XsYYsX
+z(A):d(AA,AlA)llssz(aaA)
+z(aar)
+
+31
+a:srsl
+z(A):AAsAlAAlAsAAllssz(aaA)
+z(aar)

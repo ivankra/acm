@@ -1,0 +1,376 @@
+<html><head>
+
+<script language="javascript">
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d ";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h ";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m ";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</script><title>USACO Problems</title></head><body onload="endtime = initcount(362199); updateclock('Elite February, 2006', 'Contest', endtime); endtime = initcount(10800); updateclock('Your Contest Session', 'Person', endtime);" bgcolor="#eeffee">
+<center>
+<table><tbody><tr>
+<td>
+<!--<center><img src='/usaco/cow1.jpg' width='742' height='118'></center>-->
+<center><img src="gold_files/cow1.jpg" height="88" width="550"></center>
+</td>
+<td valign="top">
+<table>
+    <tbody><tr><td valign="top"><b>GOLD</b> Division<br></td></tr>
+    <tr><td><div id="Contest">Elite February, 2006: 4d 04h 36m 09s</div></td></tr>
+    <tr><td><div id="Person">Your Contest Session: 02h 59m 30s</div></td></tr>
+    <tr><td></td></tr>
+</tbody></table>
+</td><td></td></tr>
+</tbody></table>
+</center>
+
+
+<pre></pre>
+<pre>**********************************************************************
+                           GOLD PROBLEMS
+**********************************************************************
+                  Four problems numbered 1 through 4
+**********************************************************************
+
+Problem 1: Treats for the Cows [Marco Gallotta, 2005]
+
+FJ has purchased N (1 &lt;= N &lt;= 2000) yummy treats for the cows who
+get money for giving vast amounts of milk. FJ sells one treat per
+day and wants to maximize the money he receives over a given period
+time.
+
+The treats are interesting for many reasons:
+  * The treats are numbered 1..N and stored sequentially in single
+    file in a long box that is open at both ends. On any day, FJ
+    can retrieve one treat from either end of his stash of treats.
+  * Like fine wines and delicious cheeses, the treats improve with
+    age and command greater prices.
+  * The treats are not uniform: some are better and have higher
+    intrinsic value. Treat i has value v(i) (1 &lt;= v(i) &lt;= 1000).
+  * Cows pay more for treats that have aged longer: a cow will
+    pay v(i)*a for a treat of age a.
+
+Given the values v(i) of each of the treats lined up in order of
+the index i in their box, what is the greatest value FJ can receive
+for them if he orders their sale optimally?
+
+The first treat is sold on day 1 and has age a=1. Each subsequent
+day increases the age by 1.
+
+PROBLEM NAME: trt
+
+INPUT FORMAT:
+
+* Line 1: A single integer, N
+
+* Lines 2..N+1: Line i+1 contains the value of treat v(i)
+
+SAMPLE INPUT (file trt.in):
+
+5
+1
+3
+1
+5
+2
+
+INPUT DETAILS:
+
+Five treats. On the first day FJ can sell either treat #1 (value 1) or
+treat #5 (value 2).
+
+OUTPUT FORMAT:
+
+* Line 1: The maximum revenue FJ can achieve by selling the treats
+
+SAMPLE OUTPUT (file trt.out):
+
+43
+
+OUTPUT DETAILS:
+
+FJ sells the treats (values 1, 3, 1, 5, 2) in the following order
+of indices: 1, 5, 2, 3, 4, making 1x1 + 2x2 + 3x3 + 4x1 + 5x5 = 43.
+
+**********************************************************************
+
+Problem 2: Backward Digit Sums [Harry Wiggins, 2002]
+
+FJ and his cows enjoy playing a mental game. They write down the
+numbers from 1 to N (1 &lt;= N &lt;= 10) in a certain order and then sum
+adjacent numbers to produce a new list with one fewer number.  They
+repeat this until only a single number is left.  For example, one
+instance of the game (when N=4) might go like this:
+
+    3   1   2   4
+      4   3   6
+        7   9
+         16
+
+Behind FJ's back, the cows have started playing a more difficult
+game, in which they try to determine the starting sequence from
+only the final total and the number N.  Unfortunately, the game is
+a bit above FJ's mental arithmetic capabilities.
+
+Write a program to help FJ play the game and keep up with the cows.
+
+PROBLEM NAME: bdsum
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: N and the final sum.
+
+SAMPLE INPUT (file bdsum.in):
+
+4 16
+
+OUTPUT FORMAT:
+
+* Line 1: An ordering of the integers 1..N that leads to the given
+        sum.  If there are multiple solutions, choose the one that is
+        lexicographically least, i.e., that puts smaller numbers
+        first.
+
+SAMPLE OUTPUT (file bdsum.out):
+
+3 1 2 4
+
+OUTPUT DETAILS:
+
+There are other possible sequences, such as 3 2 1 4, but 3 1 2 4
+is the lexicographically smallest.
+
+**********************************************************************
+
+Problem 3: Cellphones [Bruce Merry, 2003]
+
+The cows have started using cellphones to cowmunicate with each
+other, but have found that the button layout doesn't suit their
+hooves very well. They are designing a special cellphone will fewer
+but larger buttons.
+
+One feature they liked on the standard cellphones was predictive
+text. Each button has a few letters associated with it, and one
+types a word by pushing the associated buttons. Because there is
+more than one letter for each button, this can be ambiguous for
+some words.  However, most of the time the ambiguity can be resolved
+by using a dictionary to determine what word the user wanted.
+
+Since the cows are designing a custom cellphone, they are also going
+to replace the English alphabet with the Cow alphabet. By an amazing
+coincidence, the cow alphabet is simply the first L (1 &lt;= L &lt;= 26)
+letters of the English alphabet, in the same order. They want to
+find out how to assign the letters of the Cow alphabet to the B
+buttons (1 &lt;= B &lt;= L) in such a way that the maximum number of words
+in their dictionary are unambiguous when entered with predictive
+text. Like normal cellphones, they want the letters on each button
+to be a contiguous section (one or more consecutive letters) of the
+alphabet.
+
+This is a '#FILE' problem -- you calculate the answers on your own
+computer and submit them one output file per submission.  Precede
+each output file with a #FILE header like this:
+
+#FILE cell 3
+
+where '3' is the case number of the solution you're submitting.  Of
+course, you'll substitute other numbers for 3!
+
+The input data is found at http://ace.delos.com/cell.zip 
+
+PROBLEM NAME: cell
+
+INPUT FORMAT:
+
+* Line 1: A single integer, N, indicating the number of the current
+        test case. This is the number which must appear in the #FILE
+        header at the top of your output.
+
+* Line 2: Two space-separated integers: B and L
+
+* Line 3: D, the number of words in the dictionary (1 &lt;= D &lt;= 1000)
+
+* Lines 4..D+3: Each line contains one word from the dictionary in
+        upper case and of length 1..10 characters. The words are
+        presented in alphabetical order and with no duplicates.
+
+SAMPLE INPUT (file cell.in):
+
+1
+3 13
+11
+ALL
+BALL
+BELL
+CALK
+CALL
+CELL
+DILL
+FILL
+FILM
+ILL
+MILK
+
+OUTPUT FORMAT:
+
+* Line 1: The header, as described above
+
+* Line 2: The number of words in the Cow dictionary that have unique
+        button sequences.
+
+* Lines 3..B+2: The nth line contains the letters that appear on
+        button n, in upper case and alphabetical order. The lines must
+        be listed in alphabetical order, and every Cow letter must
+        appear exactly once. If there is more than one optimal
+        solution, use the one that places the most letters on button
+        1. Ties are broken by placing the most letters on button 2,
+        etc.
+
+SAMPLE OUTPUT (file cell.out):
+
+#FILE cell 1
+7
+AB
+CDEFGHIJK
+LM
+
+OUTPUT DETAILS:
+
+Button 1 contains AB, button two contains C-K, and button 3 contains
+LM. The words CELL, DILL, FILL and FILM are all entered as 2233,
+while the remaining 7 words are all entered uniquely.
+
+**********************************************************************
+
+Problem 4: Steady Cow Assignment [Coaches, 2004]
+
+Farmer John's N (1 &lt;= N &lt;= 1000) cows each reside in one of B (1
+&lt;= B &lt;= 20) barns which, of course, have limited capacity. Some
+cows really like their current barn, and some are not so happy.
+
+FJ would like to rearrange the cows such that the cows are as equally
+happy as possible, even if that means all the cows hate their
+assigned barn.
+
+Each cow gives FJ the order in which she prefers the barns.  A cow's
+happiness with a particular assignment is her ranking of her barn.
+Your job is to find an assignment of cows to barns such that no
+barn's capacity is exceeded and the size of the range (i.e., one
+more than the positive difference between the the highest-ranked
+barn chosen and that lowest-ranked barn chosen) of barn rankings
+the cows give their assigned barns is as small as possible.
+
+Time limit: 2 seconds for each test case
+
+PROBLEM NAME: stead
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers, N and B
+
+* Lines 2..N+1: Each line contains B space-separated integers which
+        are exactly 1..B sorted into some order. The first integer on
+        line i+1 is the number of the cow i's top-choice barn, the
+        second integer on that line is the number of the i'th cow's
+        second-choice barn, and so on.
+
+* Line N+2: B space-separated integers, respectively the capacity of
+        the first barn, then the capacity of the second, and so on. 
+        The sum of these numbers is guaranteed to be at least N.
+
+SAMPLE INPUT (file stead.in):
+
+6 4
+1 2 3 4
+2 3 1 4
+4 2 3 1
+3 1 2 4
+1 3 4 2
+1 4 2 3
+2 1 3 2
+
+OUTPUT FORMAT:
+
+* Line 1: One integer, the size of the minumum range of barn rankings
+        the cows give their assigned barns, including the endpoints.
+
+SAMPLE OUTPUT (file stead.out):
+
+2
+
+OUTPUT DETAILS:
+
+Each cow can be assigned to her first or second choice: barn 1 gets
+cows 1 and 5, barn 2 gets cow 2, barn 3 gets cow 4, and barn 4 gets
+cows 3 and 6.
+
+**********************************************************************
+
+</pre><hr>
+<form action="/ioiupload" enctype="multipart/form-data" method="post">
+<input name="a" value="QIcq6ov3zKK" type="hidden">
+
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td height="1"></td><td>
+
+</td></tr><tr><td width="1"></td><td>
+
+<table bgcolor="#bfffbf" cellpadding="5">
+<tbody><tr><td>Use this form to submit a program for grading:</td>
+<td rowspan="3"><input value="Submit" name="submit" type="submit"></td>
+</tr><tr><td width="60%"><b>Program File:</b><input name="filename" type="file"></td>
+    </tr>
+</tbody></table>
+</td><td width="1"></td>
+
+</tr><tr height="1"><td></td><td></td></tr>
+</tbody></table>
+<hr>
+Nothing is currently saved for grading.
+<hr>
+<center>
+<a href="http://ace.delos.com/ioiedit?a=QIcq6ov3zKK">Edit your database record</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=QIcq6ov3zKK&amp;logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?init=1&amp;a=QIcq6ov3zKK">Main contest index</a>
+</center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<a href="http://ace.delos.com/ioiupload?a=QIcq6ov3zKK&amp;showsubmit">See submitted solutions</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=QIcq6ov3zKK&amp;suggestionbox">Send message
+to contest director</a><br>
+Director is not online<br>
+This page was generated at 10:23:21 GMT.
+</center>
+</form></body></html>

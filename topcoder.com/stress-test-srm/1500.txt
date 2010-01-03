@@ -1,0 +1,57 @@
+
+Problem Statement
+    
+We have a number of periodic tasks, each with its own period and execution time. At the beginning of each period of the task (at time 0, 0+period, 0+2*period, ...) a job becomes ready to run, requiring execution time on the cpu.
+The jobs are scheduled preemptively, based on the priority of the task to which they belong. Among all the jobs that are ready to execute, the job that is running on the cpu is always a job from the highest priority task. If a job from a higher priority task becomes ready, the currently running job is removed from the cpu and will remain ready to execute, needing only the remainder of its original execution time.
+The response time for a job is the time between when it first became ready, and when it completed its execution. Create a class Response that contains a method response that is given int[] period and int[] execution and that returns the response time of the first job of the lowest priority task. If the response time is greater than 1,000,000 or if the first job of the lowest priority task never finishes return -1.
+The i-th element of period and the i-th element of execution apply to the i-th task. The tasks are given in order of decreasing priority.
+Definition
+    
+Class:
+Response
+Method:
+response
+Parameters:
+vector <int>, vector <int>
+Returns:
+int
+Method signature:
+int response(vector <int> period, vector <int> execution)
+(be sure your method is public)
+    
+
+Constraints
+-
+period and execution will both have n elements, where n is between 1 and 50 inclusive.
+-
+The elements of period and execution will be between 1 and 1,000 inclusive.
+Examples
+0)
+
+    
+{20,2,27}
+{4,1,8}
+Returns: 32
+The schedule is as follows, referring to the tasks in order as A, B, and C: The first job of A runs from 0-4. Then the first 5 jobs of B are executed from 4-9. Then C's first job runs from 9-10 and is interrupted at time 10 when B's next job becomes ready. The remaining usage of the processor continues as follows: B:10-11, C:11-12: B:12-13, C:13-14, B:14-15, C:15-16, B:16-17, C:17-18, B:18-19, C:19-20, A:20-24, B:24-29, C:29-30, B:30-31, C:31-32. At this point C has accumulated 8 units of cpu time so its first job has finished executing.
+1)
+
+    
+{8,8,8,8}  
+{3,4,1,1}
+Returns: -1
+The fourth task will never get a chance to execute. The three higher priority tasks each finish one job every 8 time units and are all ready to execute their next jobs at that time.
+2)
+
+    
+{17}
+{25}
+Returns: 25
+The first job of the only task gets to run right away with no interruption. The second job of a task cannot compete for the processor until the previous job of that task has completed.
+3)
+
+    
+{10,20,30,40,50}
+{2,4,6,8,10}
+Returns: 76
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

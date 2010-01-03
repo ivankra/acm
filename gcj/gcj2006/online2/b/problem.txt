@@ -1,0 +1,63 @@
+
+Problem Statement
+ÿÿÿÿ
+Your company has built totalParts components and has evenly distributed them into numBins containers. Some of the digits in totalParts may be erroneous. Return the smallest number of digits that need to be changed in totalParts such that it is an integer multiple of numBins. You may not add or remove digits, but leading digits can be changed into zeros.
+Definition
+ÿÿÿÿ
+Class:
+DigitCorrections
+Method:
+getMin
+Parameters:
+string, int
+Returns:
+int
+Method signature:
+int getMin(string totalParts, int numBins)
+(be sure your method is public)
+ÿÿÿÿ
+
+Constraints
+-
+totalParts will contain between 1 and 50 digits ('0'-'9'), inclusive.
+-
+The first character of totalParts will not be '0'.
+-
+numBins will be between 1 and 50000, inclusive.
+Examples
+0)
+
+ÿÿÿÿ
+"22"
+100
+Returns: 2
+The only solution here is to change both digits to 0.
+1)
+
+ÿÿÿÿ
+"1004"
+25
+Returns: 1
+Changing 4 to 0 requires the fewest changes.
+2)
+
+ÿÿÿÿ
+"203"
+107
+Returns: 2
+Here we can change the last two digits to 14.
+3)
+
+ÿÿÿÿ
+"882349823048203948203948230948230498"
+49999
+Returns: 3
+
+4)
+
+ÿÿÿÿ
+"12345678901234567890123456789012345678901234567890"
+50000
+Returns: 4
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

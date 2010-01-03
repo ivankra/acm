@@ -1,0 +1,59 @@
+     people   duration
+w1:  10       20
+      >       
+w2:  5        50
+
+r1:  10       50
+              <
+     11       60
+
+
+workshop 1:  w1.p  w1.d
+workshop 2:  w2.p  w2.d
+
+room 1       r1.p  r2.d
+room 2       r2.p  r2.d
+
+lemma:
+       if
+              w1.p >= w2.p
+              r1.d <= r2.d
+              w1, w2 can be assigned to r1
+              w1 can be assigned to r2
+       then
+              w2 can be assigned to r2
+proof: direct
+
+corollary:
+
+given a free room (r1) of smallest possible d,
+the admissible workshop (w1) with largest
+possible p should be chosen for it in an optimal solution.
+
+suppose in some optimal solution w1 is matched with r2, and w2 is matched with r1,
+then by choice of r1, w1
+   w1.p >= w2.p
+   r1.d <= r2.d
+   w1, w2 can be assigned to r1
+   w1 can be assigned to r2
+hence by lemma  both w1, w2 can be assigned to any r1, r2, so by swapping
+we'll still get an optimal solution.
+
+
+        // .       .   .
+        // 1     2 3 4 5
+        // 1 1 1   3     7
+
+        // (people, duration)
+        //
+        // (5, 10)
+        // (12, 5)
+        //
+        //  (20, 10) (10, 20) 
+        // ===== 10
+        // ========= 7
+        // ===12
+        //
+        // ******
+        // *************
+        //

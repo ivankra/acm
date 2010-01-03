@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Strict//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="description" content="Internet Problem Solving Contest (IPSC) is an online programming contest for teams up three people.">
+  <meta name="keywords" content="IPSC, programming, contest, online contest">
+  <title>IPSC 2006 - Sample Problem&nbsp;Q - Labyrinth</title>
+  <LINK REL="SHORTCUT ICON" HREF="http://ipsc.ksp.sk/images/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="main.css">
+  </head>
+  <body>
+<div class="title">
+<div class="ipscimg">
+<a href="http://ipsc.ksp.sk/index.php"><img src="ipsc.gif"
+alt="IPSC Logo"></a>
+</div>
+<div class="nadpis">
+<h1>Internet Problem Solving Contest</h1>
+<h2>IPSC 2006<br>Sample Problem&nbsp;Q - Labyrinth</h2>
+</div>
+</div>
+<div class="telo">
+<ul>
+<li><a href="q1.in">Easy input data set - Q1</a></li>
+<li><a href="q2.in">Difficult input data set - Q2</a></li>
+</ul>
+
+<p>Fred is a robotic mouse built by a group of students of
+artificial intelligence. Fred can move around in the labyrinth shown
+in the picture below. Whenever Fred comes to a place marked by a
+number, he has to choose one of the possible directions. Behavior of the
+mouse should look chaotic and complex enough so that it will impress
+students' supervisor. </p> <div align="center"><center>
+
+<pre> +--------4
+ |        |
+ |  8--9  |
+ |  |  |  |
+ 2--7--0  |
+ |  |     |
+ 1  6-----+</pre>
+</center></div>
+
+<p>Numbered places in the labyrinth are called nodes. Fred has
+one integer <em>X</em> stored in its memory and can perform some
+calculations. In each node (except node 1) he chooses
+a direction according to <em>X</em>, decreases <em>X</em> by 1
+and goes to the chosen node. The direction is chosen according to
+this rules: </p>
+
+<pre><strong>Node 2:</strong> Compute X mod 3.
+        If the result is 0, go to 7
+                         1, go to 1
+                         2, go to 4.
+
+<strong>Node 4:</strong> Let Y be X written backwards (in decimal system).
+        If Y&gt;X then go to 6 otherwise go to 2.
+
+<strong>Node 6:</strong> Compute the number of digits of X (in decimal system).
+        If the result is even then go to 4 otherwise go to 7.
+
+<strong>Node 7:</strong> Compute (X*X) mod 7.
+        If the result is 0 go to 2
+                         1 go to 6
+                         2 go to 8
+                         4 go to 0.
+
+<strong>Node 8:</strong> Compute X mod 5.
+        If the result is 2 or 3 then go to 7 otherwise go to 9.
+
+<strong>Node 9:</strong> If you have come from 8 then go to 0.
+        If you have come from 0 then go to 8.
+
+<strong>Node 0:</strong> Let Y be the third least significant digit of X in decimal system
+        (if X&lt;100 then Y=0). If Y&lt;=7 then go to 7 otherwise go to 9. </pre>
+
+<p>At the beginning of each experiment, the experimenter puts the
+mouse in the node 0 and initializes value <em>X</em> by voice.
+After that, the mouse starts to move. The mouse displays current value of
+<em>X</em> on its digital display. The experiment finishes when the mouse
+enters the node 1, the result of the experiment is the number displayed. If
+the value of <em>X</em> decreases to zero, the experiment fails and its
+result is -1. </p>
+
+<H3>Input specification</H3>
+
+<p>
+The input file contains
+several initial values of <em>X</em> as they were told by
+the experimenter.
+</p>
+
+<H3>Output specification</H3>
+
+<p>
+For each value of <em>X</em>
+in the input file write to a separate line of the output file the
+result of the corresponding experiment (see example output). </p>
+
+<H3>Example</H3>
+<b>Input:</b>
+<pre>
+thirteen
+fourteen
+one-thousand
+</pre>
+
+<b>Output:</b>
+<pre>
+-1
+9
+789
+</pre>
+
+</div>
+
+</body>
+</html>

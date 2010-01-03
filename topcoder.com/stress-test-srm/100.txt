@@ -1,0 +1,64 @@
+
+Problem Statement
+    
+We are looking for occurrences of the string "red" in a piece of text. For example, in the text
+
+    the detective questioned his credibility
+we find "red" inside the word "credibility".
+Capitalization doesn't matter, so in the text
+
+    Server ERRED in Redirecting Spam
+we find "red" at the end of "ERRED", as well as at the beginning of "Redirecting".
+Given a string, count the number of times "red" appears in it with any capitalization.
+Definition
+    
+Class:
+CodeRed
+Method:
+count
+Parameters:
+string
+Returns:
+int
+Method signature:
+int count(string text)
+(be sure your method is public)
+    
+
+Constraints
+-
+text will be between 1 and 50 characters long, inclusive.
+-
+The only characters allowed in text will be letters ('A'-'Z' and 'a'-'z') and spaces (' ').
+Examples
+0)
+
+    
+"the detective questioned his credibility"
+Returns: 1
+
+1)
+
+    
+"Server ERRED in Redirecting Spam"
+Returns: 2
+
+2)
+
+    
+"  read the RED sign   said fReD"
+Returns: 2
+
+3)
+
+    
+"pure delight"
+Returns: 0
+
+4)
+
+    
+"re"
+Returns: 0
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

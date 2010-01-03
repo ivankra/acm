@@ -1,0 +1,119 @@
+<html><head><title>JAN06 graze1 analysis</title></head><body bgcolor="#ffffff">
+<center><img src="graze1_files/cow1.jpg" height="118" width="742"></center>
+<h2>January 2006 Problem 'graze1' Analysis</h2>
+<h4>by Bruce Merry</h4>
+
+<p> The conditions are specified in a somewhat 'interesting' manner.
+It would be equivalent to say that
+</p><ul>
+<li> there must be a cow at each end (unless N = 1)</li>
+<li>the inter-cow distances must vary by at most 1.</li>
+</ul>
+
+<p>From that it is clear that the inter-cow distances must be the
+floor and ceiling of L / (N - 1). Some simple arithmetic will then
+give you the number of each gap size to obtain the total length of
+L.
+
+</p><p>At this point it is very tempting to use a greedy solution; that
+is, place each cow in turn as close to its original position as
+possible while still making it possible to meet the conditions
+(indeed it was so tempting that some of the coaches fell into the
+trap).  Unfortunately, the greedy algorithm turns out to make local
+optimisations at the expense of global optimisation. An example of
+this would be the initial arrangement
+</p><pre>1 2 - - - 3 4 5
+</pre>
+
+<p>There will be one 1-step jump and three 2-step jumps, and the
+optimal arrangement (with total cost 2) is
+
+</p><pre>1 - 2 - 3 - 4 5
+</pre>
+
+<p>However, a greedy algorithm would immediately place cow 2 in the
+same place as it started, forcing the arrangement (with total cost
+3)
+
+</p><pre>1 2 - 3 - 4 - 5
+</pre>
+
+<p>The correct solution is to use dynamic programming (if you don't
+know what dynamic programming is, look it up in an algorithms
+textbook or on the web, e.g., at <a href="http://people.cs.uct.ac.za/%7Ebmerry/manual/algorithms/dp.html">
+http://people.cs.uct.ac.za/~bmerry/manual/algorithms/dp.html</a>).
+
+</p><p>For each cow, there is a range of places in which it could be:
+the first cow must be at position 0, the second cow could be at
+position D or D + 1, and so on (the constraints are that it must
+be possible to fit in the other cows on either side using steps of
+D or D + 1). For each position of each cow, we can work out the
+minimum cost of placing that cow and all the cows to the left of
+it. If f(c, p) is the minimum cost of placing cows 1..c with cow c
+at point p, then
+</p><pre>f(1, 0) = start(1)
+f(c, p) = |start(c) - p| + min(f(c - 1, p - D), f(c - 1, p - D - 1))
+</pre>
+
+where D and D + 1 are the legal inter-cow distances. In some cases
+one of the expressions inside the min will put a cow at an illegal
+point (in that the other cows cannot be fitted around it); in this
+case one just takes the other expression.
+
+<p>The memory requirement is only linear, since row c can be computed from
+row c - 1, after which row c - 1 can be discarded. The run-time
+efficiency is O(N<sup>2</sup>).
+
+</p><pre>#include &lt;fstream&gt;
+#include &lt;algorithm&gt;
+#include &lt;iterator&gt;
+#include &lt;vector&gt;
+#include &lt;utility&gt;
+
+using namespace std;
+
+static pair&lt;int, int&gt; dp_range(int x, int N, int L, int D) {
+    int lleft = x * D;
+    int hleft = x * (D + 1);
+    int lright = L - (N - 1 - x) * (D + 1);
+    int hright = L - (N - 1 - x) * D;
+    return make_pair(max(lleft, lright), min(hleft, hright));
+}
+
+int main() {
+    ifstream in("graze1.in");
+    ofstream out("graze1.out");
+    vector&lt;int&gt; start;
+    vector&lt;int&gt; dp, old;
+    int N, L, D;
+
+    in &gt;&gt; N &gt;&gt; L;
+    D = L / (N - 1);
+    start.resize(N);
+    for (int i = 0; i &lt; N; i++) in &gt;&gt; start[i];
+
+    if (N == 1) {
+        out &lt;&lt; "0\n";
+        return 0;
+    }
+
+    dp.resize(L + 1);
+    old.resize(L + 1);
+    dp[0] = start[0];
+    for (int i = 1; i &lt; N; i++) {
+        swap(dp, old);
+        pair&lt;int, int&gt; oldr = dp_range(i - 1, N, L, D);
+        pair&lt;int, int&gt; r = dp_range(i, N, L, D);
+        for (int j = r.first; j &lt;= r.second; j++) {
+            dp[j] = INT_MAX;
+            if (j - (D + 1) &gt;= oldr.first) dp[j] = min(dp[j], old[j - (D + 1)]);
+            if (j - D &lt;= oldr.second) dp[j] = min(dp[j], old[j - D]);
+            dp[j] += abs(start[i] - j);
+        }
+    }
+
+    out &lt;&lt; dp[L] &lt;&lt; "\n";
+    return 0;
+}
+</pre>
+</body></html>

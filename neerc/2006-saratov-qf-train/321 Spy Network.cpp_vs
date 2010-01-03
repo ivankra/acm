@@ -1,0 +1,73 @@
+#include <cstdio>
+#include <cstring>
+#include <cstdlib>
+#include <cassert>
+#include <cctype>
+#include <cmath>
+#include <ctime>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <iostream>
+#include <sstream>
+using namespace std;
+
+const int MaxN = 300000;
+
+int N, color[MaxN], kid[MaxN], sib[MaxN], channel[MaxN], need[MaxN];
+vector<int> out;
+
+void dfs1(int x, int depth, int colored) {
+	need[x] = max(0, (depth+1)/2 - colored);
+	for (int y = kid[x]; y > 0; y = sib[y]) {
+		dfs1(y, depth+1, colored + color[y]);
+		need[x] = max(need[x], need[y]);
+	}
+}
+
+void dfs2(int x, int added) {
+	for (int y = kid[x]; y > 0; y = sib[y]) {
+		if (color[y] == 0 && need[y] > added) {
+			out.push_back(channel[y]);
+			dfs2(y, added+1);
+		} else {
+			dfs2(y, added);
+		}
+	}
+}
+
+int main()
+{
+	scanf("%d", &N);
+	for (int i = 0; i <= N; i++)
+		kid[i] = sib[i] = color[i] = channel[i] = 0;
+
+	for (int i = 0; i < N-1; i++) {
+		int x, y;
+		char word[1000];
+
+		scanf("%d %d %s", &x, &y, word);
+		sib[x] = kid[y];
+		kid[y] = x;
+		if (toupper(word[0]) == 'A') {
+			color[x] = 0;
+			scanf(" %s", word);
+		} else {
+			color[x] = 1;
+		}
+		channel[x] = i+1;
+	}
+
+	int root;
+	for (root = N; root > 1 && channel[root] != 0; root--);
+
+	out.clear();
+	dfs1(root, 0, 0);
+	dfs2(root, 0);
+
+	sort(out.begin(), out.end());
+	printf("%d\n", out.size());
+	for (int i = 0; i < (int)out.size(); i++)
+		printf(i ? " %d" : "%d", out[i]);
+	printf("\n");
+}

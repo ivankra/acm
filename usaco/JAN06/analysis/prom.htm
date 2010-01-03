@@ -1,0 +1,86 @@
+<html><head><title>JAN06 prom analysis</title></head><body bgcolor="#ffffff">
+<center><img src="prom_files/cow1.jpg" height="118" width="742"></center>
+<h2>January 2006 Problem 'prom' Analysis</h2>
+<h4>by Bruce Merry</h4>
+
+<p> Construct a directed graph with cows as vertices and ropes as
+directed edges. A set of cows forms a group if and only if there
+are more than one of them (a group) and they form a strongly connected
+component. Any good algorithms textbook should have a discussion
+of strongly connected components and how to find them.
+
+</p><pre>#include &lt;fstream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+struct cow {
+    int id;
+    vector&lt;int&gt; edges;
+};
+
+static int N;
+static vector&lt;cow&gt; cows;
+static vector&lt;int&gt; component;
+static int G = 0;
+
+static int dfs(int x) {
+    static int pool = 0;
+    int top;
+
+    component.push_back(x);
+    cows[x].id = pool++;
+    top = cows[x].id;
+    for (vector&lt;int&gt;::iterator e = cows[x].edges.begin(); e != cows[x].edges.end(); e++) {
+        if (cows[*e].id == -1)
+            top &lt;?= dfs(*e);
+        else
+            top &lt;?= cows[*e].id;
+    }
+
+    if (top == cows[x].id) {
+        int sz = 0;
+        while (component.back() != x)
+        {
+            sz++;
+            cows[component.back()].id = INT_MAX;
+            component.pop_back();
+        }
+        sz++;
+        component.pop_back();
+        cows[x].id = INT_MAX;
+        if (sz &gt; 1) G++;
+    }
+    return top;
+}
+
+int main() {
+    int M;
+
+    ifstream in("prom.in");
+    in &gt;&gt; N &gt;&gt; M;
+    cows.resize(N);
+
+    for (int i = 0; i &lt; M; i++) {
+        int A, B;
+        in &gt;&gt; A &gt;&gt; B;
+        assert(1 &lt;= A &amp;&amp; A &lt;= N);
+        assert(1 &lt;= B &amp;&amp; B &lt;= N);
+        assert(A != B);
+        A--;
+        B--;
+        cows[A].edges.push_back(B);
+    }
+
+    for (int i = 0; i &lt; N; i++)
+        cows[i].id = -1;
+    for (int i = 0; i &lt; N; i++)
+        if (cows[i].id == -1) dfs(i);
+
+    ofstream out("prom.out");
+    out &lt;&lt; G &lt;&lt; "\n";
+    return 0;
+}
+</pre>
+</body></html>

@@ -1,0 +1,58 @@
+41
+q(X):XXXX
+a:q(rsss)
+b:q(lsss)
+c:q(ss)
+sq(acalcblcrbllcssss)
+
+q(X):XXXX
+a:q(rsss)
+b:q(lsss)
+c:q(ss)
+q(sacalcblcrbllcsss)
+
+34
+d(X):XX
+q(X):d(XX)
+x:sd(rd(ss))
+xq(q(rq(sssr)q(sss))rssss)
+
+q(X):XXXX
+srq(s)q(rq(s)q(rq(sssr)q(sss)))
+
+25
+q(X):XXXX
+srq(s)q(rq(s)q(rq(sssr)q(sss)))
+
+22
+q(X):XXXX
+sq(rq(s)q(rq(sssr)q(sss)))
+
+q(X):XXXX
+sq(rq(s)q(rq(sssr)q(sss)))
+
+
+q(X):XXXX
+sq(
+  rssss
+  q(
+    rq(sssr)q(sss)
+    rsss rsss rsss rsss rsss sss sss sss
+  )
+)
+
+q(X):XXXX
+sq(rq(s)q(q(rsss)rq(sss)))
+
+q(X):XXXX
+sq(q(q(rsss)rq(sss))rq(s))
+sq(q(rq(sssr)q(sss))rq(s))
+
+21
+q(X):XXXX
+t:sss
+q(sq(q(rt)rq(t))rt)
+
+q(X):XXXX
+t:sss
+q(sq(q(rt)rq(t))rt)

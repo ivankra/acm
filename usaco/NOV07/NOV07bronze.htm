@@ -1,0 +1,373 @@
+<html><head>
+
+<meta http-equiv="Pragma" content="no-cache">
+<script language="javascript">
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</script><title>USACO Problems</title></head><body onload="" background="NOV2007bronze_files/bg9gold.jpg">
+
+<font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+<table><tbody><tr>
+<td><img src="NOV2007bronze_files/cowhead2.gif">
+</td>
+<td valign="top">
+<table cellpadding="0" cellspacing="0">
+    <tbody><tr><td>Contest: NOV07 <b>GOLD</b> Division</td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    
+</tbody></table>
+</td></tr>
+</tbody></table>
+<font color="red"><b>
+</b></font>
+
+<br><font size="6"><b>ANALYSIS MODE</b></font><br>
+Submit solutions for your own enjoyment.
+
+</font><pre></pre>
+<pre>**********************************************************************
+                           BRONZE PROBLEMS
+**********************************************************************
+                  Three problems numbered 11 through 13
+**********************************************************************
+
+Problem 11: Exploration [Jeffrey Wang, 2007]
+
+Bessie is traveling on a road teeming with interesting landmarks.
+The road is labeled just like a number line, and Bessie starts at
+the "origin" (x = 0). A total of N (1 &lt;= N &lt;= 50,000) landmarks are
+located at points x_1, x_2, ..., x_N  (-100,000 &lt;= x_i &lt;= 100,000).
+Bessie wants to visit as many landmarks as possible before sundown,
+which occurs in T (1 &lt;= T &lt;= 1,000,000,000) minutes. She travels 1
+distance unit in 1 minute.
+
+Bessie will visit the landmarks in a particular order. Since the
+landmarks closer to the origin are more important to Farmer John,
+she always heads for the unvisited landmark closest to the origin.
+No two landmarks will be the same distance away from the origin.
+
+Help Bessie determine the maximum number of landmarks she can visit
+before the day ends.
+
+PROBLEM NAME: explore
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: T and N
+
+* Lines 2..N+1: Line i+1 contains a single integer that is the
+        location of the ith landmark: x_i
+
+SAMPLE INPUT (file explore.in):
+
+25 5
+10
+-3
+8
+-7
+1
+
+INPUT DETAILS:
+
+Bessie has 25 minutes before sundown, and there are 5 landmarks
+located at positions 10, -3, 8, -7, and 1.
+
+OUTPUT FORMAT:
+
+* Line 1: The maximum number of landmarks Bessie can visit.
+
+SAMPLE OUTPUT (file explore.out):
+
+4
+
+OUTPUT DETAILS:
+
+Bessie sequentially visits the landmarks at locations 1, -3, -7,
+and 8, after which she has traveled a total of 24 minutes.  She
+cannot visit the next intended landmark at position 10, since this
+would extend her total travel time to 26 minutes.
+
+**********************************************************************
+
+Problem 12: Speed Reading [Jeffrey Wang, 2007]
+
+All K (1 &lt;= K &lt;= 1,000) of the cows are participating in Farmer
+John's annual reading contest. The competition consists of reading
+a single book with N (1 &lt;= N &lt;= 100,000) pages as fast as possible
+while understanding it.
+
+Cow i has a reading speed S_i (1 &lt;= S_i &lt;= 100) pages per minute,
+a maximum consecutive reading time T_i (1 &lt;= T_i &lt;= 100) minutes,
+and a minimum rest time R_i (1 &lt;= R_i &lt;= 100) minutes.  The cow can
+read at a rate of S_i pages per minute, but only for T_i minutes
+at a time. After she stops reading to rest, she must rest for R_i
+minutes before commencing reading again.
+
+Determine the number of minutes (rounded up to the nearest full
+minute) that it will take for each cow to read the book.
+
+PROBLEM NAME: read
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: N and K
+
+* Lines 2..K+1: Line i+1 contains three space-separated integers: S_i,
+        T_i, and R_i
+
+SAMPLE INPUT (file read.in):
+
+10 3
+2 4 1
+6 1 5
+3 3 3
+
+INPUT DETAILS:
+
+The book has 10 pages; 3 cows are competing. The first cow reads
+at a rate of 2 pages per minute, can read for at most 4 minutes at
+a time, and must rest for 1 minute after reading. The second reads
+at a rate of 6 pages per minute, can read for at most 1 minute at
+a time, and must rest 5 minutes after reading. The last reads at a
+rate of 3 pages per minute, can read for at most 3 minutes at a
+time, and must rest for 3 minutes after reading.
+
+OUTPUT FORMAT:
+
+* Lines 1..K: Line i should indicate how many minutes (rounded up to
+        the nearest full minute) are required for cow i to read the
+        whole book.
+
+SAMPLE OUTPUT (file read.out):
+
+6
+7
+7
+
+OUTPUT DETAILS:
+
+The first cow can read 8 pages in 4 minutes, rest for 1 minute, and
+read the last 2 pages in a minute. The second reads 6 pages in a
+minute, rests for 5 minutes, and finishes in the next minute. The
+last reads 9 pages in 3 minutes, rests for 3 minutes, and finishes
+in the next minute.
+
+**********************************************************************
+
+Problem 13: Avoid The Lakes [Jeffrey Wang, 2007]
+
+Farmer John's farm was flooded in the most recent storm, a fact
+only aggravated by the information that his cows are deathly afraid
+of water. His insurance agency will only repay him, however, an
+amount depending on the size of the largest "lake" on his farm.
+
+The farm is represented as a rectangular grid with N (1 &lt;= N &lt;=
+100) rows and M (1 &lt;= M &lt;= 100) columns. Each cell in the grid is
+either dry or submerged, and exactly K (1 &lt;= K &lt;= N*M) of the cells
+are submerged. As one would expect, a lake has a central cell to
+which other cells connect by sharing a long edge (not a corner).
+Any cell that shares a long edge with the central cell or shares a
+long edge with any connected cell becomes a connected cell and is
+part of the lake.
+
+PROBLEM NAME: lake
+
+INPUT FORMAT:
+
+* Line 1: Three space-separated integers: N, M, and K
+
+* Lines 2..K+1: Line i+1 describes one submerged location with two
+        space separated integers that are its row and column: R and C
+
+SAMPLE INPUT (file lake.in):
+
+3 4 5
+3 2
+2 2
+3 1
+2 3
+1 1
+
+INPUT DETAILS:
+
+The farm is a grid with three rows and four columns; five of the cells
+are submerged. They are located in the positions (row 3, column 2);
+(row 2, column 2); (row 3, column 1); (row 2, column 3); (row 1,
+column 1):
+              # . . .
+              . # # .
+              # # . .
+
+OUTPUT FORMAT:
+
+* Line 1: The number of cells that the largest lake contains.
+
+SAMPLE OUTPUT (file lake.out):
+
+4
+
+OUTPUT DETAILS:
+
+The largest lake consists of the input's first four cells.
+
+**********************************************************************
+
+</pre><hr>
+<form action="/ioiupload" enctype="multipart/form-data" method="post">
+<input name="a" value="0P3NIG3IZU5" type="hidden">
+
+<table>
+<tbody><tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+  <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+  <table bgcolor="#bfffbf" cellpadding="5" width="100%">
+  <tbody><tr><td><b>Submit a program  for grading:&nbsp;<b><input name="filename" type="file">
+  &nbsp;&nbsp;
+  <input value="Submit" name="submit" type="submit"></b></b></td></tr>
+  </tbody></table>
+
+</font></td><td width="1"></td></tr>
+<tr height="1"><td></td></tr>
+</tbody></table>
+
+
+</td></tr>
+
+<tr><td><hr></td></tr>
+
+<tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+   <table bgcolor="#bfffbf" cellpadding="5" width="100%">
+   <tbody><tr><td colspan="2">
+   <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+   <b>To run your program with your own test data, enter the program<br>
+   file name and input file name then click 'Test':</b></font></td></tr>
+
+  <tr><td>
+
+   <table>
+   <tbody><tr><td>
+     <table>
+     <tbody><tr><td>
+     <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+     <b>Program&nbsp;File:&nbsp;</b></font></td>
+         <td><input name="testprogramname" type="file"></td></tr>
+     <tr><td align="right">
+         <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+         <b>Input&nbsp;File:&nbsp;</b></font></td>
+         <td><input name="testfilename" type="file"></td></tr>
+     </tbody></table>
+   </td>
+   <td>&nbsp;&nbsp;</td>
+   <td><input value="Test" name="submit" type="submit"></td>
+   </tr>
+   </tbody></table>
+
+   </td></tr></tbody></table>
+
+</td><td width="1"></td></tr>
+<tr height="1"><td></td></tr>
+</tbody></table>
+
+</td></tr>
+<tr><td><hr></td></tr>
+
+<tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+<table bgcolor="#bfffbf" cellpadding="5" width="100%">
+<tbody><tr><td>
+<font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+<b>Backup a file:&nbsp;</b><input name="backupfilename" type="file">
+&nbsp;&nbsp;&nbsp;<input value="Backup" name="submit" type="submit">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input value="See Backups" name="submit" type="submit">
+</font></td></tr></tbody></table>
+
+</td><td width="1"></td></tr>
+<tr height="1"><td></td><td></td></tr>
+</tbody></table>
+
+</td></tr>
+
+<tr><td><hr></td></tr>
+
+</tbody></table>
+<font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans"> The following solution files are saved for grading:<br>
+<table cellspacing="2">
+<tbody><tr><th>Name</th><th>Size</th><th>When</th><th>Age</th></tr>
+<tr><td><a href="http://ace.delos.com/ioiupload?a=0P3NIG3IZU5&amp;seesaved=relays.c">relays.c</a></td>
+<td align="right">1614</td>
+<td align="right">13h57:18</td>
+<td align="right">67h41:15</td></tr>
+<tr><td><a href="http://ace.delos.com/ioiupload?a=0P3NIG3IZU5&amp;seesaved=tanning.c">tanning.c</a></td>
+<td align="right">1000</td>
+<td align="right">14h21:12</td>
+<td align="right">67h17:21</td></tr>
+<tr><td><a href="http://ace.delos.com/ioiupload?a=0P3NIG3IZU5&amp;seesaved=telewire.c">telewire.c</a></td>
+<td align="right">1727</td>
+<td align="right">15h05:05</td>
+<td align="right">66h33:28</td></tr>
+</tbody></table>
+</font><hr>
+<center>
+<font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans"><a href="http://ace.delos.com/ioiedit?a=0P3NIG3IZU5">Edit your database record</a>&nbsp;|&nbsp;
+
+<a href="http://ace.delos.com/ioiupload?a=0P3NIG3IZU5&amp;logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?init=1&amp;a=0P3NIG3IZU5">Main contest index</a>
+</font></center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans"><a href="http://ace.delos.com/ioiupload?a=0P3NIG3IZU5&amp;showsubmit">See submitted solutions</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=0P3NIG3IZU5&amp;suggestionbox">Send message
+to operations staff</a><br>
+Director is currently online (AIM: RobAtDelos)<br>
+This page was generated at 16:38:33 GMT.
+</font></center>
+
+</form></body></html>

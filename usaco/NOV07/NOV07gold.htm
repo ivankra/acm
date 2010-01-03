@@ -1,0 +1,345 @@
+<html><head>
+
+<meta http-equiv="Pragma" content="no-cache">
+<script language="javascript">
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</script><title>USACO Problems</title></head><body onload="endtime = initcount(10800); updateclock('Contest', 'Person', endtime);" background="NOV07gold_files/bg9gold.jpg">
+
+<font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+<table><tbody><tr>
+<td><img src="NOV07gold_files/cowhead2.gif">
+</td>
+<td valign="top">
+<table cellpadding="0" cellspacing="0">
+    <tbody><tr><td>Contest: NOV07 <b>GOLD</b> Division</td></tr>
+    <tr><td><div id="Person">Contest: 02h59m58s</div></td></tr>
+    <tr><td></td></tr>
+    
+</tbody></table>
+</td></tr>
+</tbody></table>
+<font color="red"><b>
+</b></font>
+
+
+</font><pre></pre>
+<pre>**********************************************************************
+                           GOLD PROBLEMS
+**********************************************************************
+                  Three problems numbered 1 through 3
+**********************************************************************
+
+Problem 1: Telephone Wire [Jeffrey Wang, 2007]
+
+Farmer John's cows are getting restless about their poor telephone
+service; they want FJ to replace the old telephone wire with new,
+more efficient wire. The new wiring will utilize N (2 &lt;= N &lt;=
+100,000) already-installed telephone poles, each with some height_i
+meters (1 &lt;= height_i &lt;= 100). The new wire will connect the tops
+of each pair of adjacent poles and will incur a penalty cost C *
+the two poles' height difference for each section of wire where the
+poles are of different heights (1 &lt;= C &lt;= 100). The poles, of course,
+are in a certain sequence and can not be moved.
+
+Farmer John figures that if he makes some poles taller he can reduce
+his penalties, though with some other additional cost. He can add
+an integer X number of meters to a pole at a cost of X^2.
+
+Help Farmer John determine the cheapest combination of growing pole
+heights and connecting wire so that the cows can get their new and
+improved service.
+
+PROBLEM NAME: telewire
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: N and C
+
+* Lines 2..N+1: Line i+1 contains a single integer: height_i
+
+SAMPLE INPUT (file telewire.in):
+
+5 2
+2
+3
+5
+1
+4
+
+INPUT DETAILS:
+
+There are 5 telephone poles, and the vertical distance penalty is
+$2/meter. The poles initially have heights of 2, 3, 5, 1, and 4,
+respectively.
+
+OUTPUT FORMAT:
+
+* Line 1: The minimum total amount of money that it will cost Farmer
+        John to attach the new telephone wire.
+
+SAMPLE OUTPUT (file telewire.out):
+
+15
+
+OUTPUT DETAILS:
+
+The best way is for Farmer John to raise the first pole by 1 unit and the
+fourth pole by 2 units, making the heights (in order) 3, 3, 5, 3, and 4.
+This costs $5. The remaining wiring will cost $2*(0+2+2+1) = $10, for a
+total of $15.
+
+**********************************************************************
+
+Problem 2: Cow Relays [Erik Bernhardsson, 2003]
+
+For their physical fitness program, N (2 &lt;= N &lt;= 1,000,000) cows
+have decided to run a relay race using the T (2 &lt;= T &lt;= 100) cow
+trails throughout the pasture.
+
+Each trail connects two different intersections (1 &lt;= I1_i &lt;= 1,000;
+1 &lt;= I2_i &lt;= 1,000), each of which is the termination for at least
+two trails. The cows know the length_i of each trail (1 &lt;= length_i
+&lt;= 1,000), the two intersections the trail connects, and they know
+that no two intersections are directly connected by two different
+trails. The trails form a structure known mathematically as a graph.
+
+To run the relay, the N cows position themselves at various
+intersections (some intersections might have more than one cow).
+They must position themselves properly so that they can hand off
+the baton cow-by-cow and end up at the proper finishing place.
+
+Write a program to help position the cows. Find the shortest path
+that connects the starting intersection (S) and the ending intersection
+(E) and traverses exactly N cow trails.
+
+PROBLEM NAME: relays
+
+INPUT FORMAT:
+
+* Line 1: Four space-separated integers: N, T, S, and E
+
+* Lines 2..T+1: Line i+1 describes trail i with three space-separated
+        integers: length_i, I1_i, and I2_i
+
+SAMPLE INPUT (file relays.in):
+
+2 6 6 4
+11 4 6
+4 4 8
+8 4 9
+6 6 8
+2 6 9
+3 8 9
+
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer that is the shortest distance from
+        intersection S to intersection E that traverses exactly N cow
+        trails.
+
+SAMPLE OUTPUT (file relays.out):
+
+10
+
+**********************************************************************
+
+Problem 3: Sunscreen [Russ Cox, 2001]
+
+To avoid unsightly burns while tanning, each of the C (1 &lt;= C &lt;=
+2500) cows must cover her hide with sunscreen when they're at the
+beach. Cow i has a minimum and maximum SPF rating (1 &lt;= minSPF_i
+&lt;= 1,000; minSPF_i &lt;= maxSPF_i &lt;= 1,000) that will work. If the SPF
+rating is too low, the cow suffers sunburn; if the SPF rating is
+too high, the cow doesn't tan at all.
+
+The cows have a picnic basket with L (1 &lt;= L &lt;= 2500) bottles of
+sunscreen lotion, each bottle i with an SPF rating SPF_i (1 &lt;= SPF_i
+&lt;= 1,000). Lotion bottle i can cover cover_i cows with lotion. A
+cow may lotion from only one bottle.
+
+What is the maximum number of cows that can protect themselves
+while tanning given the available lotions?
+
+PROBLEM NAME: tanning
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: C and L
+
+* Lines 2..C+1: Line i describes cow i's lotion requires with two
+        integers: minSPF_i and maxSPF_i
+
+* Lines C+2..C+L+1: Line i+C+1 describes a sunscreen lotion bottle i
+        with space-separated integers: SPF_i and cover_i
+
+SAMPLE INPUT (file tanning.in):
+
+3 2
+3 10
+2 5
+1 5
+6 2
+4 1
+
+INPUT DETAILS:
+
+3 cows; 2 lotions.  Cows want SPF ratings of 3..10, 2..5, and 1..5. Lotions
+available: 6 (for two cows), 4 (for 1 cow).  Cow 1 can use the SPF 6 lotion.
+Either cow 2 or cow 3 can use the SPF 4 lotion.  Only 2 cows can be covered.
+
+OUTPUT FORMAT:
+
+A single line with an integer that is the maximum number of cows that
+can be protected while tanning
+
+SAMPLE OUTPUT (file tanning.out):
+
+2
+
+**********************************************************************
+
+</pre><hr>
+<form action="/ioiupload" enctype="multipart/form-data" method="post">
+<input name="a" value="nvBchreEjeO" type="hidden">
+
+<table>
+<tbody><tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+  <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+  <table bgcolor="#bfffbf" cellpadding="5" width="100%">
+  <tbody><tr><td><b>Submit a program  for grading:&nbsp;<b><input name="filename" type="file">
+  &nbsp;&nbsp;
+  <input value="Submit" name="submit" type="submit"></b></b></td></tr>
+  </tbody></table>
+
+</font></td><td width="1"></td></tr>
+<tr height="1"><td></td></tr>
+</tbody></table>
+
+
+</td></tr>
+
+<tr><td><hr></td></tr>
+
+<tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+   <table bgcolor="#bfffbf" cellpadding="5" width="100%">
+   <tbody><tr><td colspan="2">
+   <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+   <b>To run your program with your own test data, enter the program<br>
+   file name and input file name then click 'Test':</b></font></td></tr>
+
+  <tr><td>
+
+   <table>
+   <tbody><tr><td>
+     <table>
+     <tbody><tr><td>
+     <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+     <b>Program&nbsp;File:&nbsp;</b></font></td>
+         <td><input name="testprogramname" type="file"></td></tr>
+     <tr><td align="right">
+         <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+         <b>Input&nbsp;File:&nbsp;</b></font></td>
+         <td><input name="testfilename" type="file"></td></tr>
+     </tbody></table>
+   </td>
+   <td>&nbsp;&nbsp;</td>
+   <td><input value="Test" name="submit" type="submit"></td>
+   </tr>
+   </tbody></table>
+
+   </td></tr></tbody></table>
+
+</td><td width="1"></td></tr>
+<tr height="1"><td></td></tr>
+</tbody></table>
+
+</td></tr>
+<tr><td><hr></td></tr>
+
+<tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+<table bgcolor="#bfffbf" cellpadding="5" width="100%">
+<tbody><tr><td>
+<font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+<b>Backup a file:&nbsp;</b><input name="backupfilename" type="file">
+&nbsp;&nbsp;&nbsp;<input value="Backup" name="submit" type="submit">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input value="See Backups" name="submit" type="submit">
+</font></td></tr></tbody></table>
+
+</td><td width="1"></td></tr>
+<tr height="1"><td></td><td></td></tr>
+</tbody></table>
+
+</td></tr>
+
+<tr><td><hr></td></tr>
+
+</tbody></table>
+Nothing is currently saved for grading.
+<hr>
+<center>
+<a href="http://ace.delos.com/ioiedit?a=nvBchreEjeO">Edit your database record</a>&nbsp;|&nbsp;
+
+<a href="http://ace.delos.com/ioiupload?a=nvBchreEjeO&amp;logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?init=1&amp;a=nvBchreEjeO">Main contest index</a>
+</center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<a href="http://ace.delos.com/ioiupload?a=nvBchreEjeO&amp;showsubmit">See submitted solutions</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=nvBchreEjeO&amp;suggestionbox">Send message
+to operations staff</a><br>
+Director is currently online (AIM: RobAtDelos)<br>
+This page was generated at 20:15:00 GMT.
+</center>
+
+</form></body></html>

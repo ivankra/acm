@@ -1,0 +1,240 @@
+<html><head><title>JAN06 roping analysis</title></head><body bgcolor="#ffffff">
+<center><img src="roping_files/cow1.jpg" height="118" width="742"></center>
+<h2>January 2006 Problem 'roping' Analysis</h2>
+<h4>by Bruce Merry</h4>
+
+<p>The problem consists of two parts: determining which ropes do
+not intersect the circles, and choosing the maximum number of these
+ropes.
+
+</p><p>We first consider how to test whether a line (as opposed to a
+line segment) intersects a circle. Consider a triangle with vertices
+at the centre of the circle and at the posts defining the line. Its
+area can be computed in two ways: as the length of the line segment
+times the distance from the centre of the tree to the line, over
+2, or using the cross product. The latter can be computed directly,
+so equating it to the former gives the perpendicular distance. If
+this is less than or equal to R, then the line intersects the circle.
+To avoid dealing with floating point errors, it is a good idea to
+square out and cross-multiply to work entirely in integers; one
+catch is that this could push the values over 64 bits, so it is
+necessary to create a big integer type.
+
+</p><p>It is also possible that the line meets the circle but the line
+segment does not. Clearly if either end-point is inside the circle
+that the line cuts the circle. Otherwise, orient the diagram so
+that the centre of the circle is at the origin and point A is on
+the positive X axis. If point B lies to the right of point A, then
+the line clearly misses the circle. If point B lies to the left of
+point A, and A also lies to the left of point B when point B is
+placed on the X axis, then the line segment will hit the circle if
+the line does.
+
+</p><p>This procedure allows us to identify valid ropes in O(N<sup>2</sup>T)
+time, but we still need to pick a subset that is free of intersections.
+We use dynamic programming, solving for the largest set between
+circles whose indices range from A to B (for every pair A &lt; B).
+Suppose that there is at least one rope emanating from A, and
+consider the one that ends closest to B (i.e. the endpoint C has
+the highest index). The interior of triangle ABC must be completely
+empty, so the set of ropes is just the union of those ropes in the
+smaller cases (A, C) and (C, B), as well as the rope AB if it is
+legal. If A has no ropes emanating from it then we can set C = A +
+1 and the above statements remain true.  By iterating over all
+possible values of C, we can compute the optimal number of ropes
+for (A, B) in terms of the optimal numbers for smaller cases. The
+entire DP takes O(N<sup>3</sup>) time, making the overall algorithm
+O(N<sup>2</sup>T + N<sup>3</sup>).
+
+</p><pre>#define __STDC_LIMIT_MACROS
+
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;complex&gt;
+#include &lt;cassert&gt;
+#include &lt;climits&gt;
+
+using namespace std;
+
+#define MAXN 150
+#define MAXT 100
+#define MAXR 100000
+#define MAXXY 1000000
+
+typedef complex&lt;long long&gt; point;
+
+static int N, T, R;
+static point posts[MAXN];
+static point trees[MAXT];
+static bool valid[MAXN][MAXN];
+static int dp[MAXN][MAXN];
+
+static void readin() {
+    long long x, y;
+    ifstream in("roping.in");
+
+    in &gt;&gt; N &gt;&gt; T &gt;&gt; R;
+    assert(2 &lt;= N &amp;&amp; N &lt;= MAXN);
+    assert(0 &lt;= T &amp;&amp; T &lt;= MAXT);
+    assert(1 &lt;= R &amp;&amp; R &lt;= MAXR);
+    for (int i = 0; i &lt; N; i++) {
+        in &gt;&gt; x &gt;&gt; y;
+        posts[i] = point(x, y);
+    }
+    for (int i = 0; i &lt; T; i++) {
+        in &gt;&gt; x &gt;&gt; y;
+        trees[i] = point(x, y);
+    }
+}
+
+static inline long long dot(const point &amp;a, const point &amp;b) {
+    return real(conj(a) * b);
+}
+
+static inline long long cross(const point &amp;a, const point &amp;b) {
+    return imag(conj(a) * b);
+}
+
+static inline long long area(const point &amp;a, const point &amp;b, const point &amp;c) {
+    return cross(b - a, c - a);
+}
+
+static void validate() {
+    for (int i = 0; i &lt; N; i++) {
+        assert(0 &lt;= real(posts[i]) &amp;&amp; real(posts[i]) &lt;= MAXXY);
+        assert(0 &lt;= imag(posts[i]) &amp;&amp; imag(posts[i]) &lt;= MAXXY);
+    }
+
+    long long l = LONG_LONG_MAX, h = LONG_LONG_MIN;
+    if (N &gt;= 3) {
+        for (int i = 1; i &lt; N; i++)
+        {
+            int j = (i + 1) % N;
+            int k = (i + 2) % N;
+            assert(posts[i] != posts[j]);
+            long long s = area(posts[i], posts[j], posts[k]);
+            if (s == 0)
+                assert(norm(posts[j] - posts[i]) &lt; norm(posts[k] - posts[i])
+                       &amp;&amp; norm(posts[k] - posts[j]) &lt; norm(posts[k] - posts[i]));
+            l &lt;?= s;
+            h &gt;?= s;
+        }
+        assert(l &gt;= 0 || h &lt;= 0);
+    }
+
+    for (int i = 0; i &lt; T; i++) {
+        long long l2 = LONG_LONG_MIN;
+        long long h2 = 0;
+
+        assert(0 &lt;= real(trees[i]) &amp;&amp; real(trees[i]) &lt;= MAXXY);
+        assert(0 &lt;= imag(trees[i]) &amp;&amp; imag(trees[i]) &lt;= MAXXY);
+        for (int j = 0; j &lt; N; j++) {
+            int k = (j + 1) % N;
+            long long s = area(posts[j], posts[k], trees[i]);
+            if (s == 0)
+                assert(norm(trees[i] - posts[j]) &lt; norm(posts[k] - posts[j])
+                       &amp;&amp; norm(trees[i] - posts[k]) &lt; norm(posts[k] - posts[j]));
+            l2 &lt;?= s;
+            h2 &gt;?= s;
+
+            // assert(norm(trees[i] - posts[j]) &gt;= (long long) R * R);
+        }
+        assert(l &lt; 0 || l2 &gt;= 0);
+        assert(h &gt; 0 || h2 &lt;= 0);
+    }
+}
+
+struct huge {
+    /* Base 2^64 */
+    unsigned long long high;
+    unsigned long long low;
+};
+
+static inline void huge_accum(huge &amp;h, unsigned long long m) {
+    unsigned long long m1 = m &gt;&gt; 32;
+    unsigned long long m0 = (m &amp; UINT_MAX) &lt;&lt; 32;
+    h.high += m1;
+    if (h.low &gt;= UINT64_MAX - m0) h.high++;
+    h.low += m0;
+}
+
+static huge huge_mult(unsigned long long x, unsigned long long y) {
+    unsigned long long x1 = x &gt;&gt; 32;
+    unsigned long long x0 = x &amp; UINT_MAX;
+    unsigned long long y1 = y &gt;&gt; 32;
+    unsigned long long y0 = y &amp; UINT_MAX;
+
+    huge ans = {x1 * y1, x0 * y0};
+    huge_accum(ans, x1 * y0);
+    huge_accum(ans, x0 * y1);
+    return ans;
+}
+
+static bool intersects(point A, point B, point O, long long R) {
+    A -= O;
+    B -= O;
+    if (norm(A) &lt;= R * R) return true;
+    if (norm(B) &lt;= R * R) return true;
+    /* We want to check if cross(A, B)^2 &gt; norm(A - B) * R^2, which would
+     * tell us if the line itself misses the circle. However, both sides
+     * may overflow.
+     */
+    unsigned long long c = ::llabs(cross(A, B));
+    unsigned long long n = norm(A - B);
+    unsigned long long r = R * R;
+    huge left = huge_mult(c, c);
+    huge right = huge_mult(n, r);
+    if (left.high &gt; right.high
+        || (left.high == right.high &amp;&amp; left.low &gt; right.low)) return false;
+
+    if (cross(A, B) &gt; sqrtl(n) * R) return false;
+    if (dot(A, B) &gt; norm(A)) return false;
+    if (dot(A, B) &gt; norm(B)) return false;
+    return true;
+}
+
+static void make_valid() {
+    memset(valid, 0, sizeof(valid));
+    for (int i = 0; i &lt; N; i++)
+        for (int j = i + 2; j &lt; N; j++)
+        {
+            valid[i][j] = true;
+            for (int k = 0; k &lt; T; k++)
+                if (intersects(posts[i], posts[j], trees[k], R))
+                {
+                    valid[i][j] = false;
+                    break;
+                }
+            valid[j][i] = valid[i][j];
+        }
+    valid[0][N - 1] = valid[N - 1][0] = false;
+}
+
+static void solve() {
+    make_valid();
+    memset(dp, 0, sizeof(dp));
+    for (int d = 2; d &lt; N; d++)
+        for (int i = 0; i &lt; N - d; i++)
+        {
+            int j = i + d;
+            for (int k = i + 1; k &lt; j; k++)
+                dp[i][j] &gt;?= dp[i][k] + dp[k][j];
+            dp[i][j] += valid[i][j] ? 1 : 0;
+        }
+}
+
+static void writeout() {
+    ofstream out("roping.out");
+    out &lt;&lt; dp[0][N - 1] &lt;&lt; "\n";
+}
+
+int main()
+{
+    readin();
+    validate();
+    solve();
+    writeout();
+    return 0;
+}
+</pre>
+</body></html>

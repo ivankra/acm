@@ -1,0 +1,312 @@
+<html><head>
+
+<script language="javascript">
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d ";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h ";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m ";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</script><title>USACO Problems</title></head><body onload="endtime = initcount(244861); updateclock('Elite December, 2005', 'Contest', endtime); endtime = initcount(10798); updateclock('Your Contest Session', 'Person', endtime);" bgcolor="#eeffee">
+<center>
+<table><tbody><tr>
+<td>
+<!--<center><img src='/usaco/cow1.jpg' width='742' height='118'></center>-->
+<center><img src="en_files/cow1.jpg" height="88" width="550"></center>
+</td>
+<td valign="top">
+<table>
+    <tbody><tr><td valign="top"><b>SILVER</b> Division<br></td></tr>
+    <tr><td><div id="Contest">Elite December, 2005: 2d 20h 00m 52s</div></td></tr>
+    <tr><td><div id="Person">Your Contest Session: 02h 59m 49s</div></td></tr>
+    <tr><td></td></tr>
+</tbody></table>
+</td><td></td></tr>
+</tbody></table>
+</center>
+
+
+<pre></pre>
+<pre>**********************************************************************
+                           SILVER PROBLEMS
+**********************************************************************
+                  Three problems numbered 6 through 8
+**********************************************************************
+
+Problem 6: Knights of Ni [Carl Hultquist, South Africa, 2005]
+
+Bessie is in Camelot and has encountered a sticky situation: she
+needs to pass through the forest that is guarded by the Knights of
+Ni. In order to pass through safely, the Knights have demanded that
+she bring them a single shrubbery. Time is of the essence, and
+Bessie must find and bring them a shrubbery as quickly as possible.
+
+Bessie has a map of of the forest, which is partitioned into a
+square grid arrayed in the usual manner, with axes parallel to the
+X and Y axes. The map is W x H units in size (1 &lt;= W &lt;= 1000; 1 &lt;=
+H &lt;= 1000).
+
+The map shows where Bessie starts her quest, the single square where
+the Knights of Ni are, and the locations of all the shrubberies of
+the land. It also shows which areas of the map can be traverse (some
+grid blocks are impassable because of swamps, cliffs, and killer
+rabbits). Bessie can not pass through the Knights of Ni square
+without a shrubbery.
+
+In order to make sure that she follows the map correctly, Bessie
+can only move in four directions: North, East, South, or West (i.e.,
+NOT diagonally). She requires one day to complete a traversal from
+one grid block to a neighboring grid block.
+
+It is guaranteed that Bessie will be able to obtain a shrubbery and then
+deliver it to the Knights of Ni. Determine the quickest way for her to do so.
+
+PROBLEM NAME: ni
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: W and H.
+
+* Lines 2..?: These lines describe the map, row by row. The first line
+        describes the most northwest part of the map; the last line
+        describes the most southeast part of the map. Successive
+        integers in the input describe columns of the map from west to
+        east. Each new row of a map's description starts on a new
+        input line, and each input line contains no more than 40
+        space-separated integers. If W &lt;= 40, then each input line
+        describes a complete row of the map. If W &gt; 40, then more than
+        one line is used to describe a single row, 40 integers on each
+        line except potentially the last one. No input line ever
+        describes elements of more than one row.
+
+The integers that describe the map come from this set:
+0: Square through which Bessie can travel
+1: Impassable square that Bessie cannot traverse
+2: Bessie's starting location
+3: Location of the Knights of Ni
+4: Location of a shrubbery
+
+SAMPLE INPUT (file ni.in):
+
+8 4
+4 1 0 0 0 0 1 0
+0 0 0 1 0 1 0 0
+0 2 1 1 3 0 4 0
+0 0 0 4 1 1 1 0
+
+INPUT DETAILS:
+
+Width=8, height=4. Bessie starts on the third row, only a few squares away
+from the Knights.
+
+OUTPUT FORMAT:
+
+* Line 1: D, the minimum number of days it will take Bessie to reach a
+        shrubbery and bring it to the Knights of Ni.
+
+SAMPLE OUTPUT (file ni.out):
+
+11
+
+OUTPUT DETAILS:
+
+Bessie can move in this pattern to get a shrubbery for the Knights:
+N, W, N, S, E, E, N, E, E, S, S. She gets the shrubbery in the northwest
+corner and then makes her away around the barriers to the east and then
+south to the Knights.
+
+**********************************************************************
+
+Problem 7: Cleaning Shifts [Coaches, 2004]
+
+Farmer John's cows, pampered since birth, have reached new heights of
+fastidiousness. They now require their barn to be immaculate. Farmer John,
+the most obliging of farmers, has no choice but hire some of the cows to
+clean the barn.
+
+Farmer John has N (1 &lt;= N &lt;= 10,000) cows who are willing to do some
+cleaning. Because dust falls continuously, the cows require that the farm
+be continuously cleaned during the workday, which runs from second number M
+to  second number E during the day (0 &lt;= M &lt;= E &lt;= 86,399). Note that the
+total number of seconds during which cleaning is to take place is E-M+1.
+During any given second M..E, at least one cow must be cleaning.
+
+Each cow has submitted a job application indicating her willingness to work
+during a certain interval T1..T2 (where M &lt;= T1 &lt;= T2 &lt;= E) for a certain
+salary of S (where 0 &lt;= S &lt;= 500,000). Note that a cow who indicated the
+interval 10..20 would work for 11 seconds, not 10. Farmer John must either
+accept or reject each individual application; he may NOT ask a cow to work
+only a fraction of the time it indicated and receive a corresponding
+fraction of the salary.
+
+Find a schedule in which every second of the workday is covered by at least
+one cow and which minimizes the total salary that goes to the cows.
+
+TIME LIMIT: 0.2 seconds
+
+PROBLEM NAME: clean
+
+INPUT FORMAT:
+
+* Line 1: Three space-separated integers: N, M, and E.
+
+* Lines 2..N+1: Line i+1 describes cow i's schedule with three
+        space-separated integers: T1, T2, and S.
+
+SAMPLE INPUT (file clean.in):
+
+3 0 4
+0 2 3
+3 4 2
+0 0 1
+
+INPUT DETAILS:
+
+FJ has three cows, and the barn needs to be cleaned from second 0 to second
+4. The first cow is willing to work during seconds 0, 1, and 2 for a total
+salary of 3, etc.
+
+OUTPUT FORMAT:
+
+* Line 1: a single integer that is either the minimum total salary to
+        get the barn cleaned or else -1 if it is impossible to clean
+        the barn.
+
+SAMPLE OUTPUT (file clean.out):
+
+5
+
+OUTPUT DETAILS:
+
+Farmer John can hire the first two cows.
+
+**********************************************************************
+
+Problem 8: Scales [Bruce Merry, South Africa, 2005]
+
+Farmer John has a balance for weighing the cows. He also has a set of N (1
+&lt;= N &lt;= 1000) weights with known masses (all of which fit in 31 bits) for
+use on one side of the balance. He places a cow on one side of the balance
+and then adds weights to the
+other side until they balance. (FJ cannot put weights on the same side of
+the balance as the cow, because cows tend to kick weights in his face
+whenever they can.) The balance has a maximum mass rating and will break if
+FJ uses more than a certain total mass C (1 &lt;= C &lt; 2^30) on one side.
+
+The weights have the curious property that when lined up from smallest to
+biggest, each weight (from the third one on) has at least as much mass as
+the previous two combined.
+
+FJ wants to determine the maximum mass that he can use his weights to
+measure exactly. Since the total mass must be no larger than C, he might
+not be able to put all the weights onto the scale.
+
+Write a program that, given a list of weights and the maximum mass the
+balance can take, will determine the maximum legal mass that he can weigh
+exactly.
+
+PROBLEM NAME: scales
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated positive integers, N and C.
+
+* Lines 2..N+1: Each line contains a single positive integer that is
+        the mass of one weight. The masses are guaranteed to be in
+        non-decreasing order.
+
+SAMPLE INPUT (file scales.in):
+
+3 15
+1
+10
+20
+
+INPUT DETAILS:
+
+FJ has 3 weights, with masses of 1, 10, and 20 units. He can put at most 15
+units on one side of his balance.
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer that is the largest mass that can be
+        accurately and safely measured.
+
+SAMPLE OUTPUT (file scales.out):
+
+11
+
+OUTPUT DETAILS:
+
+The 1 and 10 weights are used to measure 11. Any greater weight that can be
+formed from the weights will break the balance.
+
+**********************************************************************
+
+</pre><hr>
+<form action="/ioiupload" enctype="multipart/form-data" method="post">
+<input name="a" value="9k0iLEwDLgR" type="hidden">
+
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td height="1"></td><td>
+
+</td></tr><tr><td width="1"></td><td>
+
+<table bgcolor="#bfffbf" cellpadding="5">
+<tbody><tr><td>Use this form to submit a program for grading:</td>
+<td rowspan="3"><input value="Submit" name="submit" type="submit"></td>
+</tr><tr><td width="60%"><b>Program File:</b><input name="filename" type="file"></td>
+    </tr>
+</tbody></table>
+</td><td width="1"></td>
+
+</tr><tr height="1"><td></td><td></td></tr>
+</tbody></table>
+<hr>
+Nothing is currently saved for grading.
+<hr>
+<center>
+<a href="http://ace.delos.com/ioiedit?a=9k0iLEwDLgR">Edit your database record</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=9k0iLEwDLgR&amp;logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?init=1&amp;a=9k0iLEwDLgR">Main contest index</a>
+</center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<a href="http://ace.delos.com/ioiupload?a=9k0iLEwDLgR&amp;showsubmit">See submitted solutions</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=9k0iLEwDLgR&amp;suggestionbox">Send message
+to contest director</a><br>
+
+This page was generated at 18:58:59 GMT.
+</center>
+</form></body></html>

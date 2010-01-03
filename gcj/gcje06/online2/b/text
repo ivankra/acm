@@ -1,0 +1,78 @@
+
+Problem Statement
+ÿÿÿÿ
+We have a bunch of colored tiles laid out on a table. We want to know how many distinct tiles we have, where two tiles are considered to be the same if one can be rotated and moved (but not flipped upside down) until it exactly matches the other tile.
+The layout is given as a rectangular grid of 1 x 1 areas, each shown as a single character. Each uppercase letter represents the color of a 1 x 1 part of a tile. An area that is not occupied by a tile is indicated with the character '-'. No two tiles have a common border (but they may touch at a single point).
+For example, if the layout is
+ 
+     B-A-A- 
+     AB--BA
+     -A-A-B
+     A-AB--
+     --B---    
+then there are 5 tiles, but only 3 distinct tiles, since the two tiles consisting of just 'A' are the same, and the two 4-square tiles in the upper left and upper right are the same (but different from the bottommost tile).
+Create a class Distinct that contains a method count that is given a vector <string> layout and that returns the number of distinct tiles in the layout.
+Definition
+ÿÿÿÿ
+Class:
+Distinct
+Method:
+count
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int count(vector <string> layout)
+(be sure your method is public)
+ÿÿÿÿ
+
+Constraints
+-
+layout will contain between 1 and 50 elements, inclusive.
+-
+Each element of layout will contain the same number of characters.
+-
+Each element of layout will contain between 1 and 50 characters, inclusive.
+-
+Each character in each element of layout will be '-' or an uppercase letter 'A'-'Z'.
+Examples
+0)
+
+ÿÿÿÿ
+{"B-A-A-","AB--BA","-A-A-B","A-AB--","--B---"}
+Returns: 3
+This is the example shown above.
+1)
+
+ÿÿÿÿ
+{"A-B-C-D---"}
+Returns: 4
+All 4 tiles are the same shape, a 1x1 square, but each has its own distinct color.
+2)
+
+ÿÿÿÿ
+{"AB-BA-AB-BA-ABBA"}
+Returns: 2
+All the two-character tiles are the same, but of course are different from the 4-character tile.
+3)
+
+ÿÿÿÿ
+{"C---DC",
+ "DCD-C-",
+ "--C-DC",
+ "------",
+ "DCD---",
+ "C-C--C",
+ "---DCD",
+ "--C--C",
+ "DCD---",
+ "C---CD",
+ "-----C",
+ "D---CD",
+ "CDC---",
+ "--D---"
+}
+Returns: 5
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

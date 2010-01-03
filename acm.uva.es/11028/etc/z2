@@ -1,0 +1,20 @@
+n=1:  min=0                    max=0                 
+n=2:  min=0      0             max=0      0          
+n=3:  min=2      2    2        max=2      2    2     
+n=4:  min=5      3    1        max=9      7    5     
+n=5:  min=12     7    4        max=23     14   7     
+n=6:  min=22     10   3        max=46     23   9     
+n=7:  min=38     16   6        max=80     34   11    
+n=8:  min=59     21   5        max=127    47   13    
+n=9:  min=88     29   8        max=189    62   15    
+n=10: min=124    36   7        max=268    79   17     
+n=11: min=170    46   10       max=366    98   19     
+n=12: min=225         9        max=485         21     
+n=13: min=292         12       max=627         23     
+n=14: min=370                  max=794         25     
+n=15: min=462                  max=988                
+n=16: min=567                  max=1211               
+n=17: min=688                  max=1465               
+n=18: min=824                  max=1752               
+n=19: min=978                  max=2074               
+n=20: min=1149                 max=2433               

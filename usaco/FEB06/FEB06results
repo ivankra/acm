@@ -1,0 +1,1554 @@
+                     FEBRUARY 2006 CONTEST RESULTS
+
+These are the final results of the USACO FEBRUARY 2006 programming
+contest.  The next contest is the USACO MARCH 2006 contest to be
+held 10-13 March, 2006 <-- NEW DATE!
+
+Our goal in these contests is to cultivate interest in computer
+programming among pre-college students and recognize those who are
+outstanding performers.
+
+The elite contest had 589 competitors and 143 observers, a total
+of 732 legal entrants. The new LEVEL1 (novice) contest; it drew 54
+more legal entries:
+
+             GOLD           SILVER          BRONZE        LEVEL1             TOTAL
+          Comp's Obsvrs  Comp's Obsvrs  Comp's Obsvrs  Comp's Obsvrs Comp's Obsvrs Entries
+APR 2003   257     39     104      9      --     --      --     --    361     48     409
+NOV 2003   300    106     166     31      --     --      --     --    466    192     658
+DEC 2003   284     76     141     24      --     --      --     --    301    228     529
+JAN 2004   313     69     153     31     108     38      --     --    574    138     712
+FEB 2004   236     45     174     36      69     23      --     --    479    104     583
+MAR 2004   207     42     194     41      91     17      --     --    492    100     592
+NOV 2004   657    205     ---     --      --     --      --     --    657    205     862
+DEC 2004   163     54     132     25     339    127      --     --    634    209     843
+JAN 2005   150     34     166     36     390    148      --     --    706    217     924
+FEB 2005   165     41     206     42     398    122      --     --    769    205     974
+MAR 2005   178     39     221     43     359    104      --     --    758    186     944
+OCT 2005   253     53     235     41     266     89      --     --    754    183     937
+NOV 2005   149     50     149     33     309    121      --     --    607    204     811
+DEC 2005   136     35     180     35     280     95      65     33    629    198     859
+JAN 2006   137     29     177     32     250     78      53     23    617    162     779
+FEB 2006   179     41     168     19     242     83      43     11    632    154     786
+
+An additional 54 contestants were disqualified for not following
+the rules; most have been banned for life.
+
+The 632 contestants and observers came from these 54 countries:
+  1 ALB       1 BRA    27 GEO     1 LBN      2 NED       4 TKM
+  4 ARG      23 CAN     4 GRC     4 LTU     47 POL       1 TTO
+  5 ARM     128 CHN    10 HRV     2 LVA     50 ROM       4 TUR
+  2 AUS       2 COL     5 IDN     1 MAC     19 RUS      11 TWN
+  2 AUT       3 CUB    11 IND     1 MDA      2 SGP       7 UKR
+  1 AZE      11 DEU    22 IRN     6 MEX      7 SVK     128 USA
+  4 BGD       8 EGY     3 KAZ     2 MKD      4 SVN      14 VNM
+ 51 BGR       4 EST     1 KGZ     4 MNG      2 SWE      11 YUG
+ 37 BLR       7 FRA    10 KOR     1 MYS      7 SYR       3 ZAF
+China and USA both had 128 entries.
+
+The grading system accepted 9.87 MB of text (mostly programs but
+the occasional binary), a total of 6,456 submissions.
+
+Here's a summary of how the final graded submissions looked (including
+observers):
+
+         Program  Subs    C      Pascal    Java
+GOLD
+             trt  213  143/67%   58/27%   12/ 6%
+           bdsum  206  138/67%   58/28%   10/ 5%
+           stead  130   87/67%   36/28%    7/ 5%
+SILVER
+         reserve  183   97/53%   74/40%   12/ 7%
+             bds  179  110/61%   57/32%   12/ 7%
+           treat  173  103/60%   54/31%   16/ 9%
+BRONZE
+          phrase  291  126/43%  119/41%   46/16%
+            neg2  233  115/49%   99/42%   19/ 8%
+             dna  230  102/44%  109/47%   19/ 8%
+
+Java submissions no longer appear to be growing. This could be due
+to increased awareness of the 'STL' (C++ Standard Template Library)
+that appears to be a big win for fast programmers.
+
+Mechanically and logistically, the contest ran almost perfectly.
+
+The contest was a bit easier than our previous difficult challenges.
+Scores are a bit higher, about where they belong.
+
+The timings for JAVA are reported just as for C, though JAVA runs
+slower, so all JAVA times are actually divided by 1.5. If your JAVA
+program ran too slow -- perhaps you're using RandomAccess input
+instead of BufferedReader input. The latter can be orders of magnitude
+faster!
+
+Test data and analyses are available at http://ace.delos.com/FEB06.htm
+.  Special thanks to those competitors who sent in test data.
+
+### GOLD Division ######################################################
+
+The problem weightings were determined using the standard algorithm.
+The 'cell' problem maxed out at 400 points with 'stead' following
+closely behind.
+
+         points weight  1  2  3  4  5  6  7  8  9  a  b
+     --------------------------------------------------
+        trt:  88 142.4  0  7  9  9  9  9  9  7  9 10 10
+      bdsum:  90 134.0  0  9  9  9  9  9  9  9  9  9  9
+       cell:  84 400.0  0  0  7 11  8 12 12 13 11 10
+      stead:  82 323.6  0  9  9 15 15 15  9 10
+
+Seniors continue to dominate the GOLD division, with over half the
+participants:
+
+  Distribution by grade:
+    Grde  #  Percent
+    2006  87 (48.6%) *************************************
+    2007  62 (34.6%) **************************
+    2008  22 (12.3%) *********
+    2009   4 ( 2.2%) *
+    2010   3 ( 1.7%) *
+    2013   1 ( 0.6%) 
+
+The score distribution was, as always, interesting with bell-curve-like
+tendencies.
+
+===== Distribution of scores =====
+951..1000  9  *********
+901.. 950  3  ***
+851.. 900  5  *****
+801.. 850  7  *******
+751.. 800  4  ****
+701.. 750  6  ******
+651.. 700  7  *******
+601.. 650  6  ******
+551.. 600 11  ***********
+501.. 550  9  *********
+451.. 500 12  ************
+401.. 450 16  ****************
+351.. 400 10  **********
+301.. 350 12  ************
+251.. 300 23  ***********************
+201.. 250  9  *********
+151.. 200  9  *********
+101.. 150 13  *************
+ 51.. 100  3  ***
+  1..  50  5  *****
+  0..   0  0  
+
+Of course, the curve is very much affected by the scoring algorithm
+used.
+
+We almost always trim out the test data so that test cases really
+do reflect some new dimension of the solution.  We do this by
+removing those test cases with high correlations with other test
+cases.
+
+Eight perfect scores this time, with three Chinese superstars: Zhu
+Chenguang, Jiangwei Yu, and Wei Yuemin).  Belarus, Bulgaria, Canada,
+Romania, and USA had one each in this rarefied atmosphere.
+
+Here are the top 12 competitors from the GOLD division, all those
+above 900 points:
+
+              1  2006 CHN Zhu Chenguang        1000
+              1  2007 USA Richard McCutchen    1000
+              1  2007 BLR Vladimir Minjailov   1000
+              1  2006 ROM Pasoi Mircea         1000
+              1  2006 CAN Richard Peng         1000
+              1  2007 BGR Rostislav Rumenov    1000
+              1  2007 CHN Jiangwei Yu          1000
+              1  2006 CHN Wei Yuemin           1000
+              9  2007 USA John Pardon           961
+             10  2008 CHN Yang Yi               946
+             11  2006 POL Juliusz Sompolski     941
+             12  2006 ROM Catalin Tiseanu       925
+
+Congratulations to all these great programmers.
+
+## SILVER Division #####################################################
+
+Great Silver problems this time, two challenging and one a bit
+easier.  The Silver contest included two of the problems used on
+the gold contest -- many competitors will be moving up to the Gold
+division.
+
+         points weight  1  2  3  4  5  6  7  8  9  a
+     -----------------------------------------------
+    reserve:  94 400.0  0  6  6  7  8  8  8  9 15 15  7  5
+      treat:  99 347.3  0  6 10 10 10  9 11  7 11 11 14
+        bds:  96 252.7  0 10  9  9  9 10 10 10 10  9 10
+
+A total of 14 perfect scores with three more above 900. Several who
+moved up to the Gold division during the contest are shown in that
+division's results.
+
+             1  2006 POL Tomasz Dudziak      1000
+             1  2006 TWN Chun-Sung Ferng     1000
+             1  2006 ROM Emanuel Furtuna     1000
+             1  2010 ROM Cosmin Gheorghe     1000
+             1  2007 CHN Xiao Jiang          1000
+             1  2007 POL Rafal Jozefowicz    1000
+             1  2007 IRN Korosh Khagavi      1000
+             1  2007 IRN Behrooz Ostadmohamm 1000
+             1  2006 BGR Bojidar Penchev     1000
+             1  2008 ROM Dumitriu Vlad       1000
+             1  2006 TWN Joseph Wen          1000
+             1  2008 CHN Zou Yuhan           1000
+             1  2008 CHN Cao Zheng           1000
+             1  2006 CHN Yisu Zhou           1000
+            15  2007 CHN Yu Chen Liu          974
+            16  2006 EGY Hussein Fawzy        951
+            16  2008 CHN Edward Yang          951
+
+China again dominated the results with six above 900.  Romania had
+3; Taiwan, Poland, and Iran had two. Egypt and Bulgaria had one
+each.
+
+Congratulations to these finishers and welcome to the Gold division!
+Others moving up to the Gold division include these tough competitors:
+
+      2009 CHN Yichen Chow           2007 CHN Charles Peng
+      2007 CHN Fang Fei              2007 BRA Eduardo Ribas
+      2007 CHN Hu Gang               2007 USA Michael Ty
+      2009 CHN JieMing Mao           2006 CHN Jimmy Wang
+      2006 YUG Slobodan Mitrovic     2007 CHN Zhang Wenqi
+      2007 CHN Dong Pei
+
+The contest's distribution was multi-modal with peaks at the high
+end, near 625, and near 300:
+
+===== Distribution of scores =====
+951..1000 15  ***************
+901.. 950  2  **
+851.. 900 11  ***********
+801.. 850  6  ******
+751.. 800  4  ****
+701.. 750  6  ******
+651.. 700 15  ***************
+601.. 650 16  ****************
+551.. 600 16  ****************
+501.. 550  7  *******
+451.. 500  7  *******
+401.. 450  8  ********
+351.. 400  7  *******
+301.. 350 14  **************
+251.. 300 17  *****************
+201.. 250  5  *****
+151.. 200  4  ****
+101.. 150  2  **
+ 51.. 100  1  *
+  1..  50  4  ****
+  0..   0  1  *
+
+## BRONZE Division #####################################################
+
+The phrasebook problem was intended to be the easy one for this
+contest, but it didn't work out that way! It turned out to be the
+most challenging while 'neg2', the interesting number base problem,
+was calculated to be the easiest. It appears that many new programmers
+tried only the 'phrase' problem and, for one reason or another,
+didn't get it right. This raised the calculated difficulty.
+
+Here are the weightings:
+
+         points weight  1  2  3  4  5  6  7  8  9  a  b  c  d 
+     --------------------------------------------------------
+       neg2:  96 270.0  0  6  6  7  9  6  8  7  8  8 12 11  8
+        dna:  95 330.0  0  8  9 15 11  9 10 10 12 11
+     phrase:  99 400.0  0  7  7  8 11  9 15 15 12 15
+
+Juniors continue to dominate this level of elite competition:
+
+  Distribution by grade:
+    Grde  #  Percent
+    2006  54 (22.3%) *****************
+    2007  80 (33.1%) *************************
+    2008  57 (23.6%) ******************
+    2009  33 (13.6%) **********
+    2010  10 ( 4.1%) ***
+    2011   4 ( 1.7%) *
+    2012   3 ( 1.2%) 
+    2013   1 ( 0.4%) 
+
+Much higher scores this time! Plenty of participants appear throughout
+the scoring spectrum (read the section below if this is your first
+contest and you're not used to seeing half the scores below 500).
+
+===== Distribution of scores =====
+951..1000 11  ***********
+901.. 950  9  *********
+851.. 900  2  **
+801.. 850  5  *****
+751.. 800  7  *******
+701.. 750  9  *********
+651.. 700 11  ***********
+601.. 650  4  ****
+551.. 600 20  ********************
+501.. 550 17  *****************
+451.. 500 10  **********
+401.. 450 13  *************
+351.. 400 14  **************
+301.. 350  8  ********
+251.. 300 11  ***********
+201.. 250 16  ****************
+151.. 200 20  ********************
+101.. 150  9  *********
+ 51.. 100 15  ***************
+  1..  50  5  *****
+  0..   0 26  **************************
+
+Eight perfect scores, with a terrific 20 above 900:
+
+            1  2008 CHN Jason Bourne        1000
+            1  2007 CHN Yilun Gong          1000
+            1  2006 YUG Andrejko Ilic       1000
+            1  2007 IND Kanishk Kunal       1000
+            1  2006 YUG Stefan Lazarevic    1000
+            1  2006 BLR Pavel Maisenovich   1000
+            1  2007 KOR Chae Young          1000
+            1  2007 CHN Li Zhe              1000
+            9  2006 GRC George Trikoilis     975
+           10  2009 BLR Dima Bohdanov        966
+           10  2006 CHN XiangRu Chen         966
+           12  2008 CHN Yuxi Chen            948
+           12  2006 RUS Jacob Dlougach       948
+           12  2010 CHN Xiang Gao            948
+           12  2009 CHN Xiang Hua            948
+           12  2008 CHN Mozeda Keten         948
+           12  2007 CHN Chi Zhang            948
+           18  2008 ROM Dragos Raducanu      947
+           19  2012 ROM Tataranu Vlad        939
+           20  2008 CHN Carl Chen            923
+
+China continues to roll over the competition with ten members of
+this winning group; Belarus, Romania, and Yugoslavia fielded two
+each.  Greece, India, Korea, and Russia each had one member.
+
+Each of these participants is moving up to the Silver level along
+with Viet Nam's Tien Nguyen Hoanh.
+
+Congrats to these winners!
+
+############################## GENERAL ###################################
+
+## About the USACO Internet Programming Contests
+
+These contests (the GOLD division in particular) are just incredibly
+hard... really amazingly hard -- more so nowadays than even just a
+year or two ago.
+
+Winners must master not only algorithmic techniques like dynamic
+programming but also the ability to write bug-free code quickly.
+This requires practice and skill.  Don't despair if you didn't get
+a perfect score this time -- it is hard!
+
+Furthermore, the scoring mechanism is set up so that a huge percentage
+of finishers scores in the 0..500 range -- different from many
+contests where everyone finishes in the 800..1000 range and the
+0..800 range is empty.  If we don't do this, we can't distinguish
+among the top competitors.
+
+## Want to Learn More?
+
+Check out the USACO training pages at http://ace.delos.com/usacogate .
+They provide practice challenges that can help you move up in the
+rankings.
+
+## How USACO Scoring Works
+
+The score results are shown below.  I used a program to determine
+how much each problem was worth and how much each test case was
+worth.  Basically, it counts how many people got test cases and
+problems wrong and uses that to estimate a difficulty and choose a
+weight.
+
+Each problem has a certain number of test cases along with a "weight"
+that tells how many of the 1,000 points come from that program.
+The test cases are also weighted; here is an example:
+
+            points weight 1  2  3  4  5  6
+            ------------------------------
+      probname: 39 396.6  6  5  6  5  6 11
+
+If you score full marks on cases 1, 2, 3, and 4, you'd have 6+5+6+5=22
+out of 39 points for this problem and you receive:
+
+                22/39 * 396.6 = 223.7
+
+total points out of 396.6 possible.  The sum of each problem's
+points is your total score.
+
+## Closing (Thanks and Solicitation)
+
+Thanks to the USACO coaches who helped bring this contest together.
+Special thinks to our translators.
+
+USACO accepts -- and uses -- problem submissions from anyone!  You
+have a real leg up in the contest if we use your problem.  Feel
+free to send programming tasks to me.  We now have a staff of 20
+coaches and assistant coaches who vet the problems and create
+prototype solutions.  This enables us to have many contests throughout
+the year with at least some level of predictable quality.
+
+   ====================================================================
+          ((__))       Rob Kolstad                   USACO Head Coach
+           (00)         kolstad@sage.org              +1 719-481-6542
+     -nn--(o__o)--nn-    http://www.usaco.org    Colorado Springs, CO
+   ====================================================================
+
+#################################################################################################
+                         2006 FEBRUARY CONTEST RESULTS: GOLD DIVISION
+#################################################################################################
+
+========================= Test Case Weights ========================
+
+         points weight  1  2  3  4  5  6  7  8  9  a  b
+     --------------------------------------------------
+        trt:  88 142.4  0  7  9  9  9  9  9  7  9 10 10
+      bdsum:  90 134.0  0  9  9  9  9  9  9  9  9  9  9
+       cell:  84 400.0  0  0  7 11  8 12 12 13 11 10
+      stead:  82 323.6  0  9  9 15 15 15  9 10
+
+Total score = sum of earned_prob_points[i]/possible_points[i]*weight[i]
+
+============================ Scoring Legend ============================
+
+* = correct    t = time exceeded  0-9 = 0%-90%      e = bad exit status
+x = wrong      s = bad signal     .   = no entry
+
+GRAD CTR Name............... ID........ ----- trt ------ ---- bdsum ----- ---- cell ---- -- stead --- TOTAL
+-----------------------------------------------------------------------------------------------------------
+2006 CHN Zhu Chenguang       05         ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***** *** 82 1000
+2007 BLR Vladimir Minjailov  dolinsky40 ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***** *** 82 1000
+2007 USA Richard McCutchen   hashpro1   ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***** *** 82 1000
+2006 ROM Pasoi Mircea        mircea_1   ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***** *** 82 1000
+2006 CAN Richard Peng        peng_ri1   ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***** *** 82 1000
+2007 BGR Rostislav Rumenov   rostisl001 ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***** *** 82 1000
+2006 CHN Wei Yuemin          weiyuem1   ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***** *** 82 1000
+2007 CHN Jiangwei Yu         wintokk1   ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***** *** 82 1000
+2007 USA John Pardon         wlpar1     ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***** **x 72  961
+2008 CHN Yang Yi             ahyangy4   ***** ***** * 88 ***x* *x*xx * 54 ***** ***** 84 ***** *** 82  946
+2006 POL Juliusz Sompolski   jullass1   ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***** t** 67  941
+2006 ROM Catalin Tiseanu     ctisean1   ***** ***** x 78 ***** ***** * 90 ***** ***** 84 ***x* *** 67  925
+2007 RUS Ilya Rasenstein     ilyaraz2   ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***t* t** 52  882
+2007 IRN Nima Ahmadi Pour    nimaahm1   ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***t* t** 52  882
+2006 ROM Giurgea Mihnea      skipy1     ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***t* t** 52  882
+2008 CHN Max Zhou            zzzzzdddd1 ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ****t t** 52  882
+2006 POL Adam Gawarkiewicz   adam1811   **xxx xxxxx x  7 ***** ***** * 90 ***** ***** 84 ***** *** 82  869
+2006 CHN Maigo Akisame       maigoak1   ***** ***** * 88 ***x* *x*xx * 54 ***x* ***** 73 ****e *** 67  835
+2007 CHN Li Yuan             jsliyua1   ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***tt t** 37  822
+2006 USA Kevin Modzelewski   kevin_m1   ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***tt t** 37  822
+2013 BLR Gennady Korotkevitc korotkevi2 ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***tt t** 37  822
+2007 CHN Mian Yang           sheepever1 ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***tt t** 37  822
+2006 BGR Veselin Kulev       veskok2    ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***tt t** 37  822
+2006 CHN Zeyuan Zhu          zhuzeyu1   ***** ***** x 78 ***** ***** * 90 ***** ***** 84 *x**x *xx 39  814
+2006 ROM Andrei Teodorescu   andreit1   ***** ***** * 88 **xx* *x**x x 45 ***** ***xx 63 ***x* *** 67  774
+2007 CHN zhao zheng          z24017     ***** ***** * 88 ***** ***** * 90 ***** ***** 84 *x**x sxx 24  771
+2006 HRV Igor Bonaci         ibonaci1   ***** ****x x 68 *xxx* *x*xx * 36 ***** ***** 84 ****t t** 52  769
+2008 CHN Yexiang Xue         bearxyx1   **xxx xx*xx x 14 ***** ***** * 90 ***** ***** 84 ***x* x** 52  762
+2008 BLR Vital Izmer         vitali-1   ***** ***** * 88 ***** ***** * 90 ***** ***x* 73 ***tt t*x 27  731
+2006 ROM Pasaila Daniel      danielp1   ***** ***** * 88 ***** ***** * 90 ***.* *.*.* 50 ****x t** 52  720
+2008 USA Jacob Steinhardt    zealotp1   ***** ***** * 88 ***** ***** * 90 ***x* *x*x* 50 ***t* t** 52  720
+2006 POL Filip Wolski        filipek1   ***** ***** * 88 ***** ***** * 90 ***x* xxx** 36 ***** t** 67  712
+2006 CHN Xiao Gangya         xiaogan1   ***** ***** * 88 ***** ***** * 90 ***** ***** 84 *x*tt txx  9  712
+2007 USA Thomas Morgan       agentmaxw1 ***** ***** * 88 ***** ***** * 90 ***** *xxx* 48 ***t* t** 52  710
+2006 USA Hooyoung Chung      pixor10001 ***** ***** * 88 ***** ***** * 90 **x*x **x*x 46 ****t t** 52  701
+2006 SVK Peter Peresini      ppershi1   ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ..... ...  0  676
+2007 ROM Valentin Stanciu    stanciu1   ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ..... ...  0  676
+2008 CHN Yucheng Zhang       zhangyu3   ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ..... ...  0  676
+2006 GEO Zviad Metreveli     zico001    ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ..... ...  0  676
+2006 POL Marian Kêdzierski   marcus81   ***** ***** * 88 ***** ***** * 90 ***x* ***** 73 *xxtt xt* 10  663
+2007 BLR Rudol Dmitry        masterz1   ***** ***** * 88 ***** ***** * 90 ***x* xxx** 36 ***t* t** 52  653
+2006 CHN Wenbin Tang         bamboo22   ***** ***** * 88 ***** ***** * 90 xxx*x x*xxx 23 ***** t** 67  650
+2007 CHN Cheng Yu            xpcnq_71   ***** ***** * 88 ***** x**** x 72 ***** ***** 84 ..... ...  0  650
+2006 AUT Martin J?rg         martin_1   ***** ***** * 88 ***** ***** * 90 **x** ***** 77 ..... ...  0  643
+2007 BGR Iskren Chernev      iskren81   ***** ***** * 88 ***** ***** * 90 ***x. .....  7 ***** *** 82  633
+2007 SWE Chen Xing           minikak3   ***** ***** * 88 ***** ***** * 90 *x*.. .....  7 ***** *** 82  633
+2006 USA Richard Ho          neverfo1   ***** ***** * 88 ***x* ***xx * 63 **x** ***** 77 *xxxx xxx  0  603
+2007 CHN Yang Zhe            yangzhe1   ***** ****s s 68 ***** ***** * 90 ***x. .....  7 ***** *** 82  601
+2006 VNM Hieu Nguyen Minh    highlande1 ***** ***** * 88 ***** ***** * 90 xxxxx xxxxx  0 ***** *** 82  600
+2006 UKR Vladislav Simonenko vlad891    **xxx xx*xx x 14 ***** ***** * 90 ***** *x*x* 61 ***tt t** 37  593
+2006 USA Yi Sun              yisun771   **xxx xx*xx x 14 ***** ***** * 90 ***** ***** 84 *xxxx x*x  9  592
+2006 ROM Paul Diac           diac_pa1   ***** ***** * 88 ***** ***** * 90 **..* .....  8 ***x* *** 67  579
+2007 CHN Wang Jingjing       wjj_1981   ***** ***** * 88 ***** ***** * 90 ***.. .....  7 ***x* *** 67  574
+2007 USA Bohua Zhan          bhzhan1    ***** ***** * 88 ***** ***** * 90 ****x x.x.x 18 ***t* t** 52  567
+2006 VNM Son Nguyen Ba       blinkms1   ***** ***** * 88 ***** ***** * 90 xxxxx xxxxx  0 ***** **x 72  561
+2006 CHN Chen Xue            chenxue2   ***** ***** * 88 **xxx xx**x x 27 xxx*x x*xxx 23 ***** s** 67  557
+2006 BGR Dilyan Dokov        dpdokov1   ***** ***** * 88 ***** ***** * 90 xxx*x x*xx. 23 **x*x x** 43  556
+2006 ROM Vladu Adrian        azotlic1   ***** ***** * 88 ***** ***** * 90 ***x* x.... 15 ****t t** 52  553
+2007 CHN Yan Long            heatdrago2 ***** ***** * 88 ***** ***** * 90 ***x* xxx** 36 *x**x txx 24  543
+2006 USA Andrei Borac        iodophlym1 ***** ***** * 88 ..... ..... .  0 ***** ***** 84 ..... ...  0  542
+2008 DEU Ludwig Schmidt      ludosch1   ***** ***** * 88 ..... ..... .  0 ***** ***** 84 ..... ...  0  542
+2007 VNM Duc Ngo Minh        duc89nki1  ***** ***** * 88 ***** ***** * 90 **xx. ....x  0 ***t* *** 67  541
+2006 IRN Afshin Nikzad       afshin_3   ***** ***** * 88 *x*** ***** * 81 ..... .....  0 ***t* *** 67  527
+2006 USA Marcello Herreshoff marcell1   ***** ****x x 68 ***** ***** * 90 *.... .....  0 ***** t** 67  508
+2006 IRN Sina Sadeghian      sinasma1   ***** ****s s 68 ***** ***** * 90 ..... .....  0 ***x* *** 67  508
+2006 USA George Boxer        gboxer11   ***** ***** * 88 ***** ***** * 90 ***x* xxxx* 25 **xxx x** 28  506
+2006 USA Men Young Lee       profmenyo1 ****x *xttt t 34 ***** ***** * 90 ***x* xxx** 36 ***tt t** 37  506
+2009 HRV Goran Zuzic         goran.z1   ***** ***** * 88 ***** ***** * 90 ***.* x.x.. 15 ***tt t** 37  494
+2006 BGR George Gerganov     ggergan2   ***** ***** * 88 ***xx xxxxx x 18 ***x* xxx** 36 ***tt t** 37  487
+2006 BGR Nickolay Tomitov    nicktom1   ***** ***** s 78 ***** ***** * 90 ***x* **x.x 39 *x*tt txx  9  481
+2008 POL Boleslaw Kulbabinsk bolek_k2   ***** ***** * 88 ***** ***** * 90 ***x. .....  7 **x*x x** 43  479
+2007 CHN Yu Lin              linyufly1  ***** ***** * 88 ***** ***** * 90 **x*. ..... 11 ***tt t** 37  475
+2008 CHN Chi Zhang           zhangchit2 ***** ***** x 78 ***** ***** * 90 ***x* xxx** 36 *x*tt txx  9  467
+2006 GEO Giorgi Lekveishvili giolekv2   ***** ***** * 88 ***** ***** * 90 **x.* ...x.  8 ***tt t** 37  461
+2010 ROM Bogdan Cr. Tataroiu bogdan1    **xxx xx*xx x 14 ***** ***** * 90 ***x* xxx** 36 *x*t* t*x 33  458
+2007 BGR Peter Petrov        p_petro1   ***** ***** * 88 ***** ***** * 90 ***** *.... 38 ..... ...  0  457
+2007 CHN Feng Hao            boychik1   ***** ***** * 88 ***** ***** * 90 ***x. .....  7 ***tx t** 37  456
+2006 USA Yu Xiang            xiangyu1   ***** ***** * 88 ***** ***** * 90 ***x. .....  7 ***ss s** 37  456
+2006 ROM Codrut Grosu        grosu_c1   ***** ***** * 88 *x*** **t** * 72 **xx. ...x.  0 ***t* t** 52  455
+2006 BGR Momchil Ivanov      dodo2      ***** ***** * 88 ***** ***** * 90 ***x* xxx** 36 ..... ...  0  448
+2006 MEX Luis Enrique Vargas luisonp1   ***** ***** * 88 ***** ***** * 90 ***x* xxx** 36 ..... ...  0  448
+2008 CHN Wu Zhuojie          wuzhuoj1   ***** ***** * 88 ***** ***** * 90 ***x* xxx** 36 ..... ...  0  448
+2006 USA Joe Zimmerman       quartez1   ***** ***** * 88 ***** ***** * 90 ..... .....  0 **x*x x** 43  446
+2006 USA Sam Gross           samgros1   ***** ***** t 78 ***** ***** * 90 ***.. .....  7 ***tt t** 37  440
+2007 USA Zarathustra Brady   ze88y1     ***** ***** * 88 ***** ***** * 90 **x*. ...x. 11 **xxx x** 28  439
+2006 IRN Ahmad Khajehnejad   ahmadkh1   ****e *s*** e 60 ***** ***** * 90 *.... .....  0 ***t* t** 52  436
+2008 CHN Huacheng Yu         yuhch123   ***** ***** * 88 ****x xxx*x x 36 xx*x. .....  7 ****t t** 52  435
+2007 VNM Hoàng Lê B?o  giangvokh1 ***** ***** * 88 ***** ***** * 90 ..... .....  0 ***tt t** 37  422
+2006 ROM Ionel Corneliu Gog  gogione1   ***** ***** * 88 ***** ***** * 90 **x.. .....  0 ***tt t** 37  422
+2006 ROM Tiberiu Florea      greco2     ***** ***** * 88 ***** ***** * 90 *.x.. .....  0 ***tt t** 37  422
+2007 CHN Tianyi Li           lll75651   ***** ***** * 88 ***** ***** * 90 ..xx. .....  0 ***tt t** 37  422
+2008 VNM Tri Nguyen Thanh    trithient1 ***** ***** * 88 ***** ***** * 90 **x.. .....  0 ***ee e** 37  422
+2007 BLR Sergey Veraksich    sveraksic1 **xxx xx*xx x 14 ***** ***** * 90 **x*x xxxxx 11 ***t* t** 52  414
+2006 SVK Daniel Bundala      dbk1       ***** ***** * 88 ***** **t** * 81 **x.. .....  0 ***tt t** 37  409
+2008 USA Kevin Lee           kevlee1    ***** ***** * 88 ***** ***** * 90 ***x. .....  7 *xx*x x*x 24  404
+2008 CHN Yu Hang             cosechy1   ***** ***** * 88 ***** ***** * 90 ***** x.x.. 26 ..... ...  0  400
+2008 CHN Wu woody            oicmc1     ..... ..... .  0 ..... ..... .  0 ***** ***** 84 ..... ...  0  400
+2007 HRV Domagoj Kusalic     limun1     ***** ***** * 88 ***** ***** * 90 ..... .....  0 **xtt t** 28  387
+2006 LTU Vytis Banaitis      v.banai1   ***** ***** * 88 ***** ***** * 90 *.... .....  0 **xtt t** 28  387
+2008 ROM Buruiana Filip Cris filipb22   ***** ***** * 88 ***** ***** * 90 ***xx xxxxx  7 *xxxx x** 19  385
+2007 UKR Daniel Neiter       dneiter1   ***** ***** * 88 ***** ***** * 90 ..... .....  0 ***tt t*x 27  383
+2007 USA Peiyu Wang          jwang_7741 ***** ***** * 88 ***** ***** * 90 ***x. .....  7 ***tt txx 18  381
+2007 ROM Airinei Adrian      astrono4   ***** ***** * 88 ***** ***** * 90 **xx. .....  0 *x**x xxx 24  371
+2006 ROM Adrian Diaconu      adriand1   ***** ***** * 88 ***** ***** * 90 xx*xx xxxxx  7 *xx*x xxx 15  369
+2007 GRC Christos Mantoulidi cmad1      ***** ***** * 88 ***** ***** * 90 **x** xxxxx 19 ..... ...  0  367
+2007 POL Agata Miazio        centel1    ***** ***** * 88 ***** ***** * 90 ..... .....  0 *x*tx t*x 18  347
+2006 BGR Orlin Kolev         orlin_k1   ***** ***** * 88 ..... ..... .  0 **xx* *x*x* 43 ..... ...  0  347
+2007 USA Michael Gummelt     stud7891   ***** ***** * 88 ***** ***** * 90 xxxxx xxxxx  0 **xxx x*x 18  347
+2006 ROM Bogdan Raducanu     lord_bo1   ***** ****s * 78 ***** ***** * 90 ***.* ..... 15 ..... ...  0  332
+2006 CHN frank advent        advent1    **xxx xx*xx x 14 **xxx xxx*x x 18 *.... .....  0 ***** t** 67  314
+2007 GEO David Tvaltchrelidz gam_zaza6  ..... ..... .  0 ***** ***** * 90 ***.. .....  7 ***tt t** 37  313
+2006 USA Nicholas Zehender   dnz1       ***** ***** * 88 ***** ***** * 90 ..... .....  0 *xxtt t*x  9  312
+2007 USA Henry Tung          henrypt1   ***** ***** * 88 ***** ***** * 90 ..... .....  0 *tttt t*x  9  312
+2007 IND Nishant Redkar      niphoto1   ***** ***** * 88 ***** ***** * 90 ..... .....  0 *xsss s*x  9  312
+2006 YUG Stevan Joncic       rajkoj1    ***** ***** * 88 ***** ***** * 90 ..... .....  0 **xxx xxx  9  312
+2006 ROM Alexandru Dimitriu  alexdim3   ***** ***** * 88 ***** ***** * 90 ***xx xxxxx  7 ..... ...  0  310
+2007 USA Dan Li              dan_li91   ***** ***** * 88 ***** ***** * 90 ***.. .....  7 ..... ...  0  310
+2006 DEU Erik Panzer         panzere1   ***** ***** * 88 ..... ..... .  0 ..... .....  0 *x**x *xx 39  296
+2006 CUB Renier Marichal     rmarich1   ***** ***** * 88 ***** x**** * 81 ***.. .....  7 ..... ...  0  296
+2007 ROM Andrew G?nczi       andrewg1   **xxx xx*xx x 14 ***** ***** * 90 xxxx* xxx..  8 *x**x txx 24  289
+2007 CHN Muzi-li Yuqian      yuqianl1   **xxx xx*xx x 14 ***** ***** * 90 xxxxx xxxxx  0 *x*xx **x 33  287
+2007 CHN Lu Jun              supercomp1 ***** ***** * 88 ***** **t** t 72 **x.. .....  0 **xxx xxx  9  285
+2007 BGR Nedko Jordanov      venelin1   ***** ****s s 68 ***** ***** * 90 **xx. .....  0 *x*ss sxx  9  280
+2010 KAZ Bahitzhan Baizhiken ba_ha1     ***** ***** * 88 ***** ***** * 90 ..... .....  0 ..... ...  0  276
+2007 CAN Boris Braverman     borbrav1   ***** ***** * 88 ***** ***** * 90 ..... .....  0 ..... ...  0  276
+2006 USA Jake Snell          charles5   ***** ***** * 88 ***** ***** * 90 **... .....  0 ..... ...  0  276
+2007 CHN Jia Wang            cntswj2    ***** ***** * 88 ***** ***** * 90 ..... .....  0 ..... ...  0  276
+2006 POL Przemek Witek       diamond1   ***** ***** * 88 ***** ***** * 90 **... .....  0 ..... ...  0  276
+2008 GEO Giorgi Nadiradze    gam_zaza4  ***** ***** * 88 ***** ***** * 90 ..... .....  0 ..... ...  0  276
+2007 IRN Hessam Akhlaghpour  hessam21   ***** ***** * 88 ***** ***** * 90 ..... .....  0 ..... ...  0  276
+2006 LVA Igors Stepanovs     iighoss1   ***** ***** * 88 ***** ***** * 90 ..... .....  0 ..... ...  0  276
+2006 RUS Ilya Kornakov       nikkorn1   ***** ***** * 88 ***** ***** * 90 ..... .....  0 ..... ...  0  276
+2009 KOR Minsub Sim          sms51742   ***** ***** * 88 ***** ***** * 90 **xxx x....  0 ..... ...  0  276
+2006 USA Timothy Loffredo    timloffre1 ***** ***** * 88 ***** ***** * 90 ..... .....  0 ..... ...  0  276
+2007 ROM Vlad Berteanu       vladcyb1   ***** ***** * 88 ***** ***** * 90 ..... .....  0 ..... ...  0  276
+2009 BLR Yura Pisarchick     yurasik_o1 ***** ***** * 88 ***** ***** * 90 ..... .....  0 ..... ...  0  276
+2007 CHN Zhou Hang           tuonela1   ***** ***** * 88 *xxx* *x*xx * 36 ***x* xxxxx 15 *xxxx xxx  0  267
+2006 USA Ameya Velingker     avinash001 ***** **x** * 81 ***** ***** * 90 ..... .....  0 ..... ...  0  265
+2006 CAN Peng Shi            pengroc1   ***** ***** * 88 *x*** ***** * 81 ..... .....  0 ..... ...  0  263
+2006 USA Justin Solomon      justso11   ***** **ttt t 52 ***** ***** * 90 *xx.. .....  0 *x*tt txx  9  254
+2007 RUS Gleb Grenkin        grenkin1   ***** ****t t 68 ***** ***** * 90 ..... .....  0 ..... ...  0  244
+2006 HRV Marko Ivankovic     marko.i1   ***** ****s s 68 ***** ***** * 90 ..... .....  0 ..... ...  0  244
+2006 CAN Yufei Zhao          yufeizh1   ***** ****x x 68 ***** ***** * 90 **... .....  0 ..... ...  0  244
+2006 AUT Gerhard Niederbruck ger.nie1   ***** ***** * 88 ..... ..... .  0 **x*x xxxxx 11 *x*tt txx  9  230
+2006 USA Marc Sweetgall      marswe1    **xxx xx*xx x 14 ***x* *x*xx * 54 **... .....  0 ***tt tx* 28  214
+2007 BLR Sasha Gromyko       dolinsk1   ***** *tttt t 43 ***** ***** * 90 ..... .....  0 ..... ...  0  204
+2006 BLR Vladimir Baraznovsk dolinsky43 ***** *x*xx x 50 *x*** ***** * 81 ..... .....  0 ..... ...  0  202
+2007 BGR Alexander Georgiev  froozen1   **xxx xx*xx x 14 *x*** ***** * 81 **xxx xxxxx  0 *xxxx *xx 15  202
+2007 USA Jeffrey Wang        jeffrey1   **xx* *x*x* t 42 ***** ***** * 90 ..... .....  0 ..... ...  0  202
+2006 FRA Stéphane Caron      tastali1   ****x *xttx x 34 ***** ***** * 90 ..... .....  0 ..... ...  0  189
+2007 ROM Adona Iosif         new_ada2   ***** *x*xx x 50 ***** **t** t 72 ..... .....  0 ..... ...  0  188
+2006 ROM Pungaru Marius      mariusp1   ***** ***** * 88 **xxx xxx*x x 18 ..... .....  0 ..... ...  0  169
+2009 USA Thomas Wang         placefo1   *sx*x x*xxx s 18 ***** ***** * 90 **... .....  0 ..... ...  0  163
+2006 POL Bartosz Szreder     cfiend1    **xxx xx*xx x 14 ***** ***** * 90 ..... .....  0 ..... ...  0  157
+2006 ARM Armen Mnatsakanyan  chuk1      **xxx xx*xx x 14 ***** ***** * 90 ..... .....  0 ..... ...  0  157
+2007 BLR Vova Shlyagrovskiy  dolinsky5  **xxx xx*xx x 14 ***** ***** * 90 ..... .....  0 ..... ...  0  157
+2007 SVN Tomaz Hocevar       tomaz.h1   **xxx xx*xx x 14 ***** ***** * 90 **xx. .....  0 ..... ...  0  157
+2007 BLR Vladimir Vasilyev   vovich_ma1 **xxx xx*xx x 14 ***** ***** * 90 ..... .....  0 ..... ...  0  157
+2006 BLR Dmitry Chahovsky    1072601    **xxx xx*xx x 14 *x*** ***** * 81 ..... .....  0 ..... ...  0  143
+2010 BGR Petar Minchev       imss1      **xxx xx*xx x 14 *t*** ***** * 81 *.... .....  0 ..... ...  0  143
+2008 EGY Ahmed Naguib        ahnagui1   ***** ***** * 88 ..... ..... .  0 ..... .....  0 ..... ...  0  142
+2006 DEU Benjamin Berger     benjami2   ***** ***** * 88 ..... ..... .  0 xxxxx x.x..  0 ..... ...  0  142
+2008 ROM Sorin Fagateanu     cyronon1   ***** ***** * 88 ..... ..... .  0 ..... .....  0 ..... ...  0  142
+2007 ROM Ionescu Bogdan Gabr ionescu1   ***** ***** * 88 ..... ..... .  0 **xx. .....  0 ..... ...  0  142
+2006 POL Ela Dlutowska       ela-d2     ..... ..... .  0 ***** ***** * 90 ..... .....  0 ..... ...  0  134
+2006 POL Piotr Jastrzebski   piotrja1   ..... ..... .  0 ***** ***** * 90 ..... .....  0 ..... ...  0  134
+2007 BLR Vladimir Kashkevich varfala2   ..... ..... .  0 ***** ***** * 90 ..... .....  0 ..... ...  0  134
+2007 MAC Nam Lei             y1989m51   ..... ..... .  0 ***** ***** * 90 ..... .....  0 ..... ...  0  134
+2007 BLR Tom Ahramenko       alevshuno2 **xxx xx*xx x 14 ***** ***t* t 72 ..... .....  0 ..... ...  0  130
+2006 IDN Natalya Gunawan     natalya1   **xxx xx*xx x 14 ***** ***t* t 72 ..... .....  0 ..... ...  0  130
+2008 BLR Bazir Andestuk      xing1      ***x* *x*x* * 61 *x*xx xxxxx x  9 ..... .....  0 ..... ...  0  112
+2007 CAN Stephen Zhang       stephen12  **xxx xx*xx x 14 **xxx **x*x x 36 ..... .....  0 ..... ...  0   76
+2006 EST Rivo Laks           rivolak1   **xxx xx*xx x 14 ..... ..... .  0 ***.. .....  7 ..... ...  0   56
+2008 BLR Sergey Iachevich    usas20041  ..... ..... .  0 **xxx xx**x * 36 xxxxx xxxxx  0 ..... ...  0   54
+2007 BLR Sergey Moiseenko    dolinsky66 **xxx xx*xx x 14 *x*xx xxxxx x  9 ..... .....  0 ..... ...  0   36
+2006 TKM Atamyrat Hezretguli killing_t1 **xxx xx*xx x 14 ..... ..... .  0 ..... .....  0 ..... ...  0   23
+2008 RUS Alexsey Smaluk      nelon5     **xxx xx*xx x 14 *xxxx xxxxx x  0 ..... .....  0 ..... ...  0   23
+2006 USA Otis Chodosh        ochodos1   **xxx xx*xx x 14 *xxxx ttttx t  0 ..... .....  0 ..... ...  0   23
+2006 BLR Dmitry Hrabrov      xpa6pob1   **xxx xx*xx x 14 ..... ..... .  0 ..... .....  0 ..... ...  0   23
+2003 SWE Erik Bernhardsson   013        ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***** *** 82 1000
+1996 CAN Derek Kisman        dkisman1   ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***** *** 82 1000
+2004 HRV Luka Kalinovcic     kalinov001 ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***** *** 82 1000
+2000 DEU Adrian Kuegel       adrian_3   ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***** t** 67  941
+2005 UKR Yura Znovyak        verba1     ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***** t** 67  941
+9999 SGP An Xiong            anxiong191 ***** ****x x 68 ***** ***** * 90 ***** ***** 84 ***** **x 72  928
+2004 RUS Ivan Krasilnikov    infnty1    ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ****t t** 52  882
+2005 TUR Hamza Yilmaz        hamzaylma1 ****x *xxxx x 34 ***** ***** * 90 ***** ***** 84 ***x* *** 67  853
+2005 DEU Felix Arends        felix.are1 ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***ts s** 37  822
+2003 POL Jakub Radoszewski   jakubr1    ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ***ss s** 37  822
+2004 GEO Nika Jimsheleishvil kaxaaka1   ***** ***** * 88 ***** ***** * 90 **x** ***** 77 ***ss s** 37  789
+2004 VNM Nguyen Tran Nam Kha namkhanh21 ***** ***** * 88 ***** ***** * 90 ***x* xxx** 36 ***** t** 67  712
+2004 CAN Yin Zhao            bugz_po1   ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ..... ...  0  676
+2005 SVK Frantisek Simancik  simanci1   ***** ***** * 88 ***** ***** * 90 ***** ***** 84 ..... ...  0  676
+2003 BGR Vesselin Georgiev   vessko001  ***** ***** * 88 ***** ***** * 90 ***x* xxx** 36 ***t* t** 52  653
+9999 POL Pawel Gawrychowski  gawry1     ***** ***** * 88 ***** ***** * 90 **x*x xxxxx 11 ***** *** 82  652
+2005 BGR Svetoslav Kolev     swetko3    ***** ***** * 88 ***** ***** * 90 **xx* **x** 53 ..... ...  0  529
+2005 BGR Angel Dzhigarov     emp_ang2   ***** ***** * 88 ***** ***** * 90 **xxx xxxxx  0 ***t* **x 57  501
+9999 RUS Nick Permyakov      sticker001 ***** ***** s 78 ***** ***** * 90 ..... .....  0 ***x* **x 57  485
+2000 USA Ryan Pai            rap58461   ***** ***** * 88 ***** ***** * 90 ..... .....  0 ***t* t** 52  482
+2002 UKR Michael Rybak       sheldin001 **xxx xx*xx x 14 ***** ***** * 90 ..... .....  0 ***** **x 72  441
+2004 RUS Mikhail Dvorkin     dvorkin1   ***** ***** * 88 ***** ***** * 90 ..... .....  0 ***tt t** 37  422
+2002 ARG Diego Gavinowich    diego_g1   ***** ***tt t 59 ***** ***** * 90 ***.* xx.x* 25 *x*tt t*x 18  420
+2005 DEU Karl Bringmann      karl-br1   ***** ***ss s 59 ***** ***** * 90 ***.. .....  7 *x*xx t*x 18  334
+2005 SVK Michal Burger       bus1       ***** ***** * 88 ***** ***** * 90 **x*. ..... 11 ..... ...  0  329
+9999 USA Dhyanesh Damania    dhyanes1   ***** ***** * 88 ***** ***** * 90 ..... .....  0 ..... ...  0  276
+2003 GEO Davit Rachvelishvil rachvel1   ***** ***** * 88 ***** ***** * 90 ..... .....  0 ..... ...  0  276
+2003 LTU Mantas Kanaporis    vkanapo001 ***** ***** * 88 ***** ***** * 90 ..... .....  0 ..... ...  0  276
+2001 IND Subrahmanyam Velaga vls1271    ***** ***** * 88 ***** ***** * 90 ..... .....  0 ..... ...  0  276
+9999 USA Andres Smith        andresw1   ***** ***** s 78 ***** ***** * 90 ..... .....  0 *xxxx xxx  0  260
+1998 UKR Olexiy Oryeshko     olexiyo1   ***** ***** s 78 ***** ***** * 90 ..... .....  0 ..... ...  0  260
+2004 IND Shreevatsa R        shreeva1   ***** ***** s 78 ***** ***** * 90 *.... .....  0 ..... ...  0  260
+9999 RUS Egor Kulikov        egor.kuli1 ***** ****s s 68 ***** ***** * 90 ..... .....  0 ..... ...  0  244
+1990 CHN Neal Zane           nealzan1   ***** ****x x 68 ***** ***** * 90 ..... .....  0 ..... ...  0  244
+2004 POL Kamil Gorlo         kgorlo1    ***** **xxx x 52 ***** ***** * 90 ..... .....  0 ..... ...  0  218
+2003 USA John Rizzo          bocybo1    ***** ***** s 78 ***** ttttt t 36 **x.x x..x.  0 ..... ...  0  180
+9999 BGR Anton Titov         anton3     **xxx xx*xx x 14 ***** ***** * 90 ..... .....  0 ..... ...  0  157
+2005 RUS Igor Tuphanov       igorevg1   **xxx xx*xx x 14 ***** ***** * 90 ..... .....  0 ..... ...  0  157
+2004 RUS Pavel Rosputko      slash1     **xxx xx*xx x 14 ***** ***** * 90 ..... .....  0 ..... ...  0  157
+1974 USA Charles Grant       cg1        ***** ****s s 68 ..... ..... .  0 ..... .....  0 ..... ...  0  110
+2005 COL Willy Alejandro Mon wialmon1   **xxx xx*xx x 14 **xxx xxt*x t 18 ..... .....  0 ..... ...  0   49
+
+====== Distributions =====
+
+  Distribution by grade:
+    Grde  #  Percent
+    2006  87 (48.6%) *************************************
+    2007  62 (34.6%) **************************
+    2008  22 (12.3%) *********
+    2009   4 ( 2.2%) *
+    2010   3 ( 1.7%) *
+    2013   1 ( 0.6%) 
+
+  Distribution by country:
+   Cntry  #  Percent
+     ARM   1 ( 0.6%) 
+     AUT   2 ( 1.1%) 
+     BGR  12 ( 6.7%) *****
+     BLR  17 ( 9.5%) *******
+     CAN   5 ( 2.8%) **
+     CHN  32 (17.9%) *************
+     CUB   1 ( 0.6%) 
+     DEU   3 ( 1.7%) *
+     EGY   1 ( 0.6%) 
+     EST   1 ( 0.6%) 
+     FRA   1 ( 0.6%) 
+     GEO   4 ( 2.2%) *
+     GRC   1 ( 0.6%) 
+     HRV   4 ( 2.2%) *
+     IDN   1 ( 0.6%) 
+     IND   1 ( 0.6%) 
+     IRN   5 ( 2.8%) **
+     KAZ   1 ( 0.6%) 
+     KOR   1 ( 0.6%) 
+     LTU   1 ( 0.6%) 
+     LVA   1 ( 0.6%) 
+     MAC   1 ( 0.6%) 
+     MEX   1 ( 0.6%) 
+     POL  10 ( 5.6%) ****
+     ROM  23 (12.8%) *********
+     RUS   4 ( 2.2%) *
+     SVK   2 ( 1.1%) 
+     SVN   1 ( 0.6%) 
+     SWE   1 ( 0.6%) 
+     TKM   1 ( 0.6%) 
+     UKR   2 ( 1.1%) 
+     USA  31 (17.3%) *************
+     VNM   5 ( 2.8%) **
+     YUG   1 ( 0.6%) 
+
+===== Distribution of scores =====
+951..1000  9  *********
+901.. 950  3  ***
+851.. 900  5  *****
+801.. 850  7  *******
+751.. 800  4  ****
+701.. 750  6  ******
+651.. 700  7  *******
+601.. 650  6  ******
+551.. 600 11  ***********
+501.. 550  9  *********
+451.. 500 12  ************
+401.. 450 16  ****************
+351.. 400 10  **********
+301.. 350 12  ************
+251.. 300 23  ***********************
+201.. 250  9  *********
+151.. 200  9  *********
+101.. 150 13  *************
+ 51.. 100  3  ***
+  1..  50  5  *****
+  0..   0  0  
+
+Prob            *   x   t   e   s
+trt.1           0   0   0   0   0
+trt.2         171   0   0   0   1
+trt.3         143  29   0   0   0
+trt.4         143  29   0   0   0
+trt.5         141  30   0   1   0
+trt.6         144  28   0   0   0
+trt.7         137  33   1   0   1
+trt.8         165   3   4   0   0
+trt.9         136  32   4   0   0
+trt.10        129  34   4   0   5
+trt.11        123  36   6   1   6
+Total correct: 1432 (72.73%)
+
+Prob            *   x   t   e   s
+bdsum.1         0   0   0   0   0
+bdsum.2       153  12   1   0   0
+bdsum.3       156  10   0   0   0
+bdsum.4       149  17   0   0   0
+bdsum.5       155  11   0   0   0
+bdsum.6       154  11   1   0   0
+bdsum.7       150  15   1   0   0
+bdsum.8       153   8   5   0   0
+bdsum.9       153  10   3   0   0
+bdsum.10      148  18   0   0   0
+bdsum.11      150  11   5   0   0
+Total correct: 1521 (77.25%)
+
+Prob            *   x   t   e   s
+cell.1          0   0   0   0   0
+cell.2          0   0   0   0   0
+cell.3         81  35   0   0   0
+cell.4         54  45   0   0   0
+cell.5         69  18   0   0   0
+cell.6         50  34   0   0   0
+cell.7         47  29   0   0   0
+cell.8         46  35   0   0   0
+cell.9         51  26   0   0   0
+cell.10        57  20   0   0   0
+Total correct: 455 (25.42%)
+
+Prob            *   x   t   e   s
+stead.1         0   0   0   0   0
+stead.2        82  25   1   0   0
+stead.3        87  19   1   0   1
+stead.4        40  17  47   1   3
+stead.5        41  25  37   2   3
+stead.6        28  17  57   1   5
+stead.7        87  20   1   0   0
+stead.8        76  32   0   0   0
+Total correct: 441 (30.80%)
+
+
+#################################################################################################
+                        2006 FEBRUARY CONTEST RESULTS: SILVER DIVISION
+#################################################################################################
+
+========================= Test Case Weights ========================
+
+         points weight  1  2  3  4  5  6  7  8  9  a  b  c
+     -----------------------------------------------------
+    reserve:  94 400.0  0  6  6  7  8  8  8  9 15 15  7  5
+      treat:  99 347.3  0  6 10 10 10  9 11  7 11 11 14
+        bds:  96 252.7  0 10  9  9  9 10 10 10 10  9 10
+
+Total score = sum of earned_prob_points[i]/possible_points[i]*weight[i]
+
+============================ Scoring Legend ============================
+
+* = correct    t = time exceeded  0-9 = 0%-90%      e = bad exit status
+x = wrong      s = bad signal     .   = no entry
+
+GRAD CTR Name............... ID........ ---- reserve ---- ---- treat ----- ----- bds ------ TOTAL
+-------------------------------------------------------------------------------------------------
+2006 ROM Emanuel Furtuna     anonim1    ***** ***** ** 94 ***** ***** * 99 ***** ***** * 96 1000
+2006 BGR Bojidar Penchev     bujo871    ***** ***** ** 94 ***** ***** * 99 ***** ***** * 96 1000
+2007 CHN xiao jiang          jiangxiao2 ***** ***** ** 94 ***** ***** * 99 ***** ***** * 96 1000
+2007 IRN Korosh Khagavi      koroshkha1 ***** ***** ** 94 ***** ***** * 99 ***** ***** * 96 1000
+2008 CHN Cao Zheng           mozeda2    ***** ***** ** 94 ***** ***** * 99 ***** ***** * 96 1000
+2010 ROM Cosmin Gheorghe     mystupidn1 ***** ***** ** 94 ***** ***** * 99 ***** ***** * 96 1000
+2007 POL Rafal Jozefowicz    r_l_p1     ***** ***** ** 94 ***** ***** * 99 ***** ***** * 96 1000
+2007 IRN Behrooz Ostadmohamm sasahi_1   ***** ***** ** 94 ***** ***** * 99 ***** ***** * 96 1000
+2006 POL Tomasz Dudziak      thmk1      ***** ***** ** 94 ***** ***** * 99 ***** ***** * 96 1000
+2008 ROM Dumitriu Vlad       vladut1    ***** ***** ** 94 ***** ***** * 99 ***** ***** * 96 1000
+2006 TWN Joseph Wen          wenhenr1   ***** ***** ** 94 ***** ***** * 99 ***** ***** * 96 1000
+2006 TWN Chun-Sung Ferng     william9   ***** ***** ** 94 ***** ***** * 99 ***** ***** * 96 1000
+2006 CHN yisu zhou           zhouyisu3  ***** ***** ** 94 ***** ***** * 99 ***** ***** * 96 1000
+2008 CHN zou yuhan           zyuhan1    ***** ***** ** 94 ***** ***** * 99 ***** ***** * 96 1000
+2007 CHN Yu Chen Liu         liuyluy1   ***** ***** ** 94 ***** ***** * 99 *x*** ***** * 86  974
+2008 CHN Edward Yang         edwardyhy1 ***** ***** ** 94 ***** ***** x 85 ***** ***** * 96  951
+2006 EGY Hussein Fawzy       sehs9891   ***** ***** ** 94 ***** ***** x 85 ***** ***** * 96  951
+2007 CHN Hu Gang             hugangh1   ***** ***** ** 94 ***** ***** * 99 *x*** xx*** x 56  895
+2006 YUG Slobodan Mitrovic   boba5551   ***** ***** ** 94 ***** ***tt x 63 ***** ***** * 96  874
+2007 CHN Charles Peng        chp5161    ***** ***tt ** 64 ***** ***** * 99 ***** ***** * 96  872
+2007 CHN Dong Pei            dong_021   ***** ***tt ** 64 ***** ***** * 99 ***** ***** * 96  872
+2007 CHN Fang Fei            fangfei1   ***** ***tt ** 64 ***** ***** * 99 ***** ***** * 96  872
+2006 CHN Jimmy Wang          icemeji2   ***** ***tt ** 64 ***** ***** * 99 ***** ***** * 96  872
+2009 CHN JieMing Mao         max43041   ***** ***tt ** 64 ***** ***** * 99 ***** ***** * 96  872
+2007 USA Michael Ty          mikey061   ***** ***ts ** 64 ***** ***** * 99 ***** ***** * 96  872
+2007 BRA Eduardo Ribas       ribas.e1   ***** ***tt ** 64 ***** ***** * 99 ***** ***** * 96  872
+2007 CHN Zhang Wenqi         zhangwe3   ***** ***tt ** 64 ***** ***** * 99 ***** ***** * 96  872
+2009 CHN Yichen Chow         zycnfls1   ***** ***tt ** 64 ***** ***** * 99 ***** ***** * 96  872
+2007 BGR Ventsislav Chonev   sneaky_1   **x** *x**t x* 58 ***** ***** * 99 ***** ***** * 96  847
+2006 FRA amaury pouly        amaury.1   ***** ***** ** 94 ***** ***** * 99 ***** ttttt t 37  845
+2006 ZAF Keegan Carruthers-S bloodclot1 ***** **ttt ** 55 ***** ***** * 99 ***** ***** * 96  834
+2009 GEO Zura Kutsia         mr.kuts1   ***** **ttt ** 55 ***** ***** * 99 ***** ***** * 96  834
+2008 CHN Xiao Yu             thecat92   ***** ***tt ** 64 ***** ***** * 99 ***** **x** x 76  820
+2006 POL Pawel Pajak         emsiweds1  ***** ****t ** 79 ***** ***** * 99 **x*x xx*** x 48  810
+2008 CAN Guru  Guruganesh    gurugan1   ***** ***** ** 94 ***** ***** s 85 ***x* xxx*x x 38  798
+2006 CAN Chenen Liang        chenenmat1 ***** ***tt ** 64 ***** ***** s 85 *x*** ***** * 86  797
+2008 USA Boping Lai          orderto1   ***** ***tt ** 64 ***** ***** * 99 ***** *xx*x * 67  796
+2006 TUR Nevzat Sevim        nevzatsbo1 ***** ***** ** 94 ****x *xxxx x 35 ***** ***** * 96  775
+2008 CHN Yilun Huang         hylkjbz2   ***** ***** ** 94 ***** ***** * 99 ..... ..... .  0  747
+2006 NED Bauke Conijn        bcmpinc1   ***** ***tt ** 64 **x*x **x** x 58 ***** ***** * 96  728
+2007 TWN Alan Huang          pigalan1   *tt*t tt*tt ** 28 ***** ***** * 99 ***** ***** * 96  719
+2006 POL Krzysztof Krygiel   kkrygiel1  ***** ***** ** 94 **xxx xx*x* x 24 *t*** ***** * 86  711
+2006 FRA Butin Benjamin      mani_ha1   ***** ***tt ** 64 ***** *x*xx x 52 ***** ***** * 96  707
+2007 CAN Andy Kong           andytyk2   ***xx xtttt ** 24 ***** ***** * 99 ***** ***** * 96  702
+2007 CHN Zhen Jia            jiazhen1   ***** ***tt ** 64 ***** ***** * 99 **xxx xx*tx * 30  699
+2007 SVK Peter Herman        3herman1   ***** ***** ** 94 **xxx xx*xx x 13 ***** ***** * 96  698
+2006 POL Wojtek Lowiec       chanta1    ***** ***** ** 94 **xxx xx*xx x 13 ***** ***** * 96  698
+2008 POL Konrad Goluchowski  codie1     ***** ***** ** 94 **xxx xx*xx x 13 ***** ***** * 96  698
+2006 BGR Nikolai Stanoev     nikolaist3 ***** ***** ** 94 **xxx xx*xx x 13 ***** ***** * 96  698
+2007 POL Pawel Blokus        p_bloku1   ***** ***** ** 94 **xxx xx*xx x 13 ***** ***** * 96  698
+2006 YUG Rajko Nenadov       ralecar1   ***** ***** ** 94 **xxx xx*xx x 13 ***** ***** * 96  698
+2006 USA Izaak Rubin         izaak1     ***** **ttt ** 55 ***** **eee e 56 ***** ***** * 96  683
+2007 IND Vishwesh Inamdar    vishwes1   *x*** ***** ** 88 **xxx xx*xx x 13 ***** ***** * 96  673
+2006 KOR Hooy Lee            ltdtl1     ***xx xxxxx x* 17 ***** ***** * 99 ***** ***** * 96  672
+2008 ROM Stefan Filip        filipst1   **x*x xxxxx ** 25 ***** ***** x 85 ***** ***** * 96  657
+2008 USA Artur Dmowski       artur-d2   ***xx xxttt ** 24 ***** ***** x 85 ***** ***** * 96  653
+2008 ROM Cristina Stancu     cristina91 ***xx xxxxx ** 24 ***** ***** t 85 ***** ***** * 96  653
+2006 IRN Nezam Dubarare      mohamma7   *tt*t ttttt t* 12 ***** ***** * 99 ***** ***** * 96  651
+2007 USA Robert Mitchell Bur sharpob1   *xx*x xxxtt x* 12 ***** ***** * 99 ***** ***** * 96  651
+2007 BGR Ivan Ivanov         baboon_1   **xxx xxxtt x* 11 ***** ***** * 99 ***** ***** * 96  647
+2006 SVN Nino Ba?ic     nino1      **xxx xxttt x* 11 ***** ***** * 99 ***** ***** * 96  647
+2006 TWN Yunhan Lee          lyh1       ***** **ttt ** 55 ***** *tttt t 45 ***** ***** * 96  645
+2006 USA Nadeem Kolia        nadkool1   ***** ****t ** 79 **xxx xx*xx x 13 ***** ***** * 96  634
+2008 ROM Paul-Dan Baltescu   pauldb81   ***** ****t ** 79 **xxx xx*xx x 13 ***** ***** * 96  634
+2006 YUG Bojan Trobok        trobok1    ***** ***tt ** 64 ***** *tttt t 45 ***** **t** t 76  630
+2008 BGR Peter Ivanov        cheater_n1 *xxxx xxxtt x*  5 ***** ***** * 99 ***** ***** * 96  621
+2007 POL Damian Karasinski   eonx1      *xxxx xxxxx x*  5 ***** ***** * 99 ***** ***** * 96  621
+2007 CHN Zhengdong Tang      ilovezh1   *xxxx xxxxx x*  5 ***** ***** * 99 ***** ***** * 96  621
+2008 CHN Tan Kening          mocky11    *xxxx xxxtt x*  5 ***** ***** * 99 ***** ***** * 96  621
+2007 VNM Long Pham Nam       phamnamlo2 *xxxx xxttt x*  5 ***** ***** * 99 ***** ***** * 96  621
+2006 BGD Md. Mahbubul Hasan  shanto861  *xxxx xxxtt x*  5 ***** ***** * 99 ***** ***** * 96  621
+2006 ZAF Dirk Johannes Jacob jboosth1   ***** ***tt ** 64 ***** ***** * 99 ..... ..... .  0  620
+2007 IRN Masood_cont Seddigh maseed1232 ***** ***tt ** 64 **xxx xx*x* x 24 ***** ***** * 96  609
+2006 POL Krzysztof Sachanowi analyzer11 *xx*x xxxxx x* 12 ***** ***** s 85 ***** ***** * 96  602
+2008 USA Louis Wasserman     wasserm1   ***xx xtttt xx 12 ***** ***** t 85 ***** ***** * 96  602
+2006 BGR Denitsa Gencheva    deni_1_1_1 *ttxt ttttt tx  0 ***** ***** * 99 ***** ***** * 96  600
+2008 HRV Ivo Sluganovic      ivos-51    ..... ..... ..  0 ***** ***** * 99 ***** ***** * 96  600
+2008 CHN Hongsheng Jiang     jiang_h1   ..... ..... ..  0 ***** ***** * 99 ***** ***** * 96  600
+2006 BGR Kiril Kalchev       kirilll1   ..... ..... ..  0 ***** ***** * 99 ***** ***** * 96  600
+2008 POL Lukasz Wol l_u_k_e1   ..... ..... ..  0 ***** ***** * 99 ***** ***** * 96  600
+2007 CHN Hu Xiaocheng        xiaoche1   *xxxx sssss xx  0 ***** ***** * 99 ***** ***** * 96  600
+2006 ZAF Joshua Yudaken      qix1       ***** ***tt ** 64 ***** ***ss s 63 ***** ttttt t 37  591
+2007 CHN Zhechen Min         owen2002   ***** ****t ** 79 ..... ..... .  0 ***** ***** * 96  589
+2007 ROM Andrei Costea       unholyf1   **xxx xxxxx ** 18 ***** ****s s 74 ***** ***** * 96  589
+2009 USA Shravas Rao         h_s_pot1   ***** ***tt ** 64 **xx* *tttt t 25 ***** x**** * 86  586
+2011 GEO Beka Barbakadze     beka.barb1 *xxxx eeeee xx  0 ***** ***** * 99 *x*** ***** * 86  574
+2008 BGR Mariy Yonov         metala_1   ..... ..... ..  0 ***** ***** * 99 *t*** ***** * 86  574
+2006 USA Brian Curcio        brian_l1   ***** ***tt ** 64 **xxx xx*xx x 13 ***** ***** * 96  571
+2007 EGY Moustafa Ead        da_brai1   ***** ***tt ** 64 **xxx xx*xx x 13 ***** ***** * 96  571
+2006 BGR Kostadin Ivanov     k0s1o.k1   ***** ***tt ** 64 **xxx xx*xx x 13 ***** ***** * 96  571
+2008 CHN Guojian Di          xish324    ***xx sssss ** 24 ***** ***** * 99 **xxx xx**x * 40  555
+2006 GRC Chris Tzamos        asal1      *ssss sssss ss  0 ***** ***** s 85 ***** ***** * 96  551
+2009 BGR Ivan Lyutskanov     lord_dr2   ..... ..... ..  0 ***** ***** x 85 ***** ***** * 96  551
+2006 BGR Stanislav Nikolov   stanley3   ..... ..... ..  0 ***** ***** s 85 ***** ***** * 96  551
+2007 ARG Javier Corti        jmcorti1   ..... ..... ..  0 ***** ***** * 99 ***** ***t* t 76  547
+2008 YUG Maja Kabiljo        majakab1   ***** ***tt ** 64 **xxx xxxxx x  6 ***** ***** * 96  546
+2007 POL Jerzy Kozera        jerzy.k1   ..... ..... ..  0 ***** ****s s 74 ***** ***** * 96  512
+2006 BGR Martin Benkov       pycua2     ***** **xex x* 48 **xxx xx*xx x 13 ***** ***** * 96  503
+2006 CHN Don Chen            donnod11   ***xx xxxxx x* 17 ***** ***** * 99 *xxx* xx*xx * 29  496
+2008 YUG Miroslav Bogdanovic mirosla4   *xxxx xxeee xx  0 ***** ***** * 99 ***** *ttt* t 56  495
+2007 DEU Christoph Flake     christoph2 **ttt ttttt ** 18 ***** *tttt t 45 ***** ***** * 96  487
+2010 GEO Mari Kobiashvili    mari.ko1   ***** **ttt ** 55 ****x *xxxx x 35 **x*x xx*** x 48  483
+2008 ROM Alexandru Simion    simmunl1   *x*xx xxxxx ** 18 ***** ***** * 99 ***xx xxxxx x 19  474
+2007 POL Czarek Myczka       tcharec1   *xxxx xxxxx x*  5 ***** ***** * 99 **xxx xx**x * 40  474
+2007 EGY Moustafa Batsh      patriot1   ***** ***tt ** 64 **xxx xx*xx x 13 ***x* **tx* t 57  468
+2006 GEO Misha Amashukeli    amashuk1   ***xx xxxxx ** 24 ***** ***** * 99 *xxxx xxxxx x  0  449
+2007 TWN Vince Lee           vince792   *xxxx xxxtt x*  5 ***** ***** * 99 **xxx xx*tx * 30  448
+2006 SYR Ijad Ibrahim        tyados2    ***xx xxttt ** 24 **xxx *x*xx s 22 ***** ***** * 96  432
+2007 CAN Rich Hong           r1010101   ***** **ttt ** 55 **xxx xxsxx x  6 ***** **tt* t 66  429
+2007 ROM Iorgulescu Calin    calin_c1   ***** ***** ** 94 **xxx xxxxx x  6 ..... ..... .  0  421
+2008 USA Spencer Liang       iceeight1  *xxxx xxttt xx  0 ***** ***** x 85 *s*** *ttt* t 46  419
+2009 USA Filip Sufitchi      filip1     ..... ..... ..  0 ***** *ttte e 45 ***** ***** * 96  411
+2009 BGR Momchil Tomov       pascala1   *x**x xxxxx ** 25 **xxx xx*xx x 13 ***** ***** * 96  405
+2011 CAN Jacob Plachta       jacob_pla1 ***xx tttee ** 24 **xxx xx*xx x 13 ***** ***** * 96  400
+2006 CAN Chris Sharp         chrisshar1 ***** *xttt ** 47 **xxx xx*xx x 13 *x*** *xx*x * 57  396
+2009 GEO Giorgi Peikrishvili cipusha2   *xxxx xxttt x*  5 ***** ***** * 99 **xxx xxxxx x 10  395
+2007 USA Gary Cao            guangwe1   ***** t*sss ** 47 **xxx xx*xx x 13 ***** x*tt* t 56  393
+2007 DEU Martin Maas         martinmaa1 ***** **ttt ** 55 **xxx xx*xx x 13 **xxx xx**x * 40  385
+2007 IRN Payam Delgosha      pdelgos1   ..... ..... ..  0 **xx* xx*x* x 34 ***** ***** * 96  372
+2008 USA Yongqian Li         yongqli1   ***xx xxttt x* 17 ***** ***** t 85 ..... ..... .  0  371
+2006 MNG Mergen Nachin       mimipri1   ..... ..... ..  0 ***** ***** s 85 ***xx xxtxx t 19  348
+2007 BGR Vasil Vasilev       vassil_2   ..... ..... ..  0 ***** ***** * 99 ..... ..... .  0  347
+2006 CAN Ying Meng           placidi1   **xxx xxxtt x* 11 **xxx xx*xx t 13 ***** ***** * 96  345
+2009 POL Wiktor Jakubiuk     wiktor41   **xxx xxxxx x* 11 **xxx xx*xx x 13 ***** ***** * 96  345
+2007 BGR Alexander Anrieff   espr1t.1   ***xx xxttt x* 17 **xxx xx*xx x 13 *x*** ***** * 86  344
+2007 POL Tomasz Roda         thomash1   ***** ****x ** 79 ..... ..... .  0 ..... ..... .  0  336
+2006 USA Nozlee Samadzadeh   nsamadz1   *xxxx xxxtt xx  0 ***** *tttt t 45 *x*** **t** t 66  332
+2007 DEU BenBela van der Zan benibela1  ***xx xxttt xx 12 **xxx xxxxx x  6 ***** ***** * 96  325
+2007 USA Mikhail Lavrov      misha.p1   ***ee eettt ee 12 **xxx xx*xx x 13 ***** x**** * 86  323
+2007 ROM Bogdan Bondane      bughy_11   *xxxx xxttt x*  5 **xxx xx*xx x 13 ***** ***** * 96  320
+2008 USA Joshua Cranmer      pidgeot1   *xxxx xxxtt x*  5 **xxx xx*xx x 13 ***** ***** * 96  320
+2007 EST Ott Tinn            theotinn1  *tttt ttttt t*  5 **xxx xx*xx x 13 ***** ***** * 96  320
+2007 BGR Svilen Marchev      mcrazy1    *xx*x xxxxx x* 12 ..... ..... .  0 ***** ***** * 96  304
+2006 BGR Kamen Velikov       zlobcho2   *xxxx xxxxe ** 12 ..... ..... .  0 ***** ***** * 96  304
+2008 ROM Spiridon Alexandru  spirido1   **xxx xxxss x* 11 ..... ..... .  0 ***** ***** * 96  299
+2007 DEU Arne M?ller         arne_c_1   ..... ..... ..  0 **xxx xx*xx x 13 ***** ***** * 96  298
+2006 USA Ben King            grsbmd1    *xtts sssss tt  0 **xxx xx*xx x 13 ***** ***** * 96  298
+2006 POL Maciej Ruszewski    spunaze1   *xxxx xxxtt xx  0 **xxx xx*xx x 13 ***** ***** * 96  298
+2007 BGR Wasil Mintchew      aseniv1    *xxxx xxxxx x*  5 **xxx xx*xx x 13 *t*** ***** * 86  293
+2007 USA Daniel Fielder      b4k4gai1   ***xx xxttt ** 24 **xx* *tttt t 25 *x**x x*x*x x 38  290
+2007 SVK Ladislav Rampás rampase1   ***** **ttx ** 55 **xxx xx*xx x 13 ..... ..... .  0  280
+2007 YUG Alexander Trokicic  atrokic1   *xxxx xxxte x*  5 ..... ..... .  0 ***** ***** * 96  274
+2006 HRV Ivan Kusalic        deepest1   *xxxx xxxxx x*  5 ..... ..... .  0 ***** ***** * 96  274
+2006 MKD Dimitar Misev       dimitar2   ..... ..... ..  0 **xxx xxxxx x  6 ***** ***** * 96  274
+2008 USA Haitao Mao          haitao5201 *xxxx ttttt xx  0 **xxx xtttt t  6 ***** ***** * 96  274
+2006 ROM Irina Calciu        iristea1   *xxxx xxxxx x*  5 ..... ..... .  0 ***** ***** * 96  274
+2006 ROM Alexandru Uta       alexand6   ..... ..... ..  0 **xxx xx*xx x 13 *x*** ***** * 86  272
+2009 VNM Quang Cao Luu       c_l_qua1   *xxxt ttttx x*  5 **xxx xx*xx x 13 *e*** x**** * 76  267
+2007 USA Zizhuang Yang       kazasta1   ***xx xtttt ** 24 ***** *tttt s 45 ..... ..... .  0  260
+2007 MNG Batbaatar Burentogt batbaatar2 *xxxx xxsse xx  0 ..... ..... .  0 ***** ***** * 96  253
+2008 POL Mateusz Baranowski  maso231    *xxxx xxxxx xx  0 ..... ..... .  0 ***** ***** * 96  253
+2007 USA Allen Lin           alin1231   ***** t*ttt ** 47 **xxx xx*xx x 13 ..... ..... .  0  246
+2007 ROM Monica Golumbeanu   gmonica191 *xxxx xxttt x*  5 **xxx xx*xx x 13 *x*** ***t* t 66  241
+2007 CHN Neo Lee             lxc6122    ***** **ttt ** 55 ..... ..... .  0 ..... ..... .  0  234
+2007 ROM Matei Tene          matei_t1   ..... ..... ..  0 ..... ..... .  0 *x*** ***** * 86  226
+2006 ROM Zsolt Istvan        zsolt.i1   ***xx xeeex x* 17 **xxx xxxxx x  6 *x*** *xxx* x 46  214
+2006 USA Daniel Stalcup      dstalcu2   ..... ..... ..  0 **xxx xxexx x  6 *e*** ***t* t 66  195
+2006 CAN Nisanthini Ravichan nisanthin1 ..... ..... ..  0 **xxx xxxxx x  6 *s*** **t** t 66  195
+2007 BGR Iliyan Havov        iliyan83   ..... ..... ..  0 **xxx xx*xx x 13 ***** xxt** t 56  193
+2006 USA Katie Bambino       kbambin1   ..... ..... ..  0 ***** *tttt t 45 **xxx ttttx t 10  184
+2008 USA William Yang        wyang1     ..... ..... ..  0 ..... ..... .  0 ***** x*xe* x 56  147
+2009 GEO Ana Nuskheladze     ana_em1    ..... ..... ..  0 ****x *xxxx x 35 ..... ..... .  0  123
+2009 USA Lily Hsiang         frosted1   *xxxx xtttt x*  5 **xxx xx*xx x 13 ..... ..... .  0   67
+2008 USA Caroline Suen       carolin2   ..... ..... ..  0 **xxx xt*xx x 13 ..... ..... .  0   46
+2008 ROM Barca Cristi        mocke_b1   ..... ..... ..  0 ..... ..... .  0 **xxx xtttx t 10   26
+2010 BGR Vasil Georgiev      the_vasko1 **eee eeeee xx  6 ..... ..... .  0 ..... ..... .  0   26
+2007 YUG Vladislav Guberinic vlaja1     **xxx xxxtt xx  6 ..... ..... .  0 ..... ..... .  0   26
+2007 POL Przemysƒaw Derengow przemek1   *xxxx xxxtt xx  0 ..... ..... .  0 ..... ..... .  0    0
+9999 CHN Chenheng Liu        liuchenhe1 ***** ***** ** 94 ***** ***** * 99 ***** ***** * 96 1000
+9999 CHN Wen Cao             caowen001  ***** ***tt ** 64 ***** ***** * 99 ***** ***** * 96  872
+2005 GEO Eldar Bogdanov      eyler111   ***** ***tt ** 64 ***** ***** * 99 ***** ***** * 96  872
+9999 IRN Abbas Mehrabian     abbas.m1   ***** ***** ** 94 **x*x **x** x 58 ***** ***** * 96  856
+2003 CAN Ralph Furmaniak     sugaku1    ***** ***** ** 94 **xxx xx*xx x 13 ***** ***** * 96  698
+2001 CHN Jianqiang Zheng     polivic1   ***xx xxxtt x* 17 ***** ***** * 99 *x*** ***** * 86  646
+2005 IND Visesh Uday Kumar C visesh1    ***** ****t ** 79 **xxx xx*xx x 13 ***** ***** * 96  634
+2000 IND Tarkeshwar Thakur   tarkesh1   ***xx xxttt x* 17 ***** ***** t 85 ***** ***** * 96  623
+2005 CHN Mu Yang             yangmu2661 *xxxx xxxxx x*  5 ***** ***** * 99 ***** ***** * 96  621
+9999 MYS Pangjin Tan         tanpang1   ..... ..... ..  0 ***** ***** * 99 ***** ***** * 96  600
+2005 SYR Madhat Al soos      msoosso1   ***** ***tt ** 64 ***ss sssss s 16 ***** ***** * 96  581
+2005 EGY Hamza Ibrahim       cpphamz1   *xxxx xxxtt x*  5 ***** ***tt t 63 ***** ***t* t 76  442
+2005 SYR Ammar alnahhas      ammcom1    ***** ***tt ** 64 **xxx xxxxx x  6 *s**x ttt*x t 28  367
+1986 USA David Plass         dplass1    ..... ..... ..  0 **xxx xx*xx x 13 ***** ***t* * 86  272
+9999 HRV Jarmy Hanura        479991     ..... ..... ..  0 ..... ..... .  0 ***** ***** * 96  253
+2005 ROM Bogdan Coanda       exelle_1   ***xx xxttt ** 24 **xxx xx*xx x 13 ****x xxx*x x 38  248
+2002 IDN Felix Halim         felix.hal1 *xxxx xxxxx xx  0 ***** ***ss s 63 **xxx ttttx t 10  247
+2001 IND Meesum Syed         meesum11   ..... ..... ..  0 **xxx xx*xx x 13 ***xx xxtxx t 19   96
+9999 BGD Kaeser Md. Sabrin   kmsabri1   ..... ..... ..  0 **xxx xx*xx x 13 ..... ..... .  0   46
+
+====== Distributions =====
+
+  Distribution by grade:
+    Grde  #  Percent
+    2006  56 (33.3%) *************************
+    2007  62 (36.9%) ****************************
+    2008  33 (19.6%) ***************
+    2009  12 ( 7.1%) *****
+    2010   3 ( 1.8%) *
+    2011   2 ( 1.2%) 
+
+  Distribution by country:
+   Cntry  #  Percent
+     ARG   1 ( 0.6%) 
+     BGD   1 ( 0.6%) 
+     BGR  20 (11.9%) *********
+     BRA   1 ( 0.6%) 
+     CAN   8 ( 4.8%) ***
+     CHN  25 (14.9%) ***********
+     DEU   4 ( 2.4%) *
+     EGY   3 ( 1.8%) *
+     EST   1 ( 0.6%) 
+     FRA   2 ( 1.2%) 
+     GEO   6 ( 3.6%) **
+     GRC   1 ( 0.6%) 
+     HRV   2 ( 1.2%) 
+     IND   1 ( 0.6%) 
+     IRN   5 ( 3.0%) **
+     KOR   1 ( 0.6%) 
+     MKD   1 ( 0.6%) 
+     MNG   2 ( 1.2%) 
+     NED   1 ( 0.6%) 
+     POL  17 (10.1%) *******
+     ROM  17 (10.1%) *******
+     SVK   2 ( 1.2%) 
+     SVN   1 ( 0.6%) 
+     SYR   1 ( 0.6%) 
+     TUR   1 ( 0.6%) 
+     TWN   5 ( 3.0%) **
+     USA  26 (15.5%) ***********
+     VNM   2 ( 1.2%) 
+     YUG   7 ( 4.2%) ***
+     ZAF   3 ( 1.8%) *
+
+===== Distribution of scores =====
+951..1000 15  ***************
+901.. 950  2  **
+851.. 900 11  ***********
+801.. 850  6  ******
+751.. 800  4  ****
+701.. 750  6  ******
+651.. 700 15  ***************
+601.. 650 16  ****************
+551.. 600 16  ****************
+501.. 550  7  *******
+451.. 500  7  *******
+401.. 450  8  ********
+351.. 400  7  *******
+301.. 350 14  **************
+251.. 300 17  *****************
+201.. 250  5  *****
+151.. 200  4  ****
+101.. 150  2  **
+ 51.. 100  1  *
+  1..  50  4  ****
+  0..   0  1  *
+
+Prob            *   x   t   e   s
+reserve.1       0   0   0   0   0
+reserve.2     117  41   4   0   1
+reserve.3     108  47   6   1   1
+reserve.4      95  62   3   2   1
+reserve.5      86  67   6   2   2
+reserve.6      84  60  11   3   5
+reserve.7      84  57  13   5   4
+reserve.8      74  41  37   5   6
+reserve.9      46  23  80   7   7
+reserve.10     40  27  80   9   7
+reserve.11    103  54   4   1   1
+reserve.12    143  17   1   1   1
+Total correct: 980 (48.61%)
+
+Prob            *   x   t   e   s
+treat.1         0   0   0   0   0
+treat.2       153   0   0   0   0
+treat.3        99  54   0   0   0
+treat.4       100  53   0   0   0
+treat.5        99  54   0   0   0
+treat.6       103  50   0   0   0
+treat.7        89  53  11   0   0
+treat.8       130  10  10   2   1
+treat.9        86  54  11   1   1
+treat.10       87  51  10   2   3
+treat.11       68  60  12   2  11
+Total correct: 1014 (54.87%)
+
+Prob            *   x   t   e   s
+bds.1           0   0   0   0   0
+bds.2         139  14   3   2   2
+bds.3         148  12   0   0   0
+bds.4         146  14   0   0   0
+bds.5         146  14   0   0   0
+bds.6         135  22   3   0   0
+bds.7         135  19   6   0   0
+bds.8         134  11  15   0   0
+bds.9         139   7  13   1   0
+bds.10        141  17   2   0   0
+bds.11        131  11  18   0   0
+Total correct: 1394 (75.43%)
+
+
+#################################################################################################
+                        2006 FEBRUARY CONTEST RESULTS: BRONZE DIVISION
+#################################################################################################
+
+========================= Test Case Weights ========================
+
+         points weight  1  2  3  4  5  6  7  8  9  a  b  c  d
+     --------------------------------------------------------
+       neg2:  96 270.0  0  6  6  7  9  6  8  7  8  8 12 11  8
+        dna:  95 330.0  0  8  9 15 11  9 10 10 12 11
+     phrase:  99 400.0  0  7  7  8 11  9 15 15 12 15
+
+Total score = sum of earned_prob_points[i]/possible_points[i]*weight[i]
+
+============================ Scoring Legend ============================
+
+* = correct    t = time exceeded  0-9 = 0%-90%      e = bad exit status
+x = wrong      s = bad signal     .   = no entry
+
+GRAD CTR Name............... ID........ ------ neg2 ------ ---- dna ----- --- phrase --- TOTAL
+----------------------------------------------------------------------------------------------
+2007 CHN yilun gong          acm2       ***** ***** *** 96 ***** ***** 95 ***** ***** 99 1000
+2006 YUG Andrejko Ilic       andrejko1  ***** ***** *** 96 ***** ***** 95 ***** ***** 99 1000
+2006 YUG Stefan Lazarevic    cassey11   ***** ***** *** 96 ***** ***** 95 ***** ***** 99 1000
+2007 KOR “ò… (Chae Young) — han.chaey1 ***** ***** *** 96 ***** ***** 95 ***** ***** 99 1000
+2007 CHN Li Zhe              horse414   ***** ***** *** 96 ***** ***** 95 ***** ***** 99 1000
+2007 IND Kanishk Kunal       kanishk1   ***** ***** *** 96 ***** ***** 95 ***** ***** 99 1000
+2006 BLR Pavel Maisenovich   maiseno1   ***** ***** *** 96 ***** ***** 95 ***** ***** 99 1000
+2008 CHN Jason Bourne        zzy1989101 ***** ***** *** 96 ***** ***** 95 ***** ***** 99 1000
+2006 GRC George Trikoilis    trikjr2    ****x ***** *** 87 ***** ***** 95 ***** ***** 99  975
+2009 BLR Dima Bohdanov       dolinsky92 ***** ***** x** 84 ***** ***** 95 ***** ***** 99  966
+2006 CHN XiangRu Chen        einstein_1 ***** ***** x** 84 ***** ***** 95 ***** ***** 99  966
+2008 CHN Yuxi Chen           cyxcyx1991 ***** ***** *** 96 ***x* ***** 80 ***** ***** 99  948
+2006 RUS Jacob Dlougach      dlougac1   ***** ***** *** 96 ***x* ***** 80 ***** ***** 99  948
+2008 CHN mozeda keten        mozeda3    ***** ***** *** 96 ***x* ***** 80 ***** ***** 99  948
+2007 CHN chi zhang           shaguzc1   ***** ***** *** 96 ***x* ***** 80 ***** ***** 99  948
+2009 CHN Xiang Hua           tom66302   ***** ***** *** 96 ***x* ***** 80 ***** ***** 99  948
+2010 CHN Xiang Gao           waslton1   ***** ***** *** 96 ***x* ***** 80 ***** ***** 99  948
+2008 ROM Dragos Raducanu     r_d_o_g1   ****x ***** *** 87 *x*** ***** 87 ***** ***** 99  947
+2012 ROM Tataranu Vlad       tataranu1  ***** ***** *** 96 ***** ***** 95 ***** ****t 84  939
+2008 CHN Carl Chen           x_x_d_d3   ****x ***** *** 87 ***x* ***** 80 ***** ***** 99  923
+2007 VNM tien nguyen hoanh   hoanhtien1 ***** ***** *** 96 ***** ***** 95 ***** ***tt 72  891
+2008 CHN Xiuyuan Wang        supermp2   ***** **t*t ttt 50 ***** ***** 95 ***** ***** 99  871
+2008 CHN Van Yif             thunder_f2 ***** ***** *** 96 ***** *tttt 52 ***** ***** 99  851
+2006 BLR Michael Yeskov      mixaye2    ***** *eee* eee 42 ***** ***** 95 ***** ***** 99  848
+2006 SYR hassan jamous       hnj_jud1   ***** ***** *** 96 ***** ***** 95 ***** **ttt 57  830
+2013 CHN Shi Shanshi         shishan1   ***** *xxxx xxx 34 ***** ***** 95 ***** ***** 99  826
+2008 CHN Cherry Chen         cdq10131   ***** ***** x** 84 ***x* ***** 80 ***** ***tt 72  805
+2008 IRN saeid akhavan       akhavan1   ****x *xxxx xxx 25 ***** ***** 95 ***** ***** 99  800
+2006 USA Chris Narrikkattu   inaset31   ****x *xxxx xxx 25 ***** ***** 95 ***** ***** 99  800
+2009 AZE Afgan Abbasov       efqan203   ***** ***** *** 96 ***** ***** 95 ***** *tttt 42  770
+2007 IDN Panji Kharisma      p_kh4ri1   ***** ***** *** 96 ***** ***** 95 ***** *tttt 42  770
+2006 BLR Aleks Statkevich    qwe1231    ***** ***** *** 96 ***** ***** 95 ***** *tttt 42  770
+2007 CHN tsuzuki matsumoto   knx10291   ***** ***** *** 96 ***x* ***** 80 ***** *tt*t 54  766
+2007 TWN Hank Ho             wolf_di1   ***** ***** *** 96 **xxx **xxx 27 ***** ***** 99  764
+2006 ARM Arm Mnats           armen151   ****s ***** *** 87 ***** ***** 95 ***** *tttt 42  744
+2006 POL Chris Kryniecki     chri_s1    ****x ***** *** 87 ***xx xx*xx 27 ***** ***** 99  738
+2010 CHN chensy chen         freedomsh1 ****x ***** *** 87 **xxx **xxx 27 ***** ***** 99  738
+2007 GEO Abdushahil Ckvitaia gatexet1   ***** ***** *** 96 ***** ***** 95 ****x *tttt 31  725
+2007 CHN Chenjin Liang       empter1    ***** ***** *** 96 ***x* ***** 80 ***** *tttt 42  718
+2007 CHN Andy Ma             mchandy361 ***** ***** *** 96 ***x* ***** 80 ***** *tttt 42  718
+2008 CHN Wei Dai             reflectio3 ***** ***** *** 96 ***** ***** 95 *xxxx xxx** 27  709
+2007 VNM Trong Ha Duc        trong_had1 ***** ***** *** 96 ***** ***** 95 *xxxx xxx** 27  709
+2007 CHN Jiaqi Zhai          hurrica1   ***** ***** *** 96 **xxx **xxx 27 ***** ****x 84  703
+2006 POL Mateusz Kocielski   szmati1    ***** ***** tt* 73 ***** ***** 95 ***xx xxx** 41  701
+2007 TUR Ahmet Duran         ahmetdura1 *xx** xx*** xx* 47 ***** ***** 95 ***** *ss*s 54  680
+2009 POL Jonatan Kazmierczak johny.j1   ***** ***** *** 96 ..... .....  0 ***** ***** 99  670
+2006 RUS Oleg Samoylenko     osamoyl1   ***** ***** *** 96 ..... .....  0 ***** ***** 99  670
+2006 SYR Ubai Sandouk        ubaisan1   ***** ***** *** 96 *xxxx xxxxx  0 ***** ***** 99  670
+2008 YUG Sanja Popovic       sanja891   *x*** ***** ttt 59 ***** ***** 95 ***** *tttt 42  666
+2007 MEX Rodrigo Burgos Domi rodrigo.b1 **xx* xxxxx xxx 15 ***x* ***** 80 ***** ****x 84  659
+2007 ROM andrei muresan      andrei_12  ***** ***** *** 96 ***** ***** 95 ***xx xxxxx 14  657
+2006 EST Aleksandr Nikiforov teddi51    ***** ***** *** 96 ***** ***** 95 ***ss stttt 14  657
+2009 CHN Fan Honglu          gengarh1   ***** ***** *** 96 ***x* ***** 80 ***xx xxx*x 26  653
+2007 POL Szymon Piechowicz   szymonp1   ***** ***** tt* 73 ***x* ***** 80 ***** *tttt 42  653
+2009 RUS Sergey Nizovtsev    snizovtse1 ***** ***** *** 96 ***** ***** 95 *xxxx xxx*x 12  648
+2007 CHN Wang Dong           wd8904152  ***** ***** *** 96 ***** ***** 95 *xxxx xxx*t 12  648
+2006 USA Nathan Claus        edmeese1   ***** ***** t** 84 ****t ttttt 32 ***** ***tt 72  638
+2009 ARG Mauro Schilman      maurito1   ***** ***** ee* 73 *xxxx xxxxx  0 ***** ***** 99  605
+2007 CHN Hearson Zhang       hearson1   ***** ***** *** 96 ***** ***** 95 *eeee eeete  0  600
+2007 POL Mateusz Klimek      mateusz5   ***** ***** *** 96 ***** ***** 95 ..... .....  0  600
+2006 LTU Kestutis C xixas1     ****x ***** tt* 64 ***** ***** 95 ****t ttttt 22  599
+2006 IRN Mohammad Shadravan  moh_sha1   ***** ***** *** 96 ***x* ***** 80 *xxxx xxx*x 12  596
+2007 IRN Navid Ghadermarzy   nghp2001   ***** ***** *** 96 ***x* ***** 80 *xxxx xxx*x 12  596
+2006 BLR Andrey Tkachenko    andrey_1   ****x ***** xxx 56 *txxx x*xxx 10 ***** ***** 99  592
+2007 KAZ Kaken Aray          kakenar1   ***** ***** tt* 73 ***** ***** 95 ***tt ttttt 14  592
+2006 BLR Alexander Pushkin   pushhkinn1 ***** ***** *** 96 ***** xxxxx 43 ***** *tttt 42  589
+2006 USA Brian Bates         bsbates1   ***** ***** xxt 65 ..... .....  0 ***** ***** 99  583
+2008 CHN Zhang Yunxiao       wishyx2    ****x ***** tt* 64 *xxxx xxxxx  0 ***** ***** 99  580
+2007 BGR Vasil Tenev         vasil_t1   ***** ***** *** 96 *x*x* **xxx 39 ****x *xx*x 43  579
+2008 CHN chen siyu           xdfjuni1   ***** ***** *** 96 ***x* ***** 80 **ttt ttttt  7  576
+2007 TUR Burak Simsek        buraksi1   ****x ***** *** 87 ***** ***** 95 *xxxx xxxxx  0  575
+2007 CHN Lu Heng             changzh1   ***** ***** e** 84 ***x* ***** 80 ***ee eeeee 14  571
+2008 CHN ArashiMaple Johnson lfy6101    ****x ***** *** 87 ***x* ***** 80 *xxxx xxx*x 12  571
+2007 ALB Sopot —ela          sopotce1   ..... ..... ...  0 ***x* xx*x* 49 ***** ***** 99  570
+2007 BLR Oleg Zhloba         dolinsky68 ****x ***tt ttt 40 ***** ***** 95 ****x *tttt 31  568
+2008 USA Ricky Zhou          ricky.z1   ***** ***** *** 96 ***xx x**xx 37 ***** *tttt 42  568
+2009 MKD Andrej Risteski     andrej2001 ****x ***** *** 87 **x*x *x*xx 42 ***** *tttt 42  560
+2007 BLR Alexey Nichiporchik dolinsky82 ..... ..... ...  0 *xx*x *x*x* 45 ***** ***** 99  556
+2007 USA Val Karpov          darktem1   ***** ***** *** 96 ***x* ***** 80 ..... .....  0  548
+2007 USA Cameron Bloomer     cambloo1   ****e ***** x** 75 ***xx x**x* 48 ***** *tttt 42  547
+2007 BGR Mihail Minkov       chronot1   ***** ****x xx* 65 ***** ***** 95 *x*xx xxxtt  7  541
+2006 RUS Alex Kasycky        alex_ka1   ***** *x*x* xxx 49 ..... .....  0 ***** ***** 99  538
+2009 AUS Jack Murray         jack.c.1   ***** *x**x xxx 49 ..... .....  0 ***** ***** 99  538
+2007 KAZ Almas Baybatirov    bayalma1   ***** ***** tt* 73 ***** ***** 95 ..... .....  0  535
+2008 CHN Wu Biao             ben322     ***** ***** *** 96 **xxx **xxx 27 ***** *tttt 42  533
+2008 CHN Mengtian Li         lmt14241   ***** ***** *** 96 *x*** ***x* 75 *xxxx xxxxx  0  531
+2008 USA Alex Zhai           azhai1     ****x ***** *** 87 ***x* ***** 80 ..... .....  0  523
+2006 USA Eric Yff            ericyff1   ***** *xxxx xxx 34 **xxx xxxxx  8 ***** ***** 99  523
+2007 TWN Jang PengHuei       jph34021   ****s ***** *** 87 ***x* ***** 80 *xxss sssss  0  523
+2007 USA Steven Zhang        szhang1    ***** *xxxx txx 34 **xxx xxxxx  8 ***** ***** 99  523
+2009 RUS Mazgalev Eugene     eugenev1   ***** *xxxx ssx 34 *x*x* ***** 72 ***** *tttt 42  515
+2006 KGZ Emilbek Joldoshev   emilbek2   ****t ***** ee* 64 ***x* ***** 80 ***xe eeeee 14  514
+2006 BLR Vitaliy Borisok     mone-nat1  ***** ***** *** 96 ***** *tttt 52 ***ee eeete 14  507
+2007 CHN Walker Zhu          jmzhu571   ***** ***** *** 96 **xxx **xxx 27 *x*** *tttt 35  505
+2009 GEO Nika Gabisonia      p1         ***** *xxx* xxx 42 ***** ***** 95 ***ee eeeee 14  505
+2006 BLR Ivan Polyakov       ste1l1     ***** *xxxx xxx 34 ***x* ***** 80 ****x *tttt 31  499
+2009 CAN Conan Huang         conanhc1   ..... ..... ...  0 ***x* teeee 28 ***** ***** 99  497
+2007 IDN Aris Feryanto       aris_fe2   ***** ***e* tt* 65 *xxxx xtttt  0 ***** ***tt 72  474
+2008 ROM Valentin Dobrota    vale1      *xxx* xxxxx xxx  9 ***** ***** 95 *xxxx xxx** 27  464
+2008 CHN Charles Li          lyj19901   ***** ***x* xx* 65 ***x* ***** 80 *ssss sstss  0  461
+2010 CHN Xie Tian            pikachu2   ****e ***** *** 87 *xxxx *x*x* 30 *xxxx xxx** 27  458
+2008 CHN Moony Chou          zmy903202  ****x ***** xx* 64 ***x* ***** 80 *xxxx xxxxx  0  458
+2007 LVA Vitaly Stepanoff    flyingh1   ..... ..... ...  0 ***** ***** 95 ****x *tttt 31  455
+2009 GEO Irakli Gramatopulo  irakli_gr1 ..... ..... ...  0 ***** ***** 95 ****t *tttt 31  455
+2007 BGR Nedyalko Prisadniko nedy_881   ..... ..... ...  0 ***** ***** 95 ****t *tttt 31  455
+2007 KOR Byung-su Jun        sure2001   ..... ..... ...  0 ***x* ***** 80 ***** *tttt 42  448
+2007 POL Michaƒ Jastrzêbski  jastrza1   ***** ***** *** 96 ..... .....  0 ****x *xx*x 43  444
+2008 USA Chetak Hossain      chetak.1   ***** ***** *** 96 ..... .....  0 ***** *tttt 42  440
+2007 TKM Ruslan Gurbanow     mainfra1   ****x *xxxx xxx 25 ***x* ***** 80 ****t ttttt 22  437
+2010 KOR uno song            songuno11  ****x ***** tt* 64 ***xx *x*** 59 *xxxx xxx*x 12  433
+2008 GRC Ioannis Chatzimicho admin12    ..... ..... ...  0 *x*** ***** 87 ****x *tttt 31  427
+2008 CHN Shen Xin            sxstar1    ****t ***** ttt 56 **xxx **xxx 27 ***** *tttt 42  421
+2008 IRN saeed seddigin      sed_rez1   ***** *xx** xxx 50 ***x* ***** 80 *xxxx xtttt  0  419
+2006 FRA Julien Bureaux      izandril1  ****x ***** *** 87 *xxxx xxxxx  0 ***** *tttt 42  414
+2007 USA Brian Gilbert       waterbo1   ****t ***** *** 87 ****t ttttt 32 ***tt ttttt 14  412
+2006 DEU Danny Kojda         danny.k1   ..... ..... ...  0 *x*** ***** 87 *xxxx xxx** 27  411
+2010 CHN Yi Wu               jx_wuyi3   ****t ***** tt* 64 **xxx *xxxx 17 ***** *tttt 42  409
+2007 CAN Roger Woo           rogerym1   ***** ***** tt* 73 **xxx xxxxx  8 ***** *tttt 42  403
+2010 CHN Li Zhaohui          lzh00oo1   ..... ..... ...  0 ..... .....  0 ***** ***** 99  400
+2008 USA Tan Zou             tzcomwi1   ****x ***** *** 87 ***** xxxxx 43 *eeee eeeee  0  394
+2006 FRA Adrien Coquio       adrien.co1 ****x ***** *** 87 ***xx xxxxx 17 ****t ttttt 22  393
+2007 KOR kyung rip min       kyung.rip2 ***** ***xx tt* 57 *x*x* x**x* 51 *xxxx xxx*x 12  386
+2008 USA Jeremy Levine       jerelev1   ***** ****x x** 76 ..... .....  0 ***** *tttt 42  383
+2006 USA Andrew Owens        ahowens1   ..... ..... ...  0 ***** ***** 95 *xxxx xxx*t 12  378
+2006 CAN Chen Liang          liangchen1 ****x ***** *** 87 **xxx xxxxx  8 ***xx xxx*x 26  378
+2006 BLR Bogdan Victorovich  bvictorov1 ***** ***** ee* 73 ..... .....  0 ***** *tttt 42  375
+2009 BLR Igor Bryukov        dolinsky78 **xx* xxxxx xxx 15 ***** ***** 95 *ttee eeete  0  372
+2007 MDA Dmitrii Gaisan      doctor_1   ..... ..... ...  0 ***x* ***** 80 ****t ttttt 22  367
+2007 CHN Jia Zhen            falling2   ***** ***** *** 96 **xxx **xxx 27 *eexx xxxtt  0  364
+2008 SVN Jan Bercic          jan.ber1   ***x* *xxxx xxx 27 ***x* ***** 80 ..... .....  0  354
+2006 USA Jesse Denardo       panda951   ***** ***** ttt 65 ..... .....  0 ***** *tttt 42  353
+2008 USA Jack Wang           raiame2    ****x ***** e** 75 *x*x* xx*x* 41 *xxtt ttttt  0  353
+2006 MNG Meru Hargana        bla_mor1   ****x *xxxx xxx 25 ***x* ***** 80 *xxxx xxxxx  0  348
+2008 CHN Lei Huang           ivswx3     ****x ***** *** 87 **xxx **xxx 27 ..... .....  0  338
+2007 HRV Denis Petek         me.d3ad1   ..... ..... ...  0 ***x* ***** 80 ***tt ttttt 14  334
+2007 BGR Nayden Nedev        naydo_1    ..... ..... ...  0 ***x* ***** 80 ***xx xtttt 14  334
+2006 GEO akakii mamageishvil kaxaakaki2 ..... ..... ...  0 ***x* ***** 80 *xxxx xxx*x 12  326
+2009 KOR Cha Myunghun        cs26322    *x*** ***** x** 78 **xxx **xxx 27 *xxxx xxxxx  0  313
+2009 POL Jaro Jaro           jaro3001   ****x ***** *** 87 **txt tt*tt 18 *ssss sssss  0  307
+2008 BLR Aleksey Ropan       aropan_1   ***** ***** *** 96 *x*xx xtttt  9 *xxee eeeee  0  301
+2008 USA Jeff Chen           jchen121   ***** ***** xx* 73 **xxx *x*xx 27 *eeee eeeee  0  299
+2008 USA William Koven       wkoven1    ***** ***** x** 84 **eee *eeee 17 *eeee eeeee  0  295
+2009 USA Andrew Rodriguez    nitroma1   ..... ..... ...  0 ..... .....  0 ***** ***tt 72  291
+2007 USA Garrick Chin        nonexis1   ****x ****x xxx 48 **xxx xxxx* 19 ****t ttttt 22  290
+2006 USA David Hanley        david921   ****x ****t tt* 56 ..... .....  0 ****x *tttt 31  283
+2008 BLR Maxim Leonovich     dolinsky88 ****x *xxxx xxx 25 *xx*x *x*x* 45 ***xx xtttt 14  283
+2009 CUB Roberto Bárbaro Bel rbbeltr1   ***** ***** *** 96 ..... .....  0 ..... .....  0  270
+2007 EST Rauni Lillemets     rmasta1    ***** ***** *** 96 ..... .....  0 ..... .....  0  270
+2007 ARM Vardan Verdiyan     vardanch3  ***** ***** *** 96 ..... .....  0 ..... .....  0  270
+2006 USA Gavin Medbery       gavin.m1   ..... ..... ...  0 **xxx *x*xx 27 ****x *xx*t 43  268
+2008 USA Sherwin Yu          xyn.xhu1   ***** ***** t** 84 ..... .....  0 **xtt ttttt  7  265
+2008 CHN dong dong Chen      cxycddhxh1 ****x ***** *** 87 ..... .....  0 *xsss sssss  0  245
+2008 CHN Qi Wang             garham5    ****x ***** *** 87 ..... .....  0 ..... .....  0  245
+2011 BLR Alexey Kaminsky     dolinsky81 *xxx* xxxxx xxx  9 *xxxx xxx*x 12 ***** *tttt 42  237
+2007 USA William Li          lildefi1   ..... ..... ...  0 *xxxx **xxx 19 ***** *tttt 42  236
+2012 CHN Yiqing Hua          hlyhyqfbn1 ***** ***** tt* 73 **xxx xxxxx  8 *eeee eeeee  0  233
+2007 HRV Ivan Macek          ivan.ma1   ***** ***** xxx 65 *xxxx xxxxx  0 *xsxs sxx*s 12  231
+2009 ROM Anca Dumitrache     anca_d_1   ..... ..... ...  0 ..... .....  0 ***** **ttt 57  230
+2007 USA Eric Chang          pkerich1   *x*xx ***x* xxx 35 ***xx x*xx* 38 *eeee eeeee  0  230
+2006 ARM Tig Grig            adlog20051 ***xx *xxxx xxx 18 ..... .....  0 ****x *xx*x 43  224
+2007 USA Jeffrey Beckman     metalli1   ***** ***ee eee 49 **xex exxxx  8 *eeee eee*e 12  214
+2006 SVN Primoz Kozelj       primoz.1   ***** *x*xx xx* 49 **xxx xxxxx  8 *xxxx xxx*x 12  214
+2009 BGR Ivan Todorov        ivan_901   ..... ..... ...  0 *xxxx xx*xx 10 ****x *xx*x 43  208
+2009 KOR —ŸŒŒä Ž˜ƒç         wlslrlfem1 ****x ****x xx* 56 ..... .....  0 *xxxx xxx*t 12  206
+2008 CHN hao hu              haohu191   ***** ***** tt* 73 ..... .....  0 ..... .....  0  205
+2007 USA Jonathan Chu        jonatha10  ***** ***** xx* 73 ..... .....  0 *ssss sssss  0  205
+2007 USA Tedrick Leung       quakete1   ****e ***ee eee 40 ..... .....  0 ****t ttttt 22  201
+2008 CAN David Teng          wanderi1   ..... ..... ...  0 **xxx xxxxx  8 ***** *tttt 42  197
+2006 USA Alexander Volfson   avolfso1   ****e **ee* tt* 49 *xxxx xxxxx  0 ***tt ttttt 14  194
+2009 CHN Frand Bill          wang_ya1   ***** *xxxx xxx 34 **xxx **xxx 27 *eeee eeeee  0  189
+2008 BGR Hristo Borisov      hristo_2   ****x ****x x** 67 ..... .....  0 ..... .....  0  188
+2009 BLR Dinis Chugaev       dolinsky10 ****x *xxxx xxx 25 **xxx xxxxx  8 ****e eeeee 22  187
+2008 BGR Georgi Boyvalenkov  gpb_bg1    ..... ..... ...  0 ****x x**xx 52 *xxxx xtttt  0  181
+2006 FRA Ismael Riahi        mrgoto1    ****x ***** ss* 64 ..... .....  0 ..... .....  0  180
+2010 MEX Jesus David Venzor  jdvenzo1   ..... ..... ...  0 ..... .....  0 ****x *xx*x 43  174
+2008 USA Dana Hoffman        smileyc1   ..... ..... ...  0 ..... .....  0 ****x *xx*t 43  174
+2007 USA Arkajit Dey         arkajit.d1 ..... ..... ...  0 ..... .....  0 ***** *tttt 42  170
+2006 USA Darshan Chellaram   dirsian1   ..... ..... ...  0 ..... .....  0 ***** *tttt 42  170
+2010 SYR Hesham Abo Khir     hesham_3   ..... ..... ...  0 ..... .....  0 ***** *tttt 42  170
+2009 USA Jesse Hertz         jessebo1   ..... ..... ...  0 *xxss sssss  0 ***** *tttt 42  170
+2008 POL Michal Karpinski    karpio21   ..... ..... ...  0 ..... .....  0 ***** *tttt 42  170
+2008 ROM Moga Florian        moga_fl1   ..... ..... ...  0 ..... .....  0 ***** *tttt 42  170
+2008 ROM Tofan Vasile        varuvas1   ..... ..... ...  0 ..... .....  0 ***** *tttt 42  170
+2009 BGR Boris Peltekov      peltekste1 ..... ..... ...  0 *x*x* xxxxx 20 ****t ttttt 22  158
+2006 USA Ryan Bradstreet     ryxstar1   ****x ****t tt* 56 ..... .....  0 ..... .....  0  158
+2007 USA Aliaksei Smalianchu lxevolu1   ..... ..... ...  0 *xxxx *x*xx 19 ****t ttttt 22  155
+2012 CHN Yitao Hu            hytqqq1    *xxtx xxttt ttt  0 **xxx xxxxx  8 ****x *tttt 31  153
+2008 BLR Vladimir Artukhov   dolinsky10 ****x *xxxx xxx 25 **ttt ttttt  8 *xxxx xxx*x 12  147
+2008 TKM Aman Torayew        amantoray1 ***** *xxxx xxx 34 *xxsx xxxsx  0 *xxxx xxx*x 12  144
+2009 CHN zhengyang du        dzy91062   ..... ..... ...  0 ****x *tttt 41 ..... .....  0  142
+2008 CHN Helen Liu           helen_l3   ..... ..... ...  0 **xxx **xxx 27 *xxxx xxx*x 12  142
+2009 BGR Jordan Boev         jordan_2   ..... ..... ...  0 *xxxx x*xxx 10 ***xx xxx*x 26  140
+2007 USA Julia Matsieva      amethys1   ..... ..... ...  0 ..... .....  0 ****e *ettt 31  125
+2007 USA Amir Sadoughi       amir171    ..... ..... ...  0 ..... .....  0 ****x *tttt 31  125
+2006 CAN Derek Thurn         derekth1   ..... ..... ...  0 ..... .....  0 ****x *tttt 31  125
+2009 USA Will Hayworth       will1      ..... ..... ...  0 ..... .....  0 ****t *tttt 31  125
+2009 CHN Richard Liu         liujun91   ..... ..... ...  0 **xxx **xxx 27 ..... .....  0   94
+2008 BGD Annajiat Rasel      annajia1   ..... ..... ...  0 ..... .....  0 ****t ttttt 22   89
+2007 USA Dan Cohen           bassmac1   ..... ..... ...  0 ..... .....  0 ****t ttttt 22   89
+2008 USA Robert Bieber       bieber2    ..... ..... ...  0 ..... .....  0 ****t ttttt 22   89
+2007 CAN Duluxan Sritharan   duluxan1   ..... ..... ...  0 ..... .....  0 ****t ttttt 22   89
+2006 USA James Farner        james2     ..... ..... ...  0 ..... .....  0 ****t ttttt 22   89
+2006 CAN Justin Young        tempest1   ..... ..... ...  0 ..... .....  0 ****t ttttt 22   89
+2008 TKM Eziz Durdyyew       ezizdurdy1 ..... ..... ...  0 *x**x xxxxx 24 ..... .....  0   83
+2006 SYR yamen saraiji       yamensl1   *x*xx xxxxx xxx  6 ..... .....  0 ***xx xxxtx 14   73
+2007 USA Jeong-woo Chang     pupu2001   ****x *xxxx txx 25 *xxxx xxxxx  0 *xxss sssss  0   70
+2008 ROM Musina Rares        cretu_m1   *xx*x x*xxx ss* 23 ..... .....  0 *xxxx xxxtx  0   65
+2007 TWN ian chou            ianchou1   **xx* xsss* sss 23 ..... .....  0 ..... .....  0   65
+2011 GEO meko manjgaladze    meko2      *x*xx xxxxx xxx  6 *xxxx xxxxx  0 *xxxx xxx*x 12   65
+2008 USA Patrick Elliott     pianoju1   *xxxx xxxxx xxx  0 ..... .....  0 ***te tettt 14   57
+2007 USA Dan Cox             spamman1   ..... ..... ...  0 ..... .....  0 ***tt ttttt 14   57
+2008 USA Tim Lane            tlane_k1   ..... ..... ...  0 ..... .....  0 *xxxx xxx*x 12   48
+2007 BGR Dinko Bodurov       pmgbs891   ..... ..... ...  0 *x*xx xxxxx  9 *xxxx xtttt  0   31
+2007 IRN kousha kalantary    koushak2   ..... ..... ...  0 ..... .....  0 *x*tt ttttt  7   28
+2007 USA Robert Yuan         roberty201 ..... ..... ...  0 **ttt ttttt  8 *xxxt xtttt  0   28
+2006 USA Nate Hinkle         nhinkle2   *xxx* xxxxt ttx  9 ..... .....  0 ..... .....  0   25
+2006 USA Chris Martin        aceofst1   ..... ..... ...  0 ..... .....  0 *eeee eeeee  0    0
+2008 USA Albert Kim          alkim111   ..... ..... ...  0 ..... .....  0 *eeee eeeee  0    0
+2009 GEO Levan Ilashvili     amiran30   ..... ..... ...  0 ..... .....  0 *xxxx xxxxx  0    0
+2011 GEO Nika Begiashvili    amiran32   ..... ..... ...  0 ..... .....  0 *xxxe eeeee  0    0
+2010 GEO Artem Gandilyan     amiran33   ..... ..... ...  0 ..... .....  0 *xxxx xxxxx  0    0
+2007 USA Calvin Chu          calvinc1   ..... ..... ...  0 ..... .....  0 *xxee eeeee  0    0
+2007 USA Charlie Steiner     chaz_ma2   ..... ..... ...  0 ..... .....  0 *xxtt ttttt  0    0
+2006 USA Thomas Brown        chiyiro1   ..... ..... ...  0 ..... .....  0 *eeee eeeee  0    0
+2007 USA Alan Freeman        cubsgua1   ..... ..... ...  0 ..... .....  0 *eeee eeeee  0    0
+2007 USA Dylan Caple         gneekma1   ..... ..... ...  0 ..... .....  0 *eeee eeeee  0    0
+2006 USA Christopher Flynn   goldswi1   ..... ..... ...  0 *xeee eeeex  0 *eeee eeeee  0    0
+2009 GEO Tamuna Kotolashvili gurkot2    ..... ..... ...  0 ..... .....  0 *xxee eeeee  0    0
+2007 USA John Tibble         jtibble1   ..... ..... ...  0 ..... .....  0 *eeee eeeee  0    0
+2007 USA Robert Granville    kamscne3   ..... ..... ...  0 ..... .....  0 *eeee eeete  0    0
+2011 GEO tsotne tabidze      kaxaaka2   ..... ..... ...  0 ..... .....  0 *eeee eeeee  0    0
+2009 GEO George Tsereteli    kvazigo2   ..... ..... ...  0 ..... .....  0 *xxee eeeee  0    0
+2006 GEO irakli managadze    manao2     ..... ..... ...  0 ..... .....  0 *xxee eeeee  0    0
+2007 EGY Michael Youssef     michael18  ..... ..... ...  0 ..... .....  0 *xxxx xtttt  0    0
+2009 BGR Nikola Velinov      mr_nob01   ..... ..... ...  0 ..... .....  0 *xxxx xxttx  0    0
+2007 FRA Geoffrey Huck       mystickha1 ..... ..... ...  0 ..... .....  0 *xxss xxstt  0    0
+2008 USA John Casale         pasjkc1    ..... ..... ...  0 ..... .....  0 *eeee eeeee  0    0
+2008 ARG Dario Coronel       shousaco1  ..... ..... ...  0 *xxxx xxxxx  0 *ssss sssss  0    0
+2010 GEO Joseph Makhatadze   snetch1    ..... ..... ...  0 ..... .....  0 *xxxx xxxxx  0    0
+2007 USA Sean Boyle          spboyle1   ..... ..... ...  0 ..... .....  0 *eeee eeeee  0    0
+2007 USA Elliot Parkhurst    thevoid2   ..... ..... ...  0 ..... .....  0 *eeee eeeee  0    0
+2006 ARM Vahag Nalbandyan    vahagnalb2 ..... ..... ...  0 ..... .....  0 *xxss sstss  0    0
+9999 RUS Dima Budaragin      bud1       ***** ***** *** 96 ***** ***** 95 ***** ***** 99 1000
+2003 IRN Hamid Haghshenas    hamid_e2   ***** ***** *** 96 ***** ***** 95 ***** ***** 99 1000
+9999 IRN Pooya Jalaly        pooya.j1   ***** ***** *** 96 ***** ***** 95 ***** ***** 99 1000
+9999 MEX Victor Sanchez      victor.3   ***** ***** *** 96 ***** ***** 95 ***** ***** 99 1000
+2004 CHN Zhiyu Wang          vocabul1   ***** ***** *** 96 ***** ***** 95 ***** ***** 99 1000
+2004 AUS Pat Coleman         padster1   ***** ***** **t 88 ***** ***** 95 ***** ***** 99  978
+9999 CHN Hao Hu              phoenix15  ****x ***** *** 87 ***** ***** 95 ***** ***** 99  975
+1996 NED Joris van Rantwijk  joris1     ***** ***** x** 84 ***** ***** 95 ***** ***** 99  966
+9999 CHN Xue Huichao         bighead1   ***** ***** *** 96 ***x* ***** 80 ***** ***** 99  948
+1992 CHN yi yao              gingkoyy2  ****x ***** s** 75 ***** ***** 95 ***** ***** 99  941
+2005 RUS Aleksei Efremov     efrcom1    ***** ***** *** 96 ***** ***** 95 ***** ****t 84  939
+2004 IRN Ebrahim Mehri       ebrahim1   ***** ***** ss* 73 ***** ***** 95 ***** ***** 99  935
+2003 RUS Ivan Matantsev      ivanidz1   ***** ***** tt* 73 ***** ***** 95 ***** ***** 99  935
+2002 TWN Ho Johnny           s0049121   ***** ***** x** 84 ***x* ***** 80 ***** ***** 99  914
+9999 BLR Vitaliy Leschenko   vitaliy_l1 ***** ****x xxx 57 ***** ***** 95 ***** ***** 99  890
+9999 POL Peter Kufel         qfel.pl1   ***** ***** *** 96 ***sx sx*** 50 ***** ***** 99  844
+2005 POL Przemek Szalaj pszemsz1   ***** ***** ss* 73 ***** ***** 95 ***** ***tt 72  826
+1991 CHN Sexy Three          sexy3232   ****x ***** *** 87 ***** *tttt 52 ***** ***** 99  825
+2002 CHN Xiao Liu            czlx0702   ****x ***** *** 87 ***x* ***** 80 ***** **t*t 69  801
+2004 IDN rizky zulkarnaen    rizkyz1    ***** ***** *** 96 **xxx **xxx 27 ***** ***** 99  764
+9999 CHN Xiao Ziqian         xiaoziq1   ****x ***** *** 87 ***** ***** 95 ***** *tttt 42  744
+2004 TWN Rick Chao           0210881    ***** ***** *** 96 ***** ***** 95 ****x *xxtx 31  725
+2005 RUS Alex Smirnov        fredeom3   ***** ***** *** 96 ***** ***** 95 *xxxx xxx** 27  709
+2003 USA Harry Bullen        hbullen001 ***** ***** st* 73 ***** ***** 95 ***** *tttt 42  705
+2000 LTU Jevgenij Volosatov  formula1   ***** ***** xe* 73 ***x* ***** 80 ***** *tt*t 54  701
+9999 CHN Shuyang Gao         gsy90091   ***** ***** *** 96 ***** ***** 95 ****t ttttt 22  689
+9999 LBN Nagi Nahas          nnahas1    ***** ***** *** 96 ***** ***** 95 ****t ttttt 22  689
+2000 GEO Mish Tevzadze       gurkot9    ****x ***** *** 87 **xxx xxxxx  8 ***** ***** 99  672
+2002 MEX Pavel Herrera       paspart1   ****x ***** *** 87 ..... .....  0 ***** ***** 99  645
+9999 VNM Phi Dang Hoai       danghoa1   ****x ***** *** 87 ***** ***** 95 ***tt ttttt 14  631
+9999 TTO Dwayne Crooks       crooks_1   ***** ***** *** 96 ***** ***** 95 ..... .....  0  600
+2000 BGD Sunny Dave Mustaine sunnyishe1 ***** ***** *** 96 ***** ***** 95 *xxxx xxxxx  0  600
+9999 CHN Liu Baoan           liubaoa1   ***** ***** *** 96 ***x* ***** 80 *xxxx xxx*x 12  596
+2005 SGP tuan dung trung     trungtu1   ***tx *x**x xxt 33 ***** ***** 95 ***** *tttt 42  593
+1989 VNM Nguyen Quang Huy    unfriendl1 ***** ***** *** 96 **xxx **xxx 27 ***** *tt*t 54  582
+2004 POL Mateusz Osojca      matys351   ***** ****x xxx 57 ***** ***** 95 ****t ttttt 22  579
+2005 CHN Xu Xiaotao          xish322    ****x ***** *** 87 ***** ***** 95 ..... .....  0  575
+2005 IRN Masoud Farivar      masoudf1   *x**x ****x xxx 42 ***x* ***** 80 ***** *tttt 42  566
+9999 VNM Vu Duong            vu_duong01 ***** ***** *** 96 ***x* ***** 80 *eeee eeeee  0  548
+2004 CHN liu yulei           fftorpe1   ***** ***** tt* 73 ***** ***** 95 *xxxx xtttt  0  535
+9999 POL Piotr Gawron        gawron11   ****x ***** tt* 64 ***** ***** 95 *ssss sssss  0  510
+2000 EGY Ahmed Magdy         elhabas1   ***** ***** x** 84 **xxx **xxx 27 ***** *tttt 42  500
+9999 CHN dennis he           dennis-1   ***** ****x xxx 57 ***** ***** 95 ..... .....  0  490
+2002 EGY Amr Ebaid           eng_amr1   ***** ***** xx* 73 ***x* ***** 80 *xxxx xtttt  0  483
+9999 USA Scott Thomson       sthomso1   ***** ***ee tte 49 ..... .....  0 ***** ****t 84  477
+9999 POL Lukasz Wiecek  lux221     ***** ***** tt* 73 **xxx *xx*x 29 ***** *tttt 42  476
+9999 CUB alkaid llanes       jose2      ..... ..... ...  0 ***** ***** 95 ****x *tttt 31  455
+9999 MEX Jose Campos         oiech.c1   **xx* xxxxx xxx 15 ..... .....  0 ***** ***** 99  442
+2001 BGR Antoan Tateosian    an_ta1     ***** ***** *** 96 ..... .....  0 ***** *tttt 42  440
+2005 COL Hansen González     elregon1   *x*** ***x* xx* 59 **xxx **xxx 27 ****x *xx*x 43  433
+2000 USA King Mak            kmak2      *s*ss ss*sx sts 13 *x*** ***x* 75 *xxxx xxx** 27  406
+2002 IND Nishant Kumar       nishant5   ..... ..... ...  0 ***** ***** 95 *xxxx xxx*x 12  378
+9999 IND Nadeem Mohsin       abstrac1   ..... ..... ...  0 *x*x* ***** 72 *ee*e e*eee 23  343
+2004 POL Pawel Polec         ppfish1    ***** ***** xx* 73 **xxx xxxxx  8 *xxxx xxx** 27  342
+9999 POL Adam Karczmarz      dasko1     ..... ..... ...  0 ..... .....  0 ***** ****x 84  339
+1987 POL gaborek Siarkiewicz gaborek_11 ..... ..... ...  0 ***** ***** 95 ..... .....  0  330
+2004 MNG Ganzorig Batzorig   ganzo19861 ..... ..... ...  0 ***** ***** 95 ..... .....  0  330
+2000 IND Gagandeep Bhatia    gsbhati1   ..... ..... ...  0 ***** ***** 95 ..... .....  0  330
+2005 VNM Nguyen Hong Thai    thai_ho1   ..... ..... ...  0 ***** ***** 95 ..... .....  0  330
+1992 UKR Taras Zubyk         letavasc1  ****t ***** ttt 56 *xxxx xxxx* 11 ****x *tttt 31  321
+1989 UKR Oksana Zubyk        letavasc3  ****x ****t ttt 48 ..... .....  0 ***** *tttt 42  305
+9999 CHN Lei Zhao            leizhao1   ****x ***** *** 87 **xxx xssss  8 *xxss sssss  0  272
+2005 CHN Zhen Shao           njuzhsh1   ****x ***** *** 87 **xxx xxxxx  8 ..... .....  0  272
+2004 POL Lukasz Gebica       memphis1   ***** ***** *** 96 *xxxx xxxxx  0 ..... .....  0  270
+9999 SVK Michal Forisek      misof2     ***** ***** *** 96 ..... .....  0 ..... .....  0  270
+2000 CHN Kevin Li            plumcor1   ..... ..... ...  0 *xx*x x*xxx 25 ****x *xx*t 43  261
+2005 CHN lcosvse lcsovse     hong_ji001 ****x ***** *** 87 ..... .....  0 ..... .....  0  245
+9999 CHN Ying Huang          y1470822   ****x ***** *** 87 ..... .....  0 ..... .....  0  245
+2005 TWN YuFan Ho            mimi9122   ****x ***** x** 75 ..... .....  0 ..... .....  0  211
+9999 BGR George Nikov        gnikov1    ***** ***** tt* 73 ..... .....  0 ..... .....  0  205
+9999 BLR Anthony Gorbikov    lordsca1   ..... ..... ...  0 ..... .....  0 ***** *tttt 42  170
+9999 CHN Wenyi Tang          tangwen1   ..... ..... ...  0 ..... .....  0 ****x *tttt 31  125
+2004 IRN Faghri Faghri       fartash2   *x**x ****t ttt 42 ..... .....  0 ..... .....  0  118
+2005 CHN ji hong             hong_ji002 ***** *xxxx xxx 34 ..... .....  0 ..... .....  0   96
+2005 IRN Saeed Farivar       s_fariv1   ***x* *xxxx xxx 27 ..... .....  0 *xxxx xxxtx  0   76
+2005 KOR donghee lee         rcidong1   *xxxx xxxxx xxx  0 *xxxx xxxxx  0 *x*xx *tttt 16   65
+9999 BLR Andrej Konan        andars1    ..... ..... ...  0 ..... .....  0 ***ee eeeee 14   57
+1990 BGR Valentin Vasilev    valenti2   *x*x* xxxxx xxx 15 ..... .....  0 ..... .....  0   42
+9999 BGR Todor Baitchev      toshkob1   ..... ..... ...  0 *x*xx xxxxx  9 *eeee eeeee  0   31
+1993 USA Leigh Ann Sudol     ljervis001 ..... ..... ...  0 **eee eeeee  8 *eeee eeeex  0   28
+1991 KOR æ… ˜?             dark-ad2   *xxxx xxxxx xxx  0 ..... .....  0 ..... .....  0    0
+9999 ROM Razvan Popsor       razvanpop1 ..... ..... ...  0 *xxxx xxxxx  0 *xxxx xxxxx  0    0
+2004 USA Timothy Smith       tws861     ..... ..... ...  0 ..... .....  0 *eeee eeeee  0    0
+
+====== Distributions =====
+
+  Distribution by grade:
+    Grde  #  Percent
+    2006  54 (22.3%) *****************
+    2007  80 (33.1%) *************************
+    2008  57 (23.6%) ******************
+    2009  33 (13.6%) **********
+    2010  10 ( 4.1%) ***
+    2011   4 ( 1.7%) *
+    2012   3 ( 1.2%) 
+    2013   1 ( 0.4%) 
+
+  Distribution by country:
+   Cntry  #  Percent
+     ALB   1 ( 0.4%) 
+     ARG   2 ( 0.8%) 
+     ARM   4 ( 1.7%) *
+     AUS   1 ( 0.4%) 
+     AZE   1 ( 0.4%) 
+     BGD   1 ( 0.4%) 
+     BGR  11 ( 4.5%) ***
+     BLR  17 ( 7.0%) *****
+     CAN   7 ( 2.9%) **
+     CHN  47 (19.4%) **************
+     CUB   1 ( 0.4%) 
+     DEU   1 ( 0.4%) 
+     EGY   1 ( 0.4%) 
+     EST   2 ( 0.8%) 
+     FRA   4 ( 1.7%) *
+     GEO  13 ( 5.4%) ****
+     GRC   2 ( 0.8%) 
+     HRV   2 ( 0.8%) 
+     IDN   2 ( 0.8%) 
+     IND   1 ( 0.4%) 
+     IRN   5 ( 2.1%) *
+     KAZ   2 ( 0.8%) 
+     KGZ   1 ( 0.4%) 
+     KOR   6 ( 2.5%) *
+     LTU   1 ( 0.4%) 
+     LVA   1 ( 0.4%) 
+     MDA   1 ( 0.4%) 
+     MEX   2 ( 0.8%) 
+     MKD   1 ( 0.4%) 
+     MNG   1 ( 0.4%) 
+     POL   8 ( 3.3%) **
+     ROM   8 ( 3.3%) **
+     RUS   5 ( 2.1%) *
+     SVN   2 ( 0.8%) 
+     SYR   4 ( 1.7%) *
+     TKM   3 ( 1.2%) 
+     TUR   2 ( 0.8%) 
+     TWN   3 ( 1.2%) 
+     USA  60 (24.8%) *******************
+     VNM   2 ( 0.8%) 
+     YUG   3 ( 1.2%) 
+
+===== Distribution of scores =====
+951..1000 11  ***********
+901.. 950  9  *********
+851.. 900  2  **
+801.. 850  5  *****
+751.. 800  7  *******
+701.. 750  9  *********
+651.. 700 11  ***********
+601.. 650  4  ****
+551.. 600 20  ********************
+501.. 550 17  *****************
+451.. 500 10  **********
+401.. 450 13  *************
+351.. 400 14  **************
+301.. 350  8  ********
+251.. 300 11  ***********
+201.. 250 16  ****************
+151.. 200 20  ********************
+101.. 150  9  *********
+ 51.. 100 15  ***************
+  1..  50  5  *****
+  0..   0 26  **************************
+
+Prob            *   x   t   e   s
+neg2.1          0   0   0   0   0
+neg2.2        154  12   0   0   0
+neg2.3        156  10   0   0   0
+neg2.4        153  12   1   0   0
+neg2.5        111  45   4   4   2
+neg2.6        154  12   0   0   0
+neg2.7        132  32   0   1   1
+neg2.8        133  28   2   2   1
+neg2.9        126  32   2   5   1
+neg2.10       125  33   6   2   0
+neg2.11        81  46  27   8   4
+neg2.12        93  40  23   6   4
+neg2.13       122  33   7   3   1
+Total correct: 1540 (48.95%)
+
+Prob            *   x   t   e   s
+dna.1           0   0   0   0   0
+dna.2         133  33   1   0   0
+dna.3         114  48   3   2   0
+dna.4          66  94   2   3   2
+dna.5         101  58   5   2   1
+dna.6         118  40   6   2   1
+dna.7         112  41  10   3   1
+dna.8         108  46   9   3   1
+dna.9          92  60  10   3   2
+dna.10        101  53  10   2   1
+Total correct: 945 (39.05%)
+
+Prob            *   x   t   e   s
+phrase.1        0   0   0   0   0
+phrase.2      147  53   1  21   4
+phrase.3      148  49   2  21   6
+phrase.4      127  49  11  29  10
+phrase.5       92  61  28  34  11
+phrase.6      112  47  25  32  10
+phrase.7       56  48  79  34   9
+phrase.8       54  46  86  32   8
+phrase.9       85   9  97  27   8
+phrase.10      51  35  98  32  10
+Total correct: 872 (36.03%)
+

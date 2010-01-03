@@ -1,0 +1,13 @@
+ACM ICPC World Finals 2002/2003 - Beverly Hills, US
+(http://acm.uva.es/archive/nuevoportal/region.php?r=wfi&year=2002)
+
+A  Building Bridges      minimum spanning tree
+B  Light Bulbs           brute force the leftmost switch, deduce states of the rest
+C  Riding the Bus        recursively simulate drawing of the curve to find distances between connection points
+D  Eurodiffusion         direct, simulation
+E  Covering Whole Holes  geometry
+F  Combining Images      recursion
+G  A Linking Loader      direct, tedious
+H  A Spy in the Metro    simple DP
+I  The Solar System      math, binary search, integration
+J  Toll                  a variation of shortest path problem, Dijkstra/Bellmand-Ford like algorithms from destination will work

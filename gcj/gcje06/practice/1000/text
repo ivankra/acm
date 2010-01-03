@@ -1,0 +1,76 @@
+
+Problem Statement
+ÿÿÿÿ
+You are given a set of two-dimensional vectors in two vector <int>s - x and y (the i-th elements of x and y represent x and y coordinates of the i-th vector). Find a subset of the vectors such that the sum of all vectors in the subset has the maximum possible length. Return this length.
+Definition
+ÿÿÿÿ
+Class:
+VectorSet
+Method:
+maxLength
+Parameters:
+vector <int>, vector <int>
+Returns:
+double
+Method signature:
+double maxLength(vector <int> x, vector <int> y)
+(be sure your method is public)
+ÿÿÿÿ
+
+Notes
+-
+The sum of vectors (x1, y1) and (x2, y2) is the vector (x1+x2, y1+y2).
+-
+The length of vector (x, y) is the value sqrt(x * x + y * y).
+-
+The returned value must be accurate to within a relative or absolute value of 1E-9.
+-
+The input (as well as the resulting subset) can contain equal vectors (see example 1).
+-
+Consider the entire set to be a subset.
+Constraints
+-
+x will contain between 1 and 50 elements, inclusive.
+-
+x and y will contain the same number of elements.
+-
+Each element of x will be between -1000 and 1000, inclusive.
+-
+Each element of y will be between -1000 and 1000, inclusive.
+Examples
+0)
+
+ÿÿÿÿ
+{0,0}
+{1,-1}
+Returns: 1.0
+Choose any one vector.
+1)
+
+ÿÿÿÿ
+{0, 0}
+{1, 1}
+Returns: 2.0
+Choose two vectors. The sum is (0, 2).
+2)
+
+ÿÿÿÿ
+{0, 0, 1, -1}
+{1, -1, 0, 0}
+Returns: 1.4142135623730951
+
+3)
+
+ÿÿÿÿ
+{0, 0, 0, 0}
+{1, 2, -1, -2}
+Returns: 3.0
+
+4)
+
+ÿÿÿÿ
+{17,8,-5,-8,-8,-11,-3,2,19,4,22,15,20,13,-7,15,-23,17,-9,-10,17,24,20,-22,-1,-7,-19,18,-17}
+{7,-5,-2,18,-9,-24,14,9,-21,14,-23,7,14,23,23,17,17,22,-3,-21,-10,1,24,-17,25,12,-21,12,13}
+Returns: 289.4563870430224
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

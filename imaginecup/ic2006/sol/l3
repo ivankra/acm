@@ -1,0 +1,56 @@
+17
+z:sssrsssrssrssrz
+z
+
+13
+g:ssr
+z:sgsgggz
+z
+
+17
+z:sssrsssrssrssrz
+z
+
+------
+
+sssrsssrssrssr|sssrsssrssrssr|sssrsssrssrssr|sssrsssrssrssr|sssrsssrssrssr|...
+s ssrs ssrs sr ssr|s ssrs ssrs sr ssr|s ssrs ssrs sr ssr|s ssrs ssrs sr ssr|s ssrsssrssrssr|...
+s [ssrs ssrs sr ssrs]*
+g=ssrs
+s ggsrggsrggsrggsr
+
+14
+g:ssrs
+z:ggsrgz
+sz
+
+
+sssrsssrssrssrsssrsssrssrssrsssrsssrssrssrsssrsssrssrssr|sssrsssrssrssr|...
+
+sssr sssr ssr ssr sssr sssr ssrssrsssrsssrssrssrsssrsssrssrssr|sssrsssrssrssr|...
+
+332233223322
+
+13
+t:ssr
+z:ststttz
+z
+
+15
+z(T):sTsTTTz(T)
+z(ssr)
+
+13
+t:ssr
+q:ts
+z:qttqz
+sz
+
+s tsttts tsttts tstttststttststttststttststttststtt
+
+==========
+
+13
+t:ssr
+z:ststttz
+z

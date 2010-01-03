@@ -1,0 +1,2 @@
+#!/bin/bash
+java -cp $(dirname $0) Main $*

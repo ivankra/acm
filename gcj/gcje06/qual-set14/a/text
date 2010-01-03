@@ -1,0 +1,91 @@
+
+Problem Statement
+ÿÿÿÿ
+We have a rectangular room with a beautiful hardwood floor. We are considering using exactly 2 rectangular rugs to cover part of the floor with the following restrictions:
+The 2 dimensions of each rug are positive integers.
+The larger dimension of each rug must not be more than twice as big as its other dimension.
+The two rugs must be placed in the room so that they do not overlap.
+A single (non-empty) rectangular area of the hardwood floor must be left uncovered.
+Create a class Hardwood that contains a method hwCount that is given width and length, the two dimensions of the rectangular room. It returns the number of different hardwood areas that can be left uncovered.
+Two areas are different unless they cover exactly the same part of the room. If the same hardwood area can be left uncovered in multiple ways, only count it once.
+Definition
+ÿÿÿÿ
+Class:
+Hardwood
+Method:
+hwCount
+Parameters:
+int, int
+Returns:
+int
+Method signature:
+int hwCount(int width, int length)
+(be sure your method is public)
+ÿÿÿÿ
+
+Constraints
+-
+width and length will each be between 1 and 100, inclusive.
+Examples
+0)
+
+ÿÿÿÿ
+1
+2
+Returns: 0
+Each of the rugs must be at least 1 x 1 so there can be no area left exposed.
+1)
+
+ÿÿÿÿ
+1
+3
+Returns: 3
+Use two 1x1 rugs. They can be placed side-by-side leaving either of the 1x1 areas on the end of the room uncovered, or they can be placed to leave the middle 1x1 area uncovered.
+2)
+
+ÿÿÿÿ
+92
+2
+Returns: 32
+The only legal rugs that can be placed in this room are 1x1,1x2,2x2,2x3,and 2x4. The only way to use a 1x1 is to use 2 of them, placed side by side at one of the ends of the room -- this gives 2 possible hardwood areas. All the other possibilites cover one end with 2 side by side rugs, or cover some of each end with a single rug. Here are all the possibilities:
+    cover a length of 1 at either end using 1x1's        2
+    cover a total of 2,3,4,5,6,7, or 8 at either end    14
+    cover 1,2,3, or 4 at each end                       16
+                                                       ---
+                                                        32
+3)
+
+ÿÿÿÿ
+80
+90
+Returns: 10501
+
+4)
+
+ÿÿÿÿ
+25
+12
+Returns: 557
+
+5)
+
+ÿÿÿÿ
+3
+4
+Returns: 28
+
+6)
+
+ÿÿÿÿ
+3
+5
+Returns: 29
+
+7)
+
+ÿÿÿÿ
+77
+77
+Returns: 8336
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

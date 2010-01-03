@@ -1,0 +1,335 @@
+<html><head>
+
+<script language="javascript">
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d ";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h ";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m ";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</script><title>USACO Problems</title></head><body onload="endtime = initcount(52609); updateclock('U S OPEN,  2006', 'Contest', endtime); endtime = initcount(14400); updateclock('Your Contest Session', 'Person', endtime);" background="gold-en_files/bg9gold.jpg">
+
+<table><tbody><tr>
+<td><img src="gold-en_files/cowhead2.gif" height="81" width="65">
+</td>
+<td valign="top">
+<table cellpadding="0" cellspacing="0">
+    <tbody><tr><td>OPEN06 <b>GOLD</b> Division</td></tr>
+    <tr><td><div id="Contest">U S OPEN,  2006: 14h 36m 43s</div></td></tr>
+    <tr><td><div id="Person">Your Contest Session: 03h 59m 54s</div></td></tr>
+    <tr><td></td></tr>
+</tbody></table>
+</td><td></td></tr>
+</tbody></table>
+
+
+<pre></pre>
+<pre>**********************************************************************
+                           GOLD PROBLEMS
+**********************************************************************
+                  Three problems numbered 1 through 3
+**********************************************************************
+
+Problem 1: The County Fair [Brian Dean, 2006]
+
+Every year, Farmer John loves to attend the county fair. The fair
+has N booths (1 &lt;= N &lt;= 400), and each booth i is planning to give
+away a fabulous prize at a particular time P(i) (0 &lt;= P(i) &lt;=
+1,000,000,000) during the day.  Farmer John has heard about this
+and would like to collect as many fabulous prizes as possible to
+share with the cows. He would like to show up at a maximum possible
+number of booths at the exact times the prizes are going to be
+awarded.
+
+Farmer John investigated and has determined the time T(i,j) (always
+in range 1..1,000,000) that it takes him to walk from booth i to
+booth j. The county fair's unusual layout means that perhaps FJ
+could travel from booth i to booth j by a faster route if he were
+to visit intermediate booths along the way. Being a poor map reader,
+Farmer John never considers taking such routes -- he will only walk
+from booth i to booth j in the event that he can actually collect
+a fabulous prize at booth j, and he never visits intermediate booths
+along the way. Furthermore, T(i,j) might not have the same value
+as T(j,i) owing to FJ's slow walking up hills.
+
+Farmer John starts at booth #1 at time 0. Help him collect as many
+fabulous prizes as possible.
+
+PROBLEM NAME: cfair
+
+INPUT FORMAT:
+
+* Line 1: A single integer, N.
+
+* Lines 2..1+N: Line i+1 contains a single integer, P(i).
+
+* Lines 2+N..1+N+N^2: These N^2 lines each contain a single integer
+        T(i,j) for each pair (i,j) of booths. The first N of these
+        lines respectively contain T(1,1), T(1,2), ..., T(1,N). The
+        next N lines contain T(2,1), T(2,2), ..., T(2,N), and so on.
+        Each T(i,j) value is in the range 1...1,000,000 except for the
+        diagonals T(1,1), T(2,2), ..., T(N,N), which have the value
+        zero.
+
+SAMPLE INPUT (file cfair.in):
+
+4
+13
+9
+19
+3
+0
+10
+20
+3
+4
+0
+11
+2
+1
+15
+0
+12
+5
+5
+13
+0
+
+INPUT DETAILS:
+
+There are 4 booths. Booth #1 is giving away a prize at time 13, booth #2
+at time 9, booth #3 at time 19, and booth #4 at time 3.
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer, containing the maximum number of prizes
+        Farmer John can acquire.
+
+SAMPLE OUTPUT (file cfair.out):
+
+3
+
+OUTPUT DETAILS:
+
+Farmer John first walks to booth #4 and arrives at time 3, just in
+time to receive the fabulous prize there. He them walks to booth
+#2 (always walking directly, never using intermediate booths!) and
+arrives at time 8, so after waiting 1 unit of time he receives the
+fabulous prize there. Finally, he walks back to booth #1, arrives
+at time 13, and collects his third fabulous prize.
+
+**********************************************************************
+
+Problem 2: The Milk Queue [Brian Dean, 2006]
+
+Every morning, Farmer John's N (1 &lt;= N &lt;= 25,000) cows all line up
+for milking. In an effort to streamline the milking process, FJ has
+designed a two-stage milking process where the line of cows progresses
+through two barns in sequence, with milking taking part sequentially
+in both barns. Farmer John milks cows one by one as they go through
+the first barn, and his trusty sidekick Farmer Rob milks the cows
+(in the same order) as they are released from the first barn and
+enter the second barn.
+
+Unfortunately, Farmer John's insistence that the cows walk through
+both barns according to a single ordering leads to some inefficiencies.
+For example, if Farmer John takes too long to milk a particular
+cow, Farmer Rob might end up sitting idle with nothing to do for
+some time. On the other hand, if Farmer John works too fast then
+we might end up with a long queue of cows waiting to enter the
+second barn.
+
+Please help Farmer John decide on the best possible ordering of
+cows to use for the milking, so that the last cow finishes milking
+as early as possible. For each cow i we know the time A(i) required
+for milking in the first barn and the time B(i) required for milking
+in the second barn.  Both A(i) and B(i) are in the range 1...20,000.
+
+PROBLEM NAME: mqueue
+
+INPUT FORMAT:
+
+* Line 1: A single integer, N.
+
+* Lines 2..1+N: Line i+1 contains two space-separated integers A(i)
+        and B(i) for cow i.
+
+SAMPLE INPUT (file mqueue.in):
+
+3
+2 2
+7 4
+3 5
+
+INPUT DETAILS:
+
+There are three cows.  Cow #1 takes 2 units of time in both barns,
+cow #2 takes 7 units of time in the first barn and 4 in the second,
+and cow #3 takes 3 units of time in the first barn and 5 in the
+second.
+
+OUTPUT FORMAT:
+
+* Line 1: The minimum possible time it takes to milk all the cows, if
+        we order them optimally.
+
+SAMPLE OUTPUT (file mqueue.out):
+
+16
+
+OUTPUT DETAILS:
+
+Ordering the cows in the order 3, 1, 2, will allow for milking to complete
+within only 16 units of time.
+
+**********************************************************************
+
+Problem 3: Two-Headed Cows [Brian Dean, 2006]
+
+Farmer John wanted smarter cows and has succeeded in breeding a
+special type of cow with two heads: One head is on the front side
+of the cow, and the other is on the rear side of the cow. Each cow
+is symmetric from front to back:
+
+(__)     (__)
+(oo)     (oo)
+ \/-------\/ 
+  ||     ||  
+  ||-----||  
+  ~~     ~~  
+Unfortunately, this has created a most difficult problem: the two
+heads on each cow (labeled A and B) seem to have completely different
+personalities!  For example, head A of cow #1 might be friends with
+head A on cow #2 but not with head B on cow #2.
+
+Each morning, FJ's N (1 &lt;= N &lt;= 25,000) cows (conveniently numbered
+1..N) line up in order for feeding (cow 1 first; cow N last). Since
+each cow has two heads, FJ uses a pair of feeding troughs -- one
+of them runs by one set of the cow heads; the other runs by the
+other set of cow heads. Since cows feel happier when they are feeding
+with their friends, FJ wants to orient each cow so that no pair of
+unfriendly heads is eating from the same trough. Stated another
+way: if there are two heads that dislike each other, then these two
+heads must be facing towards opposite troughs.
+
+Given M (1 &lt;= M &lt;= 50,000) pairs of heads that dislike each other,
+please help FJ figure out how to arrange his cows. It might not be
+possible for all the cows to line up together for one large feeding
+session due to the constraints on their orientations, so FJ wants
+to use the minimum number of feedings sessions possible.
+
+Each feeding session should include a contiguous set of cows. For
+example, feeding session #1 might include cows 1..10, feeding session
+#2 might include cows 11..14, and feeding session #3 might include
+cows 15..23. Within each feeding session, the cows must be oriented
+so that only friendly heads eat from the same trough.
+
+Determine the minimum number of feeding sessions FJ must conduct.
+
+PROBLEM NAME: twohead
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: N and M
+
+* Lines 2..M+1: Each line describes a pair of unfriendly cow heads
+        with four fields that define two cow heads by their number and
+        body location. A line like "4 A 37 B" indicates that head A on
+        cow #4 dislikes head B on cow #37.
+
+SAMPLE INPUT (file twohead.in):
+
+4 5
+3 B 1 B
+4 A 3 A
+2 B 1 B
+4 B 2 A
+3 A 2 B
+
+INPUT DETAILS:
+
+There are 4 cows.  Cow #3 (head B) dislikes cow #1 (head B), and so on.
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer, indicating the minimum number of feeding
+        sessions required.
+
+SAMPLE OUTPUT (file twohead.out):
+
+2
+
+OUTPUT DETAILS:
+
+Cows #1...#3 can all feed together, but cow #4 must be placed in a separate
+feeding session.
+
+**********************************************************************
+
+</pre><hr>
+<form action="/ioiupload2" enctype="multipart/form-data" method="post">
+<input name="a" value="B1nQZ6ekbFN" type="hidden">
+
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td height="1"></td><td>
+
+</td></tr><tr><td width="1"></td><td>
+
+<table bgcolor="#bfffbf" cellpadding="5">
+<tbody><tr><td>Use this form to submit a program for grading:</td>
+<td rowspan="3"><input value="Submit" name="submit" type="submit"></td>
+</tr><tr><td width="60%"><b>Program File:</b><input name="filename" type="file"></td>
+    </tr>
+</tbody></table>
+</td><td width="1"></td>
+
+</tr><tr height="1"><td></td></tr>
+</tbody></table>
+<hr>
+Nothing is currently saved for grading.
+<hr>
+<center>
+<a href="http://ace.delos.com/ioiedit?a=B1nQZ6ekbFN">Edit your database record</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload2?a=B1nQZ6ekbFN&amp;logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload2?init=1&amp;a=B1nQZ6ekbFN">Main contest index</a>
+</center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<a href="http://ace.delos.com/ioiupload2?a=B1nQZ6ekbFN&amp;showsubmit">See submitted solutions</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload2?a=B1nQZ6ekbFN&amp;suggestionbox">Send message
+to contest director</a><br>
+Director has been away from his keyboard for 9 minutes<br>
+This page was generated at 22:23:11 GMT.
+</center>
+</form></body></html>

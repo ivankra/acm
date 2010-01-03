@@ -1,0 +1,28 @@
+31
+f(N):sf(N-1)
+z(N):f(N)rssrf(N)lsslz(N-4)
+z(21)f(24)rrz(21)
+
+
+33
+f(N):sf(N-1)
+z(N):f(N)rssrf(N)lsslz(N-4)
+z(21)f(24)lsslz(21)
+
+33
+f(N):sf(N-1)
+g(N,X):f(N)XssX
+z(N):g(N,r)g(N,l)z(N-4)
+z(21)g(24,l)z(21)
+
+g(21,r)g(21,l) g(17,r)g(17,l) ... g(1,r)g(1,l)
+g(24,l)
+g(21,r)g(21,l) g(17,r)g(17,l) ... g(1,r)g(1,l)
+
+
+32
+f(N):sf(N-1)
+z(N):f(N)rssrf(N)lsslz(N-4)
+q:z(21)f(24)rrq
+q
+

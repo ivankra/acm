@@ -1,0 +1,269 @@
+<html><head>
+
+<title>USACO Problems</title></head>
+<body background="silver_files/bg9.jpg" bgcolor="#ffffff"><table><tbody><tr>
+<td>
+
+<center><img src="silver_files/cow1.jpg" height="118" width="742"></center>
+</td>
+<td valign="top"></td>
+</tr>
+</tbody></table>
+<center>This page was generated at 18:43:07 GMT.<br>
+<br><font size="6"><b>ANALYSIS MODE</b></font><br>
+Submit solutions for your own enjoyment.
+</center>
+
+<pre></pre>
+<pre>**********************************************************************
+                           SILVER PROBLEMS
+**********************************************************************
+                  Three problems numbered 6 through 8
+**********************************************************************
+
+Problem 6: City skyline [Mathijs Vogelzang, 2005]
+
+The best part of the day for Farmer John's cows is when the sun
+sets. They can see the skyline of the distant city. Bessie wonders
+how many buildings the city has. Write a program that assists the
+cows in calculating the minimum number of buildings in the city,
+given a profile of its skyline.
+
+The city in profile is quite dull architecturally, featuring only
+box-shaped buildings. The skyline of a city on the horizon is
+somewhere between 1 and W units wide (1 &lt;= W &lt;= 1,000,000) and
+described using N (1 &lt;= N &lt;= 50,000) successive x and y coordinates
+(1 &lt;= x &lt;= W, 0 &lt;= y &lt;= 500,000), defining at what point the skyline
+changes to a certain height.
+
+An example skyline could be:
+..........................
+.....XX.........XXX.......
+.XXX.XX.......XXXXXXX.....
+XXXXXXXXXX....XXXXXXXXXXXX
+
+and would be encoded as (1,1), (2,2), (5,1), (6,3), (8,1), (11,0), (15,2),
+(17,3), (20,2), (22,1).
+
+This skyline requires a minimum of 6 buildings to form; below is
+one possible set of six buildings whose could create the skyline
+above:
+
+..........................    ..........................
+.....22.........333.......    .....XX.........XXX.......
+.111.22.......XX333XX.....    .XXX.XX.......5555555.....
+X111X22XXX....XX333XXXXXXX    4444444444....5555555XXXXX
+
+..........................
+.....XX.........XXX.......
+.XXX.XX.......XXXXXXX.....
+XXXXXXXXXX....666666666666
+
+PROBLEM NAME: skyline
+
+INPUT FORMAT:
+
+* Line 1: Two space separated integers: N and W
+
+* Lines 2..N+1: Two space separated integers, the x and y coordinate
+        of a point where the skyline changes. The x coordinates are
+        presented in strictly increasing order, and the first x
+        coordinate will always be 1.
+
+SAMPLE INPUT (file skyline.in):
+
+10 26
+1 1
+2 2
+5 1
+6 3
+8 1
+11 0
+15 2
+17 3
+20 2
+22 1
+
+INPUT DETAILS:
+
+The case mentioned above
+
+OUTPUT FORMAT:
+
+* Line 1: The minimum number of buildings to create the described
+        skyline.
+
+SAMPLE OUTPUT (file skyline.out):
+
+6
+
+**********************************************************************
+
+Problem 7: Cow Acrobats [Brian Dean, 2004]
+
+Farmer John's N (1 &lt;= N &lt;= 50,000) cows (numbered 1..N) are planning
+to run away and join the circus.  Their hoofed feet prevent them
+from tightrope walking and swinging from the trapeze (and their
+last attempt at firing a cow out of a cannon met with a dismal
+failure). Thus, they have decided to practice performing acrobatic
+stunts.
+
+The cows aren't terribly creative and have only come up with one
+acrobatic stunt: standing on top of each other to form a vertical
+stack of some height.  The cows are trying to figure out the order
+in which they should arrange themselves within this stack.
+
+Each of the N cows has an associated weight (1 &lt;= W_i &lt;= 10,000)
+and strength (1 &lt;= S_i &lt;= 1,000,000,000).  The risk of a cow
+collapsing is equal to the combined weight of all cows on top of
+her (not including her own weight, of course) minus her strength
+(so that a stronger cow has a lower risk).  Your task is to determine
+an ordering of the cows that minimizes the greatest risk of collapse
+for any of the cows.
+
+PROBLEM NAME: acrobat
+
+INPUT FORMAT:
+
+* Line 1: A single line with the integer N.
+
+* Lines 2..N+1: Line i+1 describes cow i with two space-separated
+        integers, W_i and S_i.
+
+SAMPLE INPUT (file acrobat.in):
+
+3
+10 3
+2 5
+3 3
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer, giving the largest risk of all the cows in
+        any optimal ordering that minimizes the risk.
+
+SAMPLE OUTPUT (file acrobat.out):
+
+2
+
+OUTPUT DETAILS:
+
+Put the cow with weight 10 on the bottom. She will carry the other
+two cows, so the risk of her collapsing is 2+3-3=2. The other cows
+have lower risk of collapsing.
+
+**********************************************************************
+
+Problem 8: Ant Counting [Jacob Steinhardt, 2005]
+
+Bessie was poking around the ant hill one day watching the ants
+march to and fro while gathering food.  She realized that many of
+the ants were siblings, indistinguishable from one another.  She
+also realized the sometimes only one ant would go for food, sometimes
+a few, and sometimes all of them. This made for a large number of
+different sets of ants!
+
+Being a bit mathematical, Bessie started wondering.  Bessie noted
+that the hive has T (1 &lt;= T &lt;= 1,000) families of ants which she
+labeled 1..T (A ants altogether).  Each family had some number Ni
+(1 &lt;=  Ni &lt;= 100) of ants.
+
+How many groups of sizes S, S+1, ..., B (1 &lt;= S &lt;= B &lt;= A) can be
+formed?
+
+While observing one group, the set of three ant families was seen
+as {1, 1, 2, 2, 3}, though rarely in that order. The possible sets
+of marching ants were:
+
+  3 sets with 1 ant:  {1} {2} {3}
+  5 sets with 2 ants: {1,1} {1,2} {1,3} {2,2} {2,3}
+  5 sets with 3 ants: {1,1,2} {1,1,3} {1,2,2} {1,2,3} {2,2,3}
+  3 sets with 4 ants: {1,2,2,3} {1,1,2,2} {1,1,2,3}
+  1 set  with 5 ants: {1,1,2,2,3}
+
+Your job is to count the number of possible sets of ants given the
+data above.
+
+PROBLEM NAME: ants
+
+INPUT FORMAT:
+
+* Line 1: 4 space-separated integers: T, A, S, and B
+
+* Lines 2..A+1: Each line contains a single integer that is an ant
+        type present in the hive
+
+SAMPLE INPUT (file ants.in):
+
+3 5 2 3
+1
+2
+2
+1
+3
+
+INPUT DETAILS:
+
+Three types of ants (1..3); 5 ants altogether.  How many sets of size 2 or
+size 3 can be made?
+
+OUTPUT FORMAT:
+
+* Line 1: The number of sets of size S..B (inclusive) that can be
+        created. A set like {1,2} is the same as the set {2,1} and
+        should not be double-counted. Print only the LAST SIX DIGITS
+        of this number, with no leading zeroes or spaces.
+
+SAMPLE OUTPUT (file ants.out):
+
+10
+
+OUTPUT DETAILS:
+
+5 sets of ants with two members; 5 more sets of ants with three members
+
+**********************************************************************
+
+</pre><hr>
+<form action="/ioiupload" enctype="multipart/form-data" method="post">
+<input name="a" value="TFpzNHpM70Y" type="hidden">
+
+<table bgcolor="#bfffbf" cellpadding="5">
+<tbody><tr><td>Use this form to submit a program for grading:</td>
+<td rowspan="3"><input value="Submit" name="submit" type="submit"></td>
+</tr><tr><td width="60%"><b>Program File:</b><input name="filename" type="file"></td>
+    </tr>
+</tbody></table>
+<hr>
+The following solution files are saved for grading:<br>
+<table cellspacing="2">
+<tbody><tr><th>Name</th><th>Size</th><th>When</th><th>Age</th></tr>
+<tr><td><a href="http://ace.delos.com/ioiupload?a=TFpzNHpM70Y&amp;seesaved=numgrid.c">numgrid.c</a></td>
+<td align="right">1039</td>
+<td align="right">15h18:04</td>
+<td align="right">44h25:03</td></tr>
+<tr><td><a href="http://ace.delos.com/ioiupload?a=TFpzNHpM70Y&amp;seesaved=passwd.c">passwd.c</a></td>
+<td align="right">1273</td>
+<td align="right">14h50:14</td>
+<td align="right">44h52:53</td></tr>
+<tr><td><a href="http://ace.delos.com/ioiupload?a=TFpzNHpM70Y&amp;seesaved=satpix.c">satpix.c</a></td>
+<td align="right">1095</td>
+<td align="right">13h56:38</td>
+<td align="right">45h46:29</td></tr>
+</tbody></table>
+<hr>
+<center>
+<a href="http://ace.delos.com/ioiupload?a=TFpzNHpM70Y&amp;logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+ | 
+<a href="http://ace.delos.com/ioiupload?init=1&amp;a=TFpzNHpM70Y">Main contest index</a>
+</center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<a href="http://ace.delos.com/ioiupload?a=TFpzNHpM70Y&amp;showsubmit">See submitted solutions</a>
+ | 
+<a href="http://ace.delos.com/ioiupload?a=TFpzNHpM70Y&amp;suggestionbox">Send message
+to contest director</a><br>
+Director is currently online (AIM: RobAtDelos)
+</center>
+</form></body></html>

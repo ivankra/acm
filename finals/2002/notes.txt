@@ -1,0 +1,12 @@
+A  Balloons in a Box        very simple geometry, brute-force all n! permutations
+B  Undecodable Codes        [dp]
+C  Crossing the Desert
+D  Ferries                  [dp]
+E  Island Hopping           minimum spanning tree, simple
+F  Toil for Oil             [geometry, line sweep]
+G  Partitions               infimum=union of pictures
+                            supremum=intersection + some fixup
+H  Silly Sort               decompose permutation into cycles, and for each 
+                            cycle consider two possibilities of sorting it -
+                            using the cycle's minimum element or global minimum
+I  Merrily, We Roll Along!  [geometry]

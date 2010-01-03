@@ -1,0 +1,508 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<script language="javascript">
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</script>
+
+<title>USACO Problems</title>
+</head>
+<body onload="endtime = initcount(14400); updateclock('Your submissions end', 'Person', endtime);" background='/usaco/bg9gold.jpg'>
+
+<font face='Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans'>
+<table><tr>
+<td><img src='/usaco/cowhead2.gif'>
+</td>
+<td valign='top'>
+<table cellpadding=0 cellspacing=0>
+    <tr><td>Contest: OPEN07 <b>GOLD</b> Division</td></tr>
+    <tr><td><div id='Person'></div></td></tr>
+    <tr><td></td></tr>
+    
+</table>
+</td></tr>
+</table>
+<font color=red><b>
+</b></font>
+
+
+</font><pre></pre>
+<pre>**********************************************************************
+                           GOLD PROBLEMS
+**********************************************************************
+                  Three problems numbered 1 through 3
+**********************************************************************
+
+Problem 1: Cheapest Palindrome [Eko Mirhard, 2007]
+
+Keeping track of all the cows can be a tricky task so Farmer John
+has installed a system to automate it. He has installed on each cow
+an electronic ID tag that the system will read as the cows pass by
+a scanner. Each ID tag's contents are currently a single string
+with length M (1 &lt;= M &lt;= 2,000) characters drawn from an alphabet
+of N (1 &lt;= N &lt;= 26) different symbols (namely, the lower-case roman
+alphabet).
+
+Cows, being the mischievous creatures they are, sometimes try to
+spoof the system by walking backwards. While a cow whose ID is
+"abcba" would read the same no matter which direction the she walks,
+a cow with the ID "abcb" can potentially register as two different
+IDs ("abcb" and "bcba").
+
+FJ would like to change the cows's ID tags so they read the same
+no matter which direction the cow walks by. For example, "abcb" can
+be changed by adding "a" at the end to form "abcba" so that the ID
+is palindromic (reads the same forwards and backwards). Some other
+ways to change the ID to be palindromic are include adding the three
+letters "bcb" to the begining to yield the ID "bcbabcb" or removing
+the letter "a" to yield the ID "bcb". One can add or remove characters
+at any location in the string yielding a string longer or shorter
+than the original string.
+
+Unfortunately as the ID tags are electronic, each character insertion
+or deletion has a cost (0 &lt;= cost &lt;= 10,000) which varies depending
+on exactly which character value to be added or deleted. Given the
+content of a cow's ID tag and the cost of inserting or deleting
+each of the alphabet's characters, find the minimum cost to change
+the ID tag so it satisfies FJ's requirements. An empty ID tag is
+considered to satisfy the requirements of reading the same forward
+and backward. Only letters with associated costs can be added to a
+string.
+
+PROBLEM NAME: cheappal
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: N and M
+
+* Line 2: This line contains exactly M characters which constitute the
+        initial ID string
+
+* Lines 3..N+2: Each line contains three space-separated entities: a
+        character of the input alphabet and two integers which are
+        respectively the cost of adding and deleting that character.
+
+SAMPLE INPUT (file cheappal.in):
+
+3 4
+abcb
+a 1000 1100
+b 350 700
+c 200 800
+
+INPUT DETAILS:
+
+The nametag is "abcb" with these per-operation costs:
+  Insert Delete
+a  1000   1100
+b   350    700
+c   200    800
+
+OUTPUT FORMAT:
+
+* Line 1: A single line with a single integer that is the minimum cost
+        to change the given name tag.
+
+SAMPLE OUTPUT (file cheappal.out):
+
+900
+
+OUTPUT DETAILS:
+
+If we insert an "a" on the end to get "abcba", the cost would be
+1000. If we delete the "a" on the beginning to get "bcb", the cost
+would be 1100. If we insert "bcb" at the begining of the string, the
+cost would be 350+200+350=900, which is the minimum.
+
+**********************************************************************
+
+Problem 2: Dining [Joe Zimmerman and Eric Price, 2006]
+
+Cows are such finicky eaters. Each cow has a preference for certain
+foods and drinks, and she will consume no others.
+
+Farmer John has cooked fabulous meals for his cows, but he forgot
+to check his menu against their preferences. Although he might not
+be able to stuff everybody, he wants to give a complete meal of
+both food and drink to as many cows as possible.
+
+Farmer John has cooked F (1 &lt;= F &lt;= 100) types of foods and prepared
+D (1 &lt;= D &lt;= 100) types of drinks. Each of his N (1 &lt;= N &lt;= 100)
+cows has decided whether she is willing to eat a particular food
+or drink a particular drink. Farmer John must assign a food type
+and a drink type to each cow to maximize the number of cows who get
+both.
+
+Each dish or drink can only be consumed by one cow (i.e., once food
+type 2 is assigned to a cow, no other cow can be assigned food type
+2).
+
+PROBLEM NAME: dining
+
+INPUT FORMAT:
+
+* Line 1: Three space-separated integers: N, F, and D
+
+* Lines 2..N+1: Each line i starts with a two integers F_i and D_i,
+        the number of dishes that cow i likes and the number of drinks
+        that cow i likes. The next F_i integers  denote the dishes
+        that cow i will eat, and the D_i integers following that
+        denote the drinks that cow i will drink.
+
+SAMPLE INPUT (file dining.in):
+
+4 3 3
+2 2 1 2 3 1
+2 2 2 3 1 2
+2 2 1 3 1 2
+2 1 1 3 3
+
+INPUT DETAILS:
+
+Cow 1:  foods from {1,2}, drinks from {1,3}
+Cow 2:  foods from {2,3}, drinks from {1,2}
+Cow 3:  foods from {1,3}, drinks from {1,2}
+Cow 4:  foods from {1,3}, drinks from {3}
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer that is the maximum number of cows that can
+        be fed both food and drink that conform to their wishes
+
+SAMPLE OUTPUT (file dining.out):
+
+3
+
+OUTPUT DETAILS:
+
+One way to satisfy three cows is:
+Cow 1: no meal
+Cow 2: Food #2, Drink #2
+Cow 3: Food #1, Drink #1
+Cow 4: Food #3, Drink #3
+The pigeon-hole principle tells us we can do no better since there are only
+three kinds of food or drink. Other test data sets are more challenging, of
+course.
+
+**********************************************************************
+
+Problem 3: Connect [Richard Peng, 2007]
+
+It's a fairly well-known fact that Canada has two seasons: winter
+and road construction. In the good old days before global warming,
+road construction season was July while winter was the other 11
+months. As the earth got warmer, road construction season now runs
+April through September.
+
+This is bad news for all the moose who use the road network as their
+main method of transportation since their road usage is now disrupted
+by road construction for six months rather than one. Canmuu The
+Canadian Moose wants to build a travel scheduling system that knows
+the status of all roads and can tell moose whether they could
+possibly travel between cities by only taking the roads. Being a
+bit dimwitted, moose will travel only roads that fall inclusively
+in the range of columns bounded by the starting and ending cities.
+
+Canmuu has noticed that all of the important road junctions (usually
+cities) in Canada can be described as a grid and furthermore all
+the roads connect neighboring points -- and only neighboring points
+-- in the grid. He has drawn a rectilinear grid of R (1 &lt;= R &lt;= 2)
+rows and C (1 &lt;= C &lt;= 15,000) columns where every point on the grid
+represents a road junction. The following is an example of such a
+grid for Southern Ontario (the *'s represent unconnected, empty
+locations, i.e., farms):
+
+    *      Orangeville---Barrie------Peterborough        *
+                           |              |
+Waterloo--Mississauga---Toronto--------Lindsey-------Kingston
+
+In this example, although a path exists between Waterloo and
+Orangeville, no acceptable path exists as the moose must go through
+Toronto. If the road between Lindsey and Kingston is closed down,
+it's no longer possible to travel from Waterloo to Kingston (or
+from anywhere to Kingston). But if the road from Toronto to Lindsey
+is closed down instead, it is still be possible to travel from
+Waterloo to Kingston.
+
+For easy reference, cities are denoted as row,column so the map
+above becomes:
+
+  1,1      1,2------1,3------1,4      1,5
+                     |        |
+  2,1------2,2------2,3------2,4------2,5
+ 
+Canmuu has created a network that supplies real-time instructions
+to a Moose Travel Scheduler. He even designed a system to inform
+the scheduler of the N roads that already exist; they are in the
+input file (see the description below).
+
+The real-time instructions appear as single lines of input on the
+'standard input' device, often known as the 'console'. Each line
+has one of the formats below:
+
+C r1 c1 r2 c2  The road connecting adjacent points r1,c1 to r2,c2
+               is closed for maintenance.
+
+O r1 c1 r2 c2  The road between adjacent points r1,c1 and r2,c2 is
+	       now open. This could either mean either a new road
+	       has been constructed or road maintenance on an
+	       existing road has been finished.
+
+T r1 c1 r2 c2  A moose wants to travel only on roads from potentially
+	       non-adjacent points r1,c1 to r2,c2 using a path that
+	       does not go outside columns c1 and c2: reply with Y
+	       if he can; reply with N if he cannot.
+
+E              No more requests are forthcoming; the scheduler
+               program should exit.
+
+Implement a program to read the initial road network and calculate
+the answers to as many as 50,000 requests as they appear.
+
+Your scheduling program will conduct a dialog with the 'reactive'
+grading program:
+
+    * Read lines in the format described above (there is no need
+      to acknowledge 'C' or 'O' requests)
+
+    * Print a single character on a line by itself to standard
+      output when requested to do so by the 'T' directive
+
+    * Exit your program after reading the 'E' line
+
+Interactive programs usually require extra code that causes output
+to be unbuffered -- to be written in real time instead of buffering
+for faster (but later) output.
+
+Those C/C++ users who use #include &lt;stdio.h&gt; should execute this
+line before any input or output:
+
+    setlinebuf (stdout);
+
+Users of &lt;stdio.h&gt; should also use fgets () to read from stdin.
+Use of scanf is not recommended; do something like this to parse
+input data:
+
+    char line[1000];
+    setlinebuf (stdout);
+
+    fgets (line, 1000, stdin);
+    sscanf ("..format..", &amp;var1, ...);
+
+Those C++ users who use iostream should cout &lt;&lt; flush after each
+line (and also use cin in the normal manner):
+
+    cout &lt;&lt; answer &lt;&lt; endl;
+    cout &lt;&lt; flush;
+
+Java users should use the following output scheme for output:
+
+    import java.io.*;
+    ...
+    PrintStream out = new PrintStream (System.out, true); // 'unbuffers' output
+    ...
+    out.println (answer);
+
+For Pascal, add the following statement after each writeln statement:
+   
+flush(stdout);
+
+Here's a sample dialog for the map above. The lines with "&lt;-" are
+lines that are data going to your program; lines with "-&gt;" are
+output from you program to standard output (the console). Of course,
+the little arrows do not appear in the actual input file; neither
+does the explanatory text.
+
+&lt;- C 2 4 2 5        &lt;-- The road connecting 2,4 and 2,5 is closed
+&lt;- T 2 1 2 5        &lt;-- A moose wishes to travel from 2,1 to 2,5
+-&gt; N                &lt;-- But that's not possible with the roads as they stand
+&lt;- T 2 1 1 2        &lt;-- A moose wishes to travel from 2,1 to 1,2
+-&gt; N                &lt;-- There is a path, but it's unacceptable in moose terms
+&lt;- C 2 3 2 4        &lt;-- The road connecting 2,3 and 2,4 is closed
+&lt;- O 2 4 2 5        &lt;-- The road connecting 2,4 and 2,5 is now open
+&lt;- T 2 1 2 5        &lt;-- A moose wishes to travel from 2,1 to 2,5
+-&gt; Y                &lt;-- Which is possible
+&lt;- E                &lt;-- time to exit
+
+Time limit for each test case:  1.60 CPU seconds
+
+PROBLEM NAME: connect
+
+INPUT FORMAT:
+
+* Line 1: A single integer: N
+
+* Lines 2..N+1: Line i+1 describes a road in place using four
+        space-separated integers which are respectively the row,column
+        coordinates of two connected cities: r1, c1, r2, and c2. There
+        are no duplicates in this list.
+
+SAMPLE INPUT (file connect.in):
+
+8
+1 2 1 3
+1 3 1 4
+1 3 2 3
+1 4 2 4
+2 1 2 2
+2 2 2 3
+2 3 2 4
+2 4 2 5
+
+INPUT DETAILS:
+
+Same as the road map described in the problem
+
+OUTPUT FORMAT:
+
+No lines are written to the output file.
+
+SAMPLE OUTPUT (file connect.out):
+
+[empty file]
+
+**********************************************************************
+
+</pre><hr>
+<form action="/ioiupload" enctype="multipart/form-data" method="POST">
+<input type="hidden" name="a" value="75he52prBAc">
+
+<table>
+<tr><td>
+
+<table bgcolor="#000000" cellpadding=0 cellspacing=0 border=0 width=100%>
+<tr><td height=1></td></tr>
+<tr><td width=1><td>
+
+  <font face='Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans'>
+  <table bgcolor="#bfffbf" cellpadding=5 width=100%>
+  <tr><td><b>Submit a program  for grading:&nbsp;<b><input type="file" NAME="filename">
+  &nbsp;&nbsp;
+  <input type="submit" VALUE="Submit" name='submit'></td></tr>
+  </table>
+
+</td><td width=1></td></tr>
+<tr height=1><td></td></tr>
+</table>
+
+
+</td></tr>
+
+<tr><td><hr></td></tr>
+
+<tr><td>
+
+<table bgcolor="#000000" cellpadding=0 cellspacing=0 border=0 width=100%>
+<tr><td height=1></td></tr>
+<tr><td width=1><td>
+
+   <table bgcolor="#bfffbf" cellpadding=5 width=100%>
+   <tr><td colspan='2'>
+   <font face='Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans'>
+   <b>To run your program with your own test data, enter the program<br>
+   file name and input file name then click 'Test':</b></td></tr>
+
+  <tr><td>
+
+   <table>
+   <tr><td>
+     <table>
+     <tr><td>
+     <font face='Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans'>
+     <B>Program&nbsp;File:&nbsp;</B></td>
+         <td><input type="file" NAME="testprogramname"></td></tr>
+     <tr><td align="right">
+         <font face='Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans'>
+         <B>Input&nbsp;File:&nbsp;</B></td>
+         <td><input type="file" NAME="testfilename"></td></tr>
+     </table>
+   </td>
+   <td>&nbsp;&nbsp;</td>
+   <td><input type="submit" VALUE="Test" name='submit'></td>
+   </tr>
+   </table>
+
+   </td></tr></table>
+
+</td><td width=1></td></tr>
+<tr height=1><td></td></tr>
+</table>
+
+</tr></td>
+<tr><td><hr></td></tr>
+
+<tr><td>
+
+<table bgcolor="#000000" cellpadding=0 cellspacing=0 border=0 width=100%>
+<tr><td height=1></td></tr>
+<tr><td width=1><td>
+
+<table bgcolor="#bfffbf" cellpadding=5 width=100%>
+<tr><td>
+<font face='Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans'>
+<b>Backup a file:&nbsp;</b><input type="file" NAME="backupfilename">
+&nbsp;&nbsp;&nbsp;<input type="submit" VALUE="Backup" NAME='submit'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="submit" VALUE="See Backups" NAME='submit'>
+</td></tr></table>
+
+</td><td width=1></td></tr>
+<tr height=1><td><td></tr>
+</table>
+
+</td></tr>
+
+<tr><td><hr></td></tr>
+
+</table>
+<tr><td>Nothing is currently saved for grading.
+</td></tr><hr>
+<center>
+<a href="/ioiedit?a=75he52prBAc">Edit your database record</a>&nbsp;|&nbsp;
+
+<a href="/ioiupload?a=75he52prBAc&logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+&nbsp;|&nbsp;
+<a href=http://ace.delos.com/ioiupload?init=1&a=75he52prBAc>Main contest index</a>
+</center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<a href=http://ace.delos.com/ioiupload?a=75he52prBAc&showsubmit>See submitted solutions</a>
+&nbsp;|&nbsp;
+<a href=http://ace.delos.com/ioiupload?a=75he52prBAc&suggestionbox>Send message
+to operations staff</a><br>
+Director is not online<br>
+This page was generated at 7:28:39 GMT.
+</center>
+</body>

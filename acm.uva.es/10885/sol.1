@@ -1,0 +1,27 @@
+First, I'll be looking for points with rational coordinates and rational
+distance between any two of them, of the form:
+
+(x_i, y_i) = (cos t_i, sin t_i), for i=1..13  (i.e. all points are lying on the unit circle.)
+
+The distance between the i-th and j-th points is given by:
+d_ij = sqrt[(cos t_i - cos t_j)^2 + (sin t_i - sin t_j)^2].
+ 
+After expanding and simplifying, it becomes just:
+d_ij = 2 sin[(t_i - t_j)/2] = 2 [sin(t_i/2) cos(t_j/2) - cos(t_i/2) sin(t_j/2)].
+
+Now, if I demand that all sin(t_i/2), cos(t_i/2) are rationals, then all
+distances and coordinates will become rational, too.
+
+So, let sin(t_i/2) = p_i / q_i. Then cos(t_i/2) = sqrt(q_i^2 - p_i^2) / q_i.
+For cos(t_i/2) to be rational, q_i^2 - p_i^2 has to be a square.
+
+To actually find the points, pick 13 pairs of integers (p_i, q_i), s.t.:
+  a. -1 <= p_i/q_i <= 1, q_i != 0,
+  b. p_i/q_i = p_j/q_j, iff i=j,
+  c. q_i^2 - p_i^2 = r_i^2 (for some integer r_i).
+Then compute the coordinates:
+  x_i = (q_i^2 - 2 p_i^2) / q_i^2
+  y_i = 2 p_i sqrt(q_i^2 - p_i^2) / q_i^2 
+
+Finally, to get integer coordinates and distances, multiply each x_i, y_i by
+the lcm of denominators of all x_i, y_i.

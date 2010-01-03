@@ -1,0 +1,65 @@
+
+Problem Statement
+ÿÿÿÿ
+A palindrome is a string that reads the same forward and backward. The PalMeasure of a string is the sum of the lengths of its substrings that are palindromes. Return the PalMeasure of the concatenation of all the strings in the vector <string> text.
+Definition
+ÿÿÿÿ
+Class:
+PalindromesAnalyzer
+Method:
+summaryLength
+Parameters:
+vector <string>
+Returns:
+long long
+Method signature:
+long long summaryLength(vector <string> text)
+(be sure your method is public)
+ÿÿÿÿ
+
+Notes
+-
+A substring is a sequence of consecutive characters from a string.
+-
+An entire string counts as a substring of itself.
+-
+Count equal substrings which have different positions as different. For example, if text = {"AAA"}, return 10.
+Constraints
+-
+text will contain between 1 and 50 elements, inclusive.
+-
+Each element of text will contain only uppercase letters ('A'-'Z').
+-
+Each element of text will contain between 1 and 50 characters, inclusive.
+Examples
+0)
+
+ÿÿÿÿ
+{"AAA"}
+Returns: 10
+
+1)
+
+ÿÿÿÿ
+{"AB"}
+Returns: 2
+
+2)
+
+ÿÿÿÿ
+{"AB", "BA"}
+Returns: 10
+
+3)
+
+ÿÿÿÿ
+{"AB", "AAA"}
+Returns: 15
+
+4)
+
+ÿÿÿÿ
+{"AZ", "ZZ", "A"}
+Returns: 17
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,447 @@
+<html><head>
+
+<meta http-equiv="Pragma" content="no-cache">
+<script language="javascript">
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</script><title>USACO Problems</title></head><body onload="endtime = initcount(86400); updateclock('Contest', 'Person', endtime);" background="CHN07gold_files/bg9gold.jpg">
+
+<font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+<table><tbody><tr>
+<td><img src="CHN07gold_files/cowhead2.gif">
+</td>
+<td valign="top">
+<table cellpadding="0" cellspacing="0">
+    <tbody><tr><td>Contest: CHN07 <b>GOLD</b> Division</td></tr>
+    <tr><td><div id="Person">Contest: 23h59m24s</div></td></tr>
+    <tr><td></td></tr>
+    
+</tbody></table>
+</td></tr>
+</tbody></table>
+<font color="red"><b>
+</b></font>
+
+
+</font><pre></pre>
+<pre>**********************************************************************
+                           GOLD PROBLEMS
+**********************************************************************
+                  Three problems numbered 1 through 3
+**********************************************************************
+
+Problem 1: Summing Sums [Neal Wu, 2007]
+
+The N (1 &lt;= N &lt;= 50,000) cows, conveniently numbered 1..N, are
+trying to learn some encryption algorithms. After studying a few
+examples, they have decided to make one of their own! However, they
+are not very experienced at this, so their algorithm is very simple:
+
+Each cow i is given a starting number C_i (0 &lt;= C_i &lt; 90,000,000),
+and then all the cows perform the following process in parallel:
+
+    * First, each cow finds the sum of the numbers of the other N-1
+      cows.
+
+    * After all cows are finished, each cow replaces her number
+      with the sum she computed. To avoid very large numbers, the
+      cows will keep track of their numbers modulo 98,765,431.
+
+They told Canmuu the moose about it in November; he was quite
+impressed.
+
+Then one foggy Christmas Eve, Canmuu came to say:
+
+    "Your algorithm is too easy to break! You should repeat it T
+     (1 &lt;= T &lt;= 1,414,213,562) times instead."
+
+Obviously, the cows were very frustrated with having to perform so
+many repetitions of the same boring algorithm, so after many hours
+of arguing, Canmuu and the cows reached a compromise: You are to
+calculate the numbers after the encryption is performed!
+
+*Some extra feedback will be provided for the first 10 submissions to this
+problem.
+
+PROBLEM NAME: sumsums
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: N and T
+
+* Lines 2..N+1: Line i+1 contains a single integer: C_i
+
+SAMPLE INPUT (file sumsums.in):
+
+3 4
+1
+0
+4
+
+INPUT DETAILS:
+
+Three cows, with starting numbers 1, 0, and 4; four repetitions of the
+encryption algorithm.
+
+OUTPUT FORMAT:
+
+* Lines 1..N: Line i contains a single integer representing the number
+        of cow i (modulo 98,765,431) at the end of the encryption.
+
+SAMPLE OUTPUT (file sumsums.out):
+
+26
+25
+29
+
+OUTPUT DETAILS:
+
+The following is a table of the cows' numbers for each turn:
+
+          Cows' numbers
+Turn    Cow1  Cow2  Cow3
+ 0        1     0     4
+ 1        4     5     1
+ 2        6     5     9
+ 3       14    15    11
+ 4       26    25    29
+
+**********************************************************************
+
+Problem 2: The Bovine Accordion and Banjo Orchestra [Lei Huang, 2007]
+
+The 2*N (3 &lt;= N &lt;= 1,000) cows have assembled the Bovine Accordion
+and Banjo Orchestra!  They possess various levels of skill on their
+respective instruments: accordionist i has an associated talent
+level A_i (0 &lt;= A_i &lt;= 1,000); banjoist j has an associated talent
+level B_j (0 &lt;= B_j &lt;= 1,000).
+
+The combined `awesomeness' of a pairing between cows with talents
+A_i and B_j is directly proportional to the talents of each cow in
+the pair so a concert with those two cows will earn FJ precisely
+A_i * B_j dollars in "charitable donations".  FJ wishes to maximize
+the sum of all revenue obtained by his cows by pairing them up in
+the most profitable way.
+
+Unfortunately, FJ's accordionists are a bit stuck up and stubborn.
+If accordionist i is paired with banjoist j, then accordionists
+i+1..N refuse to be paired with banjoists 1..j-1. This creates
+restrictions on which pairs FJ can form. FJ thus realizes that in
+order to maximize his profits, he may have to leave some cows
+unpaired.
+
+To make matters worse, when one or more of the musicians is skipped,
+they will be greatly upset at their wasted talent and will engage
+in massive binge drinking to wash away their sorrows.
+
+After all pairings are made, a list is constructed of the groups
+of each of the consecutive skipped musicians (of either instrument).
+Every group of one or more consecutive skipped cows will gather
+together to consume kegs of ice cold orange soda in an amount
+proportional to the square of the sum of their wasted talent.
+
+Specifically, FJ has calculated that if the x-th to y-th accordionists
+are skipped, they will consume precisely (A_x + A_x+1 + A_x+2 + ...
++ A_y)^2 dollars worth of orange soda in the process of drinking
+themselves into oblivion. An identical relationship holds for the
+banjoists. FJ realizes that he'll end up getting stuck with the
+bill for his cows' drinking, and thus takes this into account when
+choosing which pairings to make.
+
+Find the maximum amount of total profit that FJ can earn after the
+contributions are collected and the orange soda is paid for.
+
+Memory Limit: 64MB
+
+PROBLEM NAME: baabo
+
+INPUT FORMAT:
+
+* Line 1: A single integer: N
+
+* Lines 2..N+1: Line i+1 contains the single integer: A_i
+
+* Lines N+2..2*N+1: Line i+N+1 contains the single integer: B_i
+
+SAMPLE INPUT (file baabo.in):
+
+3
+1
+1
+5
+5
+1
+1
+
+INPUT DETAILS:
+
+There are 6 cows: 3 accordionists and 3 banjoists. The accordionists have
+talent levels (1, 1, 5), and the banjoists have talent levels (5, 1, 1).
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer that represents the maximum amount of cash
+        that FJ can earn.
+
+SAMPLE OUTPUT (file baabo.out):
+
+17
+
+OUTPUT DETAILS:
+
+FJ pairs accordionist 3 with banjoist 1 to get earn A_3 * B_1 = 5 * 5 = 25
+in profit.  He loses a total of (1 + 1)^2 + (1 + 1)^2 = 8 dollars due to
+the cost of soda for his remaining cows. Thus his final (net) profit is 25
+- 8 = 17.
+
+**********************************************************************
+
+Problem 3: Treasure [Yang Yi, 2007]
+
+Canmuu and his friends have recently acquired a large cache of
+plutonium and have agreed to bury their newfound treasure at some
+road intersection deep in the Canadian wilderness. Any sort of treasure
+burial calls for a treasure map so they've decided to create one
+of their own.
+
+The road network consists of N (4 &lt;= N &lt;= 100,000) intersections
+(conveniently numbered 1..N) with N roads connecting them. As busy
+intersections confuse everybody, every intersection has at least
+one road that leads to it, and no intersection has more than four
+roads connected to it. Excellent maintenance has ensured that a
+moose can always run either way between any pair of intersections.
+Furthermore, Canmuu has decided the plutonium should not be buried
+at any of the 4-way intersections since busy traffic decreases the
+secrecy of the buried treasure.
+
+The treasure map will contain all the roads and all the intersections.
+But, to conceal the treasure's location, only one road intersection
+on the treasure map is to be labeled: the intersection at which the
+treasure is buried (which has a big red 'X', of course).
+
+Ever the alert moose, Canmuu drew some trial maps to see what they
+would look like depending on where the treasure was buried. Canmuu
+noticed that the moose might draw similar maps even if they bury
+their treasure in two different locations. Their curiosity piqued,
+the herd began trying to figure out how many distinct maps they
+could end up making.
+
+Maps are indistinct if it is possible to assign a mapping such that:
+
+  * the X-labeled intersections on both maps correspond,
+
+  * a correspondence can be created for the other intersections,
+    such that
+
+  * when the well-chosen intersection correspondence is determined,
+    the roads that connect the intersections also correspond.
+
+By way of example, consider the maps below where N = 4; the treasure
+might be buried at any of four intersections:
+
+        +             +             X           +
+       /|            /|            /|          /|
+  X---+ |       +---X |       +---+ |     +---+ |
+       \|            \|            \|          \|
+        +             +             +           X
+
+The final two maps, however, are not distinct since one can create
+a correspondence for the vertices (consider the map upside down)
+and then the roads correspond exactly. Thus, only three maps are
+distinct.
+
+How many distinct maps are possible for a given set of roads?
+
+TIME LIMIT: 1 second; might be increased for big test cases
+
+MEMORY LIMIT: 64MB
+
+*Some extra feedback will be provided for the first 10 submissions to this
+problem.
+
+PROBLEM NAME: treasure
+
+INPUT FORMAT:
+
+* Line 1: A single integer: N
+
+* Lines 2..N + 1: Two space-separated integers: A and B (1 &lt;= A &lt;= N;
+        1 &lt;= B &lt;= N), indicating that there is a road connecting
+        intersections A and B
+
+SAMPLE INPUT (file treasure.in):
+
+4
+1 2
+2 3
+3 1
+1 4
+
+INPUT DETAILS:
+
+Here is a drawing of the roads and the intersections.
+
+                   4---1---2
+                        \ /
+                         3
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer that is the number of distinct treasure
+        maps
+
+SAMPLE OUTPUT (file treasure.out):
+
+3
+
+OUTPUT DETAILS:
+
+The treasure can be buried at any intersection. However, burying it at
+intersections 2 and 3 yields maps that are identical to each other. So the
+total number of distinct treasure maps is 3.
+
+**********************************************************************
+
+</pre><hr>
+<form action="/ioiupload" enctype="multipart/form-data" method="post">
+<input name="a" value="6aOOQVgA58R" type="hidden">
+
+<table>
+<tbody><tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+  <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+  <table bgcolor="#bfffbf" cellpadding="5" width="100%">
+  <tbody><tr><td><b>Submit a program  for grading:&nbsp;<b><input name="filename" type="file">
+  &nbsp;&nbsp;
+  <input value="Submit" name="submit" type="submit"></b></b></td></tr>
+  </tbody></table>
+
+</font></td><td width="1"></td></tr>
+<tr height="1"><td></td></tr>
+</tbody></table>
+
+
+</td></tr>
+
+<tr><td><hr></td></tr>
+
+<tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+   <table bgcolor="#bfffbf" cellpadding="5" width="100%">
+   <tbody><tr><td colspan="2">
+   <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+   <b>To run your program with your own test data, enter the program<br>
+   file name and input file name then click 'Test':</b></font></td></tr>
+
+  <tr><td>
+
+   <table>
+   <tbody><tr><td>
+     <table>
+     <tbody><tr><td>
+     <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+     <b>Program&nbsp;File:&nbsp;</b></font></td>
+         <td><input name="testprogramname" type="file"></td></tr>
+     <tr><td align="right">
+         <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+         <b>Input&nbsp;File:&nbsp;</b></font></td>
+         <td><input name="testfilename" type="file"></td></tr>
+     </tbody></table>
+   </td>
+   <td>&nbsp;&nbsp;</td>
+   <td><input value="Test" name="submit" type="submit"></td>
+   </tr>
+   </tbody></table>
+
+   </td></tr></tbody></table>
+
+</td><td width="1"></td></tr>
+<tr height="1"><td></td></tr>
+</tbody></table>
+
+</td></tr>
+<tr><td><hr></td></tr>
+
+<tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+<table bgcolor="#bfffbf" cellpadding="5" width="100%">
+<tbody><tr><td>
+<font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+<b>Backup a file:&nbsp;</b><input name="backupfilename" type="file">
+&nbsp;&nbsp;&nbsp;<input value="Backup" name="submit" type="submit">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input value="See Backups" name="submit" type="submit">
+</font></td></tr></tbody></table>
+
+</td><td width="1"></td></tr>
+<tr height="1"><td></td><td></td></tr>
+</tbody></table>
+
+</td></tr>
+
+<tr><td><hr></td></tr>
+
+</tbody></table>
+Nothing is currently saved for grading.
+<hr>
+<center>
+<a href="http://ace.delos.com/ioiedit?a=6aOOQVgA58R">Edit your database record</a>&nbsp;|&nbsp;
+
+<a href="http://ace.delos.com/ioiupload?a=6aOOQVgA58R&amp;logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?init=1&amp;a=6aOOQVgA58R">Main contest index</a>
+</center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<a href="http://ace.delos.com/ioiupload?a=6aOOQVgA58R&amp;showsubmit">See submitted solutions</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=6aOOQVgA58R&amp;suggestionbox">Send message
+to operations staff</a><br>
+Director is currently online (AIM: RobAtDelos)<br>
+This page was generated at 3:02:44 GMT.
+</center>
+
+</form></body></html>

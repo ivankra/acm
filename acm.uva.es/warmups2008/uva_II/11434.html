@@ -1,0 +1,464 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="ProgId" content="Word.Document">
+<meta name="Generator" content="Microsoft Word 11">
+<meta name="Originator" content="Microsoft Word 11">
+<link rel="File-List" href="http://icpcres.ecs.baylor.edu/onlinejudge/contests/195-5b653783/h_files/filelist.xml">
+<link rel="Edit-Time-Data" href="http://icpcres.ecs.baylor.edu/onlinejudge/contests/195-5b653783/h_files/editdata.mso"><!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]--><title>Problem H - The Careless Postman Problem</title><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:View>Print</w:View>
+  <w:Zoom>125</w:Zoom>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+
+
+
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Arial Unicode MS";
+	panose-1:2 11 6 4 2 2 2 2 2 4;
+	mso-font-charset:128;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-1 -369098753 63 0 4129279 0;}
+@font-face
+	{font-family:"\@Arial Unicode MS";
+	panose-1:2 11 6 4 2 2 2 2 2 4;
+	mso-font-charset:128;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-1 -369098753 63 0 4129279 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+h1
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	color:black;
+	font-weight:normal;
+	font-style:italic;}
+h2
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-family:"Times New Roman";
+	color:black;
+	font-weight:bold;}
+h3
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:3;
+	font-size:13.5pt;
+	font-family:"Arial Unicode MS";
+	font-weight:bold;}
+h4
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:4;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	color:black;
+	font-weight:normal;}
+h5
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:5;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	color:black;
+	font-weight:normal;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	font-size:24.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyText2, li.MsoBodyText2, div.MsoBodyText2
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+p.MsoBodyText3, li.MsoBodyText3, div.MsoBodyText3
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:#6633CC;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+address
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	font-style:italic;}
+pre
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+p.preformatted, li.preformatted, div.preformatted
+	{mso-style-name:preformatted;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	layout-grid-mode:char;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+span.stylearial16pt
+	{mso-style-name:stylearial16pt;
+	font-family:Arial;
+	mso-ascii-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-weight:bold;}
+span.StyleArial16pt0
+	{mso-style-name:"Style Arial 16 pt";
+	mso-ansi-font-size:16.0pt;
+	font-family:Arial;
+	mso-ascii-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-weight:bold;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:595.45pt 841.7pt;
+	margin:.8in .8in 67.7pt .8in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:496507356;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-2089751366 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l0:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style><!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+table.MsoTableGrid
+	{mso-style-name:"Table Grid";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	border:solid windowtext 1.0pt;
+	mso-border-alt:solid windowtext .5pt;
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-border-insideh:.5pt solid windowtext;
+	mso-border-insidev:.5pt solid windowtext;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="8194"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]--></head><body style="" lang="EN-US" link="#6633cc" vlink="purple">
+
+<div class="Section1">
+
+<p class="MsoNormal" style="text-align: center;" align="center"><b style=""><span style="font-size: 28pt; font-family: Arial;">Problem H</span></b><span style="font-family: Arial;"><br>
+</span><span class="GramE"><b style=""><span style="font-size: 20pt; font-family: Arial;">The</span></b></span><b style=""><span style="font-size: 20pt; font-family: Arial;"> Careless Postman Problem</span></b><span style="font-family: Arial;"><br>
+<b style="">Input: </b><span style="">Standard Input<o:p></o:p></span></span></p>
+
+<p class="MsoNormal" style="text-align: center;" align="center"><b style=""><span style="font-family: Arial;">Output: </span></b><span style="font-family: Arial;">Standard Output <o:p></o:p></span></p>
+
+<p class="MsoNormal" style="text-align: justify;">&nbsp;</p>
+
+<p class="MsoNormal" style="text-align: justify;">Once upon a time, there was a
+postman in china, who walked all through the city to deliver letters. He wanted
+to cover this path in shortest time, and thus created the famous ‘Chinese
+Postman Problem’.</p>
+
+<p class="MsoNormal" style="text-align: justify;"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNormal" style="text-align: justify;">Now, after quite a long time, a
+similar problem arose to a postman. Like the Chinese postman, he also delivers
+letters walking through the roads. But due to his careless nature, he often
+delivers them really late, and if you are too unlucky, he might lose the
+letters as well. So, people are really angry at him. Since, our postman knows
+about that, he has no intention of facing them. So, he started delivering them,
+in disguise. But that also has problems too. People may be deceived by his
+disguise for 1 or 2 times, but they will recognize him, if they meet him over
+and over. For each road <span class="SpellE"><i style="">e<sub>i</sub></i></span>,
+he may traverse the road at most <i style="">p<sub>i</sub></i>
+times. On the other hand, he doesn’t like to stay on the same road for long
+time. So, each time he traverses, he only delivers one letter. So, if he need
+to deliver <span class="SpellE"><i style="">q<sub>i</sub></i></span>
+letters along a path, he has to traverse it at least <span class="SpellE"><i style="">q<sub>i</sub></i></span> times.</p>
+
+<p class="MsoNormal" style="text-align: justify;"><o:p>&nbsp;</o:p></p>
+
+<p class="MsoNormal" style="text-align: justify;">Now, given the road network,
+number of letters to deliver along each road and maximum number of time, a road
+can be traversed, find the shortest time the postman needs to deliver all the letters.
+All roads are unidirectional. </p>
+
+<h5 style="text-align: justify;"><span class="StyleArial16pt0"><span style="font-size: 16pt;"><o:p>&nbsp;</o:p></span></span></h5>
+
+<h5 style="text-align: justify;"><span class="StyleArial16pt0"><span style="font-size: 16pt;">Input</span></span><span class="StyleArial16pt0"><span style="font-family: &quot;Times New Roman&quot;;"><o:p></o:p></span></span></h5>
+
+<p class="MsoNormal">First line of input contains an integer T, the number of
+test cases. Each test case starts with two integers, n and m, the number of
+vertices and number of edges. The following m lines each contain 5 integers, <span class="SpellE">u<sub>i</sub></span>, <span class="GramE">v<sub>i</sub></span>, <span class="SpellE">t<sub>i</sub></span>, <span class="SpellE">q<sub>i</sub></span> and
+p<sub>i</sub>, which denotes an edge from <span class="SpellE">u<sub>i</sub></span>
+to v<sub>i</sub>, which required <span class="SpellE">t<sub>i</sub></span> time
+for the postman to travel. <span class="SpellE"><span class="GramE">q<sub>i</sub></span></span>
+is the number of letters to deliver along the path, and p<sub>i</sub> is the
+maximum number of times the road can be traversed. The postman can start from
+any vertex, but has to return to that vertex, after delivering all the letters.
+You can assume that (a) The graph is connected and (b) Every vertex has at
+least one road leading out of it with a required delivery.<span style=""><o:p></o:p></span></p>
+
+<p class="MsoNormal"><b style="">Constraints:<o:p></o:p></b></p>
+
+<p class="MsoNormal" style="margin-left: 0.5in; text-indent: -0.25in;"><!--[if !supportLists]--><span style="font-family: Symbol;"><span style="">·<span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]--><i style="">T</i> &#8804;
+100</p>
+
+<p class="MsoNormal" style="margin-left: 0.5in; text-indent: -0.25in;"><!--[if !supportLists]--><span style="font-family: Symbol;"><span style="">·<span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]-->1 &#8804;<i style="">
+N</i><span style="">&nbsp; </span>&#8804; 100, <i style="">M</i> &#8804; <i style="">N * (N – 1) / 2</i></p>
+
+<p class="MsoNormal" style="margin-left: 0.5in; text-indent: -0.25in;"><!--[if !supportLists]--><span style="font-family: Symbol;"><span style="">·<span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]-->1 &#8804; <span class="SpellE"><i style="">u<sub>i</sub></i></span><i style="">, v<sub>i</sub></i><sub> </sub>&#8804;<i style="">N</i>, no edge is given twice</p>
+
+<p class="MsoNormal" style="margin-left: 0.5in; text-indent: -0.25in;"><!--[if !supportLists]--><span style="font-family: Symbol;"><span style="">·<span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]-->0 &#8804; <span class="SpellE"><i style="">t<sub>i</sub></i></span><i style="">, p<sub>i</sub>, <span class="SpellE">q<sub>i</sub></span></i> &#8804;
+100</p>
+
+<p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+
+<h4><span class="StyleArial16pt0"><span style="font-size: 16pt;">Output </span></span><span class="StyleArial16pt0"><span style="font-family: &quot;Times New Roman&quot;;"><o:p></o:p></span></span></h4>
+
+<p class="MsoNormal" style="text-align: justify;">For each test case, print the
+case number followed by the minimum time the postman requires to deliver all
+the letters. If it is not possible to deliver all the letters, print
+“Impossible” (without quotes).</p>
+
+<p class="MsoNormal" style="text-align: justify;"><o:p>&nbsp;</o:p></p>
+
+<h1 style="text-align: left;" align="left"><b><span style="font-size: 16pt; font-family: Arial; font-style: normal;">Sample
+Input<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Output
+for Sample Input<o:p></o:p></span></b></h1>
+
+<table class="MsoNormalTable" style="border: medium none ; background: rgb(204, 204, 204) none repeat scroll 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; border-collapse: collapse;" border="1" cellpadding="0" cellspacing="0">
+ <tbody><tr style="">
+  <td style="border: 1pt solid windowtext; padding: 0in 5.4pt; width: 234.9pt;" valign="top" width="313">
+  <p class="MsoNormal" style=""><span style="font-size: 11pt; font-family: &quot;Courier New&quot;;">3<br>
+  4 <span class="SpellE">4</span><br>
+  1 2 1 <span class="SpellE">1</span> <span class="SpellE">1</span><br>
+  2 3 1 <span class="SpellE">1</span> <span class="SpellE">1</span><br>
+  3 4 1 <span class="SpellE">1</span> <span class="SpellE">1</span><br>
+  4 1 <span class="SpellE">1</span> <span class="SpellE">1</span> <span class="SpellE">1</span><br>
+  4 5<br>
+  1 2 1 0 1<br>
+  2 3 1 0 1<br>
+  3 4 1 0 1<br>
+  4 1 <span class="SpellE">1</span> 0 1<br>
+  2 4 2 1 <span class="SpellE">1</span><o:p></o:p></span></p>
+  <p class="MsoNormal" style=""><span style="font-size: 11pt; font-family: &quot;Courier New&quot;; color: rgb(51, 51, 51);">2 <span class="SpellE">2</span><br>
+  1 2 1 <span class="SpellE">1</span> 0<br>
+  2 1 <span class="SpellE">1</span> <span class="SpellE">1</span> 0<o:p></o:p></span></p>
+  <p class="MsoNormal" style=""><span style="font-size: 11pt; font-family: &quot;Courier New&quot;;"><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td style="border-style: solid solid solid none; border-color: windowtext windowtext windowtext -moz-use-text-color; border-width: 1pt 1pt 1pt medium; padding: 0in 5.4pt; width: 247.5pt;" valign="top" width="330">
+  <p class="MsoNormal"><span style="font-size: 11pt; font-family: &quot;Courier New&quot;;">Case
+  #1: 4<o:p></o:p></span></p>
+  <p class="MsoNormal"><span style="font-size: 11pt; font-family: &quot;Courier New&quot;;">Case
+  #2: 4<o:p></o:p></span></p>
+  <p class="MsoNormal"><span style="font-size: 11pt; font-family: &quot;Courier New&quot;;">Case
+  #3: 2<o:p></o:p></span></p>
+  <p class="MsoNormal"><span style="font-size: 11pt; font-family: &quot;Courier New&quot;;"><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+</tbody></table>
+
+<div class="MsoNormal" style="text-align: center;" align="center">
+
+<hr align="center" size="2" width="100%">
+
+</div>
+
+<p class="MsoNormal" style=""><span class="SpellE"><b style=""><span style="font-family: Arial;">Problemsetter</span></b></span><b style=""><span style="font-family: Arial;">: <span class="SpellE">Manzurur</span> <span class="SpellE">Rahman</span> Khan<o:p></o:p></span></b></p>
+
+<p class="MsoNormal" style=""><b style=""><span style="font-family: Arial;">Special
+Thanks: Derek <span class="SpellE">Kisman</span></span></b></p>
+
+</div>
+
+
+</body></html>

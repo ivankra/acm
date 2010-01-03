@@ -1,0 +1,92 @@
+<html><head> <title>NOV05 ants analysis</title></head>
+<body bgcolor="#ffffff">
+<center><img src="ants_files/cow1.jpg" height="118" width="742"></center>
+<h2>November 2005 Problem 'ants' Analysis</h2>
+<center>by Bruce Merry</center>
+<p>
+The actual number of possible arrangements can be enormous - hence the
+requirement that one prints the last six digits only. Clearly, trying
+to enumerate all the possibilities one at a time will be too slow.
+Instead, we must turn to dynamic programming to help us.
+</p><p>
+Suppose we already know how many possibilities there are for the first
+T - 1 families of ants, for each possible count up to B (note: we also
+know it for counts less than S). Let o[j] be the number of ways of
+making j ants. If we want to find the number of ways of making i ants
+including family T (call this array n[i]), we have to consider how many
+ants to take from family T. Say family T has 3 ants; then we can take
+0, 1, 2 or 3 from family T, and the rest from the other families. So
+</p><pre>n[i] = s[i] + s[i - 1] + s[i - 2] + s[i - 3].
+</pre>
+<p>
+Repeating this process starting from 0 families and building up to T
+families, we will have the all the counts for the complete set of ants.
+There are a few subtleties that remain:
+</p><p>
+Firstly, this will be too slow in the worst case (1000 families of 100
+ants), because have to add 1000 families in this way, doing a summation
+of 100 elements for close to 100000 different counts - about 10 billion
+operations. However, the summations are all quite similar to each
+other: for example, to get from
+</p><pre>s[0] + s[1] + s[2] + s[3]
+</pre>
+to
+<pre>s[1] + s[2] + s[3] + s[4]
+</pre>
+we have only to subtract s[0] and add s[4], rather
+without having to resum the middle elements. This reduces the number of
+operations by two orders of magnitude, and makes it possible to run in
+time.
+<p>
+The other subtlety is the requirement to print only the last six
+digits. Basically this just requires careful placement of "mod 1000000"
+operations - too few and integer overflow becomes a danger. However,
+another consideration is that the "subtract and add" method of
+computing the sums may lead to negative intermediate results, and thus
+possibly a negative final result (because the % operator gives a
+negative answer if the left operand is negative). All that needs to be
+done is to ensure that the 1000000 is added to the final answer if
+necessary.
+</p><p>
+Here is coach Mathijs Vogelzang's solution, which might be simpler than the
+analysis above:
+</p><pre>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int count[1010];
+int currentposs[100010];
+
+int main() {
+  FILE * fin = fopen("ants.in", "r");
+
+  int Ntype, total, begin, end;
+  fscanf(fin, "%d %d %d %d", &amp;Ntype, &amp;total, &amp;begin, &amp;end);
+  memset(count, 0, sizeof(count));
+  for (int i = 0;i&lt;total;i++) {
+      int t;
+      fscanf(fin, "%d", &amp;t);
+      count[t-1] ++;
+  }
+  fclose (fin);
+
+  int answer = 0;
+
+  int max = 1;
+  currentposs[0]= 1;
+  for(int i=0;i&lt;Ntype;i++) {
+      for(int b=max+count[i]-1;b&gt;=0;b--)
+	for(int add=count[i] &lt;? b;add&gt;0;add--)
+	    currentposs[b]= (currentposs[b]+currentposs[b-add]) % 1000000;
+      max += count[i];
+  }
+
+  for(int i = begin;i&lt;=end;i++)
+    answer = (answer + currentposs[i]) % 1000000;
+
+  FILE *fout = fopen("ants.out","w");
+
+  fprintf(fout, "%d\n", answer);
+  fclose(fout);
+  return 0;
+}
+</pre></body></html>

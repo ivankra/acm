@@ -1,0 +1,109 @@
+<html><head> <title>NOV05 twalk analysis</title></head>
+<body bgcolor="#ffffff">
+<center><img src="twalk_files/cow1.jpg" height="118" width="742"></center>
+<h2>November 2005 Problem 'twalk' Analysis</h2>
+<center>by Bruce Merry</center>
+<p>
+Experienced coders should immediately wonder what the maximum
+possible answer is, in case they need to use large data types to
+hold the intermediate values. Opening the dictionary file immediately
+reveals the somewhat unusual words AA, AAA and AAAA (as well as A).
+Further examination shows that no word is more than four letters
+long. This immediately suggests that a grid full of A's is the worst
+case, in which every trail of up to four letters yields a valid
+word. If we pick 4 ordered X coordinates and 4 ordered Y coordinates,
+we will have a slight overestimate of the number of 4-step paths
+(overestimate because that includes the possibility of using the
+same square twice). The number of ways of picking 4 ordered but not
+unique elements from 30 is (30*31*32*33)/(4*3*2*1) = 40920; the
+number of ways of doing it for X and Y is 40920^2 ~= 1.7e9. The 1,
+2 and 3 step paths make little difference, and the total upper bound
+end up a touch under 1.7 billion (the actual maximum is 1,625,675,650).
+This is small enough for 32-bit arithmetic (which is obviously
+faster), but too bit to enumerate the answers one by one.
+</p><p>
+Since we cannot enumerate the possible answers, we need some form
+of dynamic programming or other optimisation. Suppose we consider
+just one word from the dictionary and try to count its occurrences.
+In the spirit of dynamic programming, let us create small sub-problems
+that can be used to solve the larger problem: how many times does
+each prefix occur in each lower-left rectangle of the grid (i.e.
+those rectangles containing the origin). There are four ways that
+a prefix P can appear in a rectangle of size (W, H)
+</p><ol>
+<li>
+It never touches the top row or right column i.e. P appears in (W - 1, H - 1)
+</li>
+<li> It never touches the right column i.e. P appears in (W - 1, H).
+</li>
+<li> It never touches the top row i.e. P appears in (W, H - 1).
+</li>
+<li> It ends in the top-right corner, in which case the last letter c
+   of P matches the grid entry at (W, H), and P - c appears in (W, H)
+   under one of the first three cases.
+</li>
+</ol>
+<p>
+Since case 1 is the intersection of cases 2 and 3, the contribution of the
+first three cases combined is actually S2 + S3 - S1.
+</p><p>
+These possibilities can be sequenced into a dynamic programming solution for
+a single word in the dictionary, then placed inside an outer loop over
+the dictionary.
+</p><p>
+Here is Coach Anders Kaseorg's solution:
+</p><pre>#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;string&gt;
+#include &lt;map&gt;
+using namespace std;
+
+ifstream fin("twalk.in");
+ofstream fout("twalk.out");
+ifstream fdict("dict.txt");
+
+struct dict
+{
+    dict() { w = false; for (int i = 0; i &lt; 26; ++i) p[i] = 0; }
+    dict *p[26];
+    bool w;
+};
+dict d;
+int x, y, l[30][30];
+map&lt;dict *, long long&gt; c[30][30];
+long long n = 0;
+
+void add (map&lt;dict *, long long&gt; &amp;m, dict *pd, long long nn) {
+    map&lt;dict *, long long&gt;::iterator k = m.find(pd);
+    if (k != m.end()) k-&gt;second += nn;
+    else m.insert(make_pair(pd, nn));
+    if (pd-&gt;w) n += nn;
+}
+
+int main() {
+    string s;
+    while (fdict &gt;&gt; s) {
+    dict *pd = &amp;d;
+    for (size_t k = 0; k &lt; s.length(); ++k) {
+        if (!pd-&gt;p[s[k] - 'A']) pd-&gt;p[s[k] - 'A'] = new dict;
+        pd = pd-&gt;p[s[k] - 'A'];
+    }
+    pd-&gt;w = true;
+    }
+    fin &gt;&gt; y &gt;&gt; x;
+    for (int j = y - 1; j &gt;= 0; --j) for (int i = 0; i &lt; x; ++i)
+    { char z; fin &gt;&gt; z; l[i][j] = z - 'A'; }
+    for (int j = 0; j &lt; y; ++j) for (int i = 0; i &lt; x; ++i) {
+    if (d.p[l[i][j]])
+        add(c[i][j], d.p[l[i][j]], 1LL);
+    for (int jj = 0; jj &lt;= j; ++jj) for (int ii = 0; ii &lt;= i; ++ii)
+        if (ii != i || jj != j)
+        for (map&lt;dict *, long long&gt;::const_iterator kk = c[ii][jj].begin();
+             kk != c[ii][jj].end(); ++kk)
+            if (kk-&gt;first-&gt;p[l[i][j]])
+            add(c[i][j], kk-&gt;first-&gt;p[l[i][j]], kk-&gt;second);
+    }
+    fout &lt;&lt; n &lt;&lt; endl;
+    return 0;
+}
+</pre></body></html>

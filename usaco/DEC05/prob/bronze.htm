@@ -1,0 +1,368 @@
+<html><head>
+
+<script language="javascript">
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d ";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h ";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m ";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</script><title>USACO Problems</title></head><body onload=" " bgcolor="#eeffee">
+<center>
+<table><tbody><tr>
+<td>
+<!--<center><img src='/usaco/cow1.jpg' width='742' height='118'></center>-->
+<center><img src="bronze_files/cow1.jpg" height="88" width="550"></center>
+</td>
+<td valign="top">
+<table>
+    <tbody><tr><td valign="top"><b>SILVER</b> Division<br></td></tr>
+    <tr><td>Contest is over</td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+</tbody></table>
+</td><td></td></tr>
+</tbody></table>
+</center>
+
+<br><font size="6"><b>ANALYSIS MODE</b></font><br>
+Submit solutions for your own enjoyment.
+
+<pre></pre>
+<pre>**********************************************************************
+                           BRONZE PROBLEMS
+**********************************************************************
+                  Four problems numbered 11 through 14
+**********************************************************************
+
+Problem 11: Parkside's Triangle [Don Piele, 1989]
+
+Bessie taught the cows to make Parkside's Triangle. It is generated from
+two numbers: the size and the seed. The size N (1 &lt;= N &lt;= 20) determines
+how many rows are in the triangle and the seed S (1 &lt;= S &lt;= 9) determines
+the first number in the triangle. Here are two examples:
+
+ N=5, S=3                  N=6, S=1  
+
+3 4 6 9 4                1 2 4 7 2 7    
+  5 7 1 5                  3 5 8 3 8    
+    8 2 6                    6 9 4 9    
+      3 7                      1 5 1   
+        8                        6 2  
+                                   3
+
+The first line of any triangle has no blanks at its front.
+
+Analyze the above examples, discover the rule, and write a program
+that will generate Parkside's Triangle given any size N (1 &lt;= N &lt;=
+20) and any seed S (1 &lt;= S &lt;= 9).
+
+PROBLEM NAME: pktri1
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: N and S
+
+SAMPLE INPUT (file pktri1.in):
+
+5 3
+
+OUTPUT FORMAT:
+
+* Lines 1..N: Parkside's Triangle as above; no trailing blanks on any
+        line.
+
+SAMPLE OUTPUT (file pktri1.out):
+
+3 4 6 9 4
+  5 7 1 5
+    8 2 6
+      3 7
+        8
+
+**********************************************************************
+
+Problem 12: Alignment of the Planets [Traditional, 2005]
+
+Actually, this problem is about alignment of N (1 &lt;= N &lt;= 770) cows
+numbered 1..N who are grazing in their field that is about 15,000x15,000
+units.  Their grazing locations all fall on integer coordinates in
+a standard x,y scheme (coordinates are in the range 0..15,000).
+ 
+Bessie looks up and notices that she is exactly lined up with Sara
+and Julie. She wonders how many groups of three aligned cows exist
+within the field.
+ 
+Given the locations of all the cows (no two cows occupy the same
+location), figure out all sets of three cows are exactly collinear.
+Keep track of the sets, sorting the cows in each set by their ID
+number, lowest first. Then sort the sets by the three ID numbers
+(lowest first), breaking ties by examining the second and third ID
+numbers.
+
+HINT: Be careful of floating point arithmetic. Floating point
+comparison for equality almost never works as well as one would
+hope.
+
+PROBLEM NAME: align
+
+INPUT FORMAT:
+
+* Line 1: A single integer, N
+
+* Lines 2..N+1: Line i+1 describes cow i's location with two
+        space-separated integers that are her x and y coordinates
+
+SAMPLE INPUT (file align.in):
+
+8
+0 0
+0 4
+1 2
+2 4
+4 3
+4 5
+5 1
+6 5
+
+INPUT DETAILS:
+
+Eight cows grazing on a grid whose lower left corner looks like
+this:
+. . . . * . *   
+* . * . . . .   
+. . . . * . .   
+. * . . . . .   
+. . . . . * .  
+* . . . . . .
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer that is the number of sets of three cows
+        that are exactly collinear. A set of four collinear cows
+        would, of course, result in four sets of three collinear cows.
+
+* Lines 2..?: Each line contains three space-separated integers that
+        are the cow ID numbers of three collinear cows.  The lines are
+        sorted as specified above. This output section is empty if no
+        collinear sets exist.
+
+SAMPLE OUTPUT (file align.out):
+
+1
+1 3 4
+
+OUTPUT DETAILS:
+
+The digits mark the collinear cow IDs:
+. . . . * . *   
+* . 4 . . . .   
+. . . . * . .   
+. 3 . . . . .   
+. . . . . * .  
+1 . . . . . .
+
+**********************************************************************
+
+Problem 13: Finding Bovine Roots [Kolstad, 2005]
+
+The cows are trying to find their roots. They are not so smart as
+humans when they find square roots, the cows lose the integer portion
+of their square root calculation. Thus, instead of calculating the
+square root of 2 to be 1.4142135623730950488016887242096980785696,
+they deduce that it is 0.4142135623730950488016887242096980785696.
+The square root of 16 is calculated to be 0 (obviously an error).
+
+The erroneous ciphering does, however, lead to an interesting
+question.  Given a string of digits of length L (1 &lt;= L &lt;= 9), what
+is the smallest integer whose bovine square root decimal part begins 
+with those digits?
+
+By way of example, consider the string "123". The square root of
+17 is approximately 4.1231056256176605498214098559740770251472 so 
+the bovine square root is: 0.1231056256176605498214098559740770251472
+whose decimal part (just after the period) starts with 123. It turns
+out that 17 is the smallest integer with this property.
+
+HINT: Be careful of floating point arithmetic. It engenders rounding
+errors that can be surprising.
+
+TIME LIMIT: 0.5 seconds
+
+PROBLEM NAME: roots
+
+INPUT FORMAT:
+
+* Line 1: A single integer, L
+
+* Line 2: L digits (with no spaces)
+
+SAMPLE INPUT (file roots.in):
+
+3
+123
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer that is the smallest integer whose bovine
+        square root starts with the supplied string
+
+SAMPLE OUTPUT (file roots.out):
+
+17
+
+OUTPUT DETAILS:
+
+sqrt(17) ~= 4.1231056256176605498214098559740770251472
+
+**********************************************************************
+
+Problem 14: Cow Bowling [IOI, 1994]
+
+The cows don't use actual bowling balls when they go bowling.  They
+each take a number (in the range 1..99), though, and line up in a
+standard bowling-pin-like triangle like this:
+
+          7
+
+        3   8
+
+      8   1   0
+
+    2   7   4   4
+
+  4   5   2   6   5
+
+Then the other cows traverse the triangle starting from its tip and
+moving "down" to one of the two diagonally adjacent cows until the
+"bottom" row is reached.  The cow's score is the sum of the numbers
+of the cows visited along the way. The cow with the highest score
+wins that frame.
+
+Given a triangle with N (1 &lt;= N &lt;= 350) rows, determine the highest
+possible sum achievable.
+
+PROBLEM NAME: bowl
+
+INPUT FORMAT:
+
+* Line 1: A single integer, N
+
+* Lines 2..N+1: Line i+1 contains i space-separated integers that
+        represent row i of the triangle.
+
+SAMPLE INPUT (file bowl.in):
+
+5
+7
+3 8
+8 1 0
+2 7 4 4
+4 5 2 6 5
+
+OUTPUT FORMAT:
+
+* Line 1: The largest sum achievable using the traversal rules
+
+SAMPLE OUTPUT (file bowl.out):
+
+30
+
+OUTPUT DETAILS:
+
+          7
+         *
+        3   8
+       *
+      8   1   0
+       *
+    2   7   4   4
+       *
+  4   5   2   6   5
+
+The highest score is achievable by traversing the cows as shown above.
+
+**********************************************************************
+
+</pre><hr>
+<form action="/ioiupload" enctype="multipart/form-data" method="post">
+<input name="a" value="9k0iLEwDLgR" type="hidden">
+
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td height="1"></td><td>
+
+</td></tr><tr><td width="1"></td><td>
+
+<table bgcolor="#bfffbf" cellpadding="5">
+<tbody><tr><td>Use this form to submit a program for grading:</td>
+<td rowspan="3"><input value="Submit" name="submit" type="submit"></td>
+</tr><tr><td width="60%"><b>Program File:</b><input name="filename" type="file"></td>
+    </tr>
+</tbody></table>
+</td><td width="1"></td>
+
+</tr><tr height="1"><td></td><td></td></tr>
+</tbody></table>
+<hr>
+The following solution files are saved for grading:<br>
+<table cellspacing="2">
+<tbody><tr><th>Name</th><th>Size</th><th>When</th><th>Age</th></tr>
+<tr><td><a href="http://ace.delos.com/ioiupload?a=9k0iLEwDLgR&amp;seesaved=clean.c">clean.c</a></td>
+<td align="right">1588</td>
+<td align="right">14h36:48</td>
+<td align="right">95h25:14</td></tr>
+<tr><td><a href="http://ace.delos.com/ioiupload?a=9k0iLEwDLgR&amp;seesaved=ni.c">ni.c</a></td>
+<td align="right">1961</td>
+<td align="right">12h22:40</td>
+<td align="right">97h39:22</td></tr>
+<tr><td><a href="http://ace.delos.com/ioiupload?a=9k0iLEwDLgR&amp;seesaved=scales.c">scales.c</a></td>
+<td align="right">926</td>
+<td align="right">13h07:06</td>
+<td align="right">96h54:56</td></tr>
+</tbody></table>
+<hr>
+<center>
+<a href="http://ace.delos.com/ioiedit?a=9k0iLEwDLgR">Edit your database record</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=9k0iLEwDLgR&amp;logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?init=1&amp;a=9k0iLEwDLgR">Main contest index</a>
+</center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<a href="http://ace.delos.com/ioiupload?a=9k0iLEwDLgR&amp;showsubmit">See submitted solutions</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=9k0iLEwDLgR&amp;suggestionbox">Send message
+to contest director</a><br>
+Director has been away from his keyboard for 1 minutes<br>
+This page was generated at 21:02:02 GMT.
+</center>
+</form></body></html>

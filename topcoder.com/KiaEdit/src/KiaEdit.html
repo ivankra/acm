@@ -1,0 +1,142 @@
+<html>
+<head><title>KiaEdit TopCoder Arena Plugin</title></head>
+<body>
+<h1>KiaEdit</h1>
+
+<h2>Installation in TopCoder Arena</h2>
+
+<ol>
+  <li>Launch arena, log in, choose Options->Editor in the menu.</li>
+  <li>Click the "Add" button to add a new editor plugin.</li>
+  <li>
+    Type the following information in the "Enter Plugin Information" dialog:<br />
+    <table border="0">
+      <tr><td>Name:</td><td><tt>KiaEdit</tt></td></tr>
+      <tr><td>EntryPoint:&nbsp;</td><td><tt>kiaedit.KiaEdit</tt></td></tr>
+      <tr><td>ClassPath:</td><td>specify the full path to KiaEdit.jar file, e.g. <tt>C:\TopCoder\KiaEdit.jar</tt></td></tr>
+    </table>
+  </li>
+  <li>Click "OK". Click "Save" in the earlier dialog.</li>
+  <li>Choose KiaEdit in the list of editors and click "Configure".</li>
+  <li>Configure plugin for your use, and click "OK" to save changes.</li>
+</ol>
+
+<p>Now, whenever you open a problem during the competition or in practice room, 
+you can launch KiaEdit by choosing "KiaEdit" in the "Choose your editor" list,
+or by making it a default editor.</p>
+
+<h2>Functionality</h2>
+
+<p>Like FileEdit (another arena plugin), KiaEdit allows you to use your
+favorite text editor/IDE with TopCoder Arena.  Whenever you open a TopCoder
+problem, it automatically generates template code for you and saves it in
+a predetermined file.  When you submit or test your code in arena,
+the code that is being sent to TopCoder's servers is taken from
+that file.</p>
+
+<p>Automatically generated code includes a testing framework
+which allows you to locally test your code with examples
+from the problem statement, as well as your own tests.</p>
+
+<p>KiaEdit currently supports C++, C# and Java.</p>
+
+<h2>Testing framework</h2>
+
+<p>KiaEdit generates the main() routine and testing framework for you.
+Just implement the class, specified in the problem statement, and you're ready
+to compile your code to an executable and test it.</p>
+
+<p>When run without any parameters, your method will be tested on
+all examples from the problem statement.  You can run only a subset
+of sets by specifying their numbers in the command line.
+For example "<tt>p.exe 0 1 3</tt>" will run only example tests 0, 1 and 3.
+(provided that these tests exist, and <tt>p.exe</tt> is the name of
+the executable.)</p>
+
+<p><b>C++ tester only:</b> If you specify "-" as a parameter, the program will read
+a test case from the standard input in a format, similar to one, used in
+problem statement's examples. You can also specify expected output
+in a <tt>Returns:</tt>" or "<tt>Expected:</tt>" clause after the input.</p>
+
+<p>Testing code is inserted between lines "<tt>// BEGIN CUT HERE</tt>" and "<tt>// END CUT HERE</tt>".
+When you submit code to TopCoder's servers, any code between pairs of such
+lines is removed.</p>
+
+<h2>Configuration</h2>
+
+<p>Configuration dialog allows you to control the following settings:</p>
+
+<table border="1">
+  <tr>
+    <td><b>Field</b></td>
+    <td><b>Description</b></td>
+    <td><b>Example</b></td></tr>
+  <tr>
+    <td>Source file (C++, Java, C#)</td>
+    <td>Path to source file for each language</td>
+    <td><tt>C:\TopCoder\$CLASSNAME$.$EXT$</tt></td></tr>
+  <tr>
+    <td>Template file</td>
+    <td>Path to a file with a template of initial code</td>
+    <td><tt>C:\TopCoder\KiaEdit\template.$EXT$</tt></td></tr>
+  <tr>
+    <td>Footer file</td>
+    <td>Path to a file with KiaEdit's testing code template</td>
+    <td><tt>C:\TopCoder\KiaEdit\footer.$EXT$</tt></td></tr>
+  <tr>
+    <td>Backup file</td>
+    <td>Path to a backup file, or blank if you do not want KiaEdit to make backups</td>
+    <td><tt>C:\Temp\KiaEdit-$CLASSNAME$-$TIME$.$EXT$</tt></td></tr>
+  <tr>
+    <td>Save problem text in HTML to</td>
+    <td>Path to a file where KiaEdit will save problem statement's text in HTML,
+        or blank if you do not wish to save it on your computer</td>
+    <td><tt>C:\Temp\$CLASSNAME$.html</tt></td></tr>
+  <tr>
+    <td>Execute shell commands on opening a problem</td>
+    <td>A sequence of commands (one per line) to be executed when you
+        open a problem. Leave blank if you do not wish to use this feature.</td>
+    <td><tt>firefox "C:\Temp\$CLASSNAME$.html"<br>gvim "$SOURCEPATH$"</tt></td></tr>
+</table>
+
+<p>You can specify filenames for template and footer files in the format
+<tt>resource:/path</tt>, in this case KiaEdit will look for
+the specified path in its .jar archive.</p>
+
+<p>KiaEdit recognizes the following placeholders, which you can use both in
+the configuration dialog, and in template files.</p>
+
+<table border="1">
+  <tr><td><b>Name</b></td><td><b>Description</b></td><td><b>Example</b></td></tr>
+  <tr><td><tt>$CLASSNAME$</tt></td><td>Class name</td><td><tt>Summator</tt></td></tr>
+  <tr><td><tt>$METHODNAME$</tt></td><td>Method's name</td><td><tt>sum</tt></td></tr>
+  <tr><td><tt>$METHODPARAMS$</tt></td><td>Method's parameters</td><td><tt>int x, int y</tt></td></tr>
+  <tr><td><tt>$SIGNATURE$</tt></td><td>Method's signature</td><td><tt>int sum(int x, int y)</tt></td></tr>
+  <tr><td><tt>$RETURNTYPE$</tt></td><td>Method's return type</td><td><tt>int</tt></td></tr>
+  <tr><td><tt>$EXT$</tt></td><td>Default source file extension for current language (cc, java, cs)</td><td><tt>cc</tt></td></tr>
+  <tr><td><tt>$SOURCEPATH$</tt></td><td>Full expanded path to source file</td><td><tt>C:\TopCoder\Summator.cc</tt></td></tr>
+  <tr><td><tt>$VERSION$</tt></td><td>KiaEdit's version</td><td><tt>20071115</tt></td></tr>
+  <tr><td><tt>$TIME$</tt></td><td>Current system time, as returned by Java's System.currentTimeMillis()</td><td><tt>123456789</tt></td></tr>
+  <tr><td><tt>$IODECL$</tt>, <tt>$EXAMPLES$</tt></td><td>For internal usage in KiaEdit's testing code</td><td></td></tr>
+  <tr><td><tt>$PROBLEMTEXT$</tt></td><td>Problem statement in plain text<br />(Note: loses images, subscripts, superscripts, etc. Be careful.)</td><td></td></tr>
+  <tr><td><tt>$PROBLEMHTML$</tt></td><td>Problem statement in HTML</td><td></td></tr>
+</table>
+
+<h2>Portability</h2>
+
+<p>KiaEdit should be able to run on any platform with Java 1.6 and TopCoder Arena.
+When running on a non-Windows system, use your system's format for file paths
+in the configuration dialog.</p>
+
+<p>Current version of KiaEdit generates source files with LF line terminators (i.e. Unix style).
+This may cause problems with certain Windows software - <tt>notepad</tt> doesn't work,
+for instance.</p>
+
+<h2>External Links</h2>
+<ul>
+<li><a href="http://www.topcoder.com/">http://www.topcoder.com</a> - TopCoder, Inc.</li>
+<li><a href="http://www.topcoder.com/tc?module=Static&d1=applet&d2=plugins">http://www.topcoder.com/tc?module=Static&d1=applet&d2=plugins</a> - other TopCoder Arena plugins and plugin API</li>
+</ul>
+
+</body>
+</html>

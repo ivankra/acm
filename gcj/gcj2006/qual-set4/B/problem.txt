@@ -1,0 +1,93 @@
+
+Problem Statement
+ÿÿÿÿ
+The permanent of a nxn matrix A is equal to the sum of A[1][p[1]] * A[2][p[2]] * ... * A[n][p[n]] over all permutations p of the set {1, 2, ... , n}.
+You will be given a vector <string> matrix, where each element contains a single space delimited list of integers. The jth integer in the ith element represents the value of A[i][j]. Return the int represented by the last four digits of the permanent of the given matrix.
+Definition
+ÿÿÿÿ
+Class:
+PermanentComputation
+Method:
+compute
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int compute(vector <string> matrix)
+(be sure your method is public)
+ÿÿÿÿ
+
+Constraints
+-
+matrix will contain between 1 and 16 elements, inclusive.
+-
+Each element of matrix will contain a list of integers, each separated by exactly one space.
+-
+Each element of matrix will contain exactly n integers, where n is the number of elements in matrix.
+-
+Each element will have length between 1 and 50 characters, inclusive.
+-
+Each element of matrix will contain no leading or trailing spaces.
+-
+Each integer in matrix will be between 0 and 10000, inclusive, and contain no leading zeroes.
+Examples
+0)
+
+ÿÿÿÿ
+{
+ "1 1",
+ "1 1"}
+Returns: 2
+The permanent is equal to 1*1 + 1*1 = 2.
+1)
+
+ÿÿÿÿ
+{
+ "1 2 3",
+ "4 5 6",
+ "7 8 9"}
+Returns: 450
+The permanent is equal to 1*5*9 + 1*6*8 + 2*4*9 + 2*6*7 + 3*4*8 + 3*5*7 = 450.
+2)
+
+ÿÿÿÿ
+{
+ "1 2 3 4",
+ "2 3 4 5",
+ "3 4 5 6",
+ "4 5 6 7"}
+Returns: 4276
+
+3)
+
+ÿÿÿÿ
+{
+ "1 1 1",
+ "2 2 2",
+ "3 3 3"}
+Returns: 36
+
+4)
+
+ÿÿÿÿ
+{
+ "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1",
+ "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1",
+ "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1",
+ "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1",
+ "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1",
+ "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1",
+ "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1",
+ "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1",
+ "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1",
+ "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1",
+ "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1",
+ "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1",
+ "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1",
+ "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1",
+ "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1",
+ "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1"}
+Returns: 8000
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

@@ -1,0 +1,53 @@
+
+Problem Statement
+ÿÿÿÿ
+A palindrome is a string that reads the same forward and backward. A palindrome substring is a contiguous sequence of characters taken from a string that form a palindrome. A palindrome substring of a string is maximal if we can't extend it to get a bigger palindrome substring. For example, string "acdadc" has 2 maximal palindrome substrings - "a" (the first one) and "cdadc". All other palindrome substrings (like "dad" or "c") can be extended to "cdadc", so they are not maximal.
+You will be given a vector <string> str. Concatenate the elements of str to form one long string, and return the number of maximal palindrome substrings contained in that string.
+Definition
+ÿÿÿÿ
+Class:
+MaximalPalindromeSubstrings
+Method:
+countMaximalPalindromeSubstrings
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int countMaximalPalindromeSubstrings(vector <string> str)
+(be sure your method is public)
+ÿÿÿÿ
+
+Constraints
+-
+str will contain between 1 and 50 elements, inclusive.
+-
+Each element of str will contain between 1 and 50 characters, inclusive.
+-
+Each character of each element of str will be a lowercase letter ('a'-'z').
+Examples
+0)
+
+ÿÿÿÿ
+{"acdadc"}
+Returns: 2
+The example from the problem statement.
+1)
+
+ÿÿÿÿ
+{"ababab"}
+Returns: 2
+The two maximal palindrome substrings here are "ababa" and "babab".
+2)
+
+ÿÿÿÿ
+{"aaaa","bbb","axxx"}
+Returns: 3
+Remember to use the whole input!
+3)
+
+ÿÿÿÿ
+{"abacabbacaacdbdcacxcbbbbcabababacccbazhhaahh"}
+Returns: 14
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

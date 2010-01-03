@@ -1,0 +1,12 @@
+#  Title                          Comment
+-  -----------------------------  --------------------------------------------
+A  Consanguine Calculations       Brute-force
+B  Containers                     Related to longest increasing subsequence 
+C. Grand Prix
+D  Jacquard Circuits              Pick's theorem
+E  Collecting Luggage             Binary search, Shortest path on plane
+F  Marble Game                    Brute force; Breadth-first search
+G  Network                        Brute force
+H. Rising the Roof                Sweeping line?
+I. Water Tanks
+J. Tunnels

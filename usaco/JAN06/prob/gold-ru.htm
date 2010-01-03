@@ -1,0 +1,317 @@
+<html><head>
+
+<script language="javascript">
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d ";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h ";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m ";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>USACO Problems</title></head><body onload="endtime = initcount(355165); updateclock('Elite January, 2006', 'Contest', endtime); endtime = initcount(10799); updateclock('Your Contest Session', 'Person', endtime);" bgcolor="#eeffee">
+<center>
+<table><tbody><tr>
+<td>
+<!--<center><img src='/usaco/cow1.jpg' width='742' height='118'></center>-->
+<center><img src="gold-ru_files/cow1.jpg" height="88" width="550"></center>
+</td>
+<td valign="top">
+<table>
+    <tbody><tr><td valign="top"><b>GOLD</b> Division<br></td></tr>
+    <tr><td><div id="Contest">Elite January, 2006: 4d 02h 39m 04s</div></td></tr>
+    <tr><td><div id="Person">Your Contest Session: 02h 59m 38s</div></td></tr>
+    <tr><td></td></tr>
+</tbody></table>
+</td><td></td></tr>
+</tbody></table>
+</center>
+
+
+<pre></pre>
+<pre>**********************************************************************
+                           GOLD PROBLEMS
+**********************************************************************
+                  Три задачи с номерами от 1 до 3
+**********************************************************************
+
+Problem 1: Redundant Paths [Harry Wiggins/SACO, 2005]
+
+     Для того, чтобы попасть с одного из F (1 &lt;= F &lt;= 5,000) 
+пастбищ (пронумерованных 1..F) на другое, Бесси и другие коровы 
+стада должны пройти мимо Tree of Rotten Apples. Коровам надоело 
+ходить все время по одной и той же дороге, и они хотят протоптать 
+новые тропинки так, чтобы у них всегда было, как минимум, два 
+отдельных маршрута между двумя любыми пастбищами. 
+     Маршруты называются отдельными, если они не используют ни 
+одной общей тропинки, даже если они посещают одни и те же 
+промежуточные пастбища.
+      Сейчас у них есть, как минимум, один маршрут между любыми
+двумя парами пастбищ. А теперь они хотят иметь как минимум два таких
+маршрута. Конечно, они могут двигаться только по протоптанным 
+тропинкам при перемещении от одного пастбища к другому.
+    Вам дано описание текущего множества R (F-1 &lt;= R &lt;= 10,000)
+тропинок, каждая из которых соединяет ровно два различных пастбища.
+Определите минимальное количество новых тропинок (каждая из которых
+соединит ровно два пастбища), которые необходимо протоптать для 
+того, чтобы получить как минимум два отдельных маршрута между любой 
+парой пастбищ.
+    Может быть более одной тропинки между двумя пастбищами, и Вы 
+можете "топтать новую тропинку" для пары пастбищ, которые уже 
+соединены тропинкой.
+
+PROBLEM NAME: rpaths
+
+INPUT FORMAT:
+
+* Строка 1: Два разделенных пробелом целых числа F и R
+
+* Строки 2..F+1: Каждая строка содержит два разделенных 
+                 пробелом целых числа - номера пастбищ,
+                 соединенных тропинкой. 
+
+SAMPLE INPUT (файл rpaths.in):
+
+7 7
+1 2
+2 3
+3 4
+2 5
+4 5
+5 6
+5 7
+
+INPUT DETAILS:
+
+Один из способов визуализации тропинок представлен ниже:
+   1   2   3
+   +---+---+  
+       |   |
+       |   |
+ 6 +---+---+ 4
+   |  / 5
+   | / 
+   |/ 
+ 7 +
+
+OUTPUT FORMAT:
+
+* Строка 1: Одно целое число - количество новых тропинок,
+            которые нужно протоптать
+
+SAMPLE OUTPUT (файл rpaths.out):
+
+2
+
+OUTPUT DETAILS:
+
+Протоптав тропики от 1 к 6 и от 4 к 7 мы удовлетворим требования 
+задачи.
+   1   2   3
+   +---+---+  
+   :   |   |
+   :   |   |
+ 6 +---+---+ 4
+   |  / 5  :
+   | /     :
+   |/      :
+ 7 + - - - - 
+Проверьте некоторые маршруты:
+1 - 2:  1 -&gt; 2            и   1 -&gt; 6 -&gt; 5 -&gt; 2
+1 - 4:  1 -&gt; 2 -&gt; 3 -&gt; 4  и   1 -&gt; 6 -&gt; 5 -&gt; 4
+3 - 7:  3 -&gt; 4 -&gt; 7       и   3 -&gt; 2 -&gt; 5 -&gt; 7
+В действительности каждая пара пастбищ соединена двумя 
+маршрутами.
+
+**********************************************************************
+
+Problem 2: Roping the Field [Hal Burch, 2004]
+
+    Фермер Джон - истинный художник: он часто выполняет 
+произведения искусства у себя на ферме. Сегодня, например, он хочет 
+сконструировать на пастбище гигантскую "паутину".
+Пастбище ФД - это большой выпуклый многоугольник с заборами вдоль 
+границ и столбами в каждом из N углов (1 &lt;= N &lt;=150). Чтобы сделать 
+паутину, ФД хочет навесить прямолинейно как можно больше веревок между
+двумя не-соседними столбами так, чтобы никакие две веревки не 
+пересекались.
+    Есть одно усложнение - поле ФД не полностью пригодно. "Дьяволы"
+создали G (0 &lt;= G &lt;= 100) кругов, все радиусом R (1 &lt;= R &lt;= 100,000),
+через которые ФД не может протягивать веревки, даже не может 
+касаться веревкой соответствующей окружности. Заметим, что несмотря 
+на то, что центры всех кругов находятся внутри поля, радиусы могут 
+быть настолько большими, что внутри кругов могут оказаться и столбы, 
+и заборы.
+    По заданным координатам столбов и кругов, определите 
+максимальное количество веревок, которое ФД может использовать для 
+создания своей "паутины".
+    Координаты столбов и центров кругов - пары целых чисел, каждое 
+из которых в диапазоне 0..1,000,000.
+
+PROBLEM NAME: roping
+
+INPUT FORMAT:
+
+* Строка 1: Три разделенных проблелом целых числа: N G R
+
+* Строки 2..N+1: Каждая строка содержит два разделенных пробелом
+            целых числа - X Y координаты столба поля ФД
+
+* Строки N+2..N+G+1: Каждая строка содержит два разделенных пробелом
+            целых числа - X Y координаты центра круга внутри поля ФД
+
+SAMPLE INPUT (файл roping.in):
+
+5 3 1
+6 10
+10 7
+9 1
+2 0
+0 3
+2 2
+5 6
+8 3
+
+INPUT DETAILS:
+
+Поле в виде пятиугольника, в котором все возможные веревки 
+блокированы тремя кругами, за исключением веревки между столбами 
+2 и 4.
+
+OUTPUT FORMAT:
+
+* Строка 1: Одно целое число - максимальное количество веревок,
+            которое может использовать ФД.
+
+SAMPLE OUTPUT (файл roping.out):
+
+1
+
+**********************************************************************
+
+Problem 3: Corral the Cows [Marcello Herreshoff, 2005]
+
+    Фермер Джон хочет построить загон для своих коров. Загон должен 
+быть в форме квадрата и содержать не менее C (1 &lt;= C &lt;= 500) пастбищ.
+Владения ФД включают всего N (C &lt;= N &lt;= 500) пастбищ, каждое 
+размером 1 х 1 и целыми X и Y координатами левого нижнего угла 
+(X и Y в диапазоне 1..10,000). Иногда более одного пастбища может 
+иметь одни и те же координаты, тогда на вводе такие координаты могут
+появится два или более раз. Загон содержит пастбище, если оно целиком
+находится внутри границ загона.
+     Помогите ФД вычислить минимальную длину стороны квадрата, 
+который будет содержать C пастбищ.
+
+PROBLEM NAME: corral
+
+INPUT FORMAT:
+
+* Строка 1: Два разделенных пробелом целых числа: C и N
+
+* Строки 2..N+1: Каждая строка содержит два разделенных пробелом
+            целых числа - X и Y координаты пастбища.
+
+SAMPLE INPUT (файл corral.in):
+
+3 4
+1 2
+2 1
+4 1
+5 2
+
+INPUT DETAILS:
+
+|*   *
+| * *
++------
+
+OUTPUT FORMAT:
+
+* Строка 1: одно целое число - длина одной стороны квадрата 
+            минимального размера, содержащего не менее C пастбищ.
+
+SAMPLE OUTPUT (файл corral.out):
+
+4
+
+OUTPUT DETAILS:
+
+Ниже представлено одно из решений 4х4.
+Символы C показывают поверхность загона.
+Существует и множество других решений.
+
+|CCCC
+|CCCC
+|*CCC*
+|C*C*
++------
+
+**********************************************************************
+
+</pre><hr>
+<form action="/ioiupload" enctype="multipart/form-data" method="post">
+<input name="a" value="OtRXXiqYath" type="hidden">
+
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td height="1"></td><td>
+
+</td></tr><tr><td width="1"></td><td>
+
+<table bgcolor="#bfffbf" cellpadding="5">
+<tbody><tr><td>Use this form to submit a program for grading:</td>
+<td rowspan="3"><input value="Submit" name="submit" type="submit"></td>
+</tr><tr><td width="60%"><b>Program File:</b><input name="filename" type="file"></td>
+    </tr>
+</tbody></table>
+</td><td width="1"></td>
+
+</tr><tr height="1"><td></td><td></td></tr>
+</tbody></table>
+<hr>
+Nothing is currently saved for grading.
+<hr>
+<center>
+<a href="http://ace.delos.com/ioiedit?a=OtRXXiqYath">Edit your database record</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=OtRXXiqYath&amp;logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?init=1&amp;a=OtRXXiqYath">Main contest index</a>
+</center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<a href="http://ace.delos.com/ioiupload?a=OtRXXiqYath&amp;showsubmit">See submitted solutions</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=OtRXXiqYath&amp;suggestionbox">Send message
+to contest director</a><br>
+Director is not online<br>
+This page was generated at 12:20:35 GMT.
+</center>
+
+</form></body></html>

@@ -1,0 +1,50 @@
+
+Problem Statement
+ÿÿÿÿ
+How many different strong linear structures can be formed using two types of components?
+Call the two types A and B. A structure can then be described by a sequence of 'A's and 'B's. Two sequences of 'A's and 'B's are considered to represent the same structure if one is the reverse of the other. Every juncture between an A and a B in the structure is a weak point. A structure will be considered strong if it has no more than w weak points.
+Here are some examples. AAAABAB is a structure of length 7 with 3 weak points. BABAAAA is the same structure, just given in reverse order. All the different structures of length 3 are AAA,AAB,ABA,ABB,BAB, and BBB. Note that BAA is the same as AAB, and BBA is the same as ABB.
+Create a class WeakPoints that contains a method count that is given n and w and that returns the number of different linear structures of length n that have no more than w weak points.
+Definition
+ÿÿÿÿ
+Class:
+WeakPoints
+Method:
+count
+Parameters:
+int, int
+Returns:
+long
+Method signature:
+long count(int n, int w)
+(be sure your method is public)
+ÿÿÿÿ
+
+Constraints
+-
+n will be between 1 and 50, inclusive.
+-
+w will be between 0 and 50, inclusive.
+Examples
+0)
+
+ÿÿÿÿ
+3
+8
+Returns: 6
+There could never be more than 8 weak points in a structure of length 3. So the answer is the number of structures of length 3. All 6 are listed above.
+1)
+
+ÿÿÿÿ
+3
+1
+Returns: 4
+Among the 6 structures of length 3, only ABA and BAB have more than 1 weak point. So that leaves 4 structures with no more than 1 weak point.
+2)
+
+ÿÿÿÿ
+50
+50
+Returns: 562949970198528
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

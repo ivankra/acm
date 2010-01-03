@@ -1,0 +1,43 @@
+2:
+	if a < b:
+		print a,b
+	else
+		print b,a
+
+3:	/* a [bc] */
+	if a < b:
+		/* ab [c] */
+		if b < c:
+			print a, b, c
+		elif a < c:
+			print a, c, b
+		else:
+			print c, a, b
+	else:
+		/* ba [c] */
+		if a < c:
+			print b, a, c
+		elif b < c:
+			print b, c, a
+		else:
+			print c, b, a
+
+
+4:	/* a [bcd] */
+	if a < b:
+		/* ab [cd] */
+		if b < c:
+			/* abc [d] */
+			if c < d:
+				abcd
+			elif b < d:
+				abdc
+			elif a < d:
+				adbc
+			else
+				dabc
+		elif a < c:
+			/* acb [d] */
+			...
+		...
+	...

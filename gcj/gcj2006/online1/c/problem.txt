@@ -1,0 +1,66 @@
+
+Problem Statement
+ÿÿÿÿ
+The given digits, when multiplied together, are supposed to equal value. Unfortunately, this may not be the case. Return the fewest number of digits that need to be altered in order to rectify the issue. If this cannot be done, return -1.
+Definition
+ÿÿÿÿ
+Class:
+DigitProduct
+Method:
+minChanges
+Parameters:
+string, string
+Returns:
+int
+Method signature:
+int minChanges(string digits, string value)
+(be sure your method is public)
+ÿÿÿÿ
+
+Notes
+-
+Altering a digit means changing one occurrence of this digit to another digit (and not changing every occurrence of a particular digit).
+Constraints
+-
+digits will contain between 1 and 50 digits ('0'-'9'), inclusive.
+-
+value will describe an integer between 0 and 2^63-1, inclusive.
+-
+value will contain no extra leading zeros.
+Examples
+0)
+
+ÿÿÿÿ
+"00123450"
+"0"
+Returns: 0
+The return is 0 since the products of the digits is already correct.
+1)
+
+ÿÿÿÿ
+"00123450"
+"120"
+Returns: 3
+The return value is 3, since all of the zeros must become ones.
+2)
+
+ÿÿÿÿ
+"3411"
+"10"
+Returns: 2
+Neither 3 nor 4 can remain, so both must be changed to 2 and 5. We return 2.
+3)
+
+ÿÿÿÿ
+"2424"
+"1024"
+Returns: 2
+
+4)
+
+ÿÿÿÿ
+"824"
+"8"
+Returns: 1
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

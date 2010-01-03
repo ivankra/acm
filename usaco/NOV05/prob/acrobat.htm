@@ -1,0 +1,82 @@
+<html><head> <title>NOV05 acrobat analysis</title></head>
+<body bgcolor="#ffffff">
+<center><img src="acrobat_files/cow1.jpg" height="118" width="742"></center>
+<h2>November 2005 Problem 'acrobat' Analysis</h2>
+<center>by Bruce Merry</center>
+<p>
+This is actually a sorting problem, but in disguise. We first make a
+simple transformation to make the problem more accessible. The problem
+statement tells us that the risk of a cow falling depends on the weight
+of those above her, <i>excluding</i> her weight. For reasons that we will
+become apparent, it would be better if the risk depended on the weight
+<i>including</i> her own. We can in fact force the problem into this form by
+modifying each cow's strength: specifically, adding her own weight to
+her strength to cancel out the increase we have made in risk.
+</p><p>
+Now logically, it would make sense to put strong cows on the bottom, to
+hold the greater weight of those above them. Before making the
+transformation, this heuristic might have lead us to put a weak but
+extremely heavy cow on top, but because each cow now has the strength
+to support her own weight, very heavy cows will naturally be strong and
+so likely to be near the bottom.
+</p><p>
+Of course, this is all so much woolly thinking unless we can prove
+that this is optimal. A good way to prove that sorting optimises a
+problem is to consider the actions of some sorting algorithm and
+show that they always improve matters (or at least make them no
+worse). In this case we will use bubble-sort, as it is particularly
+simple. Consider an arrangement where two cows, Alice and Bessie,
+are our of order.  Specifically, Alice is directly top of Bessie,
+but is stronger than her. If they are swapped then the risk to other
+cows of course does not change, since their combined weight is a
+constant. The risk of Alice collapsing increases, but it is still
+lower than that of Bessie collapsing previously (since the weight
+carried by the bottom cow is the same, but Alice is stronger). The
+risk of Bessie collapsing has also been reduced, since Bessie no
+longer has to carry Alice. So the maximum risk does not increase
+and is most likely reduced. Thus, from any given configuration, a
+bubble-sort will eventually have the cows sorted by strength at no
+increase in risk.
+</p><p>
+The actual implementation thus consists of the transformation, a call
+to sort(), and a walk of the pile to determine the maximum risk.
+</p><p>
+Here is Bruce's solution:
+</p><pre>#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;algorithm&gt;
+#include &lt;utility&gt;
+#include &lt;vector&gt;
+#include &lt;cstddef&gt;
+#include &lt;climits&gt;
+
+using namespace std;
+
+typedef pair&lt;int, int&gt; cow;
+
+int main() {
+    vector&lt;cow&gt; cows;
+    int N;
+    ifstream in("acrobat.in");
+
+    in &gt;&gt; N;
+    for (int i = 0; i &lt; N; i++) {
+        int wgt, str;
+        in &gt;&gt; wgt &gt;&gt; str;
+        cows.push_back(cow(str + wgt, wgt));
+    }
+    sort(cows.begin(), cows.end());
+
+    int risk = INT_MIN;
+    int sum = 0;
+    for (int i = 0; i &lt; N; i++) {
+        sum += cows[i].second;
+        risk = max(risk, sum - cows[i].first);
+    }
+    ofstream out("acrobat.out");
+    out &lt;&lt; risk &lt;&lt; endl;
+    in.close();
+    out.close();
+    return 0;
+}
+</pre></body></html>

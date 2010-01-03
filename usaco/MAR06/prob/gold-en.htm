@@ -1,0 +1,304 @@
+<html><head>
+
+<script language="javascript">
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d ";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h ";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m ";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</script><title>USACO Problems</title></head><body onload="endtime = initcount(260278); updateclock('Elite March,  2006', 'Contest', endtime); endtime = initcount(10800); updateclock('Your Contest Session', 'Person', endtime);" bgcolor="#eeffee">
+<center>
+<table><tbody><tr>
+<td>
+<!--<center><img src='/usaco/cow1.jpg' width='742' height='118'></center>-->
+<center><img src="gold-en_files/cow1.jpg" height="88" width="550"></center>
+</td>
+<td valign="top">
+<table>
+    <tbody><tr><td valign="top"><b>GOLD</b> Division<br></td></tr>
+    <tr><td><div id="Contest">Elite March,  2006: 3d 00h 17m 24s</div></td></tr>
+    <tr><td><div id="Person">Your Contest Session: 02h 59m 26s</div></td></tr>
+    <tr><td></td></tr>
+</tbody></table>
+</td><td></td></tr>
+</tbody></table>
+</center>
+
+
+<pre></pre>
+<pre>**********************************************************************
+                           GOLD PROBLEMS
+**********************************************************************
+                  Three problems numbered 1 through 3
+**********************************************************************
+
+Problem 1: Ski Lift [Adam Rosenfield, 2004]
+
+Farmer Ron in Colorado is building a ski resort for his cows (though
+budget constraints dictate construction of just one ski lift). The
+lift will be constructed as a monorail and will connect a concrete
+support at the starting location to the support at the ending
+location via some number of intermediate supports, each of height
+0 above its land. A straight-line segment of steel connects every
+pair of adjacent supports. For obvious reasons, each section of
+straight steel must lie above the ground at all points.
+
+Always frugal, FR wants to minimize the number of supports that he
+must build. He has surveyed the N (2 &lt;= N &lt;= 5,000) equal-sized
+plots of land the lift will traverse and recorded the integral
+height H (0 &lt;= H &lt;= 1,000,000,000) of each plot. Safety regulations
+require FR to build adjacent supports no more than K (1 &lt;= K &lt;= N
+- 1) units apart. The steel between each pair of supports is rigid
+and forms a straight line from one support to the next.
+
+Help FR compute the smallest number of supports required such that:
+each segment of steel lies entirely above (or just tangent to) each
+piece of ground, no two consecutive supports are more than K units
+apart horizontally, and a support resides both on the first plot
+of land and on the last plot of land.
+
+PROBLEM NAME: skilift
+
+INPUT FORMAT:
+
+* Line 1: Two space-separate integers, N and K
+
+* Lines 2..N+1: Line i+1 contains a single integer that is the height
+        of plot i.
+
+SAMPLE INPUT (file skilift.in):
+
+13 4
+0
+1
+0
+2
+4
+6
+8
+6
+8
+8
+9
+11
+12
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer equal to the fewest number of lift towers
+        FR needs to  build subject to the above constraints
+
+SAMPLE OUTPUT (file skilift.out):
+
+5
+
+OUTPUT DETAILS:
+
+FR builds five supports (at locations 1, 5, 7, 9, and 13). The steel
+is tangent to the ground at four locations: 1-5, 5-7, 7-9, and
+12-13.
+
+If FR only builds supports at the four locations 1, 5, 9, and 13,
+then the steel would be below ground from 5-9. If FR built supports
+at 1, 7, and 13, then -- although the steel is always above ground
+-- supports 7 and 13 are more than 4 units apart horizontally. There
+is no solution using fewer than 5 supports such that no two consecutive
+supports are more than 4 units apart horizontally.
+
+**********************************************************************
+
+Problem 2: Milk Team Select [Percy Liang, 2002]
+
+Farmer John's N (1 &lt;= N &lt;= 500) cows are trying to select the
+milking team for the world-famous Multistate Milking Match-up (MMM)
+competition. As you probably know, any team that produces at least
+X (1 &lt;= X &lt;= 1,000,000) gallons of milk is a winner.
+
+Each cow has the potential of contributing between -10,000 and
+10,000 gallons of milk. (Sadly, some cows have a tendency to knock
+over jugs containing milk produced by other cows.)
+
+The MMM prides itself on promoting family values. FJ's cows have
+no doubt that they can produce X gallons of milk and win the contest,
+but to support the contest's spirit, they want to send a team with
+as many parent-child relationships as possible (while still producing
+at least X gallons of milk). Not surprisingly, all the cows on FJ's
+farm are female.
+
+Given the family tree of FJ's cows and the amount of milk that each
+would contribute, compute the maximum number of parent-child
+relationships that can exist in a winning team. Note that a set of
+cows with a grandmother-mother-daughter combination has two
+parent-child relationships (grandmother-mother, mother-daughter).
+
+PROBLEM NAME: tselect
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers, N and X.
+
+* Lines 2..N+1: Line i+1 contains two space-separated integers
+        describing cow i. The first integer is the number of gallons
+        of milk cow i would contribute. The second integer (range
+        1..N) is the index of the cow's mother. If the cow's mother is
+        unknown, the second number is 0. The family information has no
+        cycles: no cow is her own mother, grandmother, etc.
+
+SAMPLE INPUT (file tselect.in):
+
+5 8
+-1 0
+3 1
+5 1
+-3 3
+2 0
+
+INPUT DETAILS:
+
+There are 5 cows. Cow 1 can produce -1 gallons and has two daughters, cow
+2 and 3, who can produce 3 and 5 gallons, respectively. Cow 3 has a
+daughter (cow 4) who can produce -3 gallons. Then there's cow 5, who can
+produce 2 gallons.
+
+OUTPUT FORMAT:
+
+* Line 1: The maximum number of parent-child relationships possible on
+        a winning team. Print -1 if no team can win.
+
+SAMPLE OUTPUT (file tselect.out):
+
+2
+
+OUTPUT DETAILS:
+
+The best team consists of cows 1, 2, 3, and 5. Together they produce
+(-1)+3+5+2 = 9 &gt;= 8 gallons and have 2 parent-child relationships
+(1--2 and 1--3). Note that a team with cows 2, 3, and 5 would be
+able to produce more milk (10 gallons), but would have fewer
+parent-child relationships (0).
+
+**********************************************************************
+
+Problem 3: Mooo [Brian Dean, 2005]
+
+Farmer John's N (1 &lt;= N &lt;= 50,000) cows are standing in a very
+straight row and mooing. Each cow has a unique height h in the range
+1..2,000,000,000 nanometers (FJ really is a stickler for precision).
+Each cow moos at some volume v in the range 1..10,000. This "moo"
+travels across the row of cows in both directions (except for the
+end cows, obviously). Curiously, it is heard only by the closest
+cow in each direction whose height is strictly larger than that of
+the mooing cow (so each moo will be heard by 0, 1 or 2 other cows,
+depending on whether or not taller cows exist to the mooing cow's
+right or left).
+
+The total moo volume heard by given cow is the sum of all the moo
+volumes v for all cows whose mooing reaches the cow. Since some
+(presumably taller) cows might be subjected to a very large moo
+volume, FJ wants to buy earmuffs for the cow whose hearing is most
+threatened. Please compute the loudest moo volume heard by any cow.
+
+PROBLEM NAME: mooo
+
+INPUT FORMAT:
+
+* Line 1: A single integer, N.
+
+* Lines 2..N+1: Line i+1 contains two space-separated integers, h and
+        v, for the cow standing at location i.
+
+SAMPLE INPUT (file mooo.in):
+
+3
+4 2
+3 5
+6 10
+
+INPUT DETAILS:
+
+Three cows: the first one has height 4 and moos with volume 2, etc.
+
+OUTPUT FORMAT:
+
+* Line 1: The loudest moo volume heard by any single cow.
+
+SAMPLE OUTPUT (file mooo.out):
+
+7
+
+OUTPUT DETAILS:
+
+The third cow hears both the first and second cows moo 2+5=7.  Though the
+third cow moos with volume 10, no one hears her.
+
+**********************************************************************
+
+</pre><hr>
+<form action="/ioiupload" enctype="multipart/form-data" method="post">
+<input name="a" value="7PRDe29uyYA" type="hidden">
+
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td height="1"></td><td>
+
+</td></tr><tr><td width="1"></td><td>
+
+<table bgcolor="#bfffbf" cellpadding="5">
+<tbody><tr><td>Use this form to submit a program for grading:</td>
+<td rowspan="3"><input value="Submit" name="submit" type="submit"></td>
+</tr><tr><td width="60%"><b>Program File:</b><input name="filename" type="file"></td>
+    </tr>
+</tbody></table>
+</td><td width="1"></td>
+
+</tr><tr height="1"><td></td><td></td></tr>
+</tbody></table>
+<hr>
+Nothing is currently saved for grading.
+<hr>
+<center>
+<a href="http://ace.delos.com/ioiedit?a=7PRDe29uyYA">Edit your database record</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=7PRDe29uyYA&amp;logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?init=1&amp;a=7PRDe29uyYA">Main contest index</a>
+</center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<a href="http://ace.delos.com/ioiupload?a=7PRDe29uyYA&amp;showsubmit">See submitted solutions</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=7PRDe29uyYA&amp;suggestionbox">Send message
+to contest director</a><br>
+Director is not online<br>
+This page was generated at 14:42:02 GMT.
+</center>
+
+</form></body></html>

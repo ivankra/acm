@@ -1,0 +1,363 @@
+<html><head>
+
+<meta http-equiv="Pragma" content="no-cache">
+<script language="javascript">
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</script><title>USACO Problems</title></head><body onload="endtime = initcount(10800); updateclock('Contest', 'Person', endtime);" background="MAR2008-gold_files/bg9gold.jpg">
+
+<font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+<table><tbody><tr>
+<td><img src="MAR2008-gold_files/cowhead2.gif">
+</td>
+<td valign="top">
+<table cellpadding="0" cellspacing="0">
+    <tbody><tr><td>Contest: MAR08 <b>GOLD</b> Division</td></tr>
+    <tr><td><div id="Person">Contest: 02h59m58s</div></td></tr>
+    <tr><td></td></tr>
+    
+</tbody></table>
+</td></tr>
+</tbody></table>
+<font color="red"><b>
+</b></font>
+
+
+</font><pre>**********************************************************************
+                           GOLD PROBLEMS
+**********************************************************************
+                  Three problems numbered 1 through 3
+**********************************************************************
+
+Problem 1: Land Acquisition [Paul Christiano, 2007]
+
+Farmer John is considering buying more land for the farm and has
+his eye on N (1 &lt;= N &lt;= 50,000) additional rectangular plots, each
+with integer dimensions (1 &lt;= width_i &lt;= 1,000,000; 1 &lt;= length_i
+&lt;= 1,000,000).
+
+If FJ wants to buy a single piece of land, the cost is $1/square
+unit, but savings are available for large purchases. He can buy
+any number of plots of land for a price in dollars that is the width
+of the widest plot times the length of the longest plot. Of course,
+land plots cannot be rotated, i.e., if Farmer John buys a 3x5 plot
+and a 5x3 plot in a group, he will pay 5x5=25.
+
+FJ wants to grow his farm as much as possible and desires all the
+plots of land. Being both clever and frugal, it dawns on him that
+he can purchase the land in successive groups, cleverly minimizing
+the total cost by grouping various plots that have advantageous
+width or length values.
+
+Given the number of plots for sale and the dimensions of each,
+determine the minimum amount for which Farmer John can purchase all
+
+PROBLEM NAME: acquire
+
+INPUT FORMAT:
+
+* Line 1: A single integer: N
+
+* Lines 2..N+1: Line i+1 describes plot i with two space-separated
+        integers: width_i and length_i
+
+SAMPLE INPUT (file acquire.in):
+
+4
+100 1
+15 15
+20 5
+1 100
+
+INPUT DETAILS:
+
+There are four plots for sale with dimensions as shown.
+
+OUTPUT FORMAT:
+
+* Line 1: The minimum amount necessary to buy all the plots.
+
+SAMPLE OUTPUT (file acquire.out):
+
+500
+
+OUTPUT DETAILS:
+
+The first group contains a 100x1 plot and costs 100. The next group
+contains a 1x100 plot and costs 100. The last group contains both the 20x5
+plot and the 15x15 plot and costs 300. The total cost is 500, which is
+minimal.
+
+**********************************************************************
+
+Problem 2: Cow Jogging [Alex Schwendner &amp; Eric Price, 2006]
+
+Bessie has taken heed of the evils of sloth and has decided to get
+fit by jogging from the barn to the pond several times a week. She
+doesn't want to work too hard, of course, so she only plans to jog
+downhill to the pond and then amble back to the barn at her leisure.
+
+Bessie also doesn't want to jog any too far either, so she generally
+takes the shortest sequence of cow paths to get to the pond. Each
+of the M (1 &lt;= M &lt;= 10,000) cow paths connects two pastures
+conveniently numbered 1..N (1 &lt;= N &lt;= 1000). Even more conveniently,
+the pastures are numbered such that if X&gt;Y then the cow path from
+pasture X to pasture Y runs downhill. Pasture N is the barn (at the
+top of the hill) and pasture 1 is the pond (at the bottom).
+
+Just a week into her regimen, Bessie has begun to tire of always
+taking the same route to get to the pond. She would like to vary
+her route by taking different cow paths on different days. Specifically,
+Bessie would like to take exactly K (1 &lt;= K &lt;= 100) different routes
+for variety. To avoid too much exertion, she wants these to be the
+K shortest routes from the barn to the pond. Two routes are considered
+different if they comprise different sequences of cow paths.
+
+Help Bessie determine how strenuous her workout will be by determining
+the lengths of each of the K shortest routes on the network of
+pastures. You will be supplied a list of downhill cow paths from
+X_i to Y_i along with the cow path's length: (X_i, Y_i, D_i) where
+(1 &lt;= Y_i &lt; X_i; Y_i &lt; X_i &lt;= N). Cowpath i has length D_i (1 &lt;=
+D_i &lt;= 1,000,000).
+
+PROBLEM NAME: cowjog
+
+INPUT FORMAT:
+
+* Line 1: Three space-separated integers: N, M, and K
+
+* Lines 2..M+1: Line i+1 describes a downhill cow path using three
+        space-separated integers: X_i, Y_i, and D_i
+
+SAMPLE INPUT (file cowjog.in):
+
+5 8 7
+5 4 1
+5 3 1
+5 2 1
+5 1 1
+4 3 4
+3 1 1
+3 2 1
+2 1 1
+
+OUTPUT FORMAT:
+
+* Lines 1..K: Line i contains the length of the i-th shortest route or
+        -1 if no such route exists. If a shortest route length occurs
+        multiple times, be sure to list it multiple times in the
+        output.
+
+SAMPLE OUTPUT (file cowjog.out):
+
+1
+2
+2
+3
+6
+7
+-1
+
+OUTPUT DETAILS:
+
+The routes are (5-1), (5-3-1), (5-2-1), (5-3-2-1), (5-4-3-1),
+(5-4-3-2-1).
+
+**********************************************************************
+
+Problem 3: Pearl Pairing [Catalin Tiseanu, 2007]
+
+At Bessie's recent birthday party, she received N (2 &lt;= N &lt;= 100,000;
+N%2 == 0) pearls, each painted one of C different colors (1 &lt;= C
+&lt;= N).
+
+Upon observing that the number of pearls N is always even, her
+creative juices flowed and she decided to pair the pearls so that
+each pair of pearls has two different colors.
+
+Knowing that such a set of pairings is always possible for the
+supplied testcases, help Bessie perform such a pairing. If there
+are multiple ways of creating a pairing, any solution suffices.
+
+PROBLEM NAME: ppairing
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: N and C
+
+* Lines 2..C + 1: Line i+1 tells the count of pearls with color i: C_i
+
+SAMPLE INPUT (file ppairing.in):
+
+8 3
+2
+2
+4
+
+INPUT DETAILS:
+
+There are 8 pearls and 3 different colors. Two pearls have color I; two
+have color II; four have color III.
+
+OUTPUT FORMAT:
+
+* Lines 1..N/2: Line i contains two integers a_i and b_i indicating
+        that Bessie can pair two pearls with respective colors a_i and
+        b_i.
+
+SAMPLE OUTPUT (file ppairing.out):
+
+1 3
+1 3
+2 3
+3 2
+
+OUTPUT DETAILS:
+
+Bessie pairs each pearl of color III with one of color I and II.
+
+**********************************************************************
+
+</pre><hr>
+<form action="/ioiupload" enctype="multipart/form-data" method="post">
+<input name="a" value="G2RJmKQRJEl" type="hidden">
+
+<table>
+<tbody><tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+  <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+  <table bgcolor="#bfffbf" cellpadding="5" width="100%">
+  <tbody><tr><td><b>Submit a program  for grading:&nbsp;<b><input name="filename" type="file">
+  &nbsp;&nbsp;
+  <input value="Submit" name="submit" type="submit"></b></b></td></tr>
+  </tbody></table>
+
+</font></td><td width="1"></td></tr>
+<tr height="1"><td></td></tr>
+</tbody></table>
+
+
+</td></tr>
+
+<tr><td><hr></td></tr>
+
+<tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+   <table bgcolor="#bfffbf" cellpadding="5" width="100%">
+   <tbody><tr><td colspan="2">
+   <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+   <b>To run your program with your own test data, enter the program<br>
+   file name and input file name then click 'Test':</b></font></td></tr>
+
+  <tr><td>
+
+   <table>
+   <tbody><tr><td>
+     <table>
+     <tbody><tr><td>
+     <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+     <b>Program&nbsp;File:&nbsp;</b></font></td>
+         <td><input name="testprogramname" type="file"></td></tr>
+     <tr><td align="right">
+         <font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+         <b>Input&nbsp;File:&nbsp;</b></font></td>
+         <td><input name="testfilename" type="file"></td></tr>
+     </tbody></table>
+   </td>
+   <td>&nbsp;&nbsp;</td>
+   <td><input value="Test" name="submit" type="submit"></td>
+   </tr>
+   </tbody></table>
+
+   </td></tr></tbody></table>
+
+</td><td width="1"></td></tr>
+<tr height="1"><td></td></tr>
+</tbody></table>
+
+</td></tr>
+<tr><td><hr></td></tr>
+
+<tr><td>
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td height="1"></td></tr>
+<tr><td width="1"></td><td>
+
+<table bgcolor="#bfffbf" cellpadding="5" width="100%">
+<tbody><tr><td>
+<font face="Verdana,Tahoma,sans-serif,Arial,Lucida Sans,Gill Sans">
+<b>Backup a file:&nbsp;</b><input name="backupfilename" type="file">
+&nbsp;&nbsp;&nbsp;<input value="Backup" name="submit" type="submit">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input value="See Backups" name="submit" type="submit">
+</font></td></tr></tbody></table>
+
+</td><td width="1"></td></tr>
+<tr height="1"><td></td><td></td></tr>
+</tbody></table>
+
+</td></tr>
+
+<tr><td><hr></td></tr>
+
+</tbody></table>
+Nothing is currently saved for grading.
+<hr>
+<center>
+<a href="http://ace.delos.com/ioiedit?a=G2RJmKQRJEl">Edit your database record</a>&nbsp;|&nbsp;
+
+<a href="http://ace.delos.com/ioiupload?a=G2RJmKQRJEl&amp;logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?init=1&amp;a=G2RJmKQRJEl">Main contest index</a>
+</center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<a href="http://ace.delos.com/ioiupload?a=G2RJmKQRJEl&amp;showsubmit">See submitted solutions</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=G2RJmKQRJEl&amp;suggestionbox">Send message
+to operations staff</a><br>
+Director is currently online (AIM: RobAtDelos)<br>
+This page was generated at 14:49:20 GMT.
+</center>
+
+</form></body></html>

@@ -1,0 +1,321 @@
+<html><head>
+
+<script language="javascript">
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d ";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h ";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m ";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</script><title>USACO Problems</title></head><body onload="endtime = initcount(355166); updateclock('Elite January, 2006', 'Contest', endtime); endtime = initcount(10800); updateclock('Your Contest Session', 'Person', endtime);" bgcolor="#eeffee">
+<center>
+<table><tbody><tr>
+<td>
+<!--<center><img src='/usaco/cow1.jpg' width='742' height='118'></center>-->
+<center><img src="gold-en_files/cow1.jpg" height="88" width="550"></center>
+</td>
+<td valign="top">
+<table>
+    <tbody><tr><td valign="top"><b>GOLD</b> Division<br></td></tr>
+    <tr><td><div id="Contest">Elite January, 2006: 4d 02h 39m 20s</div></td></tr>
+    <tr><td><div id="Person">Your Contest Session: 02h 59m 54s</div></td></tr>
+    <tr><td></td></tr>
+</tbody></table>
+</td><td></td></tr>
+</tbody></table>
+</center>
+
+
+<pre></pre>
+<pre>**********************************************************************
+                           GOLD PROBLEMS
+**********************************************************************
+                  Three problems numbered 1 through 3
+**********************************************************************
+
+Problem 1: Redundant Paths [Harry Wiggins, 2005]
+
+In order to get from one of the F (1 &lt;= F &lt;= 5,000) grazing fields
+(which are numbered 1..F) to another field, Bessie and the rest of
+the herd are forced to cross near the Tree of Rotten Apples.  The
+cows are now tired of often being forced to take a particular path
+and want to build some new paths so that they will always have a
+choice of at least two separate routes between any pair of fields.
+They currently have at least one route between each pair of fields
+and want to have at least two. Of course, they can only travel on
+Official Paths when they move from one field to another.
+
+Given a description of the current set of R (F-1 &lt;= R &lt;= 10,000)
+paths that each connect exactly two different fields, determine the
+minimum number of new paths (each of which connects exactly two
+fields) that must be built so that there are at least two separate
+routes between any pair of fields. Routes are considered separate
+if they use none of the same paths, even if they visit the same
+intermediate field along the way.
+
+There might already be more than one paths between the same pair of
+fields, and you may also build a new path that connects the same
+fields as some other path.
+
+PROBLEM NAME: rpaths
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: F and R
+
+* Lines 2..F+1: Each line contains two space-separated integers which
+        are the fields at the endpoints of some path.
+
+SAMPLE INPUT (file rpaths.in):
+
+7 7
+1 2
+2 3
+3 4
+2 5
+4 5
+5 6
+5 7
+
+INPUT DETAILS:
+
+One visualization of the paths is:
+   1   2   3
+   +---+---+  
+       |   |
+       |   |
+ 6 +---+---+ 4
+      / 5
+     / 
+    / 
+ 7 +
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer that is the number of new paths that must
+        be built.
+
+SAMPLE OUTPUT (file rpaths.out):
+
+2
+
+OUTPUT DETAILS:
+
+Building new paths from 1 to 6 and from 4 to 7 satisfies the conditions.
+   1   2   3
+   +---+---+  
+   :   |   |
+   :   |   |
+ 6 +---+---+ 4
+      / 5  :
+     /     :
+    /      :
+ 7 + - - - - 
+Check some of the routes:
+1 - 2:  1 -&gt; 2 and 1 -&gt; 6 -&gt; 5 -&gt; 2
+1 - 4:  1 -&gt; 2 -&gt; 3 -&gt; 4 and 1 -&gt; 6 -&gt; 5 -&gt; 4
+3 - 7:  3 -&gt; 4 -&gt; 7 and 3 -&gt; 2 -&gt; 5 -&gt; 7
+Every pair of fields is, in fact, connected by two routes.
+
+**********************************************************************
+
+Problem 2: Roping the Field [Hal Burch, 2004]
+
+Farmer John is quite the nature artist: he often constructs large
+works of art on his farm. Today, FJ wants to construct a giant
+"field web". FJ's field is large convex polygon with fences along
+the boundary and fence posts at each of the N corners (1 &lt;= N &lt;=
+150). To construct his field web, FJ wants to run as many ropes as
+possible in straight lines between pairs of non-adjacent fence posts
+such that no two ropes cross.
+
+There is one complication: FJ's field is not completely usable.
+Some evil aliens have created a total of G (0 &lt;= G &lt;= 100) grain
+circles in the field, all of radius R (1 &lt;= R &lt;= 100,000). FJ is
+afraid to upset the aliens, and therefore doesn't want the ropes
+to pass through, or even touch the very edge of a grain circle.
+Note that although the centers of all the circles are contained
+within the field, a wide radius may make it extend outside of the
+field, and both fences and fence posts may be within a grain circle.
+
+Given the locations of the fence posts and the centers of the
+circles, determine the maximum number of ropes that FJ can use to
+create his field web.
+
+FJ's fence posts and the circle centers all have integer coordinates
+X and Y each of which is in the range 0..1,000,000.
+
+PROBLEM NAME: roping
+
+INPUT FORMAT:
+
+* Line 1: Three space-separated integers: N, G, and R
+
+* Lines 2..N+1: Each line contains two space-separated integers that
+        are the X,Y position of a fence post on the boundary of FJ's
+        field.
+
+* Lines N+2..N+G+1: Each line contains two space-separated integers
+        that are the X,Y position of a circle's center inside FJ's
+        field.
+
+SAMPLE INPUT (file roping.in):
+
+5 3 1
+6 10
+10 7
+9 1
+2 0
+0 3
+2 2
+5 6
+8 3
+
+INPUT DETAILS:
+
+A pentagonal field, in which all possible ropes are blocked by three
+grain circles, except for the rope between fenceposts 2 and 4.
+
+OUTPUT FORMAT:
+
+* Line 1: A single integer that is the largest number of ropes FJ can
+        use for his artistic creation.
+
+SAMPLE OUTPUT (file roping.out):
+
+1
+
+**********************************************************************
+
+Problem 3: Corral the Cows [Marcello Herreshoff, 2005]
+
+Farmer John wishes to build a corral for his cows. Being finicky
+beasts, they demand that the corral be square and that the corral
+contain at least C (1 &lt;= C &lt;= 500) clover fields for afternoon
+treats.
+
+FJ's land contains a total of N (C &lt;= N &lt;= 500) clover fields, each
+a block of size 1 x 1 and located at with its lower left corner at
+integer X and Y coordinates each in the range 1..10,000. Sometimes
+more than one clover field grows at the same location; such a field
+would have its location appear twice (or more) in the input. A
+corral surrounds a clover field if the field is entirely located
+inside the corral's borders.
+
+Help FJ by telling him the side length of the smallest square
+containing C clover fields.
+
+PROBLEM NAME: corral
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: C and N
+
+* Lines 2..N+1: Each line contains two space-separated integers that
+        are the X,Y coordinates of a clover field.
+
+SAMPLE INPUT (file corral.in):
+
+3 4
+1 2
+2 1
+4 1
+5 2
+
+INPUT DETAILS:
+
+|*   *
+| * *
++------
+
+OUTPUT FORMAT:
+
+* Line 1: A single line with a single integer that is length of one
+        edge of the minimum size square that contains at least C
+        clover fields.
+
+SAMPLE OUTPUT (file corral.out):
+
+4
+
+OUTPUT DETAILS:
+
+Below is one 4x4 solution (C's show most of the corral's area); many
+others exist.
+
+|CCCC
+|CCCC
+|*CCC*
+|C*C*
++------
+
+**********************************************************************
+
+</pre><hr>
+<form action="/ioiupload" enctype="multipart/form-data" method="post">
+<input name="a" value="OtRXXiqYath" type="hidden">
+
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td height="1"></td><td>
+
+</td></tr><tr><td width="1"></td><td>
+
+<table bgcolor="#bfffbf" cellpadding="5">
+<tbody><tr><td>Use this form to submit a program for grading:</td>
+<td rowspan="3"><input value="Submit" name="submit" type="submit"></td>
+</tr><tr><td width="60%"><b>Program File:</b><input name="filename" type="file"></td>
+    </tr>
+</tbody></table>
+</td><td width="1"></td>
+
+</tr><tr height="1"><td></td><td></td></tr>
+</tbody></table>
+<hr>
+Nothing is currently saved for grading.
+<hr>
+<center>
+<a href="http://ace.delos.com/ioiedit?a=OtRXXiqYath">Edit your database record</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=OtRXXiqYath&amp;logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?init=1&amp;a=OtRXXiqYath">Main contest index</a>
+</center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<a href="http://ace.delos.com/ioiupload?a=OtRXXiqYath&amp;showsubmit">See submitted solutions</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=OtRXXiqYath&amp;suggestionbox">Send message
+to contest director</a><br>
+Director is not online<br>
+This page was generated at 12:20:34 GMT.
+</center>
+
+</form></body></html>

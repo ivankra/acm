@@ -1,0 +1,66 @@
+
+Problem Statement
+ÿÿÿÿ
+A syntax checker can just accept or reject a string of characters, but it is more helpful if it gives the position of the first character in the string that makes it impossible for the string to be completed correctly syntactically.
+We want to check the syntax of a string of characters that is supposed to represent a fraction. It must contain no spaces and be in the form
+         <integer>/<integer> 
+Each <integer> must consist of 1 or more digits ('0'-'9'). If there is more than one digit, the first digit must not be '0'. We furthermore require that each <integer> must represent a value between 0 and 2^31-1, inclusive, and that the second <integer> (the denominator of the fraction) must be non-zero.
+Create a class FirstError that contains a method firstBad that is given a string frac and that returns the (0-based) index of the first bad character in frac. If it is bad because it ends without satisfying the required syntax, return the end index (the number of characters in frac). If frac is a correct fraction, return -1.
+Definition
+ÿÿÿÿ
+Class:
+FirstError
+Method:
+firstBad
+Parameters:
+string
+Returns:
+int
+Method signature:
+int firstBad(string frac)
+(be sure your method is public)
+ÿÿÿÿ
+
+Constraints
+-
+frac will contain between 1 and 50 characters, inclusive.
+-
+Each character in frac will be between ASCII 32 and ASCII 126, inclusive.
+Examples
+0)
+
+ÿÿÿÿ
+"31416/10000"
+Returns: -1
+This is a legal fraction.
+1)
+
+ÿÿÿÿ
+"3142/1000 a"
+Returns: 9
+The ' ' before the 'a' is at index 9.
+2)
+
+ÿÿÿÿ
+"7/23/5"
+Returns: 4
+The first bad character is the second '/'.
+3)
+
+ÿÿÿÿ
+"4/9876543210"
+Returns: 11
+4/987654321 was possible, but the '0' made the denominator too large.
+4)
+
+ÿÿÿÿ
+"2/03"
+Returns: 2
+The denominator cannot start with '0'.
+5)
+
+ÿÿÿÿ
+"111"
+Returns: 3
+This was a possible fraction until it terminated too early, so the return is the end index (the number of characters in frac).
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

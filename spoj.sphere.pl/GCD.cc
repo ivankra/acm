@@ -1,0 +1,1 @@
+G(x,y){return y?G(y,x%y):x;}char s[999];main(i){while(gets(s)){int g=0,j;for(i=0;s[i];i++)for(j=0;s[j];j++)if(s[i]>s[j])g=G(g,9*(s[i]-s[j]));if(g){for(i=j=0;s[i];)j=(j*10+s[i++]-48)%g;printf("%d\n",G(g,j));}else puts(s);}}

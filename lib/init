@@ -1,0 +1,8 @@
+#!/bin/echo You need to execute this file with 'source .init'
+export CFLAGS='-Wall -W -Wshadow -Wno-sign-compare -pipe -g3 -D_FORTIFY_SOURCE=0'
+alias g='rm -f ./p core; g++ $CFLAGS -O2 -o p p.cc'
+alias p='./p'
+alias gp='g && ./p'
+alias pg='g && ./p'
+ulimit -c unlimited
+alias pm='gdb -c core'    # post-mortem

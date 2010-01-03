@@ -1,0 +1,102 @@
+
+Problem Statement
+ÿÿÿÿ
+Crazy Painter is a computer drawing program that contains only a pencil tool. When the mouse button is pressed down, the tool continuously draws black points following the movement of the cursor. When the mouse button is not pressed down, the tool is inactive and nothing is drawn. Initially, the entire picture is empty (i.e., white).
+You will be given a vector <string> containing a list of segments in the form "x1,y1-x2,y2" where (x1,y1) and (x2,y2) are the coordinates of a segment's endpoints. These segments form a picture consisting of black lines against a white background. Your task is to reproduce this exact picture using Crazy Painter. There will be many different ways to do this. Choose the ones that minimize the total distance travelled by the mouse cursor while the mouse button is pressed down. Then, from among those, determine the minimum number of button presses that are required, and return that value.
+To minimize the total distance travelled by the cursor while the button is down, you must draw only as many lines as needed. Therefore, if segments in the input overlap, the overlapping parts should only be drawn once. Single points (like segment intersections) may be drawn more than once, since they have zero length. See example 2 for further clarification.
+Definition
+ÿÿÿÿ
+Class:
+CrazyPainter
+Method:
+minimumDraws
+Parameters:
+vector <string>
+Returns:
+int
+Method signature:
+int minimumDraws(vector <string> segments)
+(be sure your method is public)
+ÿÿÿÿ
+
+Notes
+-
+The picture is not made up of pixels; segments have no width, and intersections of segments are perfect points with no surface and no length.
+-
+Segments in the input can have zero length (i.e., be single points). See example 2 for clarification.
+Constraints
+-
+segments will have between 1 and 50 elements, inclusive.
+-
+Each element of segments will have between 1 and 50 characters, inclusive.
+-
+Each element of segments will be a list of one or more expressions of the form "x1,y1-x2,y2" separated by exactly one space and no leading or trailing spaces, where x1, y1, x2 and y2 are integers between 1 and 99999, inclusive, with no leading zeroes.
+Examples
+0)
+
+ÿÿÿÿ
+{"1,1-1,11 11,11-1,11 11,1-11,11 11,1-1,1 11,5-21,5"}
+Returns: 1
+This is the shape of what you have to draw here, the asterisks being the endpoints of the segments:
+  |
+11| *-----* 
+  | |     |
+ 5| |     *-----*
+  | |     |
+ 1| *-----*
+--+---------------
+ 0| 1    11     21
+First move the cursor to (21,5), Then, press and hold down the mouse button, and go to (11,5). With the button still down, go around the square. Only one click is required for the entire drawing.
+1)
+
+ÿÿÿÿ
+{"1,1-11,11",
+ "8,4-11,1",
+ "1,11-4,8"}
+Returns: 3
+These three segments are completely separated, so you need 3 presses.
+  |
+11| \     / 
+  |  \   / 
+ 8|     / 
+ 6|    /
+ 4|   /  
+  |  /   \
+ 1| /     \
+--+---------------
+ 0| 1 468 11    
+2)
+
+ÿÿÿÿ
+{"1,1-1,1",
+ "2,2-2,2",
+ "2,2-2,2",
+ "11,11-22,22",
+ "15,15-16,16",
+ "20,20-20,20"}
+Returns: 3
+Watch out for the dots at (1,1) and (2,2) (which you must paint) and the overlapping segments. You must only paint the overlapping part once.
+3)
+
+ÿÿÿÿ
+{"1,1-1,11 11,11-1,11 11,1-11,11 11,1-1,1",
+ "5,5-5,15 15,15-5,15 15,5-15,15 15,5-5,5"}
+Returns: 1
+15|    *-----*
+  |    |     |
+11| *--+--*  |
+  | |  |  |  |
+ 5| |  *--+--*
+  | |     |
+ 1| *-----*
+--+---------------
+ 0| 1    11     21
+4)
+
+ÿÿÿÿ
+{"89,27-63,45 24,88-81,1 37,34-22,80",
+ "95,1-1,60 29,74-2,19 72,63-3,13 97,63-65,82",
+ "3,13-24,88 72,63-81,1 78,42-3,5"}
+Returns: 6
+
+This problem statement is the exclusive and proprietary property of TopCoder, Inc. Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited. (c)2003, TopCoder, Inc. All rights reserved.

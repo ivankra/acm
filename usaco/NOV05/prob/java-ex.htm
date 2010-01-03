@@ -1,0 +1,87 @@
+<html><head>
+
+<title>JAVA I/O Example</title></head>
+<body background="java-ex_files/bg9.jpg" bgcolor="#ffffff"><table><tbody><tr>
+<td>
+
+<center><img src="java-ex_files/cow1.jpg" height="118" width="742"></center>
+</td>
+<td>Welcome!</td>
+</tr>
+</tbody></table>
+<center>This page was generated at 20:38:20 GMT.<br>
+You have not started the contest timer yet<br>Contest ends in 1 day 18 hours 21 minutes 40 seconds.
+</center>
+
+<pre></pre>
+Here are some quick hints and tips for contest submissions:
+<ul>
+<li> the header has no extra characters in front of the keywords
+</li><li> the entire submission is in a single file
+</li><li> one large class solves the task
+</li><li> the public class is named the same as the problem name (see below
+for an example that solves the 'test' task)
+</li><li> most people seem to include the two import commands (see below)
+</li><li> see below for the declaration of the 'main' program
+</li><li> reads input data from test.in and and writes to test.out -- these
+names change for each task
+</li><li> example I/O for integers is shown below
+</li></ul>
+
+Below is the 'test' program (which sums two numbers) written
+in Java.
+<hr>
+<pre>/*
+ID:  your_id_here
+LANG: JAVA
+TASK: test
+*/
+import java.io.*;
+import java.util.*;
+
+class test {
+  public static void main (String [] args) throws IOException {
+    RandomAccessFile f = new RandomAccessFile ("test.in", "r");
+                                                  // input file name goes above
+    PrintWriter out = new PrintWriter(
+            new BufferedWriter(
+            new FileWriter("test.out")));	  // output file name
+
+    String s = f.readLine();                      // gets entire line
+    StringTokenizer st = new StringTokenizer(s);  // breaks line into pieces
+    int i1 = Integer.parseInt(st.nextToken());    // first piece becomes an integer
+    int i2 = Integer.parseInt(st.nextToken());    // second piece becomes an integer
+    out.println(i1+i2);                           // output result
+    out.close();                                  // close the output file
+    System.exit(0);                               // don't omit this!
+  }
+}
+</pre>
+<hr>
+<form action="/ioiupload" enctype="multipart/form-data" method="post">
+<input name="a" value="PvgDEJq9JY7" type="hidden">
+
+<table bgcolor="#bfffbf" cellpadding="5">
+<tbody><tr><td>Use this form to submit a program for grading:</td>
+<td rowspan="3"><input value="Submit" name="submit" type="submit"></td>
+</tr><tr><td width="60%"><b>Program File:</b><input name="filename" type="file"></td>
+    </tr>
+</tbody></table>
+<hr>
+Nothing is currently saved for grading.
+<hr>
+<center>
+<a href="http://ace.delos.com/ioiupload?a=PvgDEJq9JY7&amp;logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+ | 
+<a href="http://ace.delos.com/ioiupload?init=1&amp;a=PvgDEJq9JY7">Main contest index</a>
+</center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<a href="http://ace.delos.com/ioiupload?a=PvgDEJq9JY7&amp;showsubmit">See submitted solutions</a>
+ | 
+<a href="http://ace.delos.com/ioiupload?a=PvgDEJq9JY7&amp;suggestionbox">Send message
+to contest director</a><br>
+Director is currently online (AIM: RobAtDelos)
+</center>
+</form></body></html>

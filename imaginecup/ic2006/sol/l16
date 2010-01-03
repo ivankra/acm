@@ -1,0 +1,29 @@
+31
+g(N,S):SSlSllSSllSlSSlg(N-1,S)
+z(S):g(4,S)z(Ss)
+z()
+
+d(X):XX
+g(N,S):SSld(SllS)lSSlg(N-1,S)
+z(S):g(4,S)z(Ss)
+z()
+
+24
+d(X):XX
+z(S):d(d(SSld(SllS)lSSl))z(Ss)
+z()
+
+z(S):
+SSl SllSSllS lSSlSS l SllSSllS lSSlSS l SllSSllS lSSlSS l SllSSllS l SSl z(Ss)
+
+SSl d(SllS)d(lSS)l d(SllS)d(lSS)l d(SllS)d(lSS)l d(SllS) l SSl z(Ss)
+
+z(S):SSld(SllS)d(lSS)l
+z(s)
+
+
+
+24
+d(X):XX
+z(S):d(d(SSld(SllS)lSSl))z(Ss)
+z()

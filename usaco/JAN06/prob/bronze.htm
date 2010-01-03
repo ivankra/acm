@@ -1,0 +1,297 @@
+<html><head>
+
+<script language="javascript">
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d ";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h ";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m ";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</script><title>USACO Problems</title></head><body onload=" " bgcolor="#eeffee">
+<center>
+<table><tbody><tr>
+<td>
+<!--<center><img src='/usaco/cow1.jpg' width='742' height='118'></center>-->
+<center><img src="bronze_files/cow1.jpg" height="88" width="550"></center>
+</td>
+<td valign="top">
+<table>
+    <tbody><tr><td valign="top"><b>GOLD</b> Division<br></td></tr>
+    <tr><td>Contest is over</td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+</tbody></table>
+</td><td></td></tr>
+</tbody></table>
+</center>
+
+<br><font size="6"><b>ANALYSIS MODE</b></font><br>
+Submit solutions for your own enjoyment.
+
+<pre></pre>
+<pre>**********************************************************************
+                           BRONZE PROBLEMS
+**********************************************************************
+                  Three problems numbered 11 through 13
+**********************************************************************
+
+Problem 11: Stump Removal [Graham Poulter, 2005]
+
+Always thinking of the cows' grazing experience, FJ has found that
+he must remove N (1 &lt;= N &lt;= 50,000) unsightly stumps from the
+pasture. The stumps are conveniently arranged in a straight line
+and numbered 1..N with each stump having some height H_i (1 &lt;= H_i
+&lt;= 10,000).
+
+FJ will use the traditional high explosives to destroy the stumps.
+These high explosives are formulated to destroy adjacent stumps as
+long as those adjacent stumps are strictly shorter than the nearest
+stump being destroyed. The blast can continue past the closest
+adjacent stump to the next adjacent stump if it is even shorter
+than the nearest stump just destroyed.  As soon as a stump encountered
+by the blast wave is not shorter, though, no more destruction occurs
+on that side of the target stump (the other side follows the same
+rules with whatever stumps might appear there).
+
+Consider a line of nine stumps with these heights:
+
+              1 2 5 4 3 3 6 6 2
+
+If FJ blows up the third stump (with height 5), then the second
+stump will also be destroyed (height 2) and the first stump (height
+1) will also be destroyed. Likewise, the fourth stump (height 4)
+and fifth stump (height 3) will be destroyed since they are
+successively shorter, leaving the line like this:
+
+              * * * * * 3 6 6 2
+
+Two more explosives (at stumps 7 and 8) will destroy the rest.
+
+Help FJ determine the minimum number of explosive charges he needs
+to destroy the stumps.
+
+PROBLEM NAME: stumps
+
+INPUT FORMAT:
+
+* Line 1: A single integer, N
+
+* Lines 2..N+1: Line i+1 contains H_i
+
+SAMPLE INPUT (file stumps.in):
+
+9
+1
+2
+5
+4
+3
+3
+6
+6
+2
+
+OUTPUT FORMAT:
+
+* Lines 1..?: Each line contains one integer which is the index of a
+        stump to blow up. The indices must be listed in increasing
+        order.
+
+SAMPLE OUTPUT (file stumps.out):
+
+3
+7
+8
+
+**********************************************************************
+
+Problem 12: Finicky Grazers [Osman, 2005]
+
+Farmer John's N (1 &lt;= N &lt;= 10,000) cows (conveniently numbered 1..N)
+graze in a straight line in their pasture whose length is L+1 (N
+&lt;= L &lt;= 100,000) meters. Every morning, they place themselves at
+various unique integer locations along that line. FJ has observed
+that the cows produce more milk when the distance to the other
+grazing cows is maximized.
+
+Always the enterprising farmer, FJ wants to maximize the distance
+between each and every pair of neighboring cows by moving the cows
+to the right or left, but always with integer inter-cow spacing and
+never changing their order on the line. He spends 1 minute to move
+a cow 1 meter. When he's finished, he knows that the distances
+between every adjacent pair of cows will be one of two integers: D
+or D+1.
+
+Help FJ to calculate minimum time he needs to arrange the positions
+of the cows.
+
+PROBLEM NAME: graze1
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers, N and L
+
+* Lines 2..N+1: Line i+1 describes cow i with a single integer (range
+        0..L) representing the position of a cow; 0 is the left-most
+        position. The list is sorted by position with the smallest
+        position value first.
+
+SAMPLE INPUT (file graze1.in):
+
+5 10
+0
+1
+4
+9
+10
+
+INPUT DETAILS:
+
+The cows are arranged like this at the start:
+1 2 - - 3 - - - - 4 5
+
+OUTPUT FORMAT:
+
+* Line 1: A single line with minimum time FJ needs to arrange the
+        positions of the  cows.
+
+SAMPLE OUTPUT (file graze1.out):
+
+3
+
+OUTPUT DETAILS:
+
+The cows end up arranged like this:
+1 - 2 - 3 - - 4 - - 5
+Cow #2 moves from position 1 to position 2 (1 meter).  Cow #4 moves
+from position 9 to position 7 (2 meters).  Other cows don't move.
+Moving times are 1+2=3, which is the final answer.
+
+**********************************************************************
+
+Problem 13: The Water Bowls [Hal Burch, 2005]
+
+The cows have a line of 20 water bowls from which they drink. The
+bowls can be either right-side-up (properly oriented to serve
+refreshing cool water) or upside-down (a position which holds no
+water). They want all 20 water bowls to be right-side-up and thus
+use their wide snouts to flip bowls.
+
+Their snouts, though, are so wide that they flip not only one bowl
+but also the bowls on either side of that bowl (a total of three
+or -- in the case of either end bowl -- two bowls).
+
+Given the initial state of the bowls (1=undrinkable, 0=drinkable
+-- it even looks like a bowl), what is the minimum number of bowl
+flips necessary to turn all the bowls right-side-up?
+
+PROBLEM NAME: bowls
+
+INPUT FORMAT:
+
+* Line 1: A single line with 20 space-separated integers
+
+SAMPLE INPUT (file bowls.in):
+
+0 0 1 1 1 0 0 1 1 0 1 1 0 0 0 0 0 0 0 0
+
+OUTPUT FORMAT:
+
+* Line 1: The minimum number of bowl flips necessary to flip all the
+        bowls right-side-up (i.e., to 0).  For the inputs given, it
+        will always be possible to find some combination of flips that
+        will manipulate the bowls to 20 0's.
+
+SAMPLE OUTPUT (file bowls.out):
+
+3
+
+OUTPUT DETAILS:
+
+Flip bowls 4, 9, and 11 to make them all drinkable:
+0 0 1 1 1 0 0 1 1 0 1 1 0 0 0 0 0 0 0 0 [initial state]
+0 0 0 0 0 0 0 1 1 0 1 1 0 0 0 0 0 0 0 0 [after flipping bowl 4]
+0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 0 0 [after flipping bowl 9]
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 [after flipping bowl 11]
+
+**********************************************************************
+
+</pre><hr>
+<form action="/ioiupload" enctype="multipart/form-data" method="post">
+<input name="a" value="OtRXXiqYath" type="hidden">
+
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td height="1"></td><td>
+
+</td></tr><tr><td width="1"></td><td>
+
+<table bgcolor="#bfffbf" cellpadding="5">
+<tbody><tr><td>Use this form to submit a program for grading:</td>
+<td rowspan="3"><input value="Submit" name="submit" type="submit"></td>
+</tr><tr><td width="60%"><b>Program File:</b><input name="filename" type="file"></td>
+    </tr>
+</tbody></table>
+</td><td width="1"></td>
+
+</tr><tr height="1"><td></td><td></td></tr>
+</tbody></table>
+<hr>
+The following solution files are saved for grading:<br>
+<table cellspacing="2">
+<tbody><tr><th>Name</th><th>Size</th><th>When</th><th>Age</th></tr>
+<tr><td><a href="http://ace.delos.com/ioiupload?a=OtRXXiqYath&amp;seesaved=corral.c">corral.c</a></td>
+<td align="right">1233</td>
+<td align="right"> 7h39:48</td>
+<td align="right">121h58:53</td></tr>
+<tr><td><a href="http://ace.delos.com/ioiupload?a=OtRXXiqYath&amp;seesaved=rpaths.c">rpaths.c</a></td>
+<td align="right">1307</td>
+<td align="right"> 8h06:40</td>
+<td align="right">121h32:01</td></tr>
+</tbody></table>
+<hr>
+<center>
+<a href="http://ace.delos.com/ioiedit?a=OtRXXiqYath">Edit your database record</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=OtRXXiqYath&amp;logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?init=1&amp;a=OtRXXiqYath">Main contest index</a>
+</center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<a href="http://ace.delos.com/ioiupload?a=OtRXXiqYath&amp;showsubmit">See submitted solutions</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=OtRXXiqYath&amp;suggestionbox">Send message
+to contest director</a><br>
+Director is currently online (AIM: RobAtDelos)<br>
+This page was generated at 16:38:41 GMT.
+</center>
+
+</form></body></html>

@@ -1,0 +1,157 @@
+0 0 0
+
+:L
+>a ZaT0
+>b ZbT1
+>c ZcT2
+>d ZdT3
+>e ZeT4
+>f ZfT5
+>g ZgT6
+>h ZhT7
+>i ZiT8
+>j ZjT9
+>k ZkT10
+>l ZlT11
+>m ZmT12
+>n ZnT13
+>o ZoT14
+>p ZpT15
+>q ZqT16
+>r ZrT17
+>s ZsT18
+>t ZtT19
+>u ZuT20
+>v ZvT21
+>w ZwT22
+>x ZxT23
+>y ZyT24
+:A >z ZzD <z JA :D 0
+:B >z ZzE <z JB :E <a <b <c <d <e <f <g <h <i <j <k <l <m <n <o <p <q <r <s <t <u <v <w <x <y 0
+:C >z ZzF <z JC :F <a <b <c <d <e <f <g <h <i <j <k <l <m <n <o <p <q <r <s <t <u <v <w <x <y 0
+JL
+
+:T1
+:B1 >z ZzE1 <z JB1 :E1 <a 0
+:C1 >z ZzF1 <z JC1 :F1 <a 0
+JT0
+
+:T2
+:B2 >z ZzE2 <z JB2 :E2 <a <b 0
+:C2 >z ZzF2 <z JC2 :F2 <a <b 0
+JT0
+
+:T3
+:B3 >z ZzE3 <z JB3 :E3 <a <b <c 0
+:C3 >z ZzF3 <z JC3 :F3 <a <b <c 0
+JT0
+
+:T4
+:B4 >z ZzE4 <z JB4 :E4 <a <b <c <d 0
+:C4 >z ZzF4 <z JC4 :F4 <a <b <c <d 0
+JT0
+
+:T5
+:B5 >z ZzE5 <z JB5 :E5 <a <b <c <d <e 0
+:C5 >z ZzF5 <z JC5 :F5 <a <b <c <d <e 0
+JT0
+
+:T6
+:B6 >z ZzE6 <z JB6 :E6 <a <b <c <d <e <f 0
+:C6 >z ZzF6 <z JC6 :F6 <a <b <c <d <e <f 0
+JT0
+
+:T7
+:B7 >z ZzE7 <z JB7 :E7 <a <b <c <d <e <f <g 0
+:C7 >z ZzF7 <z JC7 :F7 <a <b <c <d <e <f <g 0
+JT0
+
+:T8
+:B8 >z ZzE8 <z JB8 :E8 <a <b <c <d <e <f <g <h 0
+:C8 >z ZzF8 <z JC8 :F8 <a <b <c <d <e <f <g <h 0
+JT0
+
+:T9
+:B9 >z ZzE9 <z JB9 :E9 <a <b <c <d <e <f <g <h <i 0
+:C9 >z ZzF9 <z JC9 :F9 <a <b <c <d <e <f <g <h <i 0
+JT0
+
+:T10
+:B10 >z ZzE10 <z JB10 :E10 <a <b <c <d <e <f <g <h <i <j 0
+:C10 >z ZzF10 <z JC10 :F10 <a <b <c <d <e <f <g <h <i <j 0
+JT0
+
+:T11
+:B11 >z ZzE11 <z JB11 :E11 <a <b <c <d <e <f <g <h <i <j <k 0
+:C11 >z ZzF11 <z JC11 :F11 <a <b <c <d <e <f <g <h <i <j <k 0
+JT0
+
+:T12
+:B12 >z ZzE12 <z JB12 :E12 <a <b <c <d <e <f <g <h <i <j <k <l 0
+:C12 >z ZzF12 <z JC12 :F12 <a <b <c <d <e <f <g <h <i <j <k <l 0
+JT0
+
+:T13
+:B13 >z ZzE13 <z JB13 :E13 <a <b <c <d <e <f <g <h <i <j <k <l <m 0
+:C13 >z ZzF13 <z JC13 :F13 <a <b <c <d <e <f <g <h <i <j <k <l <m 0
+JT0
+
+:T14
+:B14 >z ZzE14 <z JB14 :E14 <a <b <c <d <e <f <g <h <i <j <k <l <m <n 0
+:C14 >z ZzF14 <z JC14 :F14 <a <b <c <d <e <f <g <h <i <j <k <l <m <n 0
+JT0
+
+:T15
+:B15 >z ZzE15 <z JB15 :E15 <a <b <c <d <e <f <g <h <i <j <k <l <m <n <o 0
+:C15 >z ZzF15 <z JC15 :F15 <a <b <c <d <e <f <g <h <i <j <k <l <m <n <o 0
+JT0
+
+:T16
+:B16 >z ZzE16 <z JB16 :E16 <a <b <c <d <e <f <g <h <i <j <k <l <m <n <o <p 0
+:C16 >z ZzF16 <z JC16 :F16 <a <b <c <d <e <f <g <h <i <j <k <l <m <n <o <p 0
+JT0
+
+:T17
+:B17 >z ZzE17 <z JB17 :E17 <a <b <c <d <e <f <g <h <i <j <k <l <m <n <o <p <q 0
+:C17 >z ZzF17 <z JC17 :F17 <a <b <c <d <e <f <g <h <i <j <k <l <m <n <o <p <q 0
+JT0
+
+:T18
+:B18 >z ZzE18 <z JB18 :E18 <a <b <c <d <e <f <g <h <i <j <k <l <m <n <o <p <q <r 0
+:C18 >z ZzF18 <z JC18 :F18 <a <b <c <d <e <f <g <h <i <j <k <l <m <n <o <p <q <r 0
+JT0
+
+:T19
+:B19 >z ZzE19 <z JB19 :E19 <a <b <c <d <e <f <g <h <i <j <k <l <m <n <o <p <q <r <s 0
+:C19 >z ZzF19 <z JC19 :F19 <a <b <c <d <e <f <g <h <i <j <k <l <m <n <o <p <q <r <s 0
+JT0
+
+:T20
+:B20 >z ZzE20 <z JB20 :E20 <a <b <c <d <e <f <g <h <i <j <k <l <m <n <o <p <q <r <s <t 0
+:C20 >z ZzF20 <z JC20 :F20 <a <b <c <d <e <f <g <h <i <j <k <l <m <n <o <p <q <r <s <t 0
+JT0
+
+:T21
+:B21 >z ZzE21 <z JB21 :E21 <a <b <c <d <e <f <g <h <i <j <k <l <m <n <o <p <q <r <s <t <u 0
+:C21 >z ZzF21 <z JC21 :F21 <a <b <c <d <e <f <g <h <i <j <k <l <m <n <o <p <q <r <s <t <u 0
+JT0
+
+:T22
+:B22 >z ZzE22 <z JB22 :E22 <a <b <c <d <e <f <g <h <i <j <k <l <m <n <o <p <q <r <s <t <u <v 0
+:C22 >z ZzF22 <z JC22 :F22 <a <b <c <d <e <f <g <h <i <j <k <l <m <n <o <p <q <r <s <t <u <v 0
+JT0
+
+:T23
+:B23 >z ZzE23 <z JB23 :E23 <a <b <c <d <e <f <g <h <i <j <k <l <m <n <o <p <q <r <s <t <u <v <w 0
+:C23 >z ZzF23 <z JC23 :F23 <a <b <c <d <e <f <g <h <i <j <k <l <m <n <o <p <q <r <s <t <u <v <w 0
+JT0
+
+:T24
+:B24 >z ZzE24 <z JB24 :E24 <a <b <c <d <e <f <g <h <i <j <k <l <m <n <o <p <q <r <s <t <u <v <w <x 0
+:C24 >z ZzF24 <z JC24 :F24 <a <b <c <d <e <f <g <h <i <j <k <l <m <n <o <p <q <r <s <t <u <v <w <x 0
+JT0
+
+:T0
+:R1 >z ZzR2 <z JR1
+:R2 >z ZzR3 <z JR2
+:R3

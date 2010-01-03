@@ -1,0 +1,71 @@
+<html><head> <title>NOV05 asteroid analysis</title></head>
+<body bgcolor="#ffffff">
+<center><img src="asteroid_files/cow1.jpg" height="118" width="742"></center>
+<h2>November 2005 Problem 'asteroid' Analysis</h2>
+<center>by Bruce Merry</center>
+<p>
+This is a good example of a `cover' problem - some minimal number of
+sets must be chosen, so that their union completely contains some
+other set. In this case the sets consist of either the rows or the
+columns of the grid, and the target set consists of the asteroids.
+</p><p>
+As with many solvable cover problems, there is a connection to
+network flow and the maxflow-mincut theorem. Construct a network
+with a node for each row and each column of the grid, and an abstract
+source and sink. The source connects to each row node, and each
+column node connects to the sink. A row node connects to a column
+node wherever there is an asteroid in that row and column. All edges
+have weight 1 and are directed. Now consider any cut of the network
+that cuts only source-row or column-sink edges. Using the laser on
+the corresponding rows and columns of the asteroid field will destroy
+all the asteroids - if there was any asteroid left, the corresponding
+source-row-column-sink path would still be open in the network.
+Cutting a row-column edge of the network is equivalent to destroying
+one asteroid - the rules don't explicitly allow for this, but it
+doesn't matter because it can be achieved by blasting the entire
+row or column.  So the answer is just the minimum cut of the network,
+which is the same as the maximum flow.
+</p><p>
+Here is Chinese senior Maigo Akisame's solution (<i>which might be
+cleverer than the analysis above...RK</i>):
+</p><pre>program asteroid;
+const
+  maxn=500;
+var
+  g:array[1..maxn,1..maxn]of boolean;
+  my:array[1..maxn]of word;
+  vx:array[1..maxn]of boolean;
+  n,k,i,x,y:longint;
+function aug(x:word):boolean;
+  var
+    y:word;
+  begin
+    aug:=false;
+    if vx[x] then exit;
+    vx[x]:=true;
+    for y:=1 to n do
+      if g[x,y] and ((my[y]=0) or aug(my[y])) then begin
+        my[y]:=x;aug:=true;exit;
+      end;
+  end;
+
+begin
+  assign(input,'asteroid.in');reset(input);
+  assign(output,'asteroid.out');rewrite(output);
+
+  fillchar(g,sizeof(g),0);
+  read(n,k);
+  for i:=1 to k do begin
+    read(x,y);g[x,y]:=true;
+  end;
+
+  k:=0;
+  for i:=1 to n do begin
+    fillchar(vx,sizeof(vx),0);
+    if aug(i) then inc(k);
+  end;
+  writeln(k);
+
+  close(input);close(output);
+end.
+</pre></body></html>

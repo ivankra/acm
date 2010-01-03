@@ -1,0 +1,209 @@
+<html><head>
+
+<title>USACO Problems</title></head>
+<body background="prob_files/bg9.jpg" bgcolor="#ffffff"><table><tbody><tr>
+<td>
+
+<center><img src="prob_files/cow1.jpg" height="118" width="742"></center>
+</td>
+<td>Welcome!</td>
+</tr>
+</tbody></table>
+<center>This page was generated at 20:38:52 GMT.<br>
+You have 3 hours and 0.0 minutes remaining for contest submissions.<br>Contest ends in 1 day 18 hours 21 minutes 8 seconds.
+</center>
+
+<pre></pre>
+<pre>**********************************************************************
+                           BRONZE PROBLEMS
+**********************************************************************
+                  Three problems numbered 11 through 13
+**********************************************************************
+
+Problem 11: Securing the Barn [Traditional, 2005]
+
+Farmer John has installed a new security system on the barn and now
+must issue a valid password to the cows in the herd. A valid password
+consists of L (3 &lt;= L &lt;= 15) different lower-case characters (from the
+traditional latin character set 'a'...'z'), has at least one vowel
+('a', 'e', 'i', 'o', or 'u'), at least two consonants (non-vowels),
+and has characters that appear in alphabetical order (i.e., 'abc'
+is valid; 'bac' is not).
+
+Given a desired length L along with C lower-case characters, write a
+program to print all the valid passwords of length L that can be formed
+from those letters. The passwords must be printed in alphabetical order,
+one per line.
+
+PROBLEM NAME: passwd
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers, L and C
+
+* Line 2: C space-separated lower-case characters that are the set of
+        characters from which to build the passwords
+
+SAMPLE INPUT (file passwd.in):
+
+4 6
+a t c i s w
+
+INPUT DETAILS:
+
+Passwords of length 4 chosen from the given six characters
+
+OUTPUT FORMAT:
+
+* Lines 1..?: Each output line contains a word of length L characters
+        (and no spaces). The output lines must appear in alphabetical
+        order.
+
+SAMPLE OUTPUT (file passwd.out):
+
+acis
+acit
+aciw
+acst
+acsw
+actw
+aist
+aisw
+aitw
+astw
+cist
+cisw
+citw
+istw
+
+**********************************************************************
+
+Problem 12: Hopscotch [Hal Burch, 2005]
+
+The cows play the child's game of hopscotch in a non-traditional
+way.  Instead of a linear set of numbered boxes into which to hop,
+the cows create a 5x5 rectilinear grid of digits parallel to the
+x and y axes.
+
+They then adroitly hop onto any digit in the grid and hop forward,
+backward, right, or left (never diagonally) to another digit in the
+grid. They hop again (same rules) to a digit (potentially a digit
+already visited).
+
+With a total of five intra-grid hops, their hops create a six-digit
+integer (which might have leading zeroes like 000201).
+
+Determine the count of the number of distinct integers that can be
+created in this manner.
+
+PROBLEM NAME: numgrid
+
+INPUT FORMAT:
+
+* Lines 1..5: The grid, five integers per line
+
+SAMPLE INPUT (file numgrid.in):
+
+1 1 1 1 1
+1 1 1 1 1
+1 1 1 1 1
+1 1 1 2 1
+1 1 1 1 1
+
+OUTPUT FORMAT:
+
+* Line 1: The number of distinct integers that can be constructed
+
+SAMPLE OUTPUT (file numgrid.out):
+
+15
+
+OUTPUT DETAILS:
+
+111111, 111112, 111121, 111211, 111212, 112111, 112121, 121111, 121112,
+121211, 121212, 211111, 211121, 212111, and 212121 can be constructed.  No
+other values are possible.
+
+**********************************************************************
+
+Problem 13: Satellite Photographs [Rob Kolstad, 2005]
+
+Farmer John purchased satellite photos of W x H pixels of his farm
+(1 &lt;= W &lt;= 80, 1 &lt;= H &lt;= 1000) and wishes to determine the largest
+'contiguous' (connected) pasture. Pastures are contiguous when any
+pair of pixels in a pasture can be connected by traversing adjacent
+vertical or horizontal pixels that are part of the pasture.  (It is
+easy to create pastures with very strange shapes, even circles that
+surround other circles.)
+
+Each photo has been digitally enhanced to show pasture area as an
+asterisk ('*') and non-pasture area as a period ('.').  Here is a
+10 x 5 sample satellite photo:
+ 
+..*.....**
+.**..*****
+.*...*....
+..****.***
+..****.***
+ 
+This photo shows three contiguous pastures of 4,  16, and 6 pixels.  
+Help FJ find the largest contiguous pasture in each of his satellite
+photos.
+
+PROBLEM NAME: satpix
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: W and H
+
+* Lines 2..H+1: Each line contains W "*" or "." characters
+        representing one raster line of a satellite photograph.
+
+SAMPLE INPUT (file satpix.in):
+
+10 5
+..*.....**
+.**..*****
+.*...*....
+..****.***
+..****.***
+
+OUTPUT FORMAT:
+
+* Line 1: The size of the largest contiguous field in the satellite
+        photo.
+
+SAMPLE OUTPUT (file satpix.out):
+
+16
+
+**********************************************************************
+
+</pre><hr>
+<form action="/ioiupload" enctype="multipart/form-data" method="post">
+<input name="a" value="PvgDEJq9JY7" type="hidden">
+
+<table bgcolor="#bfffbf" cellpadding="5">
+<tbody><tr><td>Use this form to submit a program for grading:</td>
+<td rowspan="3"><input value="Submit" name="submit" type="submit"></td>
+</tr><tr><td width="60%"><b>Program File:</b><input name="filename" type="file"></td>
+    </tr>
+</tbody></table>
+<hr>
+Nothing is currently saved for grading.
+<hr>
+<center>
+<a href="http://ace.delos.com/ioiupload?a=PvgDEJq9JY7&amp;logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+ | 
+<a href="http://ace.delos.com/ioiupload?init=1&amp;a=PvgDEJq9JY7">Main contest index</a>
+</center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<a href="http://ace.delos.com/ioiupload?a=PvgDEJq9JY7&amp;showsubmit">See submitted solutions</a>
+ | 
+<a href="http://ace.delos.com/ioiupload?a=PvgDEJq9JY7&amp;suggestionbox">Send message
+to contest director</a><br>
+Director is currently online (AIM: RobAtDelos)
+</center>
+</form></body></html>

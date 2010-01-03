@@ -1,0 +1,310 @@
+<html><head>
+
+<script language="javascript">
+<!--
+    var endtime;
+    
+    function initcount(secondsleft) {
+        var now = new Date();
+        return now.getTime() + secondsleft*1000;
+    }
+    function count1(i) { i = i - i%1; return i; } 
+    function count2(i) { i = i - i%1; if (i < 10) return "0"+i; return i; }
+    function updateclock(head, word, endtime) {
+        var now = new Date();
+        var delta = (endtime - now.getTime())/1000;
+        var s, x;
+        if(delta < 1)
+            s = head + " has ended";
+        else{
+            s = head + " ends: ";
+            s = head + ": ";
+            if(delta >= 24*3600)
+                s = s + count1(delta/86400) + "d ";
+            if(delta >= 3600)
+                s = s + count2((delta/3600)%24) + "h ";
+            if(delta >= 60)
+                s = s + count2((delta/60)%60) + "m ";
+            s = s + count2(delta%60) + "s";
+            setTimeout("updateclock('"+head+"','"+word+"',"+endtime+")", 500);
+        }
+
+        var slot = document.getElementById(word);
+        slot.innerHTML = s;
+    }
+-->
+</script><title>USACO Problems</title></head><body onload=" " bgcolor="#eeffee">
+<center>
+<table><tbody><tr>
+<td>
+<!--<center><img src='/usaco/cow1.jpg' width='742' height='118'></center>-->
+<center><img src="silver_files/cow1.jpg" height="88" width="550"></center>
+</td>
+<td valign="top">
+<table>
+    <tbody><tr><td valign="top"><b>GOLD</b> Division<br></td></tr>
+    <tr><td>Contest is over</td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+</tbody></table>
+</td><td></td></tr>
+</tbody></table>
+</center>
+
+<br><font size="6"><b>ANALYSIS MODE</b></font><br>
+Submit solutions for your own enjoyment.
+
+<pre></pre>
+<pre>**********************************************************************
+                           SILVER PROBLEMS
+**********************************************************************
+                  Three problems numbered 6 through 8
+**********************************************************************
+
+Problem 6: The Cow Prom [Brian Dean, 2004]
+
+The N (2 &lt;= N &lt;= 10,000) cows are so excited: it's prom night! They
+are dressed in their finest gowns, complete with corsages and new
+shoes. They know that tonight they will each try to perform the
+Round Dance.
+
+Only cows can perform the Round Dance which requires a set of ropes
+and a circular stock tank. To begin, the cows line up around a
+circular stock tank and number themselves in clockwise order
+consecutively from 1..N. Each cow faces the tank so she can see the
+other dancers.
+
+They then acquire a total of M (2 &lt;= M &lt;= 50,000) ropes all of which
+are distributed to the cows who hold them in their hooves.  Each
+cow hopes to be given one or more ropes to hold in both her left
+and right hooves; some cows might be disappointed.
+
+For the Round Dance to succeed for any given cow (say, Bessie), the
+ropes that she holds must be configured just right. To know if
+Bessie's dance is successful, one must examine the set of cows
+holding the other ends of her ropes (if she has any), along with
+the cows holding the other ends of any ropes they hold, etc.  When
+Bessie dances clockwise around the tank, she must instantly pull
+all the other cows in her group around clockwise, too. Likewise,
+if she dances the other way, she must instantly pull the entire
+group counterclockwise (anti-clockwise in British English).
+
+Of course, if the ropes are not properly distributed then a set of
+cows might not form a proper dance group and thus can not succeed
+at the Round Dance. One way this happens is when only one rope
+connects two cows. One cow could pull the other in one direction,
+but could not pull the other direction (since pushing ropes is
+well-known to be fruitless). Note that the cows must Dance in
+lock-step: a dangling cow (perhaps with just one rope) that is
+eventually pulled along disqualifies a group from properly performing
+the Round Dance since she is not immediately pulled into lockstep
+with the rest.
+
+Given the ropes and their distribution to cows, how many groups of
+cows can properly perform the Round Dance? Note that a set of ropes
+and cows might wrap many times around the stock tank.
+
+PROBLEM NAME: prom
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: N and M
+
+* Lines 2..M+1: Each line contains two space-separated integers A and
+        B that describe a rope from cow A to cow B in the clockwise
+        direction.
+
+SAMPLE INPUT (file prom.in):
+
+5 4
+2 4
+3 5
+1 2
+4 1
+
+INPUT DETAILS:
+
+ASCII art for Round Dancing is challenging. Nevertheless, here is a
+representation of the cows around the stock tank:
+       _1___
+      /**** \
+   5 /****** 2
+  / /**TANK**|
+  \ \********/
+   \ \******/  3
+    \ 4____/  /
+     \_______/
+
+OUTPUT FORMAT:
+
+* Line 1: A single line with a single integer that is the number of
+        groups successfully dancing the Round Dance.
+
+SAMPLE OUTPUT (file prom.out):
+
+1
+
+OUTPUT DETAILS:
+
+Cows 1, 2, and 4 are properly connected and form a complete Round
+Dance group. Cows 3 and 5 don't have the second rope they'd need
+to be able to pull both ways, thus they can not properly perform the
+Round Dance.
+
+**********************************************************************
+
+Problem 7: Dollar Dayz [Don Piele, 2003]
+
+Farmer John goes to Dollar Days at The Cow Store and discovers an
+unlimited number of tools on sale. During his first visit, the tools
+are selling variously for $1, $2, and $3. Farmer John has exactly
+$5 to spend. He can buy 5 tools at $1 each or 1 tool at $3 and an
+additional 1 tool at $2. Of course, there are other combinations
+for a total of 5 different ways FJ can spend all his money on tools.
+Here they are:
+
+        1 @ US$3 + 1 @ US$2
+        1 @ US$3 + 2 @ US$1
+        1 @ US$2 + 3 @ US$1
+        2 @ US$2 + 1 @ US$1
+        5 @ US$1
+
+Write a program than will compute the number of ways FJ can spend
+N dollars (1 &lt;= N &lt;= 1000) at The Cow Store for tools on sale with
+a cost of $1..$K (1 &lt;= K &lt;= 100).
+
+PROBLEM NAME: ddayz
+
+INPUT FORMAT:
+
+A single line with two space-separated integers: N and K.
+
+SAMPLE INPUT (file ddayz.in):
+
+5 3
+
+OUTPUT FORMAT:
+
+A single line with a single integer that is the number of unique ways
+FJ can spend his money.
+
+SAMPLE OUTPUT (file ddayz.out):
+
+5
+
+**********************************************************************
+
+Problem 8: The Grove [Hardi Pertel, Estonia, 2005]
+
+The pasture contains a small, contiguous grove of trees that has
+no 'holes' in the middle of the it.  Bessie wonders: how far is it
+to walk around that grove and get back to my starting position?
+She's just sure there is a way to do it by going from her start
+location to successive locations by walking horizontally, vertically,
+or diagonally and counting each move as a single step. Just looking
+at it, she doesn't think you could pass 'through' the grove on a
+tricky diagonal. Your job is to calculate the minimum number of
+steps she must take.
+
+Happily, Bessie lives on a simple world where the pasture is
+represented by a grid with R rows and C columns (1 &lt;= R &lt;= 50, 1
+&lt;= C &lt;= 50). Here's a typical example where '.' is pasture (which
+Bessie may traverse), 'X' is the grove of trees, '*' represents
+Bessie's start and end position, and '+' marks one shortest path
+she can walk to circumnavigate the grove (i.e., the answer):
+
+...+...
+..+X+..
+.+XXX+.
+..+XXX+
+..+X..+
+...+++*
+
+The path shown is not the only possible shortest path; Bessie might
+have taken a diagonal step from her start position and achieved a
+similar length solution. Bessie is happy that she's starting 'outside'
+the grove instead of in a sort of 'harbor' that could complicate
+finding the best path.
+
+PROBLEM NAME: grove
+
+INPUT FORMAT:
+
+* Line 1: Two space-separated integers: R and C
+
+* Lines 2..R+1: Line i+1 describes row i with C characters (with no
+        spaces between them).
+
+SAMPLE INPUT (file grove.in):
+
+6 7
+.......
+...X...
+..XXX..
+...XXX.
+...X...
+......*
+
+OUTPUT FORMAT:
+
+* Line 1: The single line contains a single integer which is the
+        smallest number of steps required to circumnavigate the grove.
+
+SAMPLE OUTPUT (file grove.out):
+
+13
+
+**********************************************************************
+
+</pre><hr>
+<form action="/ioiupload" enctype="multipart/form-data" method="post">
+<input name="a" value="OtRXXiqYath" type="hidden">
+
+
+<table bgcolor="#000000" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td height="1"></td><td>
+
+</td></tr><tr><td width="1"></td><td>
+
+<table bgcolor="#bfffbf" cellpadding="5">
+<tbody><tr><td>Use this form to submit a program for grading:</td>
+<td rowspan="3"><input value="Submit" name="submit" type="submit"></td>
+</tr><tr><td width="60%"><b>Program File:</b><input name="filename" type="file"></td>
+    </tr>
+</tbody></table>
+</td><td width="1"></td>
+
+</tr><tr height="1"><td></td><td></td></tr>
+</tbody></table>
+<hr>
+The following solution files are saved for grading:<br>
+<table cellspacing="2">
+<tbody><tr><th>Name</th><th>Size</th><th>When</th><th>Age</th></tr>
+<tr><td><a href="http://ace.delos.com/ioiupload?a=OtRXXiqYath&amp;seesaved=corral.c">corral.c</a></td>
+<td align="right">1233</td>
+<td align="right"> 7h39:48</td>
+<td align="right">121h58:49</td></tr>
+<tr><td><a href="http://ace.delos.com/ioiupload?a=OtRXXiqYath&amp;seesaved=rpaths.c">rpaths.c</a></td>
+<td align="right">1307</td>
+<td align="right"> 8h06:40</td>
+<td align="right">121h31:57</td></tr>
+</tbody></table>
+<hr>
+<center>
+<a href="http://ace.delos.com/ioiedit?a=OtRXXiqYath">Edit your database record</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=OtRXXiqYath&amp;logout=1"> Logout </a>
+<!--<a href="https://ace.delos.com/rules.html" target="_blank"> Rules </a>-->
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?init=1&amp;a=OtRXXiqYath">Main contest index</a>
+</center>
+<!--&nbsp;|&nbsp;-->
+<center>
+<a href="http://ace.delos.com/ioiupload?a=OtRXXiqYath&amp;showsubmit">See submitted solutions</a>
+&nbsp;|&nbsp;
+<a href="http://ace.delos.com/ioiupload?a=OtRXXiqYath&amp;suggestionbox">Send message
+to contest director</a><br>
+Director is currently online (AIM: RobAtDelos)<br>
+This page was generated at 16:38:37 GMT.
+</center>
+</form></body></html>
