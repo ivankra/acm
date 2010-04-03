@@ -14,8 +14,11 @@ vector<string> split(const string &s, char sep = ' ') {
     return v;
 }
 
+#include <cmath>
+#include <cstdarg>
+#include <cstdio>
+#include <cstring>
 #include <ctime>
-#include <stdarg.h>
 
 #if (defined(WIN32) || defined(_WIN32)) && !defined(__CYGWIN__)
 #define WIN32_LEAN_AND_MEAN
@@ -298,6 +301,6 @@ $EXAMPLES$
     }
 }
 #endif
-// vim: ts=4 sts=4 sw=4 noet
+// vim: ts=4 sts=4 sw=4 noet fdm=marker
 // }}}
 // END CUT HERE
