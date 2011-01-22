@@ -1,3 +1,5 @@
+// Brute force all 2^18 ways of flipping switches in the first row,
+// that uniquely determines what switches to flip in all subsequent rows.
 #include <cstdio>
 #include <cassert>
 #include <cstdlib>

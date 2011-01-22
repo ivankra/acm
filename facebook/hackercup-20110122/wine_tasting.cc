@@ -1,3 +1,4 @@
+// Simple combinatorics problem about derangements
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
