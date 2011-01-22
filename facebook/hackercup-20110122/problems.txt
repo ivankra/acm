@@ -1,0 +1,103 @@
+Facebook Hacker Cup 2011 Round 1A (reprise)
+===========================================
+
+A: Wine Tasting
+---------------
+
+A group of Facebook employees just had a very successful product launch. To celebrate, they have decided to go wine tasting. At the vineyard, they decide to play a game. One person is given some glasses of wine, each containing a different wine. Every glass of wine is labelled to indicate the kind of wine the glass contains. After tasting each of the wines, the labelled glasses are removed and the same person is given glasses containing the same wines, but unlabelled. The person then needs to determine which of the unlabelled glasses contains which wine. Sadly, nobody in the group can tell wines apart, so they just guess randomly. They will always guess a different type of wine for each glass. If they get enough right, they win the game. You must find the number of ways that the person can win, modulo 1051962371.
+
+Input
+The first line of the input is the number of test cases, N. The next N lines each contain a test case, which consists of two integers, G and C, separated by a single space. G is the total number of glasses of wine and C is the minimum number that the person must correctly identify to win.
+
+Constraints
+
+    * N = 20
+    * 1 ≤ G ≤ 100
+    * 1 ≤ C ≤ G
+
+
+Output
+For each test case, output a line containing a single integer, the number of ways that the person can win the game modulo 1051962371.
+
+Example input
+5
+1 1
+4 2
+5 5
+13 10
+14 1
+
+Example output
+1
+7
+1
+651
+405146859
+
+
+B: Diversity Number
+-------------------
+
+Let's call a sequence of integers a1, a2, ..., aN almost monotonic if first K elements are non-decreasing sequence and last N-K+1 elements are non-increasing sequence: a1≤a2≤...≤aK and aK≥aK+1≥...≥aN.
+
+The diversity number of a sequence a1, a2, ..., aN is the number of possible sequences b1, b2,..., bN for which 0≤bi<ai and all of the numbers b1, b2,..., bN are different. The diversity number of an empty sequence is 1.
+
+You need to find the sum of the diversity numbers of all almost monotonic subsequences of a sequence. Since this number can be very large, find it modulo 1,000,000,007. A subsequence is a sequence that can be obtained from another sequence by deleting some elements without changing the order of the remaining elements. Two sequences are considered different if their lengths differ or there is at least one position at which they differ.
+Input
+
+The first line of the input file consists of a single number T, the number of test cases. Each test case consists of a number M, the number of elements in a sequence, followed by M numbers n, elements of some sequence (note that this sequence is not necessarily almost monotonic). All tokens are whitespace-separated
+
+Constraints
+T = 20
+1 ≤ M, n ≤ 100
+
+Output
+Output T lines, with the answer to each test case on a single line.
+
+Example input
+5
+1 1
+2 2 1
+3 1 3 2
+4 1 3 1 2
+4 2 3 4 3
+
+Example output
+2
+5
+15
+17
+80
+
+C: Turn on the Lights
+---------------------
+
+A simple game consists of a grid of RxC buttons. Each button will be either lighted, or unlighted. Whenever you push a button, the state of that button, and its (up to) four neighbors will toggle -- lighted buttons will become unlighted and unlighted buttons will become lighted. Note that the neighbors do not 'wrap' and thus a corner button has only two neighbors, while an edge buttons has three.
+
+In this problem you will be given an initial configuration of the buttons. Your task is to push the right buttons so that, when you are done, all of the lights are turned on. If there are multiple ways to do this, you should determine the minimum number of buttons pushes that it can be done in.
+Input
+You will first read an integer N the number of test cases. For each test case, you will read two integers R and C. This will be followed by R whitespace-separated tokens, each containing C characters. A 'X' indicates a lighted button, while a '.' indicates an unlighted button.
+
+Constraints
+    * N = 20
+    * 1 ≤ R,C ≤ 18
+
+Output
+For each test case you should output the minimum number of button presses required to turn on all the lights. If there is no way to do this, you should output -1.
+
+Example input
+5
+5 6 XXXXXX XXX.X. XXXXXX X.XXXX XXXXX.
+1 13 ..XXXXXXX.X..
+11 6 XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX XXXXXX .X.XXX XXXX.X XXXXXX XXX.XX
+10 13 ..XX...X.X.X. XX..X..X..... .X........... X........X... .....XX..X.X. .X..XX....... .X.....X.X... .X....X...... ......XX...X. ..X....X.....
+9 3 ... ... ... ... ... ..X ... ... ...
+
+Example output
+14
+7
+27
+65
+11
+
+Facebook © 2011
