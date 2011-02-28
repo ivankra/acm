@@ -1,3 +1,8 @@
+This is Derek Kisman's solution to problem J ("Tunnels") from
+2007 ACM ICPC Finals, archived from Derek's former geocities site.
+(http://www.geocities.com/snapdragon64/tunnel-notes.txt)
+------------------------------------------------------------------
+
 Problem Notes:
 
 This is a very difficult, but fascinating, graph problem.  It might be a
