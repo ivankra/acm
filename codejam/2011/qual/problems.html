@@ -1,0 +1,406 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<h1>Google CodeJam - Qualification Round 2011</h1>
+<h2>A. Bot Trust</h2>
+<h3>Problem</h3>
+<p>
+Blue and Orange are friendly robots. An evil computer mastermind has locked them up in separate hallways to test them, and then possibly give them cake.
+</p>
+
+<p>
+Each hallway contains 100 buttons labeled with the positive integers {1, 2, ..., 100}. Button k is always k meters from the start of the hallway, and the robots both begin at button 1. Over the period of one second, a robot can walk one meter in either direction, or it can press the button at its position once, or it can stay at its position and not press the button. To complete the test, the robots need to push a certain sequence of buttons in a certain order. Both robots know the full sequence in advance. How fast can they complete it?
+</p>
+
+<p>
+For example, let's consider the following button sequence:
+</p>
+
+<p><code>&nbsp;&nbsp;&nbsp;O 2, B 1, B 2, O 4</code></p>
+
+<p>
+Here, <code>O 2</code> means button 2 in Orange's hallway, <code>B 1</code> means button 1 in Blue's hallway, and so on. The robots can push this sequence of buttons in 6 seconds using the strategy shown below:
+</p><pre>Time | Orange           | Blue
+-----+------------------+-----------------
+  1  | Move to button 2 | Stay at button 1
+  2  | Push button 2    | Stay at button 1
+  3  | Move to button 3 | Push button 1
+  4  | Move to button 4 | Move to button 2
+  5  | Stay at button 4 | Push button 2
+  6  | Push button 4    | Stay at button 2
+</pre>
+Note that Blue has to wait until Orange has completely finished pushing <code>O 2</code> before it can start pushing <code>B 1</code>.
+
+
+
+<h3>Input</h3>
+<p>
+The first line of the input gives the number of test cases, <b>T</b>. <b>T</b> test cases follow.
+</p>
+
+<p>
+Each test case consists of a single line beginning with a positive integer <b>N</b>, representing the number of buttons that need to be pressed. This is followed by <b>N</b> terms of the form "<b>R</b><sub>i</sub> <b>P</b><sub>i</sub>" where <b>R</b><sub>i</sub> is a robot color (always 'O' or 'B'), and <b>P</b><sub>i</sub> is a button position.
+
+</p>
+
+<h3>Output</h3>
+<p>
+For each test case, output one line containing "Case #x: y", where x is the case number (starting from 1) and y is the minimum number of seconds required for the robots to push the given buttons, in order.
+</p>
+
+<h3>Limits</h3>
+
+<p>
+1 ≤ <b>P</b><sub>i</sub> ≤ 100 for all i.
+
+</p>
+
+<h4>Small dataset</h4>
+<p>
+1 ≤ <b>T</b> ≤ 20.<br>
+1 ≤ <b>N</b> ≤ 10.
+</p>
+
+<h4>Large dataset</h4>
+
+<p>
+1 ≤ <b>T</b> ≤ 100.<br>
+1 ≤ <b>N</b> ≤ 100.
+</p>
+
+<h3>Sample</h3>
+<div class="problem-io-wrapper">
+<table>
+<tbody><tr>
+
+<td>
+<br>
+<span class="io-table-header">Input</span>
+<br>&nbsp;
+</td>
+<td>
+<br>
+<span class="io-table-header">Output</span>
+<br>&nbsp;
+</td>
+</tr>
+<tr>
+<td>
+<code>
+3<br>
+
+4 O 2 B 1 B 2 O 4<br>
+3 O 5 O 8 B 100<br>
+2 B 2 B 1<br>
+</code>
+</td>
+<td>
+<code>
+Case #1: 6<br>
+Case #2: 100<br>
+Case #3: 4<br>
+<br>
+
+</code>
+</td></tr></tbody></table>
+
+<h2>B. Magicka</h2>
+
+<h3>Introduction</h3>
+<p>
+Magicka™ is an action-adventure game developed by Arrowhead Game Studios.  In Magicka you play a wizard, invoking and combining elements to create Magicks.  This problem has a similar idea, but it does not assume that you have played Magicka.
+</p>
+<p>
+Note: "invoke" means "call on."  For this problem, it is a technical term and you don't need to know its normal English meaning.
+</p>
+<h3>Problem</h3>
+<p>
+As a wizard, you can <b>invoke</b> eight elements, which are the "base" elements.  Each base element is a single character from {Q, W, E, R, A, S, D, F}.  When you invoke an element, it gets appended to your <b>element list</b>.  For example: if you invoke W and then invoke A, (we'll call that "invoking WA" for short) then your element list will be [W, A].
+
+</p>
+<p>
+We will specify pairs of base elements that <b>combine</b> to form non-base elements (the other 18 capital letters).  For example, Q and F might combine to form T.  If the two elements from a pair appear at the end of the element list, then both elements of the pair will be immediately removed, and they will be replaced by the element they form.  In the example above, if the element list looks like [A, Q, F] or [A, F, Q] at any point, it will become [A, T].
+</p>
+<p>
+We will specify pairs of base elements that are <b>opposed</b> to each other.  After you invoke an element, if it isn't immediately combined to form another element, and it is opposed to something in your element list, then your whole element list will be cleared.
+</p>
+<p>
+For example, suppose Q and F combine to make T.  R and F are opposed to each other.  Then invoking the following things (in order, from left to right) will have the following results:
+</p><ul>
+<li>QF → [T]  (Q and F combine to form T)</li>
+
+<li>QEF → [Q, E, F] (Q and F can't combine because they were never at the end of the element list together)</li>
+<li>RFE → [E] (F and R are opposed, so the list is cleared; then E is invoked)</li>
+<li>REF → [] (F and R are opposed, so the list is cleared)</li>
+<li>RQF → [R, T] (QF combine to make T, so the list is not cleared)</li>
+<li>RFQ → [Q] (F and R are opposed, so the list is cleared)</li>
+</ul>
+
+<p>
+Given a list of elements to invoke, what will be in the element list when you're done?
+</p>
+
+<h3>Input</h3>
+
+<p>
+The first line of the input gives the number of test cases, <b>T</b>.  <b>T</b> test cases follow.  Each test case consists of a single line, containing the following space-separated elements in order:
+</p>
+<p>
+First an integer <b>C</b>, followed by <b>C</b> strings, each containing three characters: two base elements followed by a non-base element.  This indicates that the two base elements combine to form the non-base element.  Next will come an integer <b>D</b>, followed by <b>D</b> strings, each containing two characters: two base elements that are opposed to each other.  Finally there will be an integer <b>N</b>, followed by a single string containing <b>N</b> characters: the series of base elements you are to invoke.  You will invoke them in the order they appear in the string (leftmost character first, and so on), one at a time.
+
+</p>
+
+<h3>Output</h3>
+<p>
+For each test case, output one line containing "Case #x: y", where x is the case number (starting from 1) and y is a list in the format "[e<sub>0</sub>, e<sub>1</sub>, ...]" where e<sub>i</sub> is the i<sup>th</sup> element of the final element list.  Please see the sample output for examples.
+</p>
+
+<h3>Limits</h3>
+<p>
+1 ≤ <b>T</b> ≤ 100.<br>
+Each pair of base elements may only appear together in one combination, though they may appear in a combination and also be opposed to each other.<br>
+No base element may be opposed to itself.<br>
+Unlike in the computer game Magicka, there is no limit to the length of the element list.
+</p>
+
+<h4>Small dataset</h4>
+
+<p>
+0 ≤ <b>C</b> ≤ 1.<br>
+0 ≤ <b>D</b> ≤ 1.<br>
+1 ≤ <b>N</b> ≤ 10.<br>
+</p>
+
+<h4>Large dataset</h4>
+<p>
+0 ≤ <b>C</b> ≤ 36.<br>
+0 ≤ <b>D</b> ≤ 28.<br>
+1 ≤ <b>N</b> ≤ 100.<br>
+
+</p>
+
+<h3>Sample</h3>
+<div class="problem-io-wrapper">
+<table>
+<tbody><tr>
+<td>
+<br>
+<span class="io-table-header">Input</span>
+<br>&nbsp;
+</td>
+<td>
+<br>
+<span class="io-table-header">Output</span>
+
+<br>&nbsp;
+</td>
+</tr>
+<tr>
+<td>
+<code>
+5<br>
+0 0 2 EA<br>
+1 QRI 0 4 RRQR<br>
+1 QFT 1 QF 7 FAQFDFQ<br>
+1 EEZ 1 QE 7 QEEEERA<br>
+0 1 QW 2 QW<br>
+
+</code>
+</td>
+<td>
+<code>
+Case #1: [E, A]<br>
+Case #2: [R, I, R]<br>
+Case #3: [F, D, T]<br>
+Case #4: [Z, E, R, A]<br>
+Case #5: []<br>
+</code>
+</td></tr></tbody></table>
+
+Magicka™ is a trademark of Paradox Interactive AB.  Paradox Interactive AB does not endorse and has no involvement with Google Code Jam.
+
+<h2>C. Candy Splitting</h2>
+
+<h3>Problem</h3>
+
+<p>
+Sean and Patrick are brothers who just got a nice bag of candy from their parents.  Each piece of candy has some positive integer value, and the children want to divide the candy between them.   First, Sean will split the candy into two piles, and choose one to give to Patrick. Then Patrick will try to calculate the value of each pile, where the value of a pile is the sum of the values of all pieces of candy in that pile; if he decides the piles don't have equal value, he will start crying.
+</p>
+
+<p>
+Unfortunately, Patrick is very young and doesn't know how to add properly.  He <i>almost</i> knows how to add numbers in binary; but when he adds two 1s together, he always forgets to carry the remainder to the next bit. For example, if he wants to sum 12 (1100 in binary) and 5 (101 in binary), he will add the two rightmost bits correctly, but in the third bit he will forget to carry the remainder to the next bit:
+</p>
+
+<pre>  1100
++ 0101
+------
+  1001
+</pre>
+
+<p>
+So after adding the last bit without the carry from the third bit, the final result is 9 (1001 in binary).  Here are some other examples of Patrick's math skills:
+</p>
+
+<pre>5 + 4 = 1
+7 + 9 = 14
+50 + 10 = 56
+</pre>
+
+<p>
+Sean is very good at adding, and he wants to take as much value as he can without causing his little brother to cry.  If it's possible, he will split the bag of candy into two non-empty piles such that Patrick thinks that both have the same value. Given the values of all pieces of candy in the bag, we would like to know if this is possible; and, if it's possible, determine the maximum possible value of Sean's pile.
+</p>
+
+<h3>Input</h3>
+
+<p>
+The first line of the input gives the number of test cases, <b>T</b>.  <b>T</b> test cases follow.  Each test case is described in two lines. The first line contains a single integer <b>N</b>, denoting the number of candies in the bag. The next line contains the <b>N</b> integers <b>C<sub>i</sub></b> separated by single spaces, which denote the value of each piece of candy in the bag.
+</p>
+
+<h3>Output</h3>
+<p>
+For each test case, output one line containing "Case #x: y", where x is the case number (starting from 1). If it is impossible for Sean to keep Patrick from crying, y should be the word "NO". Otherwise, y should be the value of the pile of candies that Sean will keep.
+</p>
+
+<h3>Limits</h3>
+<p>
+1 ≤ <b>T</b> ≤ 100.<br>
+1 ≤ <b>C<sub>i</sub></b> ≤ 10<sup>6</sup>.<br>
+
+</p>
+
+<h4>Small dataset</h4>
+<p>
+2 ≤ <b>N</b> ≤ 15.
+</p>
+
+<h4>Large dataset</h4>
+<p>
+2 ≤ <b>N</b> ≤ 1000.
+
+</p>
+
+<h3>Sample</h3>
+<div class="problem-io-wrapper">
+<table>
+<tbody><tr>
+<td>
+<br>
+<span class="io-table-header">Input</span>
+<br>&nbsp;
+</td>
+<td>
+<br>
+<span class="io-table-header">Output</span>
+
+<br>&nbsp;
+</td>
+</tr>
+<tr>
+<td>
+<code>
+2<br>
+5<br>
+1 2 3 4 5<br>
+3<br>
+3 5 6<br>
+</code>
+
+</td>
+<td>
+<code>
+Case #1: NO<br>
+Case #2: 11<br>
+<br>
+</code>
+</td></tr></tbody></table>
+
+<h2>D. GoroSort</h2>
+
+<h3>Problem</h3>
+<p>
+Goro has 4 arms. Goro is very strong. You don't mess with Goro. Goro needs to sort an array of <b>N</b> different integers. Algorithms are not Goro's strength; strength is Goro's strength. Goro's plan is to use the fingers on two of his hands to hold down several elements of the array and hit the table with his third and fourth fists as hard as possible. This will make the unsecured elements of the array fly up into the air, get shuffled randomly, and fall back down into the empty array locations.
+</p>
+
+<p>
+Goro wants to sort the array as quickly as possible. How many hits will it take Goro to sort the given array, on average, if he acts intelligently when choosing which elements of the array to hold down before each hit of the table?  Goro has an infinite number of fingers on the two hands he uses to hold down the array.
+</p>
+
+<p>
+
+More precisely, before each hit, Goro may choose any subset of the elements of the array to freeze in place. He may choose differently depending on the outcomes of previous hits. Each hit permutes the unfrozen elements uniformly at random. Each permutation is equally likely.
+</p>
+
+<h3>Input</h3>
+<p>
+The first line of the input gives the number of test cases, <b>T</b>.  <b>T</b> test cases follow.  Each one will consist of two lines. The first line will give the number <b>N</b>. The second line will list the <b>N</b> elements of the array in their initial order.
+
+</p>
+
+<h3>Output</h3>
+<p>
+For each test case, output one line containing "Case #<b>x</b>: <b>y</b>", where <b>x</b> is the case number (starting from 1) and <b>y</b> is the expected number of hit-the-table operations when following the best hold-down strategy. Answers with an absolute or relative error of at most 10<sup>-6</sup> will be considered correct.
+
+</p>
+
+<h3>Limits</h3>
+<p>
+1 ≤ <b>T</b> ≤ 100;<br>
+The second line of each test case will contain a permutation of the <b>N</b>
+smallest positive integers.<br>
+</p>
+
+<h4>Small dataset</h4>
+<p>
+1 ≤ <b>N</b> ≤ 10;
+</p>
+
+<h4>Large dataset</h4>
+<p>
+1 ≤ <b>N</b> ≤ 1000;
+</p>
+
+<h3>Sample</h3>
+<div class="problem-io-wrapper">
+<table>
+<tbody><tr>
+<td>
+<br>
+<span class="io-table-header">Input</span>
+<br>&nbsp;
+</td>
+<td>
+<br>
+<span class="io-table-header">Output</span>
+<br>&nbsp;
+
+</td>
+</tr>
+<tr>
+<td>
+<code>
+3<br>
+2<br>
+2 1<br>
+3<br>
+1 3 2<br>
+4<br>
+
+2 1 4 3<br>
+</code>
+</td>
+<td>
+<code>
+Case #1: 2.000000<br>
+Case #2: 2.000000<br>
+Case #3: 4.000000<br>
+<br>
+</code>
+</td></tr></tbody></table>
+
+<h3>Explanation</h3>
+In test case #3, one possible strategy is to hold down the two leftmost elements first. Elements 3 and 4 will be free to move. After a table hit, they will land in the correct order [3, 4] with probability 1/2 and in the wrong order [4, 3] with probability 1/2. Therefore, on average it will take 2 hits to arrange them in the correct order. After that, Goro can hold down elements 3 and 4 and hit the table until 1 and 2 land in the correct order, which will take another 2 hits, on average. The total is then <nobr>2 + 2 = 4</nobr> hits.
+
+</body>
+</html>
