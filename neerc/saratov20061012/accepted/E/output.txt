@@ -1,4 +1,0 @@
-"This is sample-mample"
-error
-"This is -- -- possible test -- "
-" -- a"
