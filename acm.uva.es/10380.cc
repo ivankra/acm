@@ -88,7 +88,7 @@ int main()
 		for (int y = 0; y < N; y++) {
 			for (int x = 0; x < N; x++) {
 				for (int i = 0; i < 2; i++) {
-					char ch;
+					char ch;			//  here
 					scanf(" %c", &ch);
 					table[y][x][i] = ch;
 					if (x <= y) continue;
